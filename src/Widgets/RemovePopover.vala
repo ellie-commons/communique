@@ -47,7 +47,7 @@ public class FeedReader.RemovePopover : Gtk.Popover {
 		var removeButton = new Gtk.Button.with_label(_("Remove \"%s\"").printf(m_name));
 		removeButton.get_style_context().add_class(Gtk.STYLE_CLASS_DESTRUCTIVE_ACTION);
 		removeButton.clicked.connect(removeX);
-		removeButton.margin = 10;
+		removeButton.margin = 6;
 		this.add(removeButton);
 		this.show_all();
 	}

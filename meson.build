@@ -59,6 +59,7 @@ sqlite3             = dependency('sqlite3')
 webkit2gtk          = dependency('webkit2gtk-4.0')
 webkitextension     = dependency('webkit2gtk-web-extension-4.0')
 libunity            = dependency('unity', required: false)
+libgranite          = dependency('granite')
 
 # Configuration
 conf = configuration_data()
@@ -261,7 +262,8 @@ feedreader_deps = [
     libivy,
     libgtkimageview,
     htmlclean,
-    libgd
+    libgd,
+    libgranite
   ]
 
 

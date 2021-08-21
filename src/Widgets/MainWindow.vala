@@ -41,8 +41,7 @@ public class FeedReader.MainWindow : Gtk.ApplicationWindow
 		return m_window;
 	}
 
-	private MainWindow()
-	{
+	private MainWindow () {
 		Object(application: FeedReaderApp.get_default(), title: _("FeedReader"), show_menubar: false);
 		this.window_position = WindowPosition.CENTER;
 
@@ -102,36 +101,36 @@ public class FeedReader.MainWindow : Gtk.ApplicationWindow
 		this.add_action(login_action);
 		login_action.set_enabled(true);
 
-		var about_action = new SimpleAction("about", null);
-		about_action.activate.connect(() => {
-			Gtk.AboutDialog dialog = new Gtk.AboutDialog();
-			dialog.set_transient_for(this);
-			dialog.set_modal(true);
-			dialog.artists = AboutInfo.artists;
-			dialog.authors = AboutInfo.authors;
-			dialog.documenters = null;
-			dialog.translator_credits = AboutInfo.translators;
+		// var about_action = new SimpleAction("about", null);
+		// about_action.activate.connect(() => {
+		// 	Gtk.AboutDialog dialog = new Gtk.AboutDialog();
+		// 	dialog.set_transient_for(this);
+		// 	dialog.set_modal(true);
+		// 	dialog.artists = AboutInfo.artists;
+		// 	dialog.authors = AboutInfo.authors;
+		// 	dialog.documenters = null;
+		// 	dialog.translator_credits = AboutInfo.translators;
 
-			dialog.program_name = AboutInfo.programmName;
-			dialog.comments = AboutInfo.comments;
-			dialog.copyright = AboutInfo.copyright;
-			dialog.version = AboutInfo.version;
-			dialog.logo_icon_name = AboutInfo.iconName;
-			dialog.license_type = Gtk.License.GPL_3_0;
-			dialog.wrap_license = true;
-			dialog.website = AboutInfo.website;
+		// 	dialog.program_name = AboutInfo.programmName;
+		// 	dialog.comments = AboutInfo.comments;
+		// 	dialog.copyright = AboutInfo.copyright;
+		// 	dialog.version = AboutInfo.version;
+		// 	dialog.logo_icon_name = AboutInfo.iconName;
+		// 	dialog.license_type = Gtk.License.GPL_3_0;
+		// 	dialog.wrap_license = true;
+		// 	dialog.website = AboutInfo.website;
 
-			dialog.response.connect((response_id) => {
-				if (response_id == Gtk.ResponseType.CANCEL || response_id == Gtk.ResponseType.DELETE_EVENT)
-				{
-					dialog.hide_on_delete();
-				}
-			});
+		// 	dialog.response.connect((response_id) => {
+		// 		if (response_id == Gtk.ResponseType.CANCEL || response_id == Gtk.ResponseType.DELETE_EVENT)
+		// 		{
+		// 			dialog.hide_on_delete();
+		// 		}
+		// 	});
 
-			dialog.present();
-		});
-		this.add_action(about_action);
-		about_action.set_enabled(true);
+		// 	dialog.present();
+		// });
+		// this.add_action(about_action);
+		// about_action.set_enabled(true);
 
 		m_simpleHeader = new SimpleHeader();
 

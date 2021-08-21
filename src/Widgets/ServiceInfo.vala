@@ -25,7 +25,7 @@ public class FeedReader.ServiceInfo : Gtk.Overlay {
 	{
 		m_logo = new Gtk.Image();
 		m_logo = new Gtk.Image.from_file("");
-		m_logo.get_style_context().add_class("fr-sidebar-symbolic");
+		// m_logo.get_style_context().add_class("fr-sidebar-symbolic");
 		m_label = new Gtk.Label("");
 		m_label.margin_start = 10;
 		m_label.margin_end = 10;
@@ -43,7 +43,7 @@ public class FeedReader.ServiceInfo : Gtk.Overlay {
 		m_stack = new Gtk.Stack();
 		m_stack.add_named(m_box, "info");
 		m_stack.add_named(m_spinner, "spinner");
-		m_stack.get_style_context().add_class("fr-sidebar");
+		m_stack.get_style_context().add_class(Gtk.STYLE_CLASS_SIDEBAR);
 		this.add(m_stack);
 
 		m_offline = new Gtk.Label("OFFLINE");
@@ -51,7 +51,7 @@ public class FeedReader.ServiceInfo : Gtk.Overlay {
 		m_offline.margin_end = 40;
 		m_offline.margin_top = 30;
 		m_offline.margin_bottom = 10;
-		m_offline.get_style_context().add_class("osd");
+		// m_offline.get_style_context().add_class("osd");
 		m_offline.no_show_all = true;
 		this.add_overlay(m_offline);
 	}
@@ -72,7 +72,7 @@ public class FeedReader.ServiceInfo : Gtk.Overlay {
 			else
 			{
 				m_logo.set_from_icon_name(service_icon, Gtk.IconSize.BUTTON);
-				m_logo.get_style_context().add_class("fr-sidebar-symbolic");
+				// m_logo.get_style_context().add_class("fr-sidebar-symbolic");
 				m_label.set_label(user_name);
 				m_stack.set_visible_child_name("info");
 				if(server != "none")

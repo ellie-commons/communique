@@ -34,7 +34,7 @@ public class FeedReader.feedList : Gtk.ScrolledWindow {
 		m_spinner = new Gtk.Spinner();
 		m_list = new Gtk.ListBox();
 		m_list.set_selection_mode(Gtk.SelectionMode.BROWSE);
-		m_list.get_style_context().add_class("fr-sidebar");
+		m_list.get_style_context().add_class(Gtk.STYLE_CLASS_SIDEBAR);
 		m_branding = new ServiceInfo();
 		var feedlist_box = new Gtk.Box(Gtk.Orientation.VERTICAL, 0);
 		feedlist_box.pack_start(m_branding, false, false, 0);

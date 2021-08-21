@@ -62,7 +62,6 @@ public class FeedReader.FeedRow : Gtk.ListBoxRow {
 			m_unreadStack.add_named(m_unread, "unreadCount");
 			m_unreadStack.add_named(new Gtk.Label(""), "nothing");
 			var markIcon = new Gtk.Image.from_icon_name("feed-mark-read-symbolic", Gtk.IconSize.LARGE_TOOLBAR);
-			markIcon.get_style_context().add_class("fr-sidebar-symbolic");
 			m_unreadStack.add_named(markIcon, "mark");
 
 			m_unreadBox = new Gtk.EventBox();
@@ -71,16 +70,6 @@ public class FeedReader.FeedRow : Gtk.ListBoxRow {
 			m_unreadBox.set_events(Gdk.EventMask.LEAVE_NOTIFY_MASK);
 			m_unreadBox.add(m_unreadStack);
 			activateUnreadEventbox(true);
-
-
-			if(!Utils.onlyShowFeeds() && m_feed.getFeedID() != FeedID.ALL.to_string())
-			{
-				this.get_style_context().add_class("fr-sidebar-feed");
-			}
-			else
-			{
-				this.get_style_context().add_class("fr-sidebar-row");
-			}
 
 			m_box.pack_start(m_icon, false, false, 8);
 			m_box.pack_start(m_label, true, true, 0);
@@ -157,7 +146,7 @@ public class FeedReader.FeedRow : Gtk.ListBoxRow {
 	public Gtk.Image createFavIcon()
 	{
 		var icon = new Gtk.Image.from_icon_name("feed-rss-symbolic", Gtk.IconSize.LARGE_TOOLBAR);
-		icon.get_style_context().add_class("fr-sidebar-symbolic");
+		// icon.get_style_context().add_class("fr-sidebar-symbolic");
 
 		var favicon = FavIcon.for_feed(m_feed);
 		favicon.get_surface.begin((obj, res) => {
@@ -283,7 +272,7 @@ public class FeedReader.FeedRow : Gtk.ListBoxRow {
 		});
 
 		var renameButton = new Gtk.Button.with_label(_("rename"));
-		renameButton.get_style_context().add_class("suggested-action");
+		renameButton.get_style_context().add_class(Gtk.STYLE_CLASS_SUGGESTED_ACTION);
 		renameButton.clicked.connect(() => {
 			renameEntry.activate();
 		});

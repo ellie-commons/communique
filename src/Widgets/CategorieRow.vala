@@ -45,7 +45,7 @@ public class FeedReader.CategoryRow : Gtk.ListBoxRow {
 
 	public CategoryRow(string name, string categorieID, int orderID, uint unread_count, string parentID, int level, bool expanded)
 	{
-		this.get_style_context().add_class("fr-sidebar-row");
+		// this.get_style_context().add_class("fr-sidebar-row");
 		m_level = level;
 		m_parentID = parentID;
 		m_orderID = orderID;
@@ -57,12 +57,12 @@ public class FeedReader.CategoryRow : Gtk.ListBoxRow {
 		m_box = new Gtk.Box(Gtk.Orientation.HORIZONTAL, 0);
 
 
-		m_icon_collapsed = new Gtk.Image.from_icon_name("feed-sidebar-arrow-side-symbolic", Gtk.IconSize.SMALL_TOOLBAR);
-		m_icon_collapsed.get_style_context().add_class("fr-sidebar-symbolic");
+		m_icon_collapsed = new Gtk.Image.from_icon_name("pan-end-symbolic", Gtk.IconSize.SMALL_TOOLBAR);
+		// m_icon_collapsed.get_style_context().add_class("fr-sidebar-symbolic");
 		m_icon_collapsed.opacity = m_opacity;
 
-		m_icon_expanded = new Gtk.Image.from_icon_name("feed-sidebar-arrow-down-symbolic", Gtk.IconSize.SMALL_TOOLBAR);
-		m_icon_expanded.get_style_context().add_class("fr-sidebar-symbolic");
+		m_icon_expanded = new Gtk.Image.from_icon_name("pan-down-symbolic", Gtk.IconSize.SMALL_TOOLBAR);
+		// m_icon_expanded.get_style_context().add_class("fr-sidebar-symbolic");
 		m_icon_expanded.opacity = m_opacity;
 
 
@@ -100,7 +100,7 @@ public class FeedReader.CategoryRow : Gtk.ListBoxRow {
 		m_unreadStack.add_named(m_unread, "unreadCount");
 		m_unreadStack.add_named(new Gtk.Label(""), "nothing");
 		var markIcon = new Gtk.Image.from_icon_name("feed-mark-read-symbolic", Gtk.IconSize.LARGE_TOOLBAR);
-		markIcon.get_style_context().add_class("fr-sidebar-symbolic");
+		// markIcon.get_style_context().add_class("fr-sidebar-symbolic");
 		m_unreadStack.add_named(markIcon, "mark");
 
 		m_unreadBox = new Gtk.EventBox();
@@ -350,8 +350,8 @@ public class FeedReader.CategoryRow : Gtk.ListBoxRow {
 		var window = new Gtk.Window(Gtk.WindowType.POPUP);
 		var visual = window.get_screen().get_rgba_visual();
 		window.set_visual(visual);
-		window.get_style_context().add_class("fr-sidebar");
-		window.get_style_context().add_class("fr-sidebar-row-popover");
+		// window.get_style_context().add_class("fr-sidebar");
+		// window.get_style_context().add_class("fr-sidebar-row-popover");
 		var row = new CategoryRow(m_name, m_categorieID, m_orderID, m_unread_count, m_parentID, m_level, !m_collapsed);
 		row.set_size_request(this.get_allocated_width(), 0);
 		row.reveal(true);
@@ -523,7 +523,7 @@ public class FeedReader.CategoryRow : Gtk.ListBoxRow {
 		}
 
 		var renameButton = new Gtk.Button.with_label(label);
-		renameButton.get_style_context().add_class("suggested-action");
+		renameButton.get_style_context().add_class(Gtk.STYLE_CLASS_SUGGESTED_ACTION);
 		renameButton.clicked.connect(() => {
 			renameEntry.activate();
 		});
