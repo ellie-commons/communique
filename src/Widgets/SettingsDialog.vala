@@ -46,9 +46,10 @@ public class FeedReader.SettingsDialog : Gtk.Dialog {
 		m_stack.add_titled (setup_Internal (), "internal", _("Internals"));
 		m_stack.add_titled (setup_Service (), "service", _("Share"));
 
-		Gtk.StackSwitcher switcher = new Gtk.StackSwitcher ();
-		switcher.set_halign (Gtk.Align.CENTER);
-		switcher.set_valign (Gtk.Align.CENTER);
+		Gtk.StackSwitcher switcher = new Gtk.StackSwitcher () {
+			margin_top = 12,
+			halign = Gtk.Align.CENTER
+		};
 		switcher.set_stack (m_stack);
 
 		m_headerbar.set_custom_title (switcher);

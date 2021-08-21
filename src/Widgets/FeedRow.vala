@@ -145,8 +145,7 @@ public class FeedReader.FeedRow : Gtk.ListBoxRow {
 
 	public Gtk.Image createFavIcon()
 	{
-		var icon = new Gtk.Image.from_icon_name("feed-rss-symbolic", Gtk.IconSize.LARGE_TOOLBAR);
-		// icon.get_style_context().add_class("fr-sidebar-symbolic");
+		var icon = new Gtk.Image.from_icon_name("internet-feed", Gtk.IconSize.SMALL_TOOLBAR);
 
 		var favicon = FavIcon.for_feed(m_feed);
 		favicon.get_surface.begin((obj, res) => {
