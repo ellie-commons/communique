@@ -59,7 +59,7 @@ public class FeedReader.ArticleView : Gtk.Overlay {
 	{
 		WebKit.WebContext.get_default().set_cache_model(WebKit.CacheModel.DOCUMENT_BROWSER);
 
-		var emptyView = new Gtk.Label(_("No Article selected."));
+		var emptyView = new Gtk.Label(_("No Article Selected"));
 		emptyView.get_style_context().add_class(Granite.STYLE_CLASS_H2_LABEL);
 		emptyView.get_style_context().add_class("dim-label");
 

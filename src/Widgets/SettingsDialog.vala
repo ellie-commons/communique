@@ -20,6 +20,7 @@ public class FeedReader.SettingsDialog : Gtk.Dialog {
 	private InfoBar m_errorBar;
 	private Gtk.HeaderBar m_headerbar;
 	private static SettingsDialog? m_dialog = null;
+	private GLib.Settings settings;
 
 	public static SettingsDialog get_default () {
 		if (m_dialog == null) {
@@ -38,12 +39,14 @@ public class FeedReader.SettingsDialog : Gtk.Dialog {
 		m_headerbar = new Gtk.HeaderBar ();
 		set_titlebar (m_headerbar);
 
-		m_stack = new Gtk.Stack ();
+		m_stack = new Gtk.Stack () {
+			margin = 12
+		};
 		m_stack.set_transition_duration (50);
 		m_stack.set_transition_type (Gtk.StackTransitionType.CROSSFADE);
 		m_stack.set_halign (Gtk.Align.FILL);
 		m_stack.add_titled (setup_UI (), "ui", _("Interface"));
-		m_stack.add_titled (setup_Internal (), "internal", _("Internals"));
+		m_stack.add_titled (setup_Internal (), "internal", _("Behaviour"));
 		m_stack.add_titled (setup_Service (), "service", _("Share"));
 
 		Gtk.StackSwitcher switcher = new Gtk.StackSwitcher () {
@@ -59,11 +62,7 @@ public class FeedReader.SettingsDialog : Gtk.Dialog {
 	        hide_on_delete ();
 	    });
 
-		var content = get_content_area () as Gtk.Box;
-		content.margin_start = 12;
-		content.margin_end = 12;
-		content.add (m_stack);
-		content.add (close_button);
+	    get_content_area ().add (m_stack);
 	}
 
 	public void showDialog (string panel)
@@ -90,11 +89,52 @@ public class FeedReader.SettingsDialog : Gtk.Dialog {
 			ColumnView.get_default ().newFeedList ();
 		});
 
-		interface_grid.attach (new Granite.HeaderLabel (_("Feed List")), 0, 0, 3);
-		interface_grid.attach (new SettingsLabel (_("Only show feeds:")), 0, 1);
-		interface_grid.attach (only_feeds, 1, 1, 2);
-		interface_grid.attach (new SettingsLabel (_("Only show unread:")), 0, 2);
-		interface_grid.attach (only_unread, 1, 2);
+		var feedlist_sort = new SettingsCombo (Settings.general (), "feedlist-sort-by", {_("Received"), _("Alphabetically")});
+		feedlist_sort.combo_changed.connect (() => {
+			ColumnView.get_default ().newFeedList ();
+		});
+
+		// Fix gsettings not saving
+		var article_sort = new SettingsCombo (Settings.general (), "articlelist-sort-by", {_("Received"), _("Date")});
+		article_sort.combo_changed.connect (() => {
+			ColumnView.get_default ().newArticleList ();
+		});
+
+		var fontfamilly = new SettingsFont (Settings.general (), "font");
+		fontfamilly.font_changed.connect (() => {
+			ColumnView.get_default ().reloadArticleView ();
+		});
+
+		// var font_switch = new Gtk.Switch ();
+		// font_switch.notify["active"].connect (() => {
+		// 	if (font_switch.active) {
+		// 		fontfamilly.sensitive = true;
+		// 	} else {
+		// 		fontfamilly.sensitive = false;
+		// 	}
+		// });
+		// settings.bind ("font-switch", font_switch, "active", GLib.SettingsBindFlags.DEFAULT);
+		var font_switch = new SettingsSwitch (Settings.general (), "font-switch");
+		font_switch.notify["active"].connect (() => {
+			if (font_switch.active) {
+				fontfamilly.sensitive = true;
+			} else {
+				fontfamilly.sensitive = false;
+			}
+		});
+
+		interface_grid.attach (new Granite.HeaderLabel (_("Feed List")), 0, 0, 3, 1);
+		interface_grid.attach (new SettingsLabel (_("Only show feeds:")), 0, 1, 1, 1);
+		interface_grid.attach (only_feeds, 1, 1, 1, 1);
+		interface_grid.attach (new SettingsLabel (_("Only show unread:")), 0, 2, 1, 1);
+		interface_grid.attach (only_unread, 1, 2, 1, 1);
+		interface_grid.attach (new SettingsLabel (_("Sort Feed List by:")), 0, 3, 1, 1);
+		interface_grid.attach (feedlist_sort, 1, 3, 2, 1);
+		interface_grid.attach (new Granite.HeaderLabel (_("Font")), 0, 4, 3, 1);
+		interface_grid.attach (new SettingsLabel (_("Custom Font:")), 0, 5, 1, 1);
+		interface_grid.attach (font_switch, 1, 5, 1, 1);
+		interface_grid.attach (fontfamilly, 2, 5, 1, 1);
+
 
 		// var feed_settings = headline (_ ("Feed List:"));
 
@@ -164,55 +204,52 @@ public class FeedReader.SettingsDialog : Gtk.Dialog {
 	}
 
 
-	private Gtk.Box setup_Internal ()
-	{
-		var sync_settings = headline (_ ("Sync:"));
+	private Gtk.Grid setup_Internal () {
+		var internal_grid = new Gtk.Grid () {
+			column_spacing = 12,
+			row_spacing = 6
+		};
 
-		var sync_count = new SettingSpin (_ ("Number of articles"), Settings.general (), "max-articles", 10, 5000, 10);
+		var sync_count = new SettingsSpin (Settings.general (), "max-articles", 10, 5000, 10);
 
-		var sync_time = new SettingSpin (_ ("Interval in Minutes  (0 = OFF)"), Settings.general (), "sync", 0, 600, 5);
-		sync_time.changed.connect ( () => {
+		var sync_time = new SettingsSpin (Settings.general (), "sync", 0, 600, 5);
+		sync_time.spin_changed.connect (() => {
 			FeedReaderBackend.get_default ().scheduleSync (Settings.general ().get_int ("sync"));
 		});
 
-		var db_settings = headline (_ ("Database:"));
-
-		var drop_articles = new SettingDropbox (_ ("Delete articles after"), Settings.general (), "drop-articles-after",
-		{_ ("Never"), _ ("1 Week"), _ ("1 Month"), _ ("6 Months")});
-		drop_articles.changed.connect ( () => {
+		var drop_articles = new SettingsCombo (Settings.general (), "drop-articles-after",
+		{_("Never"), _("1 Week"), _("1 Month"), _("6 Months")});
+		drop_articles.combo_changed.connect (() => {
 			Settings.state ().reset ("last-sync");
 		});
 
-		var service_settings = headline (_ ("Additional Functionality:"));
+		var grabber = new SettingsSwitch (Settings.general (), "content-grabber");
 
-		var grabber = new SettingSwitch (_ ("Download Full Text"), Settings.general (),"content-grabber");
+		var images = new SettingsSwitch (Settings.general (), "download-images");
 
-		var images = new SettingSwitch (_ ("Download Images"), Settings.general (),"download-images");
+		var mediaplayer = new SettingsSwitch (Settings.general (), "mediaplayer");
 
-		var mediaplayer = new SettingSwitch (_ ("Internal Media Player"), Settings.general (),"mediaplayer");
+		internal_grid.attach (new Granite.HeaderLabel (_("Sync")), 0, 0, 3);
+		internal_grid.attach (new SettingsLabel (_("Synced articles:")), 0, 1);
+		internal_grid.attach (sync_count, 1, 1, 2);
+		internal_grid.attach (new SettingsLabel (_("Sync interval:")), 0, 2);
+		internal_grid.attach (sync_time, 1, 2);
+		internal_grid.attach (new Granite.HeaderLabel (_("Database")), 0, 3, 3);
+		internal_grid.attach (new SettingsLabel (_("Delete articles after:")), 0, 4);
+		internal_grid.attach (drop_articles, 1, 4, 2);
+		internal_grid.attach (new Granite.HeaderLabel (_("Additional Functionality")), 0, 5, 3);
+		internal_grid.attach (new SettingsLabel (_("Download Full Text:")), 0, 6);
+		internal_grid.attach (grabber, 1, 6);
+		internal_grid.attach (new SettingsLabel (_("Download Images:")), 0, 7);
+		internal_grid.attach (images, 1, 7);
+		internal_grid.attach (new SettingsLabel (_("Internal Media Player:")), 0, 8);
+		internal_grid.attach (mediaplayer, 1, 8);
 
-
-		var internalsBox = new Gtk.Box (Gtk.Orientation.VERTICAL, 5);
-		internalsBox.expand = true;
-		internalsBox.pack_start (sync_settings, false, true, 0);
-		if (FeedReaderBackend.get_default ().useMaxArticles ())
-		{
-			internalsBox.pack_start (sync_count, false, true, 0);
-		}
-		internalsBox.pack_start (sync_time, false, true, 0);
-		internalsBox.pack_start (db_settings, false, true, 0);
-		internalsBox.pack_start (drop_articles, false, true, 0);
-		internalsBox.pack_start (service_settings, false, true, 0);
-		internalsBox.pack_start (grabber, false, true, 0);
-		internalsBox.pack_start (images, false, true, 0);
-		internalsBox.pack_start (mediaplayer, false, true, 0);
-
-		return internalsBox;
+		return internal_grid;
 	}
 
 
-	private Gtk.Box setup_Service ()
-	{
+	private Gtk.Box setup_Service () {
 		m_serviceList = new Gtk.ListBox ();
 		m_serviceList.set_selection_mode (Gtk.SelectionMode.NONE);
 		m_serviceList.set_sort_func (sortFunc);
@@ -438,6 +475,64 @@ public class FeedReader.SettingsDialog : Gtk.Dialog {
 	        	changed ();
 	        });
 	    }
+	}
+
+	private class SettingsSpin : Gtk.SpinButton {
+		public signal void spin_changed ();
+
+		public SettingsSpin (GLib.Settings settings, string key, int min, int max, int step) {
+			halign = Gtk.Align.START;
+			valign = Gtk.Align.CENTER;
+			value = settings.get_int (key);
+			set_range (min, max);
+			set_increments (step, 1);
+
+			value_changed.connect (() => {
+				settings.set_int (key, this.get_value_as_int ());
+				spin_changed ();
+			});
+		}
+	}
+
+	private class SettingsCombo : Gtk.ComboBox {
+		public signal void combo_changed ();
+
+		public SettingsCombo (GLib.Settings settings, string key, string[] values, string? tooltip = null) {
+			var liststore = new Gtk.ListStore (1, typeof (string));
+
+			foreach (string val in values) {
+				Gtk.TreeIter iter;
+				liststore.append (out iter);
+				liststore.set (iter, 0, val);
+			}
+
+			model = liststore;
+			var renderer = new Gtk.CellRendererText ();
+			pack_start (renderer, false);
+			add_attribute (renderer, "text", 0);
+			set_active (settings.get_enum (key));
+			combo_changed.connect (() => {
+				settings.set_enum (key, this.get_active ());
+				combo_changed ();
+			});
+		}
+	}
+
+	private class SettingsFont : Gtk.FontButton {
+		public signal void font_changed ();
+
+		public SettingsFont (GLib.Settings settings, string key) {
+			var current_font = settings.get_value (key).get_maybe ();
+			if (current_font != null) {
+				font = current_font.get_string ();
+			}
+			use_size = false;
+			show_size = true;
+			font_set.connect (() => {
+				var new_font = new Variant.string (this.get_font_name ());
+				settings.set_value (key, new Variant.maybe (VariantType.STRING, new_font));
+			});
+		}
 	}
 
 	private Gtk.Label headline (string name) {

@@ -10,8 +10,3 @@ Type=Application
 X-GNOME-UsesNotifications=true
 X-GNOME-Gettext-Domain=FeedReader
 MimeType=x-scheme-handler/feedreader;
-Actions=AboutDialog;
-
-[Desktop Action AboutDialog]
-Exec=feedreader --about
-Name=About FeedReader

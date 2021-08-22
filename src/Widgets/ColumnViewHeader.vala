@@ -93,14 +93,13 @@ public class FeedReader.ColumnViewHeader : Gtk.Paned {
 		m_header_left = new Gtk.HeaderBar();
 		m_header_left.show_close_button = true;
 		m_header_left.get_style_context().add_class("header_right");
-		m_header_left.get_style_context().add_class("titlebar");
-		m_header_left.set_size_request(500, 0);
+		// m_header_left.get_style_context().add_class("titlebar");
 
-		var menubutton = new Gtk.MenuButton();
-		menubutton.image = new Gtk.Image.from_icon_name("open-menu-symbolic", Gtk.IconSize.MENU);
-		menubutton.set_use_popover(true);
-		menubutton.set_menu_model(Utils.getMenu());
-		m_header_left.pack_end(menubutton);
+		// var menubutton = new Gtk.MenuButton();
+		// menubutton.image = new Gtk.Image.from_icon_name("open-menu-symbolic", Gtk.IconSize.MENU);
+		// menubutton.set_use_popover(true);
+		// menubutton.set_menu_model(Utils.getMenu());
+		// m_header_left.pack_end(menubutton);
 
 		m_header_left.pack_end(m_search);
 		m_header_left.pack_start(m_modeButton);
@@ -109,9 +108,8 @@ public class FeedReader.ColumnViewHeader : Gtk.Paned {
 		m_header_right = new ArticleViewHeader(false);
 		m_header_right.show_close_button = true;
 		m_header_right.get_style_context().add_class("header_left");
-		m_header_right.get_style_context().add_class("titlebar");
+		// m_header_right.get_style_context().add_class("titlebar");
 		this.clearTitle();
-		m_header_right.set_size_request(450, 0);
 		m_header_right.toggledMarked.connect(() => {
 			toggledMarked();
 		});

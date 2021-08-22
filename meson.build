@@ -60,6 +60,7 @@ webkit2gtk          = dependency('webkit2gtk-4.0')
 webkitextension     = dependency('webkit2gtk-web-extension-4.0')
 libunity            = dependency('unity', required: false)
 libgranite          = dependency('granite')
+libhandy            = dependency('libhandy-1')
 
 # Configuration
 conf = configuration_data()
@@ -263,7 +264,8 @@ feedreader_deps = [
     libgtkimageview,
     htmlclean,
     libgd,
-    libgranite
+    libgranite,
+    libhandy
   ]
 
 

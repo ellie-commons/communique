@@ -67,7 +67,6 @@ namespace FeedReader {
 		public ModeButton () {
 			homogeneous = true;
 			spacing = 0;
-			can_focus = false;
 
 			item_map = new Gee.HashMap<int, Item> ();
 

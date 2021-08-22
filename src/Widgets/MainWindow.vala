@@ -140,6 +140,10 @@ public class FeedReader.MainWindow : Gtk.ApplicationWindow
 			this.maximize();
 		}
 
+		// var main_grid = new Gtk.Grid ();
+		// main_grid.attach (m_simpleHeader, 0, 0);
+		// main_grid.attach (m_overlay, 0, 1);
+
 		this.window_state_event.connect(onStateEvent);
 		this.key_press_event.connect(shortcuts);
 		this.add(m_overlay);

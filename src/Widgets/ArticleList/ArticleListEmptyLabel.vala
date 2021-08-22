@@ -15,10 +15,9 @@
 
 public class FeedReader.ArticleListEmptyLabel : Gtk.Label {
 
-	public ArticleListEmptyLabel()
-	{
+	public ArticleListEmptyLabel () {
 		this.set_text(_("No Articles"));
-		this.get_style_context().add_class("h2");
+		this.get_style_context().add_class(Granite.STYLE_CLASS_H2_LABEL);
 		this.set_ellipsize(Pango.EllipsizeMode.END);
 		this.set_line_wrap_mode(Pango.WrapMode.WORD);
 		this.set_line_wrap(true);
@@ -170,7 +169,7 @@ public class FeedReader.ArticleListEmptyLabel : Gtk.Label {
 				}
 				else
 				{
-					message = _("No starred articles");
+					message = _("No Starred Articles");
 				}
 			}
 			else if(state == ArticleListState.ALL)

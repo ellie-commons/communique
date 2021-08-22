@@ -121,6 +121,10 @@
 			</description>
 		</key>
 
+		<key name="font-switch" type="b">
+			<default>false</default>
+		</key>
+
 		<key name="download-images" type="b">
 			<default>false</default>
 			<summary>Download images of articles (offline mode)</summary>

@@ -108,7 +108,7 @@ public class FeedReader.RemoveButton : Gtk.MenuButton {
 	public RemoveButton () {
 		image = new Gtk.Image.from_icon_name ("list-remove-symbolic", Gtk.IconSize.SMALL_TOOLBAR);
 		clicked.connect (onClick);
-		set_tooltip_text (_("Remove feed"));
+		set_tooltip_text (_("Remove feed or category"));
 	}
 
 	public void onClick () {
