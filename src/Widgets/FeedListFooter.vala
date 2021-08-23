@@ -22,7 +22,7 @@ public class FeedReader.FeedListFooter : Gtk.ActionBar {
 	private RemoveButton m_removeButton;
 
 	public FeedListFooter () {
-		get_style_context  ().add_class  (Gtk.STYLE_CLASS_FLAT);
+		get_style_context  ().add_class (Gtk.STYLE_CLASS_FLAT);
 		m_addButton = new AddButton ();
 		m_removeButton = new RemoveButton ();
 		m_addSpinner = new Gtk.Spinner ();
