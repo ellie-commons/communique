@@ -31,7 +31,7 @@ public class FeedReader.ResetPage : Gtk.Bin {
 		m_layout.set_size_request(700, 410);
 
 		var titleText = new Gtk.Label(_("Change Account?"));
-		titleText.get_style_context().add_class("h1");
+		titleText.get_style_context().add_class(Granite.STYLE_CLASS_H1_LABEL);
 		titleText.set_justify(Gtk.Justification.CENTER);
 
 		var describtionText = new Gtk.Label(_("You are about to change the account you want FeedReader to use.\n This means deleting all local data of your old account."));

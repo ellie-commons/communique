@@ -18,7 +18,7 @@ using Gtk;
 
 namespace FeedReader {
 
-	public const string QUICKLIST_ABOUT_STOCK = N_("About FeedReader");
+	// public const string QUICKLIST_ABOUT_STOCK = N_("About FeedReader");
 
 	public class FeedReaderApp : Gtk.Application {
 
@@ -68,7 +68,7 @@ namespace FeedReader {
 			Intl.bind_textdomain_codeset (Constants.GETTEXT_PACKAGE, "UTF-8");
 			Intl.textdomain (Constants.GETTEXT_PACKAGE);
 
-			m_window.get_style_context ().add_class (Granite.STYLE_CLASS_ROUNDED);
+			// m_window.get_style_context ().add_class (Granite.STYLE_CLASS_ROUNDED);
 
 			if(m_window == null)
 			{
@@ -200,6 +200,14 @@ namespace FeedReader {
 				FeedReaderBackend.get_default().updateBadge();
 				FeedReaderBackend.get_default().checkOnlineAsync.begin();
 			}
+
+			var granite_settings = Granite.Settings.get_default ();
+	        var gtk_settings = Gtk.Settings.get_default ();
+
+	        gtk_settings.gtk_application_prefer_dark_theme = granite_settings.prefers_color_scheme == Granite.Settings.ColorScheme.DARK;
+	        granite_settings.notify["prefers-color-scheme"].connect (() => {
+	            gtk_settings.gtk_application_prefer_dark_theme = granite_settings.prefers_color_scheme == Granite.Settings.ColorScheme.DARK;
+	        });
 
 			m_window.show_all();
 			m_window.present();

@@ -13,18 +13,19 @@
 //	You should have received a copy of the GNU General Public License
 //	along with FeedReader.  If not, see <http://www.gnu.org/licenses/>.
 
-public class FeedReader.ArticleListEmptyLabel : Gtk.Label {
+public class FeedReader.ArticleListEmptyLabel : Gtk.Grid {
 
 	public ArticleListEmptyLabel () {
-		this.set_text(_("No Articles"));
-		this.get_style_context().add_class(Granite.STYLE_CLASS_H2_LABEL);
-		this.set_ellipsize(Pango.EllipsizeMode.END);
-		this.set_line_wrap_mode(Pango.WrapMode.WORD);
-		this.set_line_wrap(true);
-		this.set_lines(3);
-		this.set_margin_left(30);
-		this.set_margin_right(30);
-		this.set_justify(Gtk.Justification.CENTER);
+		// title = _("No Results");
+		// this.set_text(_("No Articles"));
+		// this.get_style_context().add_class(Granite.STYLE_CLASS_H2_LABEL);
+		// this.set_ellipsize(Pango.EllipsizeMode.END);
+		// this.set_line_wrap_mode(Pango.WrapMode.WORD);
+		// this.set_line_wrap(true);
+		// this.set_lines(3);
+		// this.set_margin_left(30);
+		// this.set_margin_right(30);
+		// this.set_justify(Gtk.Justification.CENTER);
 		this.show_all();
 	}
 
@@ -80,7 +81,7 @@ public class FeedReader.ArticleListEmptyLabel : Gtk.Label {
 				{
 					if(searchTerm != "")
 					{
-						message = _(@"No unread articles that fit \"$search\" in tag \"$name\"");
+						message = _(@"No s articles that fit \"$search\" in tag \"$name\"");
 					}
 					else
 					{
@@ -185,8 +186,11 @@ public class FeedReader.ArticleListEmptyLabel : Gtk.Label {
 			}
 
 		}
-		this.get_style_context().add_class("dim-label");
-		this.set_text(message);
-	}
+		// this.get_style_context().add_class("dim-label");
+		// this.set_text(message);
 
+		var alert_view = new Granite.Widgets.AlertView ((_("No Results")), message, "edit-find-symbolic");
+		attach (alert_view, 0, 0);
+		alert_view.show_all ();
+	}
 }

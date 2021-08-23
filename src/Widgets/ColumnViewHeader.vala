@@ -237,3 +237,97 @@ public class FeedReader.ColumnViewHeader : Gtk.Paned {
 	}
 
 }
+
+// public class FeedReader.HeaderBar : Gtk.HeaderBar {
+// 	public bool Gtk.SearchEntry m_search;
+// 	private Gtk.Button m_share_button;
+// 	private Gtk.Button m_tag_button;
+// 	private Gtk.Button m_print_button;
+// 	private AttachedMediaButton m_media_button;
+// 	private HoverButton m_mark_button;
+// 	private HoverButton m_read_button;
+// 	private Gtk.Button m_fullscreen_button;
+// 	private Gtk.Button m_close_button;
+// 	private SharePopover? m_sharePopover = null;
+
+// 	public signal void toggledMarked ();
+// 	public signal void toggledRead ();
+// 	public signal void fsClick ();
+// 	public signal void closeArticle ();
+// 	public signal void popClosed ();
+// 	public signal void popOpened ();
+
+// 	public HeaderBar () {
+// 		show_close_button = true,
+// 		custom_title = new Gtk.Grid ();
+// 	}
+
+// 	construct {
+// 		var share_icon = new Gtk.Image.from_icon_name ("document-export", Gtk.IconSize.LARGE_TOOLBAR);
+// 		var tag_icon = new Gtk.Image.from_icon_name ("tag", Gtk.IconSize.LARGE_TOOLBAR);
+// 		var marked_icon = new Gtk.Image.from_icon_name ("feed-marked", Gtk.IconSize.LARGE_TOOLBAR);
+// 		var unmarked_icon = new Gtk.Image.from_icon_name ("feed-unmarked", Gtk.IconSize.LARGE_TOOLBAR);
+// 		var read_icon = new Gtk.Image.from_icon_name ("feed-read", Gtk.IconSize.LARGE_TOOLBAR);
+// 		var unread_icon = new Gtk.Image.from_icon_name ("feed-unread", Gtk.IconSize.LARGE_TOOLBAR);
+// 		var fs_icon = new Gtk.Image.from_icon_name (fullscreen ? "view-restore" : "view-fullscreen", Gtk.IconSize.LARGE_TOOLBAR);
+// 		var close_icon = new Gtk.Image.from_icon_name ("window-close-symbolic", Gtk.IconSize.LARGE_TOOLBAR);
+
+// 		m_search = new Gtk.SearchEntry () {
+// 			placeholder_text = _("Search Articles"),
+// 			valign = Gtk.Align.CENTER
+// 		};
+
+// 		var menubutton = new Gtk.MenuButton () {
+// 			image = new Gtk.Image.from_icon_name ("open-menu", Gtk.IconSize.LARGE_TOOLBAR),
+// 			use_popover = true,
+// 			menu_model = Utils.getMenu (),
+// 			tooltip_text = _("Menu")
+// 		};
+
+// 		m_tag_button = new Gtk.Button ();
+// 		m_tag_button.add (tag_icon);
+// 		m_tag_button.set_relief (Gtk.ReliefStyle.NONE);
+// 		m_tag_button.set_focus_on_click (false);
+// 		m_tag_button.set_tooltip_text (_ ("Tag article"));
+// 		m_tag_button.sensitive = false;
+// 		m_tag_button.clicked.connect ( () => {
+// 			popOpened ();
+// 			var pop = new TagPopover (m_tag_button);
+// 			pop.closed.connect ( () => {
+// 				popClosed ();
+// 			});
+// 		});
+
+// 		m_print_button = new Gtk.Button ();
+// 		m_print_button.image = new Gtk.Image.from_icon_name ("printer", Gtk.IconSize.LARGE_TOOLBAR);
+// 		m_print_button.set_focus_on_click (false);
+// 		m_print_button.set_tooltip_text (_ ("Print article"));
+// 		m_print_button.sensitive = false;
+// 		m_print_button.clicked.connect ( () => {
+// 			ColumnView.get_default ().print ();
+// 		});
+
+// 		m_share_button = new Gtk.Button ();
+// 		m_share_button.add (share_icon);
+// 		m_share_button.set_relief (Gtk.ReliefStyle.NONE);
+// 		m_share_button.set_focus_on_click (false);
+// 		m_share_button.set_tooltip_text (_ ("Export or Share this article"));
+// 		m_share_button.sensitive = false;
+
+// 		var shareSpinner = new Gtk.Spinner ();
+// 		var shareStack = new Gtk.Stack ();
+// 		shareStack.set_transition_type (Gtk.StackTransitionType.CROSSFADE);
+// 		shareStack.set_transition_duration (100);
+// 		shareStack.add_named (m_share_button, "button");
+// 		shareStack.add_named (shareSpinner, "spinner");
+// 		shareStack.set_visible_child_name ("button");
+
+// 		m_media_button = new AttachedMediaButton ();
+// 		m_media_button.popOpened.connect ( () => {
+// 			popOpened ();
+// 		});
+// 		m_media_button.popClosed.connect ( () => {
+// 			popClosed ();
+// 		});
+// 	}
+// }

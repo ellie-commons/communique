@@ -61,7 +61,8 @@ public class FeedReader.FeedRow : Gtk.ListBoxRow {
 			m_unreadStack.set_transition_duration(0);
 			m_unreadStack.add_named(m_unread, "unreadCount");
 			m_unreadStack.add_named(new Gtk.Label(""), "nothing");
-			var markIcon = new Gtk.Image.from_icon_name("feed-mark-read-symbolic", Gtk.IconSize.LARGE_TOOLBAR);
+			var markIcon = new Gtk.Image.from_icon_name("mail-read-symbolic", Gtk.IconSize.LARGE_TOOLBAR);
+			markIcon.tooltip_markup = Granite.markup_accel_tooltip ({"<Shift>a"}, "Mark as Read");
 			m_unreadStack.add_named(markIcon, "mark");
 
 			m_unreadBox = new Gtk.EventBox();

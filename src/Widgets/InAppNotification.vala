@@ -41,8 +41,14 @@ public class FeedReader.InAppNotification : Gd.Notification {
 
 	private void setup(string message, string? tooltip)
 	{
+		var close_button = new Gtk.Button.from_icon_name ("window-close-symbolic", Gtk.IconSize.MENU);
+		close_button.get_style_context ().add_class ("close-button");
+		close_button.clicked.connect (() => {
+			unrealize ();
+		});
 		m_Button.set_tooltip_text(tooltip);
 		m_box = new Gtk.Box(Gtk.Orientation.HORIZONTAL, 10);
+		m_box.pack_start (close_button);
 		m_box.pack_start(new Gtk.Label(message));
 		m_box.pack_start(m_Button);
 		this.set_timeout(5);
@@ -58,5 +64,4 @@ public class FeedReader.InAppNotification : Gd.Notification {
 			action();
 		});
 	}
-
 }

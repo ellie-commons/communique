@@ -43,7 +43,7 @@ public class FeedReader.Browser : ShareAccountInterface, Peas.ExtensionBase {
 
 	public string getIconName()
 	{
-		if(Gtk.IconTheme.get_default().lookup_icon("applications-internet", 0, Gtk.IconLookupFlags.FORCE_SVG) != null)
+		if(Gtk.IconTheme.get_default().lookup_icon("inter-web-browser", 0, Gtk.IconLookupFlags.FORCE_SVG) != null)
 		{
 			return "applications-internet";
 		}

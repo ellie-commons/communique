@@ -102,10 +102,18 @@ public class FeedReader.ArticleRow : Gtk.ListBoxRow {
 		var icon_box = new Gtk.Box(Gtk.Orientation.VERTICAL, 0);
 		icon_box.set_size_request(24, 0);
 
-		var marked_icon = new Gtk.Image.from_icon_name("feed-starred", Gtk.IconSize.SMALL_TOOLBAR);
-		var unread_icon = new Gtk.Image.from_icon_name("feed-article-unread", Gtk.IconSize.SMALL_TOOLBAR);
-		var unmarked_icon = new Gtk.Image.from_icon_name("feed-non-starred", Gtk.IconSize.SMALL_TOOLBAR);
-		var read_icon = new Gtk.Image.from_icon_name("feed-article-read", Gtk.IconSize.SMALL_TOOLBAR);
+		var marked_icon = new Gtk.Image.from_icon_name("feed-starred", Gtk.IconSize.SMALL_TOOLBAR) {
+			tooltip_markup = Granite.markup_accel_tooltip ({"m"}, _("Star Article"))
+		};
+		var unread_icon = new Gtk.Image.from_icon_name("feed-article-unread", Gtk.IconSize.SMALL_TOOLBAR) {
+			tooltip_markup = Granite.markup_accel_tooltip ({"r"}, _("Mark as Read"))
+		};
+		var unmarked_icon = new Gtk.Image.from_icon_name("feed-non-starred", Gtk.IconSize.SMALL_TOOLBAR) {
+			tooltip_markup = Granite.markup_accel_tooltip ({"m"}, _("Unstar Article"))
+		};
+		var read_icon = new Gtk.Image.from_icon_name("feed-article-read", Gtk.IconSize.SMALL_TOOLBAR) {
+			tooltip_markup = Granite.markup_accel_tooltip ({"r"}, _("Mark as Unread"))
+		};
 
 		m_unread_stack.add_named(unread_icon, "unread");
 		m_unread_stack.add_named(read_icon, "read");

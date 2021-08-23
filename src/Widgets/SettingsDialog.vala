@@ -136,52 +136,52 @@ public class FeedReader.SettingsDialog : Gtk.Dialog {
 		interface_grid.attach (fontfamilly, 2, 5, 1, 1);
 
 
-		// var feed_settings = headline (_ ("Feed List:"));
+		// var feed_settings = headline (_("Feed List:"));
 
-		// var only_feeds = new SettingSwitch (_ ("Only show feeds"), Settings.general (), "only-feeds");
+		// var only_feeds = new SettingSwitch (_("Only show feeds"), Settings.general (), "only-feeds");
 		// only_feeds.changed.connect ( () => {
 		// 	Settings.state ().set_strv ("expanded-categories", Utils.getDefaultExpandedCategories ());
 		// 	Settings.state ().set_string ("feedlist-selected-row", "feed -4");
 		// 	ColumnView.get_default ().newFeedList (true);
 		// });
 
-		// var only_unread = new SettingSwitch (_ ("Only show unread"), Settings.general (), "feedlist-only-show-unread");
+		// var only_unread = new SettingSwitch (_("Only show unread"), Settings.general (), "feedlist-only-show-unread");
 		// only_unread.changed.connect ( () => {
 		// 	ColumnView.get_default ().newFeedList ();
 		// });
 
-		// var feedlist_sort = new SettingDropbox (_ ("Sort Feed List by"), Settings.general (), "feedlist-sort-by", {_ ("Received"), _ ("Alphabetically")});
+		// var feedlist_sort = new SettingDropbox (_("Sort Feed List by"), Settings.general (), "feedlist-sort-by", {_("Received"), _("Alphabetically")});
 		// feedlist_sort.changed.connect ( () => {
 		// 	ColumnView.get_default ().newFeedList ();
 		// });
 
-		// // var feedlist_theme = new SettingDropbox (_ ("Theme"), Settings.general (), "feedlist-theme", {_ ("Gtk+"), _ ("Dark"), _ ("elementary")});
+		// // var feedlist_theme = new SettingDropbox (_("Theme"), Settings.general (), "feedlist-theme", {_("Gtk+"), _("Dark"), _("elementary")});
 		// // feedlist_theme.changed.connect ( () => {
 		// // 	MainWindow.get_default ().reloadCSS ();
 		// // });
 
-		// var article_settings = headline (_ ("Article List:"));
+		// var article_settings = headline (_("Article List:"));
 
-		// var article_sort = new SettingDropbox (_ ("Sort articles by"), Settings.general (), "articlelist-sort-by", {_ ("Received"), _ ("Date")});
+		// var article_sort = new SettingDropbox (_("Sort articles by"), Settings.general (), "articlelist-sort-by", {_("Received"), _("Date")});
 		// article_sort.changed.connect ( () => {
 		// 	ColumnView.get_default ().newArticleList ();
 		// });
 
-		// var newest_first = new SettingSwitch (_ ("Oldest first"), Settings.general (), "articlelist-oldest-first");
+		// var newest_first = new SettingSwitch (_("Oldest first"), Settings.general (), "articlelist-oldest-first");
 		// newest_first.changed.connect ( () => {
 		// 	ColumnView.get_default ().newArticleList ();
 		// });
 
-		// var scroll_marked = new SettingSwitch (_ ("Mark read by scrolling past"), Settings.general (), "articlelist-mark-scrolling");
+		// var scroll_marked = new SettingSwitch (_("Mark read by scrolling past"), Settings.general (), "articlelist-mark-scrolling");
 
-		// var articleview_settings = headline (_ ("Article View:"));
+		// var articleview_settings = headline (_("Article View:"));
 
-		// var article_theme = new SettingDropbox (_ ("Theme"), Settings.general (), "article-theme", {_ ("Default"), _ ("Spring"), _ ("Midnight"), _ ("Parchment"), _ ("Gruvbox")});
+		// var article_theme = new SettingDropbox (_("Theme"), Settings.general (), "article-theme", {_("Default"), _("Spring"), _("Midnight"), _("Parchment"), _("Gruvbox")});
 		// article_theme.changed.connect ( () => {
 		// 	ColumnView.get_default ().reloadArticleView ();
 		// });
 
-		// var fontfamilly = new SettingFont (_ ("Font Family"), Settings.general (), "font");
+		// var fontfamilly = new SettingFont (_("Font Family"), Settings.general (), "font");
 		// fontfamilly.changed.connect ( () => {
 		// 	ColumnView.get_default ().reloadArticleView ();
 		// });
@@ -405,7 +405,7 @@ public class FeedReader.SettingsDialog : Gtk.Dialog {
 
 	private void headerFunc (Gtk.ListBoxRow row, Gtk.ListBoxRow? before)
 	{
-		var label = new Gtk.Label (_ ("System Accounts"));
+		var label = new Gtk.Label (_("System Accounts"));
 		label.get_style_context ().add_class ("bold");
 		label.margin_top = 20;
 		label.margin_bottom = 5;
@@ -434,7 +434,7 @@ public class FeedReader.SettingsDialog : Gtk.Dialog {
 			}
 			else
 			{
-				label.set_text (_ ("FeedReader Accounts"));
+				label.set_text (_("Connected Accounts"));
 				row.set_header (box);
 				return;
 			}
@@ -448,7 +448,7 @@ public class FeedReader.SettingsDialog : Gtk.Dialog {
 		{
 			if (!sys1 && sys2)
 			{
-				label.set_text (_ ("FeedReader Accounts"));
+				label.set_text (_("Connected Accounts"));
 				row.set_header (box);
 			}
 		}

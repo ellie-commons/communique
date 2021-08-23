@@ -13,11 +13,10 @@
 //	You should have received a copy of the GNU General Public License
 //	along with FeedReader.  If not, see <http://www.gnu.org/licenses/>.
 
-using GLib;
-using Gtk;
+// using GLib;
+// using Gtk;
 
-public class FeedReader.MainWindow : Gtk.ApplicationWindow
-{
+public class FeedReader.MainWindow : Gtk.ApplicationWindow {
 	private SimpleHeader m_simpleHeader;
 	private Gtk.Overlay m_overlay;
 	private Gtk.Stack m_stack;
@@ -43,7 +42,9 @@ public class FeedReader.MainWindow : Gtk.ApplicationWindow
 
 	private MainWindow () {
 		Object(application: FeedReaderApp.get_default(), title: _("FeedReader"), show_menubar: false);
-		this.window_position = WindowPosition.CENTER;
+		this.window_position = Gtk.WindowPosition.CENTER;
+
+		this.get_style_context ().add_class ("rounded");
 
 		m_stack = new Gtk.Stack();
 		m_stack.set_transition_type(Gtk.StackTransitionType.CROSSFADE);
@@ -700,12 +701,11 @@ public class FeedReader.MainWindow : Gtk.ApplicationWindow
 		return m_simpleHeader;
 	}
 
-	public InAppNotification showNotification(string message, string buttonText = "undo")
+	public InAppNotification showNotification(string message, string buttonText = "Undo")
 	{
-		var notification = new InAppNotification(message, buttonText);
+		var notification = new InAppNotification(message, _("Undo"));
 		m_overlay.add_overlay(notification);
 		this.show_all();
 		return notification;
 	}
-
 }
