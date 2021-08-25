@@ -51,9 +51,9 @@ public class FeedReader.ShareMail : ShareAccountInterface, Peas.ExtensionBase {
 
 	public string getIconName()
 	{
-		if(Gtk.IconTheme.get_default().lookup_icon("mail-send", 0, Gtk.IconLookupFlags.FORCE_SVG) != null)
+		if(Gtk.IconTheme.get_default().lookup_icon("feed-share-mail", 0, Gtk.IconLookupFlags.FORCE_SVG) != null)
 		{
-			return "mail-send";
+			return "feed-share-mail";
 		}
 
 		return "feed-share-mail";

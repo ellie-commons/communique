@@ -55,7 +55,7 @@ public class FeedReader.ArticleViewHeader : Gtk.HeaderBar {
 		m_mark_button.clicked.connect ( () => {
 			toggledMarked ();
 		});
-		m_read_button = new HoverButton (read_icon, unread_icon, false, "r", _("Mark as read"), _("Mark as unread"));
+		m_read_button = new HoverButton (read_icon, unread_icon, false, "r", _("Mark as unread"), _("Mark as read"));
 		m_read_button.sensitive = false;
 		m_read_button.clicked.connect ( () => {
 			toggledRead ();
@@ -64,7 +64,7 @@ public class FeedReader.ArticleViewHeader : Gtk.HeaderBar {
 		m_fullscreen_button = new Gtk.Button ();
 		m_fullscreen_button.add (fs_icon);
 		m_fullscreen_button.set_focus_on_click (false);
-		m_fullscreen_button.set_tooltip_text (fullscreen ? _("Leave fullscreen mode") : _("Read article fullscreen"));
+		m_fullscreen_button.tooltip_markup = Granite.markup_accel_tooltip ({"F11"}, fullscreen ? _("Leave fullscreen mode") : _("Enter fullscreen mode"));
 		m_fullscreen_button.sensitive = false;
 		m_fullscreen_button.get_style_context ().add_class (Gtk.STYLE_CLASS_FLAT);
 		m_fullscreen_button.clicked.connect ( () => {

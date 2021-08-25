@@ -55,8 +55,7 @@ public class FeedReader.Share : GLib.Object {
 		refreshAccounts ();
 	}
 
-	public void refreshAccounts ()
-	{
+	public void refreshAccounts () {
 		Logger.debug ("Share: refreshAccounts");
 		m_accounts = new Gee.ArrayList<ShareAccount> ();
 		m_plugins.foreach ( (@set, info, exten) => {
@@ -98,8 +97,7 @@ public class FeedReader.Share : GLib.Object {
 		Gtk.IconTheme.get_default ().add_resource_path ("/org/gnome/FeedReader/icons");
 	}
 
-	private ShareAccountInterface? getInterface (string type)
-	{
+	private ShareAccountInterface? getInterface (string type) {
 		ShareAccountInterface? plug = null;
 
 		m_plugins.foreach ( (@set, info, exten) => {
@@ -114,8 +112,7 @@ public class FeedReader.Share : GLib.Object {
 		return plug;
 	}
 
-	public Gee.List<ShareAccount> getAccountTypes ()
-	{
+	public Gee.List<ShareAccount> getAccountTypes () {
 		var accounts = new Gee.ArrayList<ShareAccount> ();
 
 		m_plugins.foreach ( (@set, info, exten) => {
@@ -123,20 +120,16 @@ public class FeedReader.Share : GLib.Object {
 			var pluginID = plugin.pluginID ();
 
 			bool singleInstance = false;
-			if (plugin.singleInstance ())
-			{
-				if (plugin.needSetup () && !Settings.share (pluginID).get_boolean ("enabled"))
-				{
+			if (plugin.singleInstance ()) {
+				if (plugin.needSetup () && !Settings.share (pluginID).get_boolean ("enabled")) {
 					singleInstance = true;
 				}
 			}
-			else
-			{
+			else {
 				singleInstance = true;
 			}
 
-			if (plugin.needSetup () && !plugin.useSystemAccounts () && singleInstance)
-			{
+			if (plugin.needSetup () && !plugin.useSystemAccounts () && singleInstance) {
 				accounts.add (new ShareAccount ("", pluginID, "", plugin.getIconName (), plugin.pluginName ()));
 			}
 		});
@@ -145,26 +138,21 @@ public class FeedReader.Share : GLib.Object {
 	}
 
 
-	public Gee.List<ShareAccount> getAccounts ()
-	{
+	public Gee.List<ShareAccount> getAccounts () {
 		return m_accounts;
 	}
 
-	public string generateNewID ()
-	{
+	public string generateNewID () {
 		string id = Utils.string_random (12);
 		bool unique = true;
 
 		m_plugins.foreach ( (@set, info, exten) => {
 			var plugin =  (exten as ShareAccountInterface);
 			var plugID = plugin.pluginID ();
-			if (plugin.needSetup () && !plugin.singleInstance ())
-			{
+			if (plugin.needSetup () && !plugin.singleInstance ()) {
 				string[] ids = Settings.share (plugID).get_strv ("account-ids");
-				foreach (string i in ids)
-				{
-					if (i == id)
-					{
+				foreach (string i in ids) {
+					if (i == id) {
 						unique = false;
 						return;
 					}
@@ -172,27 +160,23 @@ public class FeedReader.Share : GLib.Object {
 			}
 		});
 
-		if (!unique)
-		{
+		if (!unique) {
 			return generateNewID ();
 		}
 
 		return id;
 	}
 
-	public void accountAdded (string id, string type, string username, string iconName, string accountName)
-	{
+	public void accountAdded (string id, string type, string username, string iconName, string accountName) {
 		Logger.debug ("Share: %s account added for user: %s".printf (type, username));
 		m_accounts.add (new ShareAccount (id, type, username, iconName, accountName));
 	}
 
 
-	public string getUsername (string accountID)
-	{
+	public string getUsername (string accountID) {
 		foreach (var account in m_accounts)
 		{
-			if (account.getID () == accountID)
-			{
+			if (account.getID () == accountID) {
 				return getInterface (account.getType ()).getUsername (accountID);
 			}
 		}
@@ -201,12 +185,9 @@ public class FeedReader.Share : GLib.Object {
 	}
 
 
-	public bool addBookmark (string accountID, string url)
-	{
-		foreach (var account in m_accounts)
-		{
-			if (account.getID () == accountID)
-			{
+	public bool addBookmark (string accountID, string url) {
+		foreach (var account in m_accounts) {
+			if (account.getID () == accountID) {
 				return getInterface (account.getType ()).addBookmark (accountID, url, account.isSystemAccount ());
 			}
 		}
@@ -214,12 +195,9 @@ public class FeedReader.Share : GLib.Object {
 		return false;
 	}
 
-	public bool needSetup (string accountID)
-	{
-		foreach (var account in m_accounts)
-		{
-			if (account.getID () == accountID)
-			{
+	public bool needSetup (string accountID) {
+		foreach (var account in m_accounts) {
+			if (account.getID () == accountID) {
 				return getInterface (account.getType ()).needSetup ();
 			}
 		}
@@ -227,12 +205,9 @@ public class FeedReader.Share : GLib.Object {
 		return false;
 	}
 
-	public ServiceSetup? newSetup_withID (string accountID)
-	{
-		foreach (var account in m_accounts)
-		{
-			if (account.getID () == accountID)
-			{
+	public ServiceSetup? newSetup_withID (string accountID) {
+		foreach (var account in m_accounts) {
+			if (account.getID () == accountID) {
 				return getInterface (account.getType ()).newSetup_withID (account.getID (), account.getUsername ());
 			}
 		}
@@ -240,17 +215,13 @@ public class FeedReader.Share : GLib.Object {
 		return null;
 	}
 
-	public ServiceSetup? newSetup (string type)
-	{
+	public ServiceSetup? newSetup (string type) {
 		return getInterface (type).newSetup ();
 	}
 
-	public ServiceSetup? newSystemAccount (string accountID)
-	{
-		foreach (var account in m_accounts)
-		{
-			if (account.getID () == accountID)
-			{
+	public ServiceSetup? newSystemAccount (string accountID) {
+		foreach (var account in m_accounts) {
+			if (account.getID () == accountID) {
 				return getInterface (account.getType ()).newSystemAccount (account.getID (), account.getUsername ());
 			}
 		}
@@ -258,8 +229,7 @@ public class FeedReader.Share : GLib.Object {
 		return null;
 	}
 
-	public ShareForm? shareWidget (string type, string url)
-	{
+	public ShareForm? shareWidget (string type, string url) {
 		ShareForm? form = null;
 
 		m_plugins.foreach ( (@set, info, exten) => {
@@ -274,13 +244,10 @@ public class FeedReader.Share : GLib.Object {
 		return form;
 	}
 
-	private void checkSystemAccounts ()
-	{
-		try
-		{
+	private void checkSystemAccounts () {
+		try {
 			m_client = new Goa.Client.sync ();
-			if (m_client != null)
-			{
+			if (m_client != null) {
 				m_client.account_added.connect ( (obj) => {
 					Logger.debug ("share: account added");
 					accountsChanged (obj);
@@ -294,19 +261,16 @@ public class FeedReader.Share : GLib.Object {
 					accountsChanged (obj);
 				});
 			}
-			else
-			{
+			else {
 				Logger.error ("share: goa not available");
 			}
 		}
-		catch (GLib.Error e)
-		{
+		catch (GLib.Error e) {
 			Logger.error ("share.checkSystemAccounts: %s".printf (e.message));
 		}
 	}
 
-	private void accountsChanged (Goa.Object object)
-	{
+	private void accountsChanged (Goa.Object object) {
 		refreshAccounts ();
 		SettingsDialog.get_default ().refreshAccounts ();
 		ColumnView.get_default ().getHeader ().refreshSahrePopover ();

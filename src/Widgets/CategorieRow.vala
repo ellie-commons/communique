@@ -515,7 +515,7 @@ public class FeedReader.CategoryRow : Gtk.ListBoxRow {
 			popRename.hide();
 		});
 
-		string label = _("rename");
+		string label = _("Rename");
 		if(m_categorieID == CategoryID.NEW.to_string() && context != null)
 		{
 			label = _("add");

@@ -271,7 +271,7 @@ public class FeedReader.FeedRow : Gtk.ListBoxRow {
 			FeedReaderBackend.get_default().renameFeed(m_feed.getFeedID(), renameEntry.get_text());
 		});
 
-		var renameButton = new Gtk.Button.with_label(_("rename"));
+		var renameButton = new Gtk.Button.with_label(_("Rename"));
 		renameButton.get_style_context().add_class(Gtk.STYLE_CLASS_SUGGESTED_ACTION);
 		renameButton.clicked.connect(() => {
 			renameEntry.activate();

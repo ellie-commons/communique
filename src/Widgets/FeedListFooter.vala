@@ -101,7 +101,7 @@ public class FeedReader.AddButton : Gtk.Grid {
 	}
 }
 
-public class FeedReader.RemoveButton : Gtk.MenuButton {
+public class FeedReader.RemoveButton : Gtk.Button {
 	private FeedListType m_type;
 	private string m_id;
 
@@ -113,7 +113,7 @@ public class FeedReader.RemoveButton : Gtk.MenuButton {
 
 	public void onClick () {
 		var pop = new RemovePopover (this, m_type, m_id);
-		pop.show ();
+		pop.removeX ();
 	}
 
 	public void setSelectedRow (FeedListType type, string id) {

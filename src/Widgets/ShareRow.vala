@@ -24,7 +24,6 @@ public class FeedReader.ShareRow : Gtk.ListBoxRow {
 		m_id = id;
 		m_type = type;
 		var icon = new Gtk.Image.from_icon_name(iconName, Gtk.IconSize.DND) {
-			tooltip_text = _(type),
 			margin_start = 6
 		};
 
@@ -76,6 +75,29 @@ public class FeedReader.ShareRow : Gtk.ListBoxRow {
 			grid.attach (username_label, 1, 1);
 
 			add (grid);
+		} else if (type == "wallabag") {
+			service_name = "Wallabag";
+			var service_label = new Gtk.Label (service_name) {
+				halign = Gtk.Align.START,
+				margin_top = 6
+			};
+			service_label.get_style_context ().add_class (Granite.STYLE_CLASS_H3_LABEL);
+
+			var username_label = new Gtk.Label (username) {
+				halign = Gtk.Align.START,
+				margin_bottom = 6,
+				margin_end = 6
+			};
+			username_label.get_style_context ().add_class (Granite.STYLE_CLASS_SMALL_LABEL);
+
+			var grid = new Gtk.Grid () {
+				column_spacing = 6
+			};
+			grid.attach (icon, 0, 0, 1, 2);
+			grid.attach (service_label, 1, 0);
+			grid.attach (username_label, 1, 1);
+
+			add (grid);
 		} else if (type == "mail") {
 			service_name = "Send via email";
 			var service_label = new Gtk.Label (service_name) {
@@ -95,6 +117,23 @@ public class FeedReader.ShareRow : Gtk.ListBoxRow {
 			add (grid);
 		} else if (type == "browser") {
 			service_name = "Open in Browser";
+			var service_label = new Gtk.Label (service_name) {
+				halign = Gtk.Align.START,
+				margin_top = 6
+			};
+			service_label.get_style_context ().add_class (Granite.STYLE_CLASS_H3_LABEL);
+
+			var grid = new Gtk.Grid () {
+				column_spacing = 6,
+				margin_top = 3,
+				margin_bottom = 3
+			};
+			grid.attach (icon, 0, 0, 1, 2);
+			grid.attach (service_label, 1, 0);
+
+			add (grid);
+		} else if (type == "twitter") {
+			service_name = "Twitter";
 			var service_label = new Gtk.Label (service_name) {
 				halign = Gtk.Align.START,
 				margin_top = 6

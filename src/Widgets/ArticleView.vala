@@ -52,7 +52,7 @@ public class FeedReader.ArticleView : Gtk.Overlay {
 	private bool m_FullscreenVideo = false;
 	private bool m_FullscreenArticle = false;
 	private double m_FullscreenZoomLevel = 1.25;
-	private uint m_animationDuration = 150;
+	private uint m_animationDuration = 500;
 
 
 	public ArticleView ()
@@ -93,10 +93,9 @@ public class FeedReader.ArticleView : Gtk.Overlay {
 		m_stack.add_named (crashView, "crash");
 
 		m_stack.set_visible_child_name ("empty");
-		setTransition (Gtk.StackTransitionType.CROSSFADE, m_animationDuration);
-		m_stack.set_size_request (450, 0);
+		setTransition (Gtk.StackTransitionType.SLIDE_UP_DOWN, m_animationDuration);
 
-		this.size_allocate.connect ( (allocation) => {
+		this.size_allocate.connect ((allocation) => {
 			if (allocation.width != m_width
 			|| allocation.height != m_height)
 			{
@@ -770,8 +769,7 @@ public class FeedReader.ArticleView : Gtk.Overlay {
 	{
 		Logger.debug ("ArticleView.setBackgroundColor ()");
 		var background = ColumnView.get_default ().getBackgroundColor ();
-		if (background.alpha == 1.0)
-		{
+		if (background.alpha == 1.0) {
 			// Don't set a background color that is transparent.
 			m_color = background;
 		}

@@ -42,7 +42,7 @@
 		</key>
 
 		<key name="global-sync" type="s">
-			<default>'F5'</default>
+			<default>'&lt;Control&gt;r'</default>
 		</key>
 
 		<key name="articlelist-center-selected" type="s">

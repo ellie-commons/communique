@@ -197,7 +197,7 @@ namespace FeedReader {
             	Settings.general  ().set_enum  ("article-theme", 4);
             	ColumnView.get_default  ().reloadArticleView  ();
             } else {
-                Settings.general  ().set_enum  ("article-theme", 0);
+                Settings.general  ().set_enum  ("article-theme", 1);
                 ColumnView.get_default  ().reloadArticleView  ();
             }
 	        granite_settings.notify["prefers-color-scheme"].connect  (() => {
@@ -206,7 +206,7 @@ namespace FeedReader {
 	            	Settings.general  ().set_enum  ("article-theme", 4);
 	            	ColumnView.get_default  ().reloadArticleView  ();
 	            } else {
-	                Settings.general  ().set_enum  ("article-theme", 0);
+	                Settings.general  ().set_enum  ("article-theme", 1);
 	                ColumnView.get_default  ().reloadArticleView  ();
 	            }
 	        });
