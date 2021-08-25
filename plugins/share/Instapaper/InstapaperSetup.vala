@@ -34,8 +34,8 @@ public class FeedReader.InstapaperSetup : ServiceSetup {
 		// XAuth revealer
 		//------------------------------------------------
 		var grid = new Gtk.Grid();
-		grid.set_column_spacing(10);
-		grid.set_row_spacing(10);
+		grid.set_column_spacing(6);
+		grid.set_row_spacing(6);
 		grid.set_valign(Gtk.Align.CENTER);
 		grid.set_halign(Gtk.Align.CENTER);
 		grid.margin_bottom = 10;

@@ -122,7 +122,7 @@
 		</key>
 
 		<key name="font-switch" type="b">
-			<default>false</default>
+			<default>true</default>
 		</key>
 
 		<key name="download-images" type="b">

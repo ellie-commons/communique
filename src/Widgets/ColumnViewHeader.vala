@@ -58,7 +58,7 @@ public class FeedReader.ColumnViewHeader : Gtk.Paned {
 		});
 
 		bool updating = Settings.state().get_boolean("currently-updating");
-		m_refresh_button = new UpdateButton.from_icon_name("feed-refresh-symbolic", _("Update feeds"), true, true);
+		m_refresh_button = new UpdateButton.from_icon_name("emblem-synchronizing-symbolic", _("Update feeds"), true, true);
 		m_refresh_button.updating(updating);
 		m_refresh_button.clicked.connect(() => {
 			if(!m_refresh_button.getStatus())

@@ -22,11 +22,19 @@ public class FeedReader.HoverButton : Gtk.EventBox {
 	private bool m_isActive;
 	public signal void clicked(bool active);
 
-	public HoverButton(Gtk.Image inactive, Gtk.Image active, bool isActive)
+	private string m_shortcut;
+	private string m_tooltip_text;
+	private string m_alt_tooltip_text;
+
+	public HoverButton(Gtk.Image inactive, Gtk.Image active, bool isActive,string shortcut,string tooltip_text, string alt_tooltip_text)
 	{
 		m_inactive = inactive;
 		m_active = active;
 		m_isActive = isActive;
+		m_shortcut = shortcut;
+		m_tooltip_text = tooltip_text;
+		m_alt_tooltip_text = alt_tooltip_text;
+
 		m_stack = new Gtk.Stack();
 		m_button = new Gtk.Button();
 		m_button.set_relief(Gtk.ReliefStyle.NONE);
@@ -49,11 +57,8 @@ public class FeedReader.HoverButton : Gtk.EventBox {
 			m_stack.set_visible_child_name("inactive");
 		}
 
-
-
 		this.set_events(Gdk.EventMask.ENTER_NOTIFY_MASK);
 		this.set_events(Gdk.EventMask.LEAVE_NOTIFY_MASK);
-		this.set_size_request(16, 16);
 		this.add(m_button);
 
 		this.enter_notify_event.connect(onEnter);
@@ -63,12 +68,14 @@ public class FeedReader.HoverButton : Gtk.EventBox {
 	private void setActiveIcon()
 	{
 		m_stack.set_visible_child_name("active");
+		m_button.tooltip_markup = Granite.markup_accel_tooltip ({m_shortcut}, m_tooltip_text);
 		m_active.show();
 	}
 
 	private void setInactiveIcon()
 	{
 		m_stack.set_visible_child_name("inactive");
+		m_button.tooltip_markup = Granite.markup_accel_tooltip ({m_shortcut}, m_alt_tooltip_text);
 		m_inactive.show();
 	}
 

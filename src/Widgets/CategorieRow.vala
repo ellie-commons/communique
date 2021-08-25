@@ -95,8 +95,6 @@ public class FeedReader.CategoryRow : Gtk.ListBoxRow {
 		m_unread.set_alignment(0.8f, 0.5f);
 
 		m_unreadStack = new Gtk.Stack();
-		m_unreadStack.set_transition_type(Gtk.StackTransitionType.NONE);
-		m_unreadStack.set_transition_duration(0);
 		m_unreadStack.add_named(m_unread, "unreadCount");
 		m_unreadStack.add_named(new Gtk.Label(""), "nothing");
 		var markIcon = new Gtk.Image.from_icon_name("mail-read-symbolic", Gtk.IconSize.LARGE_TOOLBAR);

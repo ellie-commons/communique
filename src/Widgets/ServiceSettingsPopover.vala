@@ -22,7 +22,7 @@ public class FeedReader.ServiceSettingsPopover : Gtk.Popover {
 	{
 		var list = new Gtk.ListBox();
 		list.margin = 10;
-		list.set_selection_mode(Gtk.SelectionMode.NONE);
+		list.set_selection_mode(Gtk.SelectionMode.BROWSE);
 		list.row_activated.connect((row) => {
 			newAccount(((ServiceSettingsPopoverRow)row).getType());
 			this.hide();

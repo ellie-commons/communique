@@ -37,10 +37,10 @@ public class FeedReader.ArticleViewHeader : Gtk.HeaderBar {
 	{
 		var share_icon = new Gtk.Image.from_icon_name ("document-export", Gtk.IconSize.LARGE_TOOLBAR);
 		var tag_icon = new Gtk.Image.from_icon_name ("tag", Gtk.IconSize.LARGE_TOOLBAR);
-		var marked_icon = new Gtk.Image.from_icon_name ("feed-marked", Gtk.IconSize.LARGE_TOOLBAR);
-		var unmarked_icon = new Gtk.Image.from_icon_name ("feed-unmarked", Gtk.IconSize.LARGE_TOOLBAR);
-		var read_icon = new Gtk.Image.from_icon_name ("feed-read", Gtk.IconSize.LARGE_TOOLBAR);
-		var unread_icon = new Gtk.Image.from_icon_name ("feed-unread", Gtk.IconSize.LARGE_TOOLBAR);
+		var marked_icon = new Gtk.Image.from_icon_name ("user-bookmarks", Gtk.IconSize.LARGE_TOOLBAR);
+		var unmarked_icon = new Gtk.Image.from_icon_name ("bookmark-missing", Gtk.IconSize.LARGE_TOOLBAR);
+		var read_icon = new Gtk.Image.from_icon_name ("mail-read", Gtk.IconSize.LARGE_TOOLBAR);
+		var unread_icon = new Gtk.Image.from_icon_name ("mail-unread", Gtk.IconSize.LARGE_TOOLBAR);
 		var fs_icon = new Gtk.Image.from_icon_name (fullscreen ? "view-restore" : "view-fullscreen", Gtk.IconSize.LARGE_TOOLBAR);
 		var close_icon = new Gtk.Image.from_icon_name ("window-close-symbolic", Gtk.IconSize.LARGE_TOOLBAR);
 
@@ -50,12 +50,12 @@ public class FeedReader.ArticleViewHeader : Gtk.HeaderBar {
 		menubutton.set_menu_model(Utils.getMenu());
 		menubutton.set_tooltip_text (_("Menu"));
 
-		m_mark_button = new HoverButton (unmarked_icon, marked_icon, false);
+		m_mark_button = new HoverButton (unmarked_icon, marked_icon, false, "m", _("Star article"), _("Unstar article"));
 		m_mark_button.sensitive = false;
 		m_mark_button.clicked.connect ( () => {
 			toggledMarked ();
 		});
-		m_read_button = new HoverButton (read_icon, unread_icon, false);
+		m_read_button = new HoverButton (read_icon, unread_icon, false, "r", _("Mark as read"), _("Mark as unread"));
 		m_read_button.sensitive = false;
 		m_read_button.clicked.connect ( () => {
 			toggledRead ();
@@ -63,31 +63,31 @@ public class FeedReader.ArticleViewHeader : Gtk.HeaderBar {
 
 		m_fullscreen_button = new Gtk.Button ();
 		m_fullscreen_button.add (fs_icon);
-		m_fullscreen_button.set_relief (Gtk.ReliefStyle.NONE);
 		m_fullscreen_button.set_focus_on_click (false);
 		m_fullscreen_button.set_tooltip_text (fullscreen ? _("Leave fullscreen mode") : _("Read article fullscreen"));
 		m_fullscreen_button.sensitive = false;
+		m_fullscreen_button.get_style_context ().add_class (Gtk.STYLE_CLASS_FLAT);
 		m_fullscreen_button.clicked.connect ( () => {
 			fsClick ();
 		});
 
 		m_close_button = new Gtk.Button ();
 		m_close_button.add (close_icon);
-		m_close_button.set_relief (Gtk.ReliefStyle.NONE);
 		m_close_button.set_focus_on_click (false);
 		m_close_button.set_tooltip_text (_ ("Close article"));
 		m_close_button.sensitive = false;
+		m_close_button.get_style_context ().add_class (Gtk.STYLE_CLASS_FLAT);
 		m_close_button.clicked.connect ( () => {
 			closeArticle ();
 		});
 
 		m_tag_button = new Gtk.Button ();
 		m_tag_button.add (tag_icon);
-		m_tag_button.set_relief (Gtk.ReliefStyle.NONE);
 		m_tag_button.set_focus_on_click (false);
 		m_tag_button.set_tooltip_text (_ ("Tag article"));
 		m_tag_button.sensitive = false;
-		m_tag_button.clicked.connect ( () => {
+		m_tag_button.get_style_context ().add_class (Gtk.STYLE_CLASS_FLAT);
+		m_tag_button.clicked.connect (() => {
 			popOpened ();
 			var pop = new TagPopover (m_tag_button);
 			pop.closed.connect ( () => {
@@ -101,6 +101,7 @@ public class FeedReader.ArticleViewHeader : Gtk.HeaderBar {
 		m_print_button.set_focus_on_click (false);
 		m_print_button.set_tooltip_text (_ ("Print article"));
 		m_print_button.sensitive = false;
+		m_print_button.get_style_context ().add_class (Gtk.STYLE_CLASS_FLAT);
 		m_print_button.clicked.connect ( () => {
 			ColumnView.get_default ().print ();
 		});
@@ -151,8 +152,9 @@ public class FeedReader.ArticleViewHeader : Gtk.HeaderBar {
 			this.pack_start (m_close_button);
 		}
 		this.pack_start (m_fullscreen_button);
-		// this.pack_start (m_mark_button);
-		// this.pack_start (m_read_button);
+		this.pack_start (new Gtk.Separator (Gtk.Orientation.HORIZONTAL));
+		this.pack_start (m_read_button);
+		this.pack_start (m_mark_button);
 		this.pack_end (menubutton);
 		this.pack_end (new Gtk.Separator (Gtk.Orientation.HORIZONTAL));
 		this.pack_end (shareStack);
@@ -256,5 +258,4 @@ public class FeedReader.ArticleViewHeader : Gtk.HeaderBar {
 
 		m_sharePopover.refreshList ();
 	}
-
 }

@@ -27,7 +27,7 @@ public class FeedReader.UpdateButton : Gtk.Button {
 
 	public UpdateButton.from_icon_name(string iconname, string tooltip, bool progressPopup = false, bool cancellable = false)
 	{
-		m_icon = new Gtk.Image.from_icon_name(iconname, Gtk.IconSize.SMALL_TOOLBAR);
+		m_icon = new Gtk.Image.from_icon_name(iconname, Gtk.IconSize.LARGE_TOOLBAR);
 		setup(tooltip, cancellable, progressPopup);
 	}
 

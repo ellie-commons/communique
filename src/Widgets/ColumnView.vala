@@ -109,11 +109,11 @@ public class FeedReader.ColumnView : Gtk.Paned {
 			m_feedList.expand_collapse_category (CategoryID.MASTER.to_string (), false);
 			m_feedList.addEmptyTagRow ();
 		});
-		m_articleList.drag_end.connect ( (context) => {
+		m_articleList.drag_end.connect ((context) => {
 			Logger.debug ("ContentPage: articleList drag_end signal");
 			m_feedList.expand_collapse_category (CategoryID.MASTER.to_string (), true);
 		});
-		m_articleList.drag_failed.connect ( (context, result) => {
+		m_articleList.drag_failed.connect ((context, result) => {
 			Logger.debug ("ContentPage: articleList drag_failed signal");
 			if (DataBase.readOnly ().read_tags ().is_empty)
 			{
@@ -130,7 +130,7 @@ public class FeedReader.ColumnView : Gtk.Paned {
 		m_pane.pack2 (m_articleList, false, false);
 
 
-		m_articleList.row_activated.connect ( (row) => {
+		m_articleList.row_activated.connect ((row) => {
 			if (m_article_view.getCurrentArticle () != row.getID ())
 			{
 				m_article_view.load (row.getID ());

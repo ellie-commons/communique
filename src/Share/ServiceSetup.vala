@@ -58,18 +58,18 @@ public class FeedReader.ServiceSetup : Gtk.ListBoxRow {
 		m_login_button.margin = 10;
 		m_login_button.clicked.connect(login);
 
-		m_logout_button = new Gtk.Button.with_label(_("Logout"));
+		m_logout_button = new Gtk.Button ();
+		m_logout_button.image = new Gtk.Image.from_icon_name ("edit-delete-symbolic", Gtk.IconSize.SMALL_TOOLBAR);
 		m_logout_button.hexpand = false;
 		m_logout_button.margin = 10;
 		m_logout_button.clicked.connect(logout);
-		m_logout_button.get_style_context().add_class(Gtk.STYLE_CLASS_DESTRUCTIVE_ACTION);
 
 		var loggedIN = new Gtk.Image.from_icon_name("feed-status-ok", Gtk.IconSize.LARGE_TOOLBAR);
 		m_spinner = new Gtk.Spinner();
 		m_spinner.set_size_request(24, 24);
 
 		m_iconStack.add_named(m_login_button, "button");
-		m_iconStack.add_named(loggedIN, "loggedIN");
+		// m_iconStack.add_named(loggedIN, "loggedIN");
 		m_iconStack.add_named(m_logout_button, "logOUT");
 		m_iconStack.add_named(m_spinner, "spinner");
 		m_iconStack.set_size_request(100, 0);
@@ -93,7 +93,7 @@ public class FeedReader.ServiceSetup : Gtk.ListBoxRow {
 		m_labelBox.pack_start(m_label, true, true, 0);
 
 		m_labelStack.add_named(label, "loggedOUT");
-		m_labelStack.add_named(m_labelBox, "loggedIN");
+		m_labelStack.add_named(m_labelBox, "logOUT");
 
 		m_box.pack_start(icon, false, false, 0);
 		m_box.pack_start(m_labelStack, true, true, 0);
@@ -115,8 +115,8 @@ public class FeedReader.ServiceSetup : Gtk.ListBoxRow {
 
 		if(m_isLoggedIN)
 		{
-			m_iconStack.set_visible_child_name("loggedIN");
-			m_labelStack.set_visible_child_name("loggedIN");
+			m_iconStack.set_visible_child_name("logOUT");
+			m_labelStack.set_visible_child_name("logOUT");
 		}
 		else
 		{

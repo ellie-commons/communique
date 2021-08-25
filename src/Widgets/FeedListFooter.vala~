@@ -37,35 +37,41 @@ public class FeedReader.FeedListFooter : Gtk.ActionBar {
 		m_box.pack_start (m_removeButton);
 		this.add (m_box);
 
-		if (!FeedReaderBackend.get_default ().supportFeedManipulation ()) {
+		if (!FeedReaderBackend.get_default ().supportFeedManipulation ())
+		{
 			m_addButton.set_sensitive (false);
 			m_removeButton.set_sensitive (false);
 		}
 	}
 
-	public void setBusy () {
+	public void setBusy ()
+	{
 		m_addStack.set_visible_child_name ("spinner");
 		m_addStack.show_all ();
 	}
 
-	public void setReady () {
+	public void setReady ()
+	{
 		m_addStack.set_visible_child_name ("button");
 		m_addSpinner.start ();
 		m_addStack.show_all ();
 	}
 
-	public void setRemoveButtonSensitive (bool sensitive) {
+	public void setRemoveButtonSensitive (bool sensitive)
+	{
 		if (FeedReaderApp.get_default ().isOnline () && FeedReaderBackend.get_default ().supportFeedManipulation ())
 		{
 			m_removeButton.set_sensitive (sensitive);
 		}
 	}
 
-	public void setSelectedRow (FeedListType type, string id) {
+	public void setSelectedRow (FeedListType type, string id)
+	{
 		m_removeButton.setSelectedRow (type, id);
 	}
 
-	public void setAddButtonSensitive (bool active) {
+	public void setAddButtonSensitive (bool active)
+	{
 		if (FeedReaderBackend.get_default ().supportFeedManipulation ())
 		{
 			m_addButton.set_sensitive (active);
@@ -73,7 +79,8 @@ public class FeedReader.FeedListFooter : Gtk.ActionBar {
 		}
 	}
 
-	public void showError (string errmsg) {
+	public void showError (string errmsg)
+	{
 		var label = new Gtk.Label (errmsg);
 		label.margin = 20;
 
@@ -84,20 +91,13 @@ public class FeedReader.FeedListFooter : Gtk.ActionBar {
 }
 
 
-public class FeedReader.AddButton : Gtk.Grid {
+public class FeedReader.AddButton : Gtk.MenuButton {
 	public AddButton () {
-		var add_button = new Gtk.Button () {
-			image = new Gtk.Image.from_icon_name ("list-add-symbolic", Gtk.IconSize.SMALL_TOOLBAR),
-			always_show_image = true,
-			label = _("Add Feed...")
-		};
-		add_button.get_style_context ().add_class (Gtk.STYLE_CLASS_FLAT);
-
-		add_button.clicked.connect (() => {
-			var popover = new AddPopover (add_button);
-		});
-
-		add (add_button);
+		image = new Gtk.Image.from_icon_name ("list-add-symbolic", Gtk.IconSize.SMALL_TOOLBAR);
+		get_style_context ().add_class (Gtk.STYLE_CLASS_FLAT);
+		always_show_image = true;
+		label = _("Add RSS Feed...");
+		popover = new AddPopover (this);
 	}
 }
 
