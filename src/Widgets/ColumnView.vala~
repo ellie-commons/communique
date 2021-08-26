@@ -16,20 +16,18 @@
 public class FeedReader.ColumnView : Gtk.Paned {
 
 	private Gtk.Paned m_pane;
-	private ModeButton m_mode_button;
-	private ArticleListState m_state;
 	private ArticleView m_article_view;
 	private ArticleList m_articleList;
 	private feedList m_feedList;
 	private FeedListFooter m_footer;
 	private ColumnViewHeader m_headerbar;
 
-	public signal void change_state(ArticleListState state, Gtk.StackTransitionType transition);
-
 	private static ColumnView? m_columnView = null;
 
-	public static ColumnView get_default () {
-		if (m_columnView == null) {
+	public static ColumnView get_default ()
+	{
+		if (m_columnView == null)
+		{
 			m_columnView = new ColumnView ();
 		}
 
@@ -44,8 +42,6 @@ public class FeedReader.ColumnView : Gtk.Paned {
 		var feedListBox = new Gtk.Box (Gtk.Orientation.VERTICAL, 0);
 		feedListBox.pack_start (m_feedList);
 		feedListBox.pack_end (m_footer, false, false);
-
-		m_state = (ArticleListState)Settings.state ().get_enum ("show-articles");
 
 		m_pane = new Gtk.Paned (Gtk.Orientation.HORIZONTAL);
 		m_pane.set_size_request (0, 300);
@@ -73,26 +69,11 @@ public class FeedReader.ColumnView : Gtk.Paned {
 		starred_grid.add (new Gtk.Image.from_icon_name ("starred-symbolic", Gtk.IconSize.LARGE_TOOLBAR));
 		starred_grid.add (new Gtk.Label ("Starred"));
 
-		m_mode_button = new ModeButton();
-		m_mode_button.append(all_grid, _("Show all articles"));
-		m_mode_button.append(unread_grid, _("Show only unread articles"));
-		m_mode_button.append(starred_grid, _("Show only starred articles"));
-		m_mode_button.set_active(m_state, true);
-
-		m_mode_button.mode_changed.connect(() => {
-			var transition = Gtk.StackTransitionType.CROSSFADE;
-			if(m_state == ArticleListState.ALL
-			|| (ArticleListState)m_mode_button.selected == ArticleListState.MARKED) {
-				transition = Gtk.StackTransitionType.SLIDE_LEFT;
-			}
-			else if(m_state == ArticleListState.MARKED
-			|| (ArticleListState)m_mode_button.selected == ArticleListState.ALL) {
-				transition = Gtk.StackTransitionType.SLIDE_RIGHT;
-			}
-
-			m_state = (ArticleListState)m_mode_button.selected;
-			change_state(m_state, transition);
-		});
+		var m_modeButton = new ModeButton();
+		m_modeButton.append(all_grid, _("Show all articles"));
+		m_modeButton.append(unread_grid, _("Show only unread articles"));
+		m_modeButton.append(starred_grid, _("Show only starred articles"));
+		// m_modeButton.set_active(m_state, true);
 
 		m_feedList.clearSelected.connect ( () => {
 			m_footer.setRemoveButtonSensitive (false);
@@ -104,10 +85,12 @@ public class FeedReader.ColumnView : Gtk.Paned {
 			m_articleList.setSelectedFeed (feedID);
 			newArticleList ();
 
-			if (feedID == FeedID.ALL.to_string ()) {
+			if (feedID == FeedID.ALL.to_string ())
+			{
 				m_footer.setRemoveButtonSensitive (false);
 			}
-			else {
+			else
+			{
 				m_footer.setRemoveButtonSensitive (true);
 				m_footer.setSelectedRow (FeedListType.FEED, feedID);
 			}
@@ -129,11 +112,13 @@ public class FeedReader.ColumnView : Gtk.Paned {
 			newArticleList ();
 
 			if (categorieID != CategoryID.MASTER.to_string ()
-			&& categorieID != CategoryID.TAGS.to_string ()) {
+			&& categorieID != CategoryID.TAGS.to_string ())
+			{
 				m_footer.setRemoveButtonSensitive (true);
 				m_footer.setSelectedRow (FeedListType.CATEGORY, categorieID);
 			}
-			else {
+			else
+			{
 				m_footer.setRemoveButtonSensitive (false);
 			}
 		});
@@ -145,7 +130,8 @@ public class FeedReader.ColumnView : Gtk.Paned {
 			vexpand = true
 		};
 		m_articleList.drag_begin.connect ( (context) => {
-			if (DataBase.readOnly ().read_tags ().is_empty) {
+			if (DataBase.readOnly ().read_tags ().is_empty)
+			{
 				m_feedList.newFeedlist (m_articleList.getState (), false, true);
 			}
 			m_feedList.expand_collapse_category (CategoryID.TAGS.to_string (), true);
@@ -158,10 +144,12 @@ public class FeedReader.ColumnView : Gtk.Paned {
 		});
 		m_articleList.drag_failed.connect ((context, result) => {
 			Logger.debug ("ContentPage: articleList drag_failed signal");
-			if (DataBase.readOnly ().read_tags ().is_empty) {
+			if (DataBase.readOnly ().read_tags ().is_empty)
+			{
 				m_feedList.newFeedlist (m_articleList.getState (), false, false);
 			}
-			else {
+			else
+			{
 				m_feedList.removeEmptyTagRow ();
 			}
 			return false;
@@ -173,7 +161,7 @@ public class FeedReader.ColumnView : Gtk.Paned {
 			vexpand = true
 		};
 		grid.add (m_articleList);
-		grid.add (m_mode_button);
+		grid.add (m_modeButton);
 
 		m_pane.pack2 (grid, false, false);
 
@@ -214,7 +202,7 @@ public class FeedReader.ColumnView : Gtk.Paned {
 			FeedReaderApp.get_default ().cancelSync ();
 		});
 
-		change_state.connect ( (state, transition) => {
+		m_headerbar.change_state.connect ( (state, transition) => {
 			setArticleListState (state);
 			newArticleList (transition);
 		});
@@ -242,42 +230,52 @@ public class FeedReader.ColumnView : Gtk.Paned {
 		});
 	}
 
-	public void hidePane () {
+	public void hidePane ()
+	{
 		m_pane.set_visible (false);
 	}
 
-	public void showPane () {
+	public void showPane ()
+	{
 		m_pane.set_visible (true);
 	}
 
-	public int ArticleListNEXT () {
-		if (m_article_view.fullscreenArticle ()) {
+	public int ArticleListNEXT ()
+	{
+		if (m_article_view.fullscreenArticle ())
+		{
 			m_article_view.setTransition (Gtk.StackTransitionType.SLIDE_LEFT, 500);
 		}
 
 		return m_articleList.move (false);
 	}
 
-	public int ArticleListPREV () {
-		if (m_article_view.fullscreenArticle ()) {
+	public int ArticleListPREV ()
+	{
+		if (m_article_view.fullscreenArticle ())
+		{
 			m_article_view.setTransition (Gtk.StackTransitionType.SLIDE_RIGHT, 500);
 		}
 
 		return m_articleList.move (true);
 	}
 
-	public void FeedListNEXT () {
+	public void FeedListNEXT ()
+	{
 		m_feedList.move (false);
 	}
 
-	public void FeedListPREV () {
+	public void FeedListPREV ()
+	{
 		m_feedList.move (true);
 	}
 
-	public void newArticleList (Gtk.StackTransitionType transition = Gtk.StackTransitionType.CROSSFADE) {
+	public void newArticleList (Gtk.StackTransitionType transition = Gtk.StackTransitionType.CROSSFADE)
+	{
 		Logger.debug ("ContentPage.newArticleList");
 		int height = m_articleList.get_allocated_height ();
-		if (height == 1) {
+		if (height == 1)
+		{
 			ulong id = 0;
 			id = m_articleList.draw.connect_after ( () => {
 				m_articleList.newList (transition);
@@ -285,114 +283,139 @@ public class FeedReader.ColumnView : Gtk.Paned {
 				return false;
 			});
 		}
-		else {
+		else
+		{
 			m_articleList.newList (transition);
 		}
 	}
 
-	public void newFeedList (bool defaultSettings = false) {
+	public void newFeedList (bool defaultSettings = false)
+	{
 		m_feedList.newFeedlist (m_articleList.getState (), defaultSettings);
 	}
 
-	public void refreshFeedListCounter () {
+	public void refreshFeedListCounter ()
+	{
 		m_feedList.refreshCounters (m_articleList.getState ());
 	}
 
-	public void reloadArticleView () {
+	public void reloadArticleView ()
+	{
 		m_article_view.load ();
 	}
 
-	public void updateArticleList () {
+	public void updateArticleList ()
+	{
 		m_articleList.updateArticleList ();
 	}
 
-	private void setArticleListState (ArticleListState state) {
+	private void setArticleListState (ArticleListState state)
+	{
 		var oldState = m_articleList.getState ();
 		m_articleList.setState (state);
 
 		if (oldState == ArticleListState.MARKED
-		|| state == ArticleListState.MARKED) {
+		|| state == ArticleListState.MARKED)
+		{
 			m_feedList.refreshCounters (state);
 		}
 	}
 
-	private void setSearchTerm (string searchTerm) {
+	private void setSearchTerm (string searchTerm)
+	{
 		m_articleList.setSearchTerm (searchTerm);
 		m_article_view.setSearchTerm (searchTerm);
 	}
 
-	private void clearArticleView () {
+	private void clearArticleView ()
+	{
 		m_headerbar.showArticleButtons (false);
 		m_headerbar.clearTitle ();
 		m_article_view.clearContent ();
 	}
 
-	public string getSelectedFeedListRow () {
+	public string getSelectedFeedListRow ()
+	{
 		return m_feedList.getSelectedRow ();
 	}
 
-	public Article getSelectedArticle () {
+	public Article getSelectedArticle ()
+	{
 		return m_articleList.getSelectedArticle ();
 	}
 
-	public void markAllArticlesAsRead () {
+	public void markAllArticlesAsRead ()
+	{
 		m_headerbar.setRead (ArticleStatus.READ);
 		m_articleList.markAllAsRead ();
 	}
 
-	public void toggleReadSelectedArticle () {
+	public void toggleReadSelectedArticle ()
+	{
 		m_headerbar.toggleRead ();
 		m_article_view.setRead (m_articleList.toggleReadSelected ());
 	}
 
-	public void toggleMarkedSelectedArticle () {
+	public void toggleMarkedSelectedArticle ()
+	{
 		m_headerbar.toggleMarked ();
 		m_article_view.setMarked (m_articleList.toggleMarkedSelected ());
 	}
 
-	public void openSelectedArticle () {
+	public void openSelectedArticle ()
+	{
 		m_articleList.openSelected ();
 	}
 
-	public void centerSelectedRow () {
+	public void centerSelectedRow ()
+	{
 		m_articleList.centerSelectedRow ();
 	}
 
-	public void removeTagFromSelectedRow (string tagID) {
+	public void removeTagFromSelectedRow (string tagID)
+	{
 		m_articleList.removeTagFromSelectedRow (tagID);
 	}
 
-	public void syncStarted () {
+	public void syncStarted ()
+	{
 		m_articleList.syncStarted ();
 	}
 
-	public void syncFinished () {
+	public void syncFinished ()
+	{
 		m_articleList.syncFinished ();
 	}
 
-	public Gdk.RGBA getBackgroundColor () {
+	public Gdk.RGBA getBackgroundColor ()
+	{
 		return m_articleList.getBackgroundColor ();
 	}
 
-	public void showArticleListOverlay () {
+	public void showArticleListOverlay ()
+	{
 		m_articleList.showOverlay ();
 	}
 
-	public void setOffline () {
+	public void setOffline ()
+	{
 		m_headerbar.setOffline ();
 		m_feedList.setOffline ();
 
-		if (!Utils.canManipulateContent (false)) {
+		if (!Utils.canManipulateContent (false))
+		{
 			m_footer.setAddButtonSensitive (false);
 			m_feedList.newFeedlist (m_articleList.getState (), false);
 		}
 	}
 
-	public void setOnline () {
+	public void setOnline ()
+	{
 		m_headerbar.setOnline ();
 		m_feedList.setOnline ();
 
-		if (Utils.canManipulateContent (true)) {
+		if (Utils.canManipulateContent (true))
+		{
 			m_footer.setAddButtonSensitive (true);
 			m_feedList.newFeedlist (m_articleList.getState (), false);
 
@@ -400,84 +423,101 @@ public class FeedReader.ColumnView : Gtk.Paned {
 			string[] selected = selected_row.split (" ");
 
 			if ( (selected[0] == "feed" && selected[1] == FeedID.ALL.to_string ())
-			||  (selected[0] == "cat" &&  (selected[1] == CategoryID.MASTER.to_string () || selected[1] == CategoryID.TAGS.to_string ()))) {
+			||  (selected[0] == "cat" &&  (selected[1] == CategoryID.MASTER.to_string () || selected[1] == CategoryID.TAGS.to_string ())))
+			{
 				m_footer.setRemoveButtonSensitive (false);
 			}
 		}
 	}
 
-	public void footerSetBusy () {
+	public void footerSetBusy ()
+	{
 		m_footer.setBusy ();
 	}
 
-	public void footerSetReady () {
+	public void footerSetReady ()
+	{
 		m_footer.setReady ();
 	}
 
-	public void footerShowError (string errmsg) {
+	public void footerShowError (string errmsg)
+	{
 		m_footer.showError (errmsg);
 	}
 
-	public feedList getFeedList () {
+	public feedList getFeedList ()
+	{
 		return m_feedList;
 	}
 
-	public void enterFullscreenArticle () {
+	public void enterFullscreenArticle ()
+	{
 		m_article_view.enterFullscreenArticle ();
 	}
 
-	public void leaveFullscreenArticle () {
+	public void leaveFullscreenArticle ()
+	{
 		m_article_view.leaveFullscreenArticle ();
 	}
 
-	public bool isFullscreen () {
+	public bool isFullscreen ()
+	{
 		return m_article_view.fullscreenArticle ();
 	}
 
-	public void exitFullscreenVideo () {
+	public void exitFullscreenVideo ()
+	{
 		m_article_view.exitFullscreenVideo ();
 	}
 
-	public bool isFullscreenVideo () {
+	public bool isFullscreenVideo ()
+	{
 		return m_article_view.fullscreenVideo ();
 	}
 
-	public bool ArticleListSelectedIsFirst () {
+	public bool ArticleListSelectedIsFirst ()
+	{
 		return m_articleList.selectedIsFirst ();
 	}
 
-	public bool ArticleListSelectedIsLast () {
+	public bool ArticleListSelectedIsLast ()
+	{
 		return m_articleList.selectedIsLast ();
 	}
 
-	public void ArticleViewAddMedia (MediaPlayer media) {
+	public void ArticleViewAddMedia (MediaPlayer media)
+	{
 		m_article_view.addMedia (media);
 	}
 
-	public void articleViewKillMedia () {
+	public void articleViewKillMedia ()
+	{
 		m_article_view.killMedia ();
 	}
 
-	public void print () {
+	public void print ()
+	{
 		m_article_view.print ();
 	}
 
-	public bool playingMedia () {
+	public bool playingMedia ()
+	{
 		return m_article_view.playingMedia ();
 	}
 
-	public string? displayedArticle () {
+	public string? displayedArticle ()
+	{
 		return m_article_view.getCurrentArticle ();
 	}
 
-	public void saveState (ref InterfaceState state) {
+	public void saveState (ref InterfaceState state)
+	{
 		int offset = 0;
 		double scrollPos = 0.0;
 		m_articleList.getSavedState (out scrollPos, out offset);
 
 		state.setArticleListScrollPos (scrollPos);
 		state.setArticleListRowOffset (offset);
-		state.setArticleListState(m_state);
 		state.setFeedListSelectedRow (m_feedList.getSelectedRow ());
 		state.setExpandedCategories (m_feedList.getExpandedCategories ());
 		state.setFeedsAndArticleWidth (this.get_position ());
@@ -494,19 +534,23 @@ public class FeedReader.ColumnView : Gtk.Paned {
 		m_headerbar.saveState (ref state);
 	}
 
-	public bool searchFocused () {
+	public bool searchFocused ()
+	{
 		return m_headerbar.searchFocused ();
 	}
 
-	public ColumnViewHeader getHeader () {
+	public ColumnViewHeader getHeader ()
+	{
 		return m_headerbar;
 	}
 
-	public void ArticleViewSendEvent (Gdk.EventKey event) {
+	public void ArticleViewSendEvent (Gdk.EventKey event)
+	{
 		m_article_view.sendEvent (event);
 	}
 
-	public void clear () {
+	public void clear ()
+	{
 		m_articleList.clear ();
 		clearArticleView ();
 		m_feedList.clear ();

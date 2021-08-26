@@ -19,6 +19,8 @@ public class FeedReader.mediaRow : Gtk.ListBoxRow {
 
 	public mediaRow(Enclosure enc)
 	{
+		get_style_context ().add_class (Granite.STYLE_CLASS_OVERLAY_BAR);
+
 		m_enc = enc;
 
 		int lastSlash = m_enc.get_url().last_index_of_char('/');

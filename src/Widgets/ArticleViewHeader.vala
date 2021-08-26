@@ -51,12 +51,12 @@ public class FeedReader.ArticleViewHeader : Gtk.HeaderBar {
 
 		var preferences_button = new Gtk.ModelButton () {
 			text = _("Preferences"),
-			margin_bottom = 3
+			margin_bottom = 6
 		};
 
 		var account_button = new Gtk.ModelButton () {
 			text = _("Change Account..."),
-			margin_top = 3
+			margin_top = 6
 		};
 
 		var separator = new Gtk.Separator (Gtk.Orientation.HORIZONTAL) {

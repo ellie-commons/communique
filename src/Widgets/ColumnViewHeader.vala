@@ -3,7 +3,7 @@
 //	FeedReader is free software: you can redistribute it and/or modify
 //	it under the terms of the GNU General Public License as published by
 //	the Free Software Foundation, either version 3 of the License, or
-//	(at your option) any later version.
+//	 (at your option) any later version.
 //
 //	FeedReader is distributed in the hope that it will be useful,
 //	but WITHOUT ANY WARRANTY; without even the implied warranty of
@@ -15,227 +15,173 @@
 
 public class FeedReader.ColumnViewHeader : Gtk.Paned {
 
-	private ModeButton m_modeButton;
 	private UpdateButton m_refresh_button;
 	private Gtk.SearchEntry m_search;
-	private ArticleListState m_state;
 	private Gtk.HeaderBar m_header_left;
 	private ArticleViewHeader m_header_right;
-	public signal void refresh();
-	public signal void cancel();
-	public signal void change_state(ArticleListState state, Gtk.StackTransitionType transition);
-	public signal void search_term(string searchTerm);
-	public signal void toggledMarked();
-	public signal void toggledRead();
-	public signal void closeArticle();
+	public signal void refresh ();
+	public signal void cancel ();
+	public signal void search_term (string searchTerm);
+	public signal void toggledMarked ();
+	public signal void toggledRead ();
+	public signal void closeArticle ();
 
 
-	public ColumnViewHeader()
-	{
-		m_state = (ArticleListState)Settings.state().get_enum("show-articles");
+	public ColumnViewHeader () {
 
-		m_modeButton = new ModeButton();
-		m_modeButton.append_text(_("All"), _("Show all articles"));
-		m_modeButton.append_text(_("Unread"), _("Show only unread articles"));
-		m_modeButton.append_text(_("Starred"), _("Show only starred articles"));
-		m_modeButton.set_active(m_state, true);
-
-		m_modeButton.mode_changed.connect(() => {
-			var transition = Gtk.StackTransitionType.CROSSFADE;
-			if(m_state == ArticleListState.ALL
-			|| (ArticleListState)m_modeButton.selected == ArticleListState.MARKED)
+		bool updating = Settings.state ().get_boolean ("currently-updating");
+		m_refresh_button = new UpdateButton.from_icon_name ("view-refresh-symbolic", _ ("Update feeds"), true, true);
+		m_refresh_button.updating (updating);
+		m_refresh_button.clicked.connect ( () => {
+			if (!m_refresh_button.getStatus ())
 			{
-				transition = Gtk.StackTransitionType.SLIDE_LEFT;
-			}
-			else if(m_state == ArticleListState.MARKED
-			|| (ArticleListState)m_modeButton.selected == ArticleListState.ALL)
-			{
-				transition = Gtk.StackTransitionType.SLIDE_RIGHT;
-			}
-
-			m_state = (ArticleListState)m_modeButton.selected;
-			change_state(m_state, transition);
-		});
-
-		bool updating = Settings.state().get_boolean("currently-updating");
-		m_refresh_button = new UpdateButton.from_icon_name("view-refresh-symbolic", _("Update feeds"), true, true);
-		m_refresh_button.updating(updating);
-		m_refresh_button.clicked.connect(() => {
-			if(!m_refresh_button.getStatus())
-			{
-				refresh();
+				refresh ();
 			}
 			else
 			{
-				cancel();
-				m_refresh_button.setSensitive(false);
+				cancel ();
+				m_refresh_button.setSensitive (false);
 			}
 		});
 
 
 
-		m_search = new Gtk.SearchEntry();
-		m_search.placeholder_text = _("Search Articles");
-		if(Settings.tweaks().get_boolean("restore-searchterm"))
-		{
-			m_search.text = Settings.state().get_string("search-term");
+		m_search = new Gtk.SearchEntry ();
+		m_search.placeholder_text = _ ("Search Articles");
+		if (Settings.tweaks ().get_boolean ("restore-searchterm")) {
+			m_search.text = Settings.state ().get_string ("search-term");
 		}
 
 		// connect after 160ms because Gtk.SearchEntry fires search_changed with 150ms delay
-		// with the timeout the signal should not trigger a newList() when restoring the state at startup
-		GLib.Timeout.add(160, () => {
-			m_search.search_changed.connect(() => {
-				search_term(m_search.text);
+		// with the timeout the signal should not trigger a newList () when restoring the state at startup
+		GLib.Timeout.add (160,  () => {
+			m_search.search_changed.connect ( () => {
+				search_term (m_search.text);
 			});
 			return false;
 		});
 
-		m_header_left = new Gtk.HeaderBar();
+		m_header_left = new Gtk.HeaderBar ();
 		m_header_left.show_close_button = true;
-		m_header_left.get_style_context().add_class("header_right");
-		// m_header_left.get_style_context().add_class("titlebar");
+		m_header_left.get_style_context ().add_class ("header_right");
 
-		// var menubutton = new Gtk.MenuButton();
-		// menubutton.image = new Gtk.Image.from_icon_name("open-menu-symbolic", Gtk.IconSize.MENU);
-		// menubutton.set_use_popover(true);
-		// menubutton.set_menu_model(Utils.getMenu());
-		// m_header_left.pack_end(menubutton);
+		m_header_left.pack_end (m_search);
+		m_header_left.pack_start (m_refresh_button);
 
-		m_header_left.pack_end(m_search);
-		m_header_left.pack_start(m_modeButton);
-		m_header_left.pack_start(m_refresh_button);
-
-		m_header_right = new ArticleViewHeader(false);
+		m_header_right = new ArticleViewHeader (false);
 		m_header_right.show_close_button = true;
-		m_header_right.get_style_context().add_class("header_left");
-		// m_header_right.get_style_context().add_class("titlebar");
-		this.clearTitle();
-		m_header_right.toggledMarked.connect(() => {
-			toggledMarked();
+		m_header_right.get_style_context ().add_class ("header_left");
+		this.clearTitle ();
+		m_header_right.toggledMarked.connect ( () => {
+			toggledMarked ();
 		});
-		m_header_right.toggledRead.connect(() => {
-			toggledRead();
+		m_header_right.toggledRead.connect ( () => {
+			toggledRead ();
 		});
-		m_header_right.fsClick.connect(() => {
-			ColumnView.get_default().hidePane();
-			ColumnView.get_default().enterFullscreenArticle();
-			MainWindow.get_default().fullscreen();
+		m_header_right.fsClick.connect ( () => {
+			ColumnView.get_default ().hidePane ();
+			ColumnView.get_default ().enterFullscreenArticle ();
+			MainWindow.get_default ().fullscreen ();
 		});
-		m_header_right.closeArticle.connect(() => {
-			closeArticle();
+		m_header_right.closeArticle.connect ( () => {
+			closeArticle ();
 		});
 
-		Gtk.Settings.get_default().notify["gtk-decoration-layout"].connect(set_window_buttons);
-		realize.connect(set_window_buttons);
-		set_window_buttons();
+		Gtk.Settings.get_default ().notify["gtk-decoration-layout"].connect (set_window_buttons);
+		realize.connect (set_window_buttons);
+		set_window_buttons ();
 
 
-		this.pack1(m_header_left, true, false);
-		this.pack2(m_header_right, true, false);
-		this.get_style_context().add_class("headerbar_pane");
-		this.set_position(Settings.state().get_int("feeds-and-articles-width"));
+		this.pack1 (m_header_left, true, false);
+		this.pack2 (m_header_right, true, false);
+		this.get_style_context ().add_class ("headerbar_pane");
+		this.set_position (Settings.state ().get_int ("feeds-and-articles-width"));
 	}
 
-	private void set_window_buttons()
+	private void set_window_buttons ()
 	{
-		string[] buttons = Gtk.Settings.get_default().gtk_decoration_layout.split(":");
-		if (buttons.length < 2)
+		string[] buttons = Gtk.Settings.get_default ().gtk_decoration_layout.split (":");
+		if  (buttons.length < 2)
 		{
 			buttons = {buttons[0], ""};
-			Logger.warning("gtk_decoration_layout in unexpected format");
+			Logger.warning ("gtk_decoration_layout in unexpected format");
 		}
 
-		m_header_left.set_decoration_layout(buttons[0] + ":");
-		m_header_right.set_decoration_layout(":" + buttons[1]);
+		m_header_left.set_decoration_layout (buttons[0] + ":");
+		m_header_right.set_decoration_layout (":" + buttons[1]);
 	}
 
-	public void setRefreshButton(bool status)
+	public void setRefreshButton (bool status)
 	{
-		m_refresh_button.updating(status, false);
+		m_refresh_button.updating (status, false);
 	}
 
-	public void setButtonsSensitive(bool sensitive)
+	public void setButtonsSensitive (bool sensitive)
 	{
-		Logger.debug("HeaderBar: setButtonsSensitive %s".printf(sensitive ? "true" : "false"));
-		m_modeButton.sensitive = sensitive;
-		m_refresh_button.setSensitive(sensitive);
+		Logger.debug ("HeaderBar: setButtonsSensitive %s".printf (sensitive ? "true" : "false"));
+		// m_modeButton.sensitive = sensitive;
+		m_refresh_button.setSensitive (sensitive);
 		m_search.sensitive = sensitive;
 	}
 
-	public void showArticleButtons(bool show)
-	{
-		m_header_right.showArticleButtons(show);
+	public void showArticleButtons (bool show) {
+		m_header_right.showArticleButtons (show);
 	}
 
-	public bool searchFocused()
-	{
+	public bool searchFocused (){
 		return m_search.has_focus;
 	}
 
-	public void setMarked(ArticleStatus marked)
-	{
-		m_header_right.setMarked(marked);
+	public void setMarked (ArticleStatus marked) {
+		m_header_right.setMarked (marked);
 	}
 
-	public void toggleMarked()
-	{
-		m_header_right.toggleMarked();
+	public void toggleMarked () {
+		m_header_right.toggleMarked ();
 	}
 
-	public void setRead(ArticleStatus read)
-	{
-		m_header_right.setRead(read);
+	public void setRead (ArticleStatus read) {
+		m_header_right.setRead (read);
 	}
 
-	public void toggleRead()
-	{
-		m_header_right.toggleRead();
+	public void toggleRead () {
+		m_header_right.toggleRead ();
 	}
 
-	public void focusSearch()
-	{
-		m_search.grab_focus();
+	public void focusSearch () {
+		m_search.grab_focus ();
 	}
 
-	public void setOffline()
-	{
-		m_header_right.setOffline();
+	public void setOffline () {
+		m_header_right.setOffline ();
 	}
 
-	public void setOnline()
-	{
-		m_header_right.setOnline();
+	public void setOnline () {
+		m_header_right.setOnline ();
 	}
 
-	public void showMediaButton(bool show)
-	{
-		m_header_right.showMediaButton(show);
+	public void showMediaButton (bool show) {
+		m_header_right.showMediaButton (show);
 	}
 
-	public void updateSyncProgress(string progress)
-	{
-		m_refresh_button.setProgress(progress);
+	public void updateSyncProgress (string progress) {
+		m_refresh_button.setProgress (progress);
 	}
 
-	public void refreshSahrePopover()
-	{
-		m_header_right.refreshSahrePopover();
+	public void refreshSahrePopover () {
+		m_header_right.refreshSahrePopover ();
 	}
 
-	public void saveState(ref InterfaceState state)
-	{
-		state.setSearchTerm(m_search.text);
-		state.setArticleListState(m_state);
+	public void saveState (ref InterfaceState state) {
+		state.setSearchTerm (m_search.text);
+		// state.setArticleListState (m_state);
 	}
-	public void setTitle(string title)
-	{
-		m_header_right.set_title(title);
+	public void setTitle (string title) {
+		m_header_right.set_title (title);
 	}
-	public void clearTitle()
-	{
-		m_header_right.set_title("FeedReader");
+	public void clearTitle () {
+		m_header_right.set_title ("FeedReader");
 	}
-
 }
 
 // public class FeedReader.HeaderBar : Gtk.HeaderBar {
@@ -250,84 +196,84 @@ public class FeedReader.ColumnViewHeader : Gtk.Paned {
 // 	private Gtk.Button m_close_button;
 // 	private SharePopover? m_sharePopover = null;
 
-// 	public signal void toggledMarked ();
-// 	public signal void toggledRead ();
-// 	public signal void fsClick ();
-// 	public signal void closeArticle ();
-// 	public signal void popClosed ();
-// 	public signal void popOpened ();
+// 	public signal void toggledMarked  ();
+// 	public signal void toggledRead  ();
+// 	public signal void fsClick  ();
+// 	public signal void closeArticle  ();
+// 	public signal void popClosed  ();
+// 	public signal void popOpened  ();
 
-// 	public HeaderBar () {
+// 	public HeaderBar  () {
 // 		show_close_button = true,
-// 		custom_title = new Gtk.Grid ();
+// 		custom_title = new Gtk.Grid  ();
 // 	}
 
 // 	construct {
-// 		var share_icon = new Gtk.Image.from_icon_name ("document-export", Gtk.IconSize.LARGE_TOOLBAR);
-// 		var tag_icon = new Gtk.Image.from_icon_name ("tag", Gtk.IconSize.LARGE_TOOLBAR);
-// 		var marked_icon = new Gtk.Image.from_icon_name ("feed-marked", Gtk.IconSize.LARGE_TOOLBAR);
-// 		var unmarked_icon = new Gtk.Image.from_icon_name ("feed-unmarked", Gtk.IconSize.LARGE_TOOLBAR);
-// 		var read_icon = new Gtk.Image.from_icon_name ("feed-read", Gtk.IconSize.LARGE_TOOLBAR);
-// 		var unread_icon = new Gtk.Image.from_icon_name ("feed-unread", Gtk.IconSize.LARGE_TOOLBAR);
-// 		var fs_icon = new Gtk.Image.from_icon_name (fullscreen ? "view-restore" : "view-fullscreen", Gtk.IconSize.LARGE_TOOLBAR);
-// 		var close_icon = new Gtk.Image.from_icon_name ("window-close-symbolic", Gtk.IconSize.LARGE_TOOLBAR);
+// 		var share_icon = new Gtk.Image.from_icon_name  ("document-export", Gtk.IconSize.LARGE_TOOLBAR);
+// 		var tag_icon = new Gtk.Image.from_icon_name  ("tag", Gtk.IconSize.LARGE_TOOLBAR);
+// 		var marked_icon = new Gtk.Image.from_icon_name  ("feed-marked", Gtk.IconSize.LARGE_TOOLBAR);
+// 		var unmarked_icon = new Gtk.Image.from_icon_name  ("feed-unmarked", Gtk.IconSize.LARGE_TOOLBAR);
+// 		var read_icon = new Gtk.Image.from_icon_name  ("feed-read", Gtk.IconSize.LARGE_TOOLBAR);
+// 		var unread_icon = new Gtk.Image.from_icon_name  ("feed-unread", Gtk.IconSize.LARGE_TOOLBAR);
+// 		var fs_icon = new Gtk.Image.from_icon_name  (fullscreen ? "view-restore" : "view-fullscreen", Gtk.IconSize.LARGE_TOOLBAR);
+// 		var close_icon = new Gtk.Image.from_icon_name  ("window-close-symbolic", Gtk.IconSize.LARGE_TOOLBAR);
 
-// 		m_search = new Gtk.SearchEntry () {
-// 			placeholder_text = _("Search Articles"),
+// 		m_search = new Gtk.SearchEntry  () {
+// 			placeholder_text = _ ("Search Articles"),
 // 			valign = Gtk.Align.CENTER
 // 		};
 
-// 		var menubutton = new Gtk.MenuButton () {
-// 			image = new Gtk.Image.from_icon_name ("open-menu", Gtk.IconSize.LARGE_TOOLBAR),
+// 		var menubutton = new Gtk.MenuButton  () {
+// 			image = new Gtk.Image.from_icon_name  ("open-menu", Gtk.IconSize.LARGE_TOOLBAR),
 // 			use_popover = true,
-// 			menu_model = Utils.getMenu (),
-// 			tooltip_text = _("Menu")
+// 			menu_model = Utils.getMenu  (),
+// 			tooltip_text = _ ("Menu")
 // 		};
 
-// 		m_tag_button = new Gtk.Button ();
-// 		m_tag_button.add (tag_icon);
-// 		m_tag_button.set_relief (Gtk.ReliefStyle.NONE);
-// 		m_tag_button.set_focus_on_click (false);
-// 		m_tag_button.set_tooltip_text (_ ("Tag article"));
+// 		m_tag_button = new Gtk.Button  ();
+// 		m_tag_button.add  (tag_icon);
+// 		m_tag_button.set_relief  (Gtk.ReliefStyle.NONE);
+// 		m_tag_button.set_focus_on_click  (false);
+// 		m_tag_button.set_tooltip_text  (_  ("Tag article"));
 // 		m_tag_button.sensitive = false;
-// 		m_tag_button.clicked.connect ( () => {
-// 			popOpened ();
-// 			var pop = new TagPopover (m_tag_button);
-// 			pop.closed.connect ( () => {
-// 				popClosed ();
+// 		m_tag_button.clicked.connect  (  () => {
+// 			popOpened  ();
+// 			var pop = new TagPopover  (m_tag_button);
+// 			pop.closed.connect  (  () => {
+// 				popClosed  ();
 // 			});
 // 		});
 
-// 		m_print_button = new Gtk.Button ();
-// 		m_print_button.image = new Gtk.Image.from_icon_name ("printer", Gtk.IconSize.LARGE_TOOLBAR);
-// 		m_print_button.set_focus_on_click (false);
-// 		m_print_button.set_tooltip_text (_ ("Print article"));
+// 		m_print_button = new Gtk.Button  ();
+// 		m_print_button.image = new Gtk.Image.from_icon_name  ("printer", Gtk.IconSize.LARGE_TOOLBAR);
+// 		m_print_button.set_focus_on_click  (false);
+// 		m_print_button.set_tooltip_text  (_  ("Print article"));
 // 		m_print_button.sensitive = false;
-// 		m_print_button.clicked.connect ( () => {
-// 			ColumnView.get_default ().print ();
+// 		m_print_button.clicked.connect  (  () => {
+// 			ColumnView.get_default  ().print  ();
 // 		});
 
-// 		m_share_button = new Gtk.Button ();
-// 		m_share_button.add (share_icon);
-// 		m_share_button.set_relief (Gtk.ReliefStyle.NONE);
-// 		m_share_button.set_focus_on_click (false);
-// 		m_share_button.set_tooltip_text (_ ("Export or Share this article"));
+// 		m_share_button = new Gtk.Button  ();
+// 		m_share_button.add  (share_icon);
+// 		m_share_button.set_relief  (Gtk.ReliefStyle.NONE);
+// 		m_share_button.set_focus_on_click  (false);
+// 		m_share_button.set_tooltip_text  (_  ("Export or Share this article"));
 // 		m_share_button.sensitive = false;
 
-// 		var shareSpinner = new Gtk.Spinner ();
-// 		var shareStack = new Gtk.Stack ();
-// 		shareStack.set_transition_type (Gtk.StackTransitionType.CROSSFADE);
-// 		shareStack.set_transition_duration (100);
-// 		shareStack.add_named (m_share_button, "button");
-// 		shareStack.add_named (shareSpinner, "spinner");
-// 		shareStack.set_visible_child_name ("button");
+// 		var shareSpinner = new Gtk.Spinner  ();
+// 		var shareStack = new Gtk.Stack  ();
+// 		shareStack.set_transition_type  (Gtk.StackTransitionType.CROSSFADE);
+// 		shareStack.set_transition_duration  (100);
+// 		shareStack.add_named  (m_share_button, "button");
+// 		shareStack.add_named  (shareSpinner, "spinner");
+// 		shareStack.set_visible_child_name  ("button");
 
-// 		m_media_button = new AttachedMediaButton ();
-// 		m_media_button.popOpened.connect ( () => {
-// 			popOpened ();
+// 		m_media_button = new AttachedMediaButton  ();
+// 		m_media_button.popOpened.connect  (  () => {
+// 			popOpened  ();
 // 		});
-// 		m_media_button.popClosed.connect ( () => {
-// 			popClosed ();
+// 		m_media_button.popClosed.connect  (  () => {
+// 			popClosed  ();
 // 		});
 // 	}
 // }

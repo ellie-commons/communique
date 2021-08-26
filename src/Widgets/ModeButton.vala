@@ -146,29 +146,24 @@ namespace FeedReader {
 			return_if_fail (item_map.has_key (new_active_index));
 			var new_item = item_map[new_active_index] as Item;
 
-			if (new_item != null)
-			{
+			if (new_item != null) {
 				assert (new_item.index == new_active_index);
 				new_item.set_active (true);
 
-				if (_selected == new_active_index)
-				{
+				if (_selected == new_active_index) {
 					return;
 				}
 
 				// Unselect the previous item
 				var old_item = item_map[_selected] as Item;
-				if (old_item != null)
-				{
+				if (old_item != null) {
 					old_item.set_active (false);
 				}
 
 				_selected = new_active_index;
 
-				if(!initSet)
-				{
-					if(m_timeout_source_id > 0)
-					{
+				if(!initSet) {
+					if(m_timeout_source_id > 0) {
 						GLib.Source.remove(m_timeout_source_id);
 						m_timeout_source_id = 0;
 					}
@@ -192,8 +187,7 @@ namespace FeedReader {
 			return_if_fail (item_map.has_key (index));
 			var item = item_map[index] as Item;
 
-			if (item != null)
-			{
+			if (item != null) {
 				assert (item.index == index);
 				item.no_show_all = !val;
 				item.visible = val;
@@ -209,8 +203,7 @@ namespace FeedReader {
 			return_if_fail (item_map.has_key (index));
 			var item = item_map[index] as Item;
 
-			if (item != null)
-			{
+			if (item != null) {
 				assert (item.index == index);
 				item_map.unset (index);
 				mode_removed (index, item.get_child ());
@@ -224,8 +217,7 @@ namespace FeedReader {
 		public void clear_children () {
 			foreach (weak Gtk.Widget button in get_children ()) {
 				button.hide ();
-				if (button.get_parent () != null)
-				{
+				if (button.get_parent () != null) {
 					base.remove (button);
 				}
 			}
@@ -258,14 +250,12 @@ namespace FeedReader {
 			uint n_children = children.length ();
 
 			var selected_item = item_map[selected];
-			if (selected_item == null)
-			{
+			if (selected_item == null) {
 				return false;
 			}
 
 			int new_item = children.index (selected_item);
-			if (new_item < 0)
-			{
+			if (new_item < 0) {
 				return false;
 			}
 
@@ -273,8 +263,7 @@ namespace FeedReader {
 				new_item += offset;
 				var item = children.nth_data (new_item) as Item;
 
-				if (item != null && item.visible && item.sensitive)
-				{
+				if (item != null && item.visible && item.sensitive) {
 					selected = item.index;
 					break;
 				}

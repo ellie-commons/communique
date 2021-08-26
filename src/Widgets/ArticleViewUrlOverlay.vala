@@ -30,14 +30,13 @@ public class FeedReader.ArticleViewUrlOverlay : Gtk.Revealer {
 		grid.add (m_label);
 
 		this.valign = Gtk.Align.END;
-		this.halign = Gtk.Align.START;
+		// this.halign = Gtk.Align.END;	
 		this.set_transition_type (Gtk.RevealerTransitionType.CROSSFADE);
-		this.set_transition_duration (300);
+
 		this.add (grid);
 	}
 
-	public void setURL (string uri, Gtk.Align align)
-	{
+	public void setURL (string uri, Gtk.Align align) {
 		int length = 45;
 		string url = uri;
 		if (url.length >= length)
@@ -45,11 +44,10 @@ public class FeedReader.ArticleViewUrlOverlay : Gtk.Revealer {
 			url = url.substring (0, length-3) + "...";
 		}
 		m_label.label = url;
-		this.halign = align;
+		this.halign = Gtk.Align.END;
 	}
 
-	public void reveal (bool show)
-	{
+	public void reveal (bool show) {
 		if (show)
 		{
 			this.visible = true;
