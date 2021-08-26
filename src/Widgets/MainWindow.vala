@@ -19,14 +19,14 @@
 public class FeedReader.MainWindow : Gtk.ApplicationWindow {
 	private SimpleHeader m_simpleHeader;
 	private Gtk.Overlay m_overlay;
-	private Gtk.Stack m_stack;
+	public Gtk.Stack m_stack;
 	private Gtk.Label m_ErrorMessage;
 	private Gtk.InfoBar m_error_bar;
 	private Gtk.Button m_ignore_tls_errors;
 	private LoginPage m_login;
 	private SpringCleanPage m_SpringClean;
 	private Gtk.CssProvider m_cssProvider;
-	private uint m_stackTransitionTime = 100;
+	private uint m_stackTransitionTime = 500;
 
 	private static MainWindow? m_window = null;
 
@@ -55,7 +55,7 @@ public class FeedReader.MainWindow : Gtk.ApplicationWindow {
 
 		setupCSS();
 		setupLoginPage();
-		setupResetPage();
+		// setupResetPage();
 		setupContentPage();
 		setupSpringCleanPage();
 
@@ -387,16 +387,20 @@ public class FeedReader.MainWindow : Gtk.ApplicationWindow {
 		m_error_bar.set_visible(false);
 	}
 
-	private void setupResetPage()
+	public void setupResetPage()
 	{
 		var reset = new ResetPage();
-		m_stack.add_named(reset, "reset");
-		reset.cancel.connect(() => {
-			showContent(Gtk.StackTransitionType.SLIDE_RIGHT);
+		reset.show_all ();
+		reset.reset.connect (() => {
+			showLogin (Gtk.StackTransitionType.SLIDE_LEFT);
 		});
-		reset.reset.connect(() => {
-			showLogin(Gtk.StackTransitionType.SLIDE_LEFT);
-		});
+		// m_stack.add_named(reset, "reset");
+		// reset.cancel.connect(() => {
+		// 	// showContent (Gtk.StackTransitionType.SLIDE_RIGHT);
+		// });
+		// reset.reset.connect(() => {
+		// 	showLogin(Gtk.StackTransitionType.SLIDE_LEFT);
+		// });
 	}
 
 	private void setupSpringCleanPage()

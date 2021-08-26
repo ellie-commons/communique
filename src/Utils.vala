@@ -831,25 +831,25 @@ if(online != null)
 return FeedReaderBackend.get_default().isOnline();
 }
 
-public static GLib.Menu getMenu()
-{
-var urlMenu = new GLib.Menu();
-urlMenu.append(Menu.bugs, "win.bugs");
-urlMenu.append(Menu.bounty, "win.bounty");
+// public static GLib.Menu getMenu()
+// {
+// // var urlMenu = new GLib.Menu();
+// // urlMenu.append(Menu.bugs, "win.bugs");
+// // urlMenu.append(Menu.bounty, "win.bounty");
 
-var aboutMenu = new GLib.Menu();
-aboutMenu.append(Menu.shortcuts, "win.shortcuts");
-aboutMenu.append(Menu.about, "win.about");
+// // var aboutMenu = new GLib.Menu();
+// // aboutMenu.append(Menu.shortcuts, "win.shortcuts");
+// // aboutMenu.append(Menu.about, "win.about");
 
-var menu = new GLib.Menu();
-menu.append(Menu.settings, "win.settings");
-menu.append(Menu.reset, "win.reset");
+// var menu = new GLib.Menu();
+// menu.append(Menu.settings, "win.settings");
+// menu.append(Menu.reset, "win.reset");
 
-menu.append_section("", urlMenu);
-menu.append_section("", aboutMenu);
+// // menu.append_section("", urlMenu);
+// // menu.append_section("", aboutMenu);
 
-return menu;
-}
+// return menu;
+// }
 
 public static bool onlyShowFeeds()
 {

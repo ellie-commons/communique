@@ -33,8 +33,7 @@ public class FeedReader.ArticleViewHeader : Gtk.HeaderBar {
 	public signal void popClosed ();
 	public signal void popOpened ();
 
-	public ArticleViewHeader (bool fullscreen)
-	{
+	public ArticleViewHeader (bool fullscreen) {
 		var share_icon = new Gtk.Image.from_icon_name ("document-export", Gtk.IconSize.LARGE_TOOLBAR);
 		var tag_icon = new Gtk.Image.from_icon_name ("tag", Gtk.IconSize.LARGE_TOOLBAR);
 		var marked_icon = new Gtk.Image.from_icon_name ("user-bookmarks", Gtk.IconSize.LARGE_TOOLBAR);
@@ -44,11 +43,60 @@ public class FeedReader.ArticleViewHeader : Gtk.HeaderBar {
 		var fs_icon = new Gtk.Image.from_icon_name (fullscreen ? "view-restore" : "view-fullscreen", Gtk.IconSize.LARGE_TOOLBAR);
 		var close_icon = new Gtk.Image.from_icon_name ("window-close-symbolic", Gtk.IconSize.LARGE_TOOLBAR);
 
-		var menubutton = new Gtk.MenuButton();
+		var menubutton = new Gtk.Button();
 		menubutton.image = new Gtk.Image.from_icon_name("open-menu", Gtk.IconSize.LARGE_TOOLBAR);
-		menubutton.set_use_popover(true);
-		menubutton.set_menu_model(Utils.getMenu());
+		// menubutton.set_use_popover(true);
+		// menubutton.set_menu_model(Utils.getMenu());
 		menubutton.set_tooltip_text (_("Menu"));
+
+		var preferences_button = new Gtk.ModelButton () {
+			text = _("Preferences"),
+			margin_bottom = 3
+		};
+
+		var account_button = new Gtk.ModelButton () {
+			text = _("Change Account..."),
+			margin_top = 3
+		};
+
+		var separator = new Gtk.Separator (Gtk.Orientation.HORIZONTAL) {
+			margin_top = 3,
+			margin_bottom = 3
+		};
+
+		var grid = new Gtk.Grid () {
+			orientation = Gtk.Orientation.VERTICAL
+		};
+		grid.add (account_button);
+		grid.add (separator);
+		grid.add (preferences_button);
+
+		var popover = new Gtk.Popover (menubutton);
+		popover.add (grid);
+
+		menubutton.clicked.connect (() => {
+			popover.show_all ();
+		});
+
+		preferences_button.button_release_event.connect (() => {
+			SettingsDialog.get_default().showDialog("ui");
+			popover.hide ();
+
+			return Gdk.EVENT_STOP;
+		});
+
+		account_button.button_release_event.connect (() => {
+			MainWindow.get_default ().setupResetPage ();
+			popover.hide ();
+
+			return Gdk.EVENT_STOP;
+		});
+
+		account_button.button_release_event.connect (() => {
+			MainWindow.get_default ().setupResetPage();
+
+		    return Gdk.EVENT_STOP;
+		});
 
 		m_mark_button = new HoverButton (unmarked_icon, marked_icon, false, "m", _("Star article"), _("Unstar article"));
 		m_mark_button.sensitive = false;
