@@ -13,27 +13,25 @@
 //	You should have received a copy of the GNU General Public License
 //	along with FeedReader.  If not, see <http://www.gnu.org/licenses/>.
 
-public class FeedReader.SimpleHeader : Gtk.HeaderBar
-{
+public class FeedReader.SimpleHeader : Gtk.HeaderBar {
 	private Gtk.Button m_backButton;
 
-	public signal void back();
+	public signal void back ();
 
-	public SimpleHeader()
-	{
-		m_backButton = new Gtk.Button.from_icon_name("go-previous-symbolic");
+	public SimpleHeader () {
+		m_backButton = new Gtk.Button.with_label (_("Back"));
+		m_backButton.get_style_context ().add_class (Granite.STYLE_CLASS_BACK_BUTTON);
 		m_backButton.no_show_all = true;
-		m_backButton.clicked.connect(() => {
-			back();
+		m_backButton.clicked.connect (() => {
+			back ();
 		});
 
-		this.pack_start(m_backButton);
+		this.pack_start (m_backButton);
 		this.show_close_button = true;
-		this.set_title("FeedReader");
+		this.set_title ("FeedReader");
 	}
 
-	public void showBackButton(bool show)
-	{
+	public void showBackButton (bool show) {
 		m_backButton.visible = show;
 	}
 

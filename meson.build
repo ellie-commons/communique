@@ -175,7 +175,6 @@ vala_sources = [
   'src/Widgets/ResetPage.vala',
   'src/Widgets/ServiceSettingsPopover.vala',
   'src/Widgets/ShareRow.vala',
-  'src/Widgets/ShortcutsWindow.vala',
   'src/Widgets/ServiceInfo.vala',
   'src/Widgets/Setting.vala',
   'src/Widgets/SettingsDialog.vala',

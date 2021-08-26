@@ -57,8 +57,6 @@ namespace FeedReader {
 			Intl.bind_textdomain_codeset  (Constants.GETTEXT_PACKAGE, "UTF-8");
 			Intl.textdomain  (Constants.GETTEXT_PACKAGE);
 
-			// m_window.get_style_context  ().add_class  (Granite.STYLE_CLASS_ROUNDED);
-
 			if (m_window == null) {
 				SetupActions ();
 				m_window = MainWindow.get_default ();

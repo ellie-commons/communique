@@ -186,7 +186,7 @@ public class FeedReader.ArticleListEmptyLabel : Gtk.Grid {
 			}
 
 		}
-		// this.get_style_context().add_class("dim-label");
+		this.get_style_context().add_class(Gtk.STYLE_CLASS_DIM_LABEL);
 		// this.set_text(message);
 
 		var alert_view = new Granite.Widgets.AlertView ((_("No Results")), message, "edit-find-symbolic");
