@@ -16,14 +16,14 @@
 public class FeedReader.FullscreenHeader : Gtk.EventBox {
 
 	private Gtk.Revealer m_revealer;
-	private ArticleViewHeader m_header;
+	private ColumnViewHeader m_header;
 	private bool m_hover = false;
 	private bool m_popover = false;
 	private uint m_timeout_source_id = 0;
 
 	public FullscreenHeader()
 	{
-		m_header = new ArticleViewHeader(true);
+		m_header = new ColumnViewHeader(true);
 		m_header.get_style_context().add_class("titlebar");
 		m_header.get_style_context().add_class("imageOverlay");
 		m_header.valign = Gtk.Align.START;

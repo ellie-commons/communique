@@ -25,23 +25,24 @@ public class FeedReader.UpdateButton : Gtk.Button {
 	private Gtk.Popover m_Popover;
 	private string m_tooltip;
 
-	public UpdateButton.from_icon_name(string iconname, string tooltip, bool progressPopup = false, bool cancellable = false)
+	public UpdateButton.from_icon_name(string iconname, string tooltip, string shortcut, bool progressPopup = false, bool cancellable = false)
 	{
-		m_icon = new Gtk.Image.from_icon_name(iconname, Gtk.IconSize.LARGE_TOOLBAR);
-		setup(tooltip, cancellable, progressPopup);
+		m_icon = new Gtk.Image.from_icon_name(iconname, Gtk.IconSize.LARGE_TOOLBAR) {
+			tooltip_markup = Granite.markup_accel_tooltip ({shortcut}, tooltip)
+		};
+		setup(cancellable, progressPopup);
 	}
 
 	public UpdateButton.from_resource(string iconname, string tooltip, bool progressPopup = false, bool cancellable = false)
 	{
 		m_icon = new Gtk.Image.from_resource(iconname);
-		setup(tooltip, cancellable, progressPopup);
+		setup(cancellable, progressPopup);
 	}
 
-	private void setup(string tooltip, bool progressPopup, bool cancellable)
+	private void setup(bool progressPopup, bool cancellable)
 	{
 		m_hasPopup = progressPopup;
 		m_isCancellable = cancellable;
-		m_tooltip = tooltip;
 		m_spinner = new Gtk.Spinner();
 		m_spinner.set_size_request(16,16);
 
@@ -64,7 +65,6 @@ public class FeedReader.UpdateButton : Gtk.Button {
 		this.set_relief(Gtk.ReliefStyle.NONE);
 		this.set_events(Gdk.EventMask.ENTER_NOTIFY_MASK);
 		this.set_focus_on_click(false);
-		this.set_tooltip_text(tooltip);
 		this.show_all();
 	}
 

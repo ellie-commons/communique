@@ -44,6 +44,19 @@ public class FeedReader.ResetPage : Gtk.Dialog {
 
 		var image = new Gtk.Image.from_icon_name ("dialog-warning", Gtk.IconSize.DIALOG);
 
+		var badge = new Gtk.Image () {
+    		gicon = new ThemedIcon ("avatar-default"),
+    		pixel_size = 24,
+    		halign = Gtk.Align.END,
+    		valign = Gtk.Align.END
+		};
+
+		var overlay = new Gtk.Overlay () {
+			valign = Gtk.Align.START
+		};
+		overlay.add (image);
+		overlay.add_overlay (badge);
+
 		var primary_label = new Gtk.Label (_("Are you sure you want to change your account?"));
 	    primary_label.get_style_context ().add_class (Granite.STYLE_CLASS_PRIMARY_LABEL);
         primary_label.selectable = true;
@@ -65,7 +78,7 @@ public class FeedReader.ResetPage : Gtk.Dialog {
         message_grid.column_spacing = 12;
 		message_grid.row_spacing = 6;
 		message_grid.margin_start = message_grid.margin_end = 12;
-		message_grid.attach (image, 0, 0, 1, 2);
+		message_grid.attach (overlay, 0, 0, 1, 2);
 		message_grid.attach (primary_label, 1, 0, 1, 1);
 		message_grid.attach (secondary_label, 1, 1, 1, 1);
 		message_grid.show_all ();

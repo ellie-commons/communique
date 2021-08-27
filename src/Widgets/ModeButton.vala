@@ -65,6 +65,7 @@ namespace FeedReader {
 		* Makes new ModeButton
 		*/
 		public ModeButton () {
+		    hexpand = true;
 			homogeneous = true;
 			spacing = 0;
 

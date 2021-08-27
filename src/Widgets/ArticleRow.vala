@@ -83,17 +83,16 @@ public class FeedReader.ArticleRow : Gtk.ListBoxRow {
 		m_marked_stack.set_transition_duration(50);
 
 		m_label = new Gtk.Label(null);
+		m_label.get_style_context ().add_class (Granite.STYLE_CLASS_H3_LABEL);
 		m_label.set_markup(m_article.getTitle());
 		m_label.set_line_wrap_mode(Pango.WrapMode.WORD);
 		m_label.set_line_wrap(true);
 		m_label.set_lines(2);
-		if(m_article.getUnread() == ArticleStatus.UNREAD)
-		{
-			m_label.get_style_context().add_class("headline-unread");
+		if(m_article.getUnread() == ArticleStatus.UNREAD) {
+			m_label.get_style_context ().add_class ("headline-unread");
 		}
-		else
-		{
-			m_label.get_style_context().add_class("headline-read");
+		else {
+			m_label.get_style_context ().add_class ("headline-read");
 		}
 		m_label.set_ellipsize(Pango.EllipsizeMode.END);
 		m_label.set_alignment(0.0f, 0.2f);
@@ -102,18 +101,19 @@ public class FeedReader.ArticleRow : Gtk.ListBoxRow {
 		var icon_box = new Gtk.Box(Gtk.Orientation.VERTICAL, 0);
 		icon_box.set_size_request(24, 0);
 
-		var marked_icon = new Gtk.Image.from_icon_name("starred", Gtk.IconSize.SMALL_TOOLBAR) {
-			tooltip_markup = Granite.markup_accel_tooltip ({"m"}, _("Star article"))
-		};
-		var unread_icon = new Gtk.Image.from_icon_name("mail-unread", Gtk.IconSize.SMALL_TOOLBAR) {
+		var marked_icon = new Gtk.Image.from_icon_name("starred", Gtk.IconSize.SMALL_TOOLBAR);
+		var unread_icon = new Gtk.Image.from_icon_name("mail-unread-symbolic", Gtk.IconSize.SMALL_TOOLBAR) {
 			tooltip_markup = Granite.markup_accel_tooltip ({"r"}, _("Mark as read"))
 		};
+		unread_icon.get_style_context ().add_class (Granite.STYLE_CLASS_ACCENT);
+
 		var unmarked_icon = new Gtk.Image.from_icon_name("non-starred-symbolic", Gtk.IconSize.SMALL_TOOLBAR) {
 			tooltip_markup = Granite.markup_accel_tooltip ({"m"}, _("Unstar article"))
 		};
-		var read_icon = new Gtk.Image.from_icon_name("mail-read", Gtk.IconSize.SMALL_TOOLBAR) {
+		var read_icon = new Gtk.Image.from_icon_name("mail-read-symbolic", Gtk.IconSize.SMALL_TOOLBAR) {
 			tooltip_markup = Granite.markup_accel_tooltip ({"r"}, _("Mark as unread"))
 		};
+		read_icon.get_style_context ().add_class (Granite.STYLE_CLASS_ACCENT);
 
 		m_unread_stack.add_named(unread_icon, "unread");
 		m_unread_stack.add_named(read_icon, "read");
@@ -174,8 +174,8 @@ public class FeedReader.ArticleRow : Gtk.ListBoxRow {
 		m_icon = createFavIcon();
 
 		icon_box.pack_start(m_icon, true, true, 0);
-		icon_box.pack_end(m_unread_eventbox, false, false, 10);
-		icon_box.pack_end(m_marked_eventbox, false, false, 0);
+		icon_box.pack_end(m_marked_eventbox, false, false, 10);
+		icon_box.pack_end(m_unread_eventbox, false, false, 0);
 
 		string short_preview = "";
 
@@ -197,7 +197,6 @@ public class FeedReader.ArticleRow : Gtk.ListBoxRow {
 		var body_label = new Gtk.Label(null);
 		body_label.set_markup(short_preview);
 		body_label.opacity = 0.7;
-		body_label.get_style_context().add_class("preview");
 		body_label.set_alignment(0.0f, 0.0f);
 		body_label.set_ellipsize (Pango.EllipsizeMode.END);
 		body_label.set_line_wrap_mode(Pango.WrapMode.WORD_CHAR);
@@ -205,18 +204,18 @@ public class FeedReader.ArticleRow : Gtk.ListBoxRow {
 		body_label.set_lines(2);
 
 		var feed = DataBase.readOnly().read_feed(m_article.getFeedID());
-		var feedLabel = new Gtk.Label(null);
+		var feedLabel = new Gtk.Label(null) {
+			valign = Gtk.Align.START,
+			halign = Gtk.Align.START
+		};
 		if (feed != null)
 		{
 			feedLabel.set_markup(feed.getTitle());
 		}
-		feedLabel.get_style_context().add_class("preview");
-		feedLabel.opacity = 0.6;
-		feedLabel.set_alignment(0.0f, 0.5f);
+		feedLabel.get_style_context ().add_class (Granite.STYLE_CLASS_H4_LABEL);
 		feedLabel.set_ellipsize(Pango.EllipsizeMode.END);
 		var dateLabel = new Gtk.Label(m_article.getDateNice());
-		dateLabel.get_style_context().add_class("preview");
-		dateLabel.opacity = 0.6;
+		dateLabel.get_style_context ().add_class (Gtk.STYLE_CLASS_DIM_LABEL);
 		dateLabel.set_alignment(1.0f, 0.5f);
 		var date_box = new Gtk.Box(Gtk.Orientation.HORIZONTAL, 10);
 		date_box.pack_start(feedLabel, true, true, 0);

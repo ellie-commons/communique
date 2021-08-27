@@ -30,8 +30,10 @@ public class FeedReader.ArticleViewUrlOverlay : Gtk.Revealer {
 		grid.add (m_label);
 
 		this.valign = Gtk.Align.END;
-		// this.halign = Gtk.Align.END;	
+		// this.halign = Gtk.Align.END;
 		this.set_transition_type (Gtk.RevealerTransitionType.CROSSFADE);
+
+		this.margin = 6;
 
 		this.add (grid);
 	}

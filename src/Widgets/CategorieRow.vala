@@ -84,22 +84,22 @@ public class FeedReader.CategoryRow : Gtk.ListBoxRow {
 		m_expandBox.enter_notify_event.connect(onExpandEnter);
 		m_expandBox.leave_notify_event.connect(onExpandLeave);
 
-		m_label = new Gtk.Label(m_name);
-		m_label.set_size_request (0, rowhight);
+		m_label = new Gtk.Label(m_name) {
+			halign = Gtk.Align.START
+		};
+		m_label.get_style_context ().add_class (Granite.STYLE_CLASS_H4_LABEL);
 		m_label.set_ellipsize (Pango.EllipsizeMode.END);
-		m_label.set_alignment(0, 0.5f);
-
 
 		m_unread = new Gtk.Label("");
-		m_unread.set_size_request (0, rowhight);
-		m_unread.set_alignment(0.8f, 0.5f);
+		m_unread.set_size_request (0, 24);
+		// m_unread.set_alignment(0.8f, 0.5f);
+		m_unread.get_style_context ().add_class (Granite.STYLE_CLASS_BADGE);
 
 		m_unreadStack = new Gtk.Stack();
 		m_unreadStack.add_named(m_unread, "unreadCount");
 		m_unreadStack.add_named(new Gtk.Label(""), "nothing");
 		var markIcon = new Gtk.Image.from_icon_name("mail-read-symbolic", Gtk.IconSize.LARGE_TOOLBAR);
 		markIcon.tooltip_markup = Granite.markup_accel_tooltip ({"<Shift>a"}, "Mark as Read");
-		// markIcon.get_style_context().add_class("fr-sidebar-symbolic");
 		m_unreadStack.add_named(markIcon, "mark");
 
 		m_unreadBox = new Gtk.EventBox();

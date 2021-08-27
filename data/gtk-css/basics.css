@@ -64,13 +64,10 @@ row {
 /*.h4 {*/
 /*	font-weight: bold*/
 /*}*/
-.preview {
-	font-size: small;
-}
 .headline-read,
 .headline-unread {
 	font-style: normal;
-	font-size: large;
+	/*font-size: large;*/
 }
 .headline-read {
 	font-weight: normal;
@@ -84,7 +81,8 @@ row {
 
 .headerbar_pane.pane-separator {
 	border-radius: 0;
-	border-width: 0 1px 1px 0;
+	border-width: 0 0 0 0;
+	opacity: 0;
 }
 .titlebar .pane-separator {
 	background-color: shade(@theme_bg_color, 0.4);

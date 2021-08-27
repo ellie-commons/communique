@@ -36,12 +36,13 @@ public class FeedReader.ColumnView : Gtk.Paned {
 		return m_columnView;
 	}
 
-
 	private ColumnView () {
 		Logger.debug ("ColumnView: setup");
 		m_feedList = new feedList ();
 		m_footer = new FeedListFooter ();
-		var feedListBox = new Gtk.Box (Gtk.Orientation.VERTICAL, 0);
+		var feedListBox = new Gtk.Box (Gtk.Orientation.VERTICAL, 0) {
+			hexpand = true
+		};
 		feedListBox.pack_start (m_feedList);
 		feedListBox.pack_end (m_footer, false, false);
 
@@ -52,18 +53,24 @@ public class FeedReader.ColumnView : Gtk.Paned {
 		m_pane.set_position (Settings.state ().get_int ("feed-row-width"));
 		m_pane.pack1 (feedListBox, false, false);
 
+		var all_icon = new Gtk.Image.from_icon_name ("view-list-symbolic", Gtk.IconSize.LARGE_TOOLBAR);
+		all_icon.get_style_context ().add_class (Granite.STYLE_CLASS_ACCENT);
+
 		var all_grid = new Gtk.Grid () {
 			orientation = Gtk.Orientation.VERTICAL,
 			halign = Gtk.Align.CENTER
 		};
-		all_grid.add (new Gtk.Image.from_icon_name ("view-list-symbolic", Gtk.IconSize.LARGE_TOOLBAR));
+		all_grid.add (all_icon);
 		all_grid.add (new Gtk.Label ("All"));
+
+		var unread_icon = new Gtk.Image.from_icon_name ("mail-unread-symbolic", Gtk.IconSize.LARGE_TOOLBAR);
+		unread_icon.get_style_context ().add_class (Granite.STYLE_CLASS_ACCENT);
 
 		var unread_grid = new Gtk.Grid () {
 			orientation = Gtk.Orientation.VERTICAL,
 			halign = Gtk.Align.CENTER
 		};
-		unread_grid.add (new Gtk.Image.from_icon_name ("mail-unread-symbolic", Gtk.IconSize.LARGE_TOOLBAR));
+		unread_grid.add (unread_icon);
 		unread_grid.add (new Gtk.Label ("Unread"));
 
 		var starred_grid = new Gtk.Grid () {
@@ -84,6 +91,7 @@ public class FeedReader.ColumnView : Gtk.Paned {
 			if(m_state == ArticleListState.ALL
 			|| (ArticleListState)m_mode_button.selected == ArticleListState.MARKED) {
 				transition = Gtk.StackTransitionType.SLIDE_LEFT;
+				all_icon.get_style_context ().add_class ("active");
 			}
 			else if(m_state == ArticleListState.MARKED
 			|| (ArticleListState)m_mode_button.selected == ArticleListState.ALL) {
@@ -199,11 +207,11 @@ public class FeedReader.ColumnView : Gtk.Paned {
 		this.set_position (Settings.state ().get_int ("feeds-and-articles-width"));
 		this.pack1 (m_pane, false, false);
 		this.pack2 (m_article_view, true, false);
-		this.notify["position"].connect ( () => {
-			m_headerbar.set_position (this.get_position ());
-		});
+		// this.notify["position"].connect ( () => {
+		// 	m_headerbar.set_position (this.get_position ());
+		// });
 
-		m_headerbar = new ColumnViewHeader ();
+		m_headerbar = new ColumnViewHeader (false);
 		m_headerbar.refresh.connect ( () => {
 			syncStarted ();
 			var app = FeedReaderApp.get_default ();
@@ -225,9 +233,9 @@ public class FeedReader.ColumnView : Gtk.Paned {
 			newArticleList ();
 		});
 
-		m_headerbar.notify["position"].connect ( () => {
-			this.set_position (m_headerbar.get_position ());
-		});
+		// m_headerbar.notify["position"].connect ( () => {
+		// 	this.set_position (m_headerbar.get_position ());
+		// });
 
 		m_headerbar.toggledMarked.connect ( () => {
 			toggleMarkedSelectedArticle ();
@@ -239,6 +247,18 @@ public class FeedReader.ColumnView : Gtk.Paned {
 
 		m_headerbar.closeArticle.connect ( () => {
 			clearArticleView ();
+		});
+
+		m_headerbar.size_allocate.connect (() => {
+			m_headerbar.set_paned_positions (m_pane.position, this.position);
+		});
+
+		this.notify["position"].connect (() => {
+			m_headerbar.set_paned_positions (m_pane.position, this.position, false);
+		});
+
+		m_pane.notify["position"].connect_after (() => {
+			m_headerbar.set_paned_positions (m_pane.position, this.position);
 		});
 	}
 

@@ -146,7 +146,7 @@ vala_sources = [
   'src/Widgets/AddPopover.vala',
   'src/Widgets/ArticleRow.vala',
   'src/Widgets/ArticleView.vala',
-  'src/Widgets/ArticleViewHeader.vala',
+  # 'src/Widgets/ArticleViewHeader.vala',
   'src/Widgets/ArticleViewLoadProgress.vala',
   'src/Widgets/ArticleViewUrlOverlay.vala',
   'src/Widgets/BackendInfoPopover.vala',

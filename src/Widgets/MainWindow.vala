@@ -54,6 +54,7 @@ public class FeedReader.MainWindow : Gtk.ApplicationWindow {
 		m_overlay.add (m_stack);
 
 		setupLoginPage ();
+		setupCSS ();
 		setupContentPage ();
 		setupSpringCleanPage ();
 
@@ -291,6 +292,37 @@ public class FeedReader.MainWindow : Gtk.ApplicationWindow {
 		});
 		m_stack.add_named (loginBox, "login");
 		m_error_bar.set_visible (false);
+	}
+
+	public void reloadCSS () {
+		Logger.debug("MainWindow: reloadCSS");
+		removeProvider(m_cssProvider);
+		setupCSS();
+	}
+
+	private void setupCSS()
+	{
+		Logger.debug("MainWindow: setupCSS");
+		string path = "/org/gnome/FeedReader/gtk-css/";
+
+		addProvider(path + "basics.css");
+
+		FeedListTheme theme = (FeedListTheme)Settings.general().get_enum("feedlist-theme");
+
+		// switch(theme)
+		// {
+		// 	case FeedListTheme.GTK:
+		// 	m_cssProvider = addProvider(path + "gtk.css");
+		// 	break;
+
+////  			case FeedListTheme.DARK:
+		// 	m_cssProvider = addProvider(path + "dark.css");
+		// 	break;
+
+////  			case FeedListTheme.ELEMENTARY:
+		// 	m_cssProvider = addProvider(path + "elementary.css");
+		// 	break;
+		// }
 	}
 
 	public void setupResetPage ()

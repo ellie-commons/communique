@@ -40,8 +40,8 @@ public class FeedReader.ArticleList : Gtk.Overlay {
 
 	public signal void row_activated(ArticleRow? row);
 
-	public ArticleList()
-	{
+	public ArticleList() {
+		hexpand = true;
 		m_emptyList = new ArticleListEmptyLabel();
 		m_searchTerm = Settings.state().get_string("search-term");
 		var syncingLabel = new Gtk.Label(_("Sync is in progress. Articles should appear any second."));

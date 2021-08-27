@@ -1,21 +1,11 @@
-//	This file is part of FeedReader.
-//
-//	FeedReader is free software: you can redistribute it and/or modify
-//	it under the terms of the GNU General Public License as published by
-//	the Free Software Foundation, either version 3 of the License, or
-//	 (at your option) any later version.
-//
-//	FeedReader is distributed in the hope that it will be useful,
-//	but WITHOUT ANY WARRANTY; without even the implied warranty of
-//	MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
-//	GNU General Public License for more details.
-//
-//	You should have received a copy of the GNU General Public License
-//	along with FeedReader.  If not, see <http://www.gnu.org/licenses/>.
+/*
+ * SPDX-License-Identifier: GPL-3.0-or-later
+ * SPDX-FileCopyrightText: 2021 Your Name <singharajdeep97@gmail.com>
+ */
 
-
-public class FeedReader.ArticleViewHeader : Gtk.HeaderBar {
-
+public class FeedReader.HeaderBar : Gtk.HeaderBar {
+	private UpdateButton m_refresh_button;
+	private Gtk.SearchEntry m_search;
 	private Gtk.Button m_share_button;
 	private Gtk.Button m_tag_button;
 	private Gtk.Button m_print_button;
@@ -26,14 +16,52 @@ public class FeedReader.ArticleViewHeader : Gtk.HeaderBar {
 	private Gtk.Button m_close_button;
 	private SharePopover? m_sharePopover = null;
 
-	public signal void toggledMarked ();
-	public signal void toggledRead ();
-	public signal void fsClick ();
+	public signal void refresh ();
+	public signal void cancel ();
+	public signal void search_term (string searchTerm);
+	public signal void toggleMarked ();
+	public signal void toggleRead ();
 	public signal void closeArticle ();
+	public signal void fsClick ();
 	public signal void popClosed ();
 	public signal void popOpened ();
 
-	public ArticleViewHeader (bool fullscreen) {
+	public HeaderBar (bool fullscreen) {
+		Object (
+			show_close_button: true
+		);
+	}
+
+	construct {
+		bool updating = Settings.state ().get_boolean ("currently-updating");
+
+		m_refresh_button = new UpdateButton.from_icon_name ("view-refresh-symbolic", _ ("Update feeds"), "<Ctrl>r", true, true);
+		m_refresh_button.updating (updating);
+		m_refresh_button.clicked.connect (() => {
+			if (!m_refresh_button.getStatus ()) {
+				refresh ();
+			}
+			else {
+				cancel ();
+				m_refresh_button.setSensitive (false);
+			}
+		});
+
+		m_search = new Gtk.SearchEntry ();
+		m_search.placeholder_text = _ ("Search Articles");
+		if (Settings.tweaks ().get_boolean ("restore-searchterm")) {
+			m_search.text = Settings.state ().get_string ("search-term");
+		}
+
+		// connect after 160ms because Gtk.SearchEntry fires search_changed with 150ms delay
+		// with the timeout the signal should not trigger a newList () when restoring the state at startup
+		GLib.Timeout.add (160,  () => {
+			m_search.search_changed.connect ( () => {
+				search_term (m_search.text);
+			});
+			return false;
+		});
+
 		var share_icon = new Gtk.Image.from_icon_name ("document-export", Gtk.IconSize.LARGE_TOOLBAR);
 		var tag_icon = new Gtk.Image.from_icon_name ("tag", Gtk.IconSize.LARGE_TOOLBAR);
 		var marked_icon = new Gtk.Image.from_icon_name ("user-bookmarks", Gtk.IconSize.LARGE_TOOLBAR);
@@ -195,115 +223,32 @@ public class FeedReader.ArticleViewHeader : Gtk.HeaderBar {
 			popClosed ();
 		});
 
-		if  (!fullscreen)
-		{
-			this.pack_start (m_close_button);
-		}
-		this.pack_start (m_fullscreen_button);
-		this.pack_start (new Gtk.Separator (Gtk.Orientation.HORIZONTAL));
-		this.pack_start (m_read_button);
-		this.pack_start (m_mark_button);
-		this.pack_end (menubutton);
-		this.pack_end (new Gtk.Separator (Gtk.Orientation.HORIZONTAL));
-		this.pack_end (shareStack);
-		this.pack_end (m_print_button);
-		this.pack_end (new Gtk.Separator (Gtk.Orientation.HORIZONTAL));
-		this.pack_end (m_tag_button);
-		this.pack_end (m_media_button);
-
+		pack_start (m_refresh_button);
+		pack_start (new Gtk.Grid ());
+		pack_start (m_search);
+	
 	}
 
-	public void showArticleButtons (bool show)
-	{
-		Logger.debug ("HeaderBar: showArticleButtons %s".printf (sensitive ? "true" : "false"));
-		m_mark_button.sensitive = show;
-		m_read_button.sensitive = show;
-		m_fullscreen_button.sensitive = show;
-		m_close_button.sensitive = show;
-		m_share_button.sensitive =  (show && FeedReaderApp.get_default ().isOnline ());
-		m_print_button.sensitive = show;
-
-		if (FeedReaderBackend.get_default ().supportTags ()
-		&& Utils.canManipulateContent ())
-		{
-			m_tag_button.sensitive =  (show && FeedReaderApp.get_default ().isOnline ());
-		}
+	public void setRefreshButton (bool status) {
+		m_refresh_button.updating (status, false);
 	}
 
-	public void setMarked (ArticleStatus marked)
-	{
-		switch (marked)
-		{
-			case ArticleStatus.MARKED:
-			// m_mark_button.setActive (true);
-			break;
-			case ArticleStatus.UNMARKED:
-			default:
-			m_read_button.setActive (false);
-			break;
-		}
+	public void setButtonsSensitive (bool sensitive) {
+		Logger.debug ("HeaderBar: setButtonsSensitive %s".printf (sensitive ? "true" : "false"));
+		// m_modeButton.sensitive = sensitive;
+		m_refresh_button.setSensitive (sensitive);
+		m_search.sensitive = sensitive;
 	}
 
-	public void toggleMarked ()
-	{
-		m_mark_button.toggle ();
+	public bool searchFocused () {
+		return m_search.has_focus;
 	}
 
-	public void setRead (ArticleStatus read)
-	{
-		switch (read)
-		{
-			case ArticleStatus.UNREAD:
-			m_read_button.setActive (true);
-			break;
-			case ArticleStatus.READ:
-			default:
-			m_read_button.setActive (false);
-			break;
-		}
+	public void updateSyncProgress (string progress) {
+		m_refresh_button.setProgress (progress);
 	}
 
-	public void toggleRead ()
-	{
-		m_read_button.toggle ();
-	}
-
-	public void setOffline ()
-	{
-		m_share_button.sensitive = false;
-		if (Utils.canManipulateContent ()
-		&& FeedReaderBackend.get_default ().supportTags ())
-		{
-			m_tag_button.sensitive = false;
-		}
-	}
-
-	public void setOnline ()
-	{
-		if (m_mark_button.sensitive)
-		{
-			m_share_button.sensitive = true;
-			if (Utils.canManipulateContent ()
-			&& FeedReaderBackend.get_default ().supportTags ())
-			{
-				m_tag_button.sensitive = true;
-			}
-		}
-	}
-
-	public void showMediaButton (bool show)
-	{
-		m_media_button.update ();
-		m_media_button.visible = show;
-	}
-
-	public void refreshSahrePopover ()
-	{
-		if (m_sharePopover == null)
-		{
-			return;
-		}
-
-		m_sharePopover.refreshList ();
+	public void saveState (ref InterfaceState state) {
+		state.setSearchTerm (m_search.text);
 	}
 }

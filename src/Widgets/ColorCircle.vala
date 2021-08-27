@@ -23,7 +23,7 @@ public class FeedReader.ColorCircle : Gtk.EventBox {
 	public ColorCircle(int color, bool clickable = true)
 	{
 		m_color = color;
-		m_icon = new Gtk.Image.from_surface(drawIcon());
+		m_icon = new Gtk.Image.from_surface (drawIcon());
 		m_icon_light = new Gtk.Image.from_surface(drawIcon(true));
 
 		this.set_events(Gdk.EventMask.BUTTON_PRESS_MASK);
