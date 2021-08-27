@@ -34,7 +34,9 @@ public class FeedReader.DecsyncUtils : GLib.Object {
 		var dir = Utils.gsettingReadString(m_settings, "decsync-dir");
 		if (dir == "")
 		{
-			return GLib.Environment.get_variable("DECSYNC_DIR") ?? getDefaultDecsyncBaseDir();
+			char defaultDir[256];
+			Decsync.get_default_dir(defaultDir);
+			return (string)defaultDir;
 		}
 		else
 		{

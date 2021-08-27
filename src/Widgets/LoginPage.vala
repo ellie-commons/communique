@@ -23,8 +23,7 @@ public class FeedReader.LoginPage : Gtk.Stack {
 	public signal void loginError(LoginResponse errorCode);
 
 
-	public LoginPage()
-	{
+	public LoginPage() {
 		FeedReaderBackend.get_default().tryLogin.connect(() => {
 			writeLoginData();
 		});
@@ -36,12 +35,12 @@ public class FeedReader.LoginPage : Gtk.Stack {
 		m_layout.margin_bottom = 50;
 		m_layout.margin_top = 50;
 
-		var welcomeText = new Gtk.Label(_("Where are your feeds?"));
-		welcomeText.get_style_context().add_class("h1");
+		var welcomeText = new Gtk.Label(_("Add Some Feeds"));
+		welcomeText.get_style_context().add_class(Granite.STYLE_CLASS_H1_LABEL);
 		welcomeText.set_justify(Gtk.Justification.CENTER);
 
-		var welcomeText2 = new Gtk.Label(_("Please select the RSS service you are using and log in to get going."));
-		welcomeText2.get_style_context().add_class("h2");
+		var welcomeText2 = new Gtk.Label(_("Select a service to start reading."));
+		welcomeText2.get_style_context().add_class(Granite.STYLE_CLASS_H2_LABEL);
 		welcomeText2.set_justify(Gtk.Justification.CENTER);
 		welcomeText2.set_lines(3);
 

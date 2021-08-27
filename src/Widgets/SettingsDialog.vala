@@ -47,7 +47,6 @@ public class FeedReader.SettingsDialog : Gtk.Dialog {
 		m_stack.set_transition_type (Gtk.StackTransitionType.CROSSFADE);
 		m_stack.set_halign (Gtk.Align.FILL);
 		m_stack.add_titled (setup_UI (), "ui", _("General"));
-		m_stack.add_titled (setup_Internal (), "internal", _("Behaviour"));
 		m_stack.add_titled (setup_Service (), "service", _("Share"));
 
 		Gtk.StackSwitcher switcher = new Gtk.StackSwitcher () {
@@ -96,10 +95,10 @@ public class FeedReader.SettingsDialog : Gtk.Dialog {
 		// });
 
 		// Fix gsettings not saving
-		var article_sort = new SettingsCombo (Settings.general (), "articlelist-sort-by", {_("Received"), _("Date")});
-		article_sort.combo_changed.connect (() => {
-			ColumnView.get_default ().newArticleList ();
-		});
+		// var article_sort = new SettingsCombo (Settings.general (), "articlelist-sort-by", {_("Received"), _("Date")});
+		// article_sort.combo_changed.connect (() => {
+		// 	ColumnView.get_default ().newArticleList ();
+		// });
 
 		var fontfamilly = new SettingsFont (Settings.general (), "font");
 		fontfamilly.font_changed.connect (() => {
@@ -194,54 +193,56 @@ public class FeedReader.SettingsDialog : Gtk.Dialog {
 	}
 
 
-	private Gtk.Grid setup_Internal () {
-		var internal_grid = new Gtk.Grid () {
-			column_spacing = 12,
-			row_spacing = 6
-		};
+	// private Gtk.Grid setup_Internal () {
+	// 	var internal_grid = new Gtk.Grid () {
+	// 		column_spacing = 12,
+	// 		row_spacing = 6
+	// 	};
 
-		var sync_count = new SettingsSpin (Settings.general (), "max-articles", 10, 5000, 10);
+	// 	var sync_count = new SettingsSpin (Settings.general (), "max-articles", 10, 5000, 10);
 
-		var sync_time = new SettingsSpin (Settings.general (), "sync", 0, 600, 5);
-		sync_time.spin_changed.connect (() => {
-			FeedReaderBackend.get_default ().scheduleSync (Settings.general ().get_int ("sync"));
-		});
+	// 	var sync_time = new SettingsSpin (Settings.general (), "sync", 0, 600, 5);
+	// 	sync_time.spin_changed.connect (() => {
+	// 		FeedReaderBackend.get_default ().scheduleSync (Settings.general ().get_int ("sync"));
+	// 	});
 
-		var drop_articles = new SettingsCombo (Settings.general (), "drop-articles-after",
-		{_("Never"), _("1 Week"), _("1 Month"), _("6 Months")});
-		drop_articles.combo_changed.connect (() => {
-			Settings.state ().reset ("last-sync");
-		});
+	// 	var drop_articles = new SettingsCombo (Settings.general (), "drop-articles-after",
+	// 	{_("Never"), _("1 Week"), _("1 Month"), _("6 Months")});
+	// 	drop_articles.combo_changed.connect (() => {
+	// 		Settings.state ().reset ("last-sync");
+	// 	});
 
-		var grabber = new SettingsSwitch (Settings.general (), "content-grabber");
+	// 	var grabber = new SettingsSwitch (Settings.general (), "content-grabber");
 
-		var images = new SettingsSwitch (Settings.general (), "download-images");
+	// 	var images = new SettingsSwitch (Settings.general (), "download-images");
 
-		var mediaplayer = new SettingsSwitch (Settings.general (), "mediaplayer");
+	// 	var mediaplayer = new SettingsSwitch (Settings.general (), "mediaplayer");
 
-		internal_grid.attach (new Granite.HeaderLabel (_("Sync")), 0, 0, 3);
-		internal_grid.attach (new SettingsLabel (_("Synced articles:")), 0, 1);
-		internal_grid.attach (sync_count, 1, 1, 2);
-		internal_grid.attach (new SettingsLabel (_("Sync interval:")), 0, 2);
-		internal_grid.attach (sync_time, 1, 2);
-		internal_grid.attach (new Granite.HeaderLabel (_("Database")), 0, 3, 3);
-		internal_grid.attach (new SettingsLabel (_("Delete articles after:")), 0, 4);
-		internal_grid.attach (drop_articles, 1, 4, 2);
-		internal_grid.attach (new Granite.HeaderLabel (_("Additional Functionality")), 0, 5, 3);
-		internal_grid.attach (new SettingsLabel (_("Download Full Text:")), 0, 6);
-		internal_grid.attach (grabber, 1, 6);
-		internal_grid.attach (new SettingsLabel (_("Download Images:")), 0, 7);
-		internal_grid.attach (images, 1, 7);
-		internal_grid.attach (new SettingsLabel (_("Internal Media Player:")), 0, 8);
-		internal_grid.attach (mediaplayer, 1, 8);
+	// 	internal_grid.attach (new Granite.HeaderLabel (_("Sync")), 0, 0, 3);
+	// 	internal_grid.attach (new SettingsLabel (_("Synced articles:")), 0, 1);
+	// 	internal_grid.attach (sync_count, 1, 1, 2);
+	// 	internal_grid.attach (new SettingsLabel (_("Sync interval:")), 0, 2);
+	// 	internal_grid.attach (sync_time, 1, 2);
+	// 	internal_grid.attach (new Granite.HeaderLabel (_("Database")), 0, 3, 3);
+	// 	internal_grid.attach (new SettingsLabel (_("Delete articles after:")), 0, 4);
+	// 	internal_grid.attach (drop_articles, 1, 4, 2);
+	// 	internal_grid.attach (new Granite.HeaderLabel (_("Additional Functionality")), 0, 5, 3);
+	// 	internal_grid.attach (new SettingsLabel (_("Download Full Text:")), 0, 6);
+	// 	internal_grid.attach (grabber, 1, 6);
+	// 	internal_grid.attach (new SettingsLabel (_("Download Images:")), 0, 7);
+	// 	internal_grid.attach (images, 1, 7);
+	// 	internal_grid.attach (new SettingsLabel (_("Internal Media Player:")), 0, 8);
+	// 	internal_grid.attach (mediaplayer, 1, 8);
 
-		return internal_grid;
-	}
+	// 	return internal_grid;
+	// }
 
 
 	private Gtk.Frame setup_Service () {
 		m_serviceList = new Gtk.ListBox () {
-			halign = Gtk.Align.CENTER
+			halign = Gtk.Align.CENTER,
+			vexpand = true,
+			hexpand = true
 		};
 		m_serviceList.set_selection_mode (Gtk.SelectionMode.SINGLE);
 		m_serviceList.set_sort_func (sortFunc);
@@ -251,12 +252,12 @@ public class FeedReader.SettingsDialog : Gtk.Dialog {
 
 		m_errorBar = new InfoBar ("");
 
-		var service_scroll = new Gtk.ScrolledWindow (null, null);
-		service_scroll.expand = true;
-		service_scroll.add (m_serviceList);
+		// var service_scroll = new Gtk.ScrolledWindow (null, null);
+		// service_scroll.expand = true;
+		// service_scroll.add (m_serviceList);
 
 		var overlay = new Gtk.Overlay ();
-		overlay.add (service_scroll);
+		overlay.add (m_serviceList);
 		overlay.add_overlay (m_errorBar);
 
 		// var viewport = new Gtk.Viewport (null, null);

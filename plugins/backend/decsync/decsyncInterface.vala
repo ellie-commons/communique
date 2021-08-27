@@ -13,11 +13,20 @@
 //	You should have received a copy of the GNU General Public License
 //	along with FeedReader.  If not, see <http://www.gnu.org/licenses/>.
 
+public class FeedReader.Extra : GLib.Object {
+	public FeedReader.decsyncInterface plugin;
+
+	public Extra(FeedReader.decsyncInterface plugin)
+	{
+		this.plugin = plugin;
+	}
+}
+
 public class FeedReader.decsyncInterface : FeedServerInterface {
 
 	internal DecsyncUtils m_utils;
 	private Soup.Session m_session;
-	internal Decsync<Unit> m_sync;
+	internal Decsync.Decsync<Extra> m_sync;
 	private string m_loginDir;
 	private Gtk.Button loginButton;
 	private Gtk.Spinner waitingSpinner;
@@ -91,7 +100,7 @@ public class FeedReader.decsyncInterface : FeedServerInterface {
 				_("_Select"),
 			Gtk.ResponseType.ACCEPT);
 			chooser.set_show_hidden(true);
-			chooser.set_current_folder(m_utils.getDecsyncDir());
+			chooser.set_current_folder(m_loginDir);
 			if (chooser.run() == Gtk.ResponseType.ACCEPT)
 			{
 				m_loginDir = chooser.get_filename();
@@ -149,8 +158,9 @@ public class FeedReader.decsyncInterface : FeedServerInterface {
 		loginStack.set_visible_child_name("waiting");
 		SourceFunc callback = postLoginAction.callback;
 		new Thread<void*>(null, () => {
-			m_sync.initStoredEntries();
-			m_sync.executeStoredEntries({"feeds", "subscriptions"}, new Unit());
+			var extra = new Extra(this);
+			m_sync.init_stored_entries();
+			m_sync.execute_all_stored_entries_for_path_exact({"feeds", "subscriptions"}, extra);
 			Idle.add((owned) callback);
 			return null;
 		});
@@ -235,36 +245,34 @@ public class FeedReader.decsyncInterface : FeedServerInterface {
 	public override LoginResponse login()
 	{
 		var decsyncDir = m_utils.getDecsyncDir();
-		if (decsyncDir == "")
+		char ownAppId[256];
+		Decsync.get_app_id("FeedReader", ownAppId);
+		var error = Decsync.Decsync<Extra>.new(out m_sync, decsyncDir, "rss", null, (string)ownAppId);
+		if (error != 0)
 		{
-			return LoginResponse.ALL_EMPTY;
-		}
-		var dir = getDecsyncSubdir(decsyncDir, "rss");
-		var ownAppId = getAppId("FeedReader");
-		var listeners = new Gee.ArrayList<OnEntryUpdateListener>();
-		listeners.add(new DecsyncListeners.ReadMarkListener(true, this));
-		listeners.add(new DecsyncListeners.ReadMarkListener(false, this));
-		listeners.add(new DecsyncListeners.SubscriptionsListener(this));
-		listeners.add(new DecsyncListeners.FeedNamesListener(this));
-		listeners.add(new DecsyncListeners.CategoriesListener(this));
-		listeners.add(new DecsyncListeners.CategoryNamesListener(this));
-		listeners.add(new DecsyncListeners.CategoryParentsListener(this));
-		try
-		{
-			m_sync = new Decsync<Unit>(dir, ownAppId, listeners);
-			m_sync.syncComplete.connect((extra) => {
-				FeedReaderBackend.get_default().updateBadge();
-				refreshFeedListCounter();
-				newFeedList();
-				updateArticleList();
-			});
-			m_sync.initMonitor(new Unit());
-			return LoginResponse.SUCCESS;
-		}
-		catch (DecsyncError e)
-		{
+			switch (error)
+			{
+				case 1:
+					Logger.error("DecSync: Invalid .decsync-info");
+					break;
+				case 2:
+					Logger.error("DecSync: Unsupported DecSync version");
+					break;
+				default:
+					Logger.error("DecSync: Unknown error");
+					break;
+			}
 			return LoginResponse.API_ERROR;
 		}
+		m_sync.add_listener({"articles","read"}, DecsyncListeners.readListener);
+		m_sync.add_listener({"articles","marked"}, DecsyncListeners.markListener);
+		m_sync.add_listener({"feeds","subscriptions"}, DecsyncListeners.subscriptionListener);
+		m_sync.add_listener({"feeds","names"}, DecsyncListeners.feedNamesListener);
+		m_sync.add_listener({"feeds","categories"}, DecsyncListeners.categoriesListener);
+		m_sync.add_listener({"categories","names"}, DecsyncListeners.categoryNamesListener);
+		m_sync.add_listener({"categories","parents"}, DecsyncListeners.categoryParentsListener);
+		m_sync.init_done();
+		return LoginResponse.SUCCESS;
 	}
 
 	public override bool serverAvailable()
@@ -276,7 +284,7 @@ public class FeedReader.decsyncInterface : FeedServerInterface {
 	{
 		var read = readStatus == ArticleStatus.READ;
 		Logger.debug("Mark " + articleIDs + " as " + (read ? "read" : "unread"));
-		var entries = new Gee.ArrayList<Decsync.EntryWithPath>();
+		Decsync.EntryWithPath[] entries = {};
 		var db = DataBase.readOnly();
 		foreach (var articleID in articleIDs.split(","))
 		{
@@ -284,11 +292,12 @@ public class FeedReader.decsyncInterface : FeedServerInterface {
 			if (article != null)
 			{
 				var path = articleToPath(article, "read");
-				var key = stringToNode(article.getArticleID());
-				entries.add(new Decsync.EntryWithPath.now(path, key, boolToNode(read)));
+				var key = stringToJson(article.getArticleID());
+				var value = boolToJson(read);
+				entries += new Decsync.EntryWithPath(path, key, value);
 			}
 		}
-		m_sync.setEntries(entries);
+		m_sync.set_entries(entries);
 	}
 
 	public override void setArticleIsMarked(string articleID, ArticleStatus markedStatus)
@@ -299,8 +308,9 @@ public class FeedReader.decsyncInterface : FeedServerInterface {
 		if (article != null)
 		{
 			var path = articleToPath(article, "marked");
-			var key = stringToNode(article.getArticleID());
-			m_sync.setEntry(path, key, boolToNode(marked));
+			var key = stringToJson(article.getArticleID());
+			var value = boolToJson(marked);
+			m_sync.set_entry(path, key, value);
 		}
 	}
 
@@ -387,17 +397,15 @@ public class FeedReader.decsyncInterface : FeedServerInterface {
 
 				if (updateDecsync)
 				{
-					m_sync.setEntry({"feeds", "subscriptions"}, stringToNode(feedID), boolToNode(true));
+					m_sync.set_entry({"feeds", "subscriptions"}, stringToJson(feedID), boolToJson(true));
 					renameFeed(feedID, feed.getTitle());
 					moveFeed(feedID, feed.getCatString(), null);
 				}
 
-				m_sync.executeStoredEntries({"feeds", "names"}, new Unit(),
-					stringEquals(feedID)
-				);
-				m_sync.executeStoredEntries({"feeds", "categories"}, new Unit(),
-					stringEquals(feedID)
-				);
+				var extra = new Extra(this);
+				m_sync.execute_stored_entry({"feeds", "names"}, stringToJson(feedID), extra);
+				m_sync.execute_stored_entry({"feeds", "categories"}, stringToJson(feedID), extra);
+
 				return true;
 			}
 			errmsg = _("Can't add feed because it already exists: ") + feedURL;
@@ -408,18 +416,18 @@ public class FeedReader.decsyncInterface : FeedServerInterface {
 
 	public override void removeFeed(string feedID)
 	{
-		m_sync.setEntry({"feeds", "subscriptions"}, stringToNode(feedID), boolToNode(false));
+		m_sync.set_entry({"feeds", "subscriptions"}, stringToJson(feedID), boolToJson(false));
 	}
 
 	public override void renameFeed(string feedID, string title)
 	{
-		m_sync.setEntry({"feeds", "names"}, stringToNode(feedID), stringToNode(title));
+		m_sync.set_entry({"feeds", "names"}, stringToJson(feedID), stringToJson(title));
 	}
 
 	public override void moveFeed(string feedID, string newCatID, string? currentCatID)
 	{
 		string? value = newCatID == uncategorizedID() ? null : newCatID;
-		m_sync.setEntry({"feeds", "categories"}, stringToNode(feedID), stringToNode(value));
+		m_sync.set_entry({"feeds", "categories"}, stringToJson(feedID), stringToJson(value));
 	}
 
 	public override string createCategory(string title, string? parentID)
@@ -438,13 +446,13 @@ public class FeedReader.decsyncInterface : FeedServerInterface {
 
 	public override void renameCategory(string catID, string title)
 	{
-		m_sync.setEntry({"categories", "names"}, stringToNode(catID), stringToNode(title));
+		m_sync.set_entry({"categories", "names"}, stringToJson(catID), stringToJson(title));
 	}
 
 	public override void moveCategory(string catID, string newParentID)
 	{
 		string? value = newParentID == CategoryID.MASTER.to_string() ? null : newParentID;
-		m_sync.setEntry({"categories", "parents"}, stringToNode(catID), stringToNode(value));
+		m_sync.set_entry({"categories", "parents"}, stringToJson(catID), stringToJson(value));
 	}
 
 	public override void deleteCategory(string catID)
@@ -474,6 +482,9 @@ public class FeedReader.decsyncInterface : FeedServerInterface {
 
 	public override void getArticles(int count, ArticleStatus whatToGet, DateTime? since, string? feedID, bool isTagID, GLib.Cancellable? cancellable = null)
 	{
+		var extra = new Extra(this);
+		m_sync.execute_all_new_entries(extra);
+
 		var feeds = DataBase.readOnly().read_feeds();
 		var articles = new Gee.ArrayList<Article>();
 		GLib.Mutex mutex = GLib.Mutex();
@@ -642,48 +653,52 @@ public class FeedReader.decsyncInterface : FeedServerInterface {
 			DataBase.writeAccess().write_articles(articles);
 			Logger.debug("decsyncInterface: %i articles written".printf(articles.size));
 
-			var multiMap = groupBy<Article, Gee.List<string>, Article>(
-				articles,
-				article => { return articleToBasePath(article); }
-			);
-			multiMap.get_keys().@foreach(basePath => {
-				var articleIDs = multiMap.@get(basePath).map<Json.Node>(article => {
-					return stringToNode(article.getArticleID());
-				});
-				foreach (var type in toList({"read","marked"}))
-				{
-					m_sync.executeStoredEntries(basePathToPath(basePath, type), new Unit(),
-						key => { return articleIDs.any_match(articleID => { return articleID.equal(key); }); }
-					);
-				}
-				return true;
-			});
+			Decsync.StoredEntry[] storedEntries = {};
+			foreach (var article in articles) {
+				var pathRead = articleToPath(article, "read");
+				var pathMarked = articleToPath(article, "marked");
+				var key = stringToJson(article.getArticleID());
+				storedEntries += new Decsync.StoredEntry(pathRead, key);
+				storedEntries += new Decsync.StoredEntry(pathMarked, key);
+			}
+			m_sync.execute_stored_entries(storedEntries, extra);
 		}
 
-		m_sync.executeAllNewEntries(new Unit());
+		FeedReaderBackend.get_default().updateBadge();
+		refreshFeedListCounter();
+		newFeedList();
+		updateArticleList();
 	}
 
 	private string[] articleToPath(Article article, string type)
 	{
-		return basePathToPath(articleToBasePath(article), type);
-	}
-
-	private string[] basePathToPath(Gee.List<string> basePath, string type)
-	{
 		var path = new Gee.ArrayList<string>();
 		path.add("articles");
 		path.add(type);
-		path.add_all(basePath);
+		var datetime = article.getDate().to_utc();
+		path.add(datetime.format("%Y"));
+		path.add(datetime.format("%m"));
+		path.add(datetime.format("%d"));
 		return path.to_array();
 	}
 
-	private Gee.List<string> articleToBasePath(Article article)
+	private string boolToJson(bool input)
 	{
-		var datetime = article.getDate().to_utc();
-		var year = datetime.format("%Y");
-		var month = datetime.format("%m");
-		var day = datetime.format("%d");
-		return toList({year, month, day});
+		var node = new Json.Node(Json.NodeType.VALUE);
+		node.set_boolean(input);
+		return Json.to_string(node, false);
+	}
+
+	private string stringToJson(string? input)
+	{
+		Json.Node node;
+		if (input == null) {
+			node = new Json.Node(Json.NodeType.NULL);
+		} else {
+			node = new Json.Node(Json.NodeType.VALUE);
+			node.set_string(input);
+		}
+		return Json.to_string(node, false);
 	}
 }
 
