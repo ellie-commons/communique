@@ -1,7 +1,8 @@
 # Communiqué
 ## Your personal journalist
 
-
+| ![Screenshot](data/communique-light-screenshot.jpg) | ![Screenshot](data/communique-dark-screenshot.jpg) |
+|-----------------------------------------------------|----------------------------------------------------|
 
 ## Made for [elementary OS](https://elementary.io)
 
