@@ -468,7 +468,7 @@ public class FeedReader.ColumnViewHeader : Gtk.HeaderBar {
 		set_title (title);
 	}
 	public void clearTitle () {
-		set_title ("FeedReader");
+		set_title ("Communique");
 	}
 }
 

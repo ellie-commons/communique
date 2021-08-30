@@ -89,7 +89,7 @@ public class FeedReader.MainWindow : Gtk.ApplicationWindow {
 		this.add (m_overlay);
 		this.set_events (Gdk.EventMask.KEY_PRESS_MASK);
 		this.set_titlebar (m_simpleHeader);
-		this.set_title ("FeedReader");
+		this.set_title ("Communique");
 		this.set_default_size (Settings.state ().get_int ("window-width"), Settings.state ().get_int ("window-height"));
 		this.show_all ();
 

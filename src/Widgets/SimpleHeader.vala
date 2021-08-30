@@ -26,9 +26,14 @@ public class FeedReader.SimpleHeader : Gtk.HeaderBar {
 			back ();
 		});
 
-		this.pack_start (m_backButton);
+		var back_grid = new Gtk.Grid () {
+			valign = Gtk.Align.CENTER
+		};
+		back_grid.add (m_backButton);
+
+		this.pack_start (back_grid);
 		this.show_close_button = true;
-		this.set_title ("FeedReader");
+		this.set_title ("Communique");
 	}
 
 	public void showBackButton (bool show) {
