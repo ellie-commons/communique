@@ -90,8 +90,7 @@ public class FeedReader.ArticleRow : Gtk.ListBoxRow {
 		m_label.set_lines(2);
 		if(m_article.getUnread() == ArticleStatus.UNREAD) {
 			m_label.get_style_context ().add_class ("headline-unread");
-		}
-		else {
+		} else {
 			m_label.get_style_context ().add_class ("headline-read");
 		}
 		m_label.set_ellipsize(Pango.EllipsizeMode.END);

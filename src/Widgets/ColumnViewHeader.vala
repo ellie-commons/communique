@@ -45,7 +45,7 @@ public class FeedReader.ColumnViewHeader : Gtk.HeaderBar {
 	    show_close_button = true;
 
 		bool updating = Settings.state ().get_boolean ("currently-updating");
-		m_refresh_button = new UpdateButton.from_icon_name ("view-refresh-symbolic", _ ("Update feeds"), "<Ctrl>r", true, true);
+		m_refresh_button = new UpdateButton.from_icon_name ("view-refresh-symbolic", _("Update feeds"), "<Ctrl>r", true, true);
 		m_refresh_button.updating (updating);
 		m_refresh_button.clicked.connect ( () => {
 			if (!m_refresh_button.getStatus ()) {
@@ -263,10 +263,14 @@ public class FeedReader.ColumnViewHeader : Gtk.HeaderBar {
 		// realize.connect (set_window_buttons);
 		// set_window_buttons ();
 
+		var search_grid = new Gtk.Grid () {
+			valign = Gtk.Align.CENTER
+		};
+		search_grid.add (m_search);
 
 		this.pack_start (m_refresh_button);
 		this.pack_start (spacing_widget);
-		this.pack_start (m_search);
+		this.pack_start (search_grid);
 		// if  (!fullscreen) {
 		// 	this.pack_start (m_close_button);
 		// }

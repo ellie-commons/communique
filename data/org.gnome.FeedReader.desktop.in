@@ -1,12 +1,13 @@
 [Desktop Entry]
-Name=FeedReader
+Name=Communique
 GenericName=RSS Client
-Comment=Read feeds from web services
-Categories=Network;Feed;
+Comment=Read RSS/Atom Feeds
+Categories=Network;Education;
 Exec=feedreader %U
 Icon=org.gnome.FeedReader
 Terminal=false
 Type=Application
+Keywords=RSS;Atom;News;Articles;Feed;Read;
 X-GNOME-UsesNotifications=true
 X-GNOME-Gettext-Domain=FeedReader
 MimeType=x-scheme-handler/feedreader;

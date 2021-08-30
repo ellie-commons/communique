@@ -52,11 +52,11 @@ namespace FeedReader.Main {
 			return 0;
 		}
 
-		if(about)
-		{
-			FeedReader.show_about(args);
-			return 0;
-		}
+		// if(about)
+		// {
+		// 	FeedReader.show_about(args);
+		// 	return 0;
+		// }
 
 		if(media != null)
 		{

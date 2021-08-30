@@ -1,12 +1,12 @@
 option('share-plugins',
         type: 'array',
-        choices : ['browser', 'email', 'instapaper', 'pocket', 'telegram', 'twitter', 'wallabag'],
-        value : ['browser', 'email', 'instapaper', 'pocket', 'telegram', 'twitter', 'wallabag'],
+        choices : ['browser', 'email', 'instapaper', 'pocket', 'wallabag'],
+        value : ['browser', 'email', 'instapaper', 'pocket', 'wallabag'],
         description: 'List of share plugins to install'
 )
 option('backend-plugins',
         type: 'array',
-        choices: ['bazqux', 'decsync', 'feedbin', 'feedhq', 'feedly', 'fresh', 'inoreader', 'local', 'oldreader', 'owncloud', 'ttrss'],
-        value : ['bazqux', 'decsync', 'feedbin', 'feedhq', 'feedly', 'fresh', 'inoreader', 'local', 'oldreader', 'owncloud', 'ttrss'],
+        choices: ['bazqux', 'feedbin', 'feedhq', 'fresh', 'inoreader', 'local', 'owncloud', 'ttrss'],
+        value : ['bazqux', 'feedbin', 'feedhq', 'fresh', 'inoreader', 'local', 'owncloud', 'ttrss'],
         description: 'List of backend plugins to install'
 )

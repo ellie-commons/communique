@@ -4,15 +4,15 @@
 		"icon": "http://planet.gnome.org/img/30/favicon.png",
 		"name": "Planet GNOME",
 		"description": "All your favorite blogs about the GNOME project in one place.",
-		"category": "Free Software",
+		"category": "Open Source",
 		"language": "English"
 	},
 	{
-		"url": "http://blog.elementary.io/rss",
+		"url": "https://blog.elementary.io/feed.xml",
 		"icon": "http://68.media.tumblr.com/avatar_edb79deb3524_128.png",
 		"name": "elementary OS Blog",
 		"description": "The latest updates from the makers of the fast and open replacement for Windows and OS X.",
-		"category": "Free Software",
+		"category": "Open Source",
 		"language": "English"
 	},
 	{
@@ -20,40 +20,15 @@
 		"icon": "http://www.omgubuntu.co.uk/wp-content/uploads/2012/07/omg-ubuntu-logo-32x32.jpg",
 		"name": "OMG! Ubuntu!",
 		"description": "Ubuntu/Linux News",
-		"category": "Free Software",
+		"category": "Open Source",
 		"language": "English"
-	},
-
-	{
-		"url": "http://rss.golem.de/rss.php?feed=ATOM1.0",
-		"icon": "https://www.golem.de/favicon.ico",
-		"name": "Golem.de",
-		"description": "Ständig aktuelle IT-News für Profis und Videos aus Politik, Wirtschaft und Wissenschaft über Hardware, Software, Telekommunikation, Games",
-		"category": "Technology",
-		"language": "German"
-	},
-	{
-		"url": "http://www.heise.de/newsticker/heise-atom.xml",
-		"icon": "https://www.heise.de/favicon.ico",
-		"name": "Heise.de",
-		"description": "News und Foren zu Computer, IT, Wissenschaft, Medien und Politik. Preisvergleich von Hardware und Software sowie Downloads bei Heise Medien.",
-		"category": "Technology",
-		"language": "German"
-	},
-	{
-		"url": "http://rss.sueddeutsche.de/rss/Topthemen",
-		"icon": "http://www.sueddeutsche.de/favicon.ico",
-		"name": "Sueddeutsche Zeitung",
-		"description": "Nachrichten aus Politik, Kultur, Wirtschaft und Sport",
-		"category": "News",
-		"language": "German"
 	},
 	{
 		"url": "http://planetkde.org/rss20.xml",
 		"icon": "https://planet.kde.org/favicon.ico",
 		"name": "Planet KDE",
 		"description": "All your favorite blogs about the KDE project in one place.",
-		"category": "Free Software",
+		"category": "Open Source",
 		"language": "English"
 	},
 	{
@@ -61,7 +36,7 @@
 		"icon": "http://phoronix.com/favicon.ico",
 		"name": "Phoronix",
 		"description": "Phoronix is the leading technology website for Linux hardware reviews, open-source news, Linux benchmarks, open-source benchmarks, and computer hardware tests.",
-		"category": "Free Software",
+		"category": "Open Source",
 		"language": "English"
 	},
 	{

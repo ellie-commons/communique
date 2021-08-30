@@ -67,7 +67,6 @@ row {
 .headline-read,
 .headline-unread {
 	font-style: normal;
-	/*font-size: large;*/
 }
 .headline-read {
 	font-weight: normal;
@@ -87,11 +86,5 @@ row {
 .titlebar .pane-separator {
 	background-color: shade(@theme_bg_color, 0.4);
 	background-image: none;
-}
-.header_right {
-	border-top-right-radius: 0;
-}
-.header_left {
-	border-top-left-radius: 0;
 }
 

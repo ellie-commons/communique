@@ -1,13 +1,10 @@
 supported_backend_plugins = [
   'bazqux',
-  'decsync',
   'feedbin',
   'feedhq',
-  'feedly',
   'fresh',
   'inoreader',
   'local',
-  'oldreader',
   'owncloud',
   'ttrss'
 ]

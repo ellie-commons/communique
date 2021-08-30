@@ -3,8 +3,6 @@ supported_share_plugins = [
   'Email',
   'Instapaper',
   'Pocket',
-  'Telegram',
-  'Twitter',
   'Wallabag'
 ]
 

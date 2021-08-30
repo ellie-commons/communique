@@ -278,35 +278,4 @@ namespace FeedReader {
 			this.add_action (quit_action);
 		}
 	}
-
-	public static void show_about (string[] args)
-	{
-		Gtk.init (ref args);
-		Gtk.AboutDialog dialog = new Gtk.AboutDialog ();
-		dialog.response.connect  ( (response_id) => {
-			if (response_id == Gtk.ResponseType.CANCEL || response_id == Gtk.ResponseType.DELETE_EVENT)
-			{
-				Gtk.main_quit ();
-			}
-		});
-
-		dialog.artists = AboutInfo.artists;
-		dialog.authors = AboutInfo.authors;
-		dialog.documenters = null;
-		dialog.translator_credits = AboutInfo.translators;
-
-		dialog.program_name = AboutInfo.programmName;
-		dialog.comments = AboutInfo.comments;
-		dialog.copyright = AboutInfo.copyright;
-		dialog.version = AboutInfo.version;
-		dialog.logo_icon_name = AboutInfo.iconName;
-		dialog.license_type = Gtk.License.GPL_3_0;
-		dialog.wrap_license = true;
-
-		dialog.website = AboutInfo.website;
-		dialog.present ();
-
-		Gtk.main ();
-	}
-
 }
