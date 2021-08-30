@@ -1,7 +1,10 @@
 <a href='https://ind.ie/ethical-design'><img style='margin-left: auto; margin-right: auto;' alt='We practice Ethical Design' src='https://img.shields.io/badge/Ethical_Design-_▲_❤_-blue.svg'></a>
 
-# Communiqué
-## Your personal journalist
+<p align="center">
+  <img src="data/application-icons/hicolor/128x128/apps/org.gnome.FeedReader.svg" alt="Icon" />
+</p>
+<h1 align="center">Communique</h1>
+<h2 align="center">Your personal journalist</h2>
 
 | ![Screenshot](data/communique-light-screenshot.jpg) | ![Screenshot](data/communique-dark-screenshot.jpg) |
 |-----------------------------------------------------|----------------------------------------------------|
