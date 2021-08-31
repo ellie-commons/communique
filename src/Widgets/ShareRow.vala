@@ -119,7 +119,8 @@ public class FeedReader.ShareRow : Gtk.ListBoxRow {
 			service_name = "Open in Browser";
 			var service_label = new Gtk.Label (service_name) {
 				halign = Gtk.Align.START,
-				margin_top = 6
+				margin_top = 6,
+				margin_end = 6
 			};
 			service_label.get_style_context ().add_class (Granite.STYLE_CLASS_H3_LABEL);
 

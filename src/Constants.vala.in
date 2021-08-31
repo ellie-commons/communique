@@ -29,7 +29,7 @@ namespace FeedReader {
 		public const string[] artists     = {"Jan Lukas Gernert", "Harvey Cabaguio", "Jorge Marques", "Andrew Joyce", null};
 		public const string iconName      = "org.gnome.FeedReader";
 		public const string translators   = N_("translator-credits");
-		public const string website       = "http://jangernert.github.io/FeedReader/";
+		public const string website       = "https://www.github.com/Suzie97/communique/";
 	}
 
 	public class Menu : GLib.Object {

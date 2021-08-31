@@ -29,7 +29,7 @@ public class FeedReader.localInterface : FeedServerInterface {
 
 	public override string getWebsite()
 	{
-		return "http://jangernert.github.io/FeedReader/";
+		return "https://www.github.com/Suzie97/communique/";
 	}
 
 	public override BackendFlags getFlags()
