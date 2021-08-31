@@ -66,7 +66,7 @@
 		</key>
 
 		<key name='font' type="ms">
-			<default>nothing</default>
+			<default>'Inter Regular 12'</default>
 		</key>
 
 		<key name='drop-articles-after' enum='org.gnome.feedreader.drop-articles-duration'>

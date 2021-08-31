@@ -64,7 +64,9 @@ public class FeedReader.AddPopover : Gtk.Popover {
 
 		var opmlLabel = new Gtk.Label (_ ("OPML File:"));
 		opmlLabel.expand = true;
-		m_chooser = new Gtk.FileChooserButton (_ ("Select OPML File"), Gtk.FileChooserAction.OPEN);
+		m_chooser = new Gtk.FileChooserButton (_ ("Select OPML File"), Gtk.FileChooserAction.OPEN) {
+			valign = Gtk.Align.CENTER
+		};
 		var filter = new Gtk.FileFilter ();
 		filter.add_mime_type ("text/x-opml");
 		m_chooser.set_filter (filter);

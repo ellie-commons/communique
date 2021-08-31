@@ -185,6 +185,8 @@ namespace FeedReader {
 
 				FeedReaderBackend.get_default ().updateBadge ();
 				FeedReaderBackend.get_default ().checkOnlineAsync.begin ();
+
+				sync ();
 			}
 
 			var granite_settings = Granite.Settings.get_default ();
