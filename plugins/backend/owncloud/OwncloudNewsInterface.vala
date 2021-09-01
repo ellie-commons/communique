@@ -155,7 +155,7 @@ public class FeedReader.OwncloudNewsInterface : FeedServerInterface {
 		m_revealer.add(frame);
 		//---------------------------------------------------------------------
 
-		var loginLabel = new Gtk.Label(_("Please log in to your Nextcloud News instance and enjoy using FeedReader"));
+		var loginLabel = new Gtk.Label(_("Log in to your Nextcloud News Instance."));
 		loginLabel.get_style_context().add_class("h2");
 		loginLabel.set_justify(Gtk.Justification.CENTER);
 		loginLabel.set_lines(3);

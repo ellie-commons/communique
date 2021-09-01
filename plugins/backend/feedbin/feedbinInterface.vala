@@ -95,7 +95,7 @@ public class FeedReader.FeedbinInterface : FeedServerInterface {
 
 		var logo = new Gtk.Image.from_icon_name("feed-service-feedbin", Gtk.IconSize.MENU);
 
-		var loginLabel = new Gtk.Label(_("Please log in to Feedbin to enjoy using FeedReader"));
+		var loginLabel = new Gtk.Label(_("Log in to Feedbin."));
 		loginLabel.get_style_context().add_class("h2");
 		loginLabel.set_justify(Gtk.Justification.CENTER);
 		loginLabel.set_lines(3);

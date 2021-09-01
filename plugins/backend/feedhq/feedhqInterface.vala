@@ -89,7 +89,7 @@ public class FeedReader.FeedHQInterface : FeedServerInterface {
 
 		var logo = new Gtk.Image.from_icon_name("feed-service-feedhq", Gtk.IconSize.MENU);
 
-		var loginLabel = new Gtk.Label(_("Please log in to FeedHQ and enjoy using FeedReader"));
+		var loginLabel = new Gtk.Label(_("Log in to FeedHQ."));
 		loginLabel.get_style_context().add_class("h2");
 		loginLabel.set_justify(Gtk.Justification.CENTER);
 		loginLabel.set_lines(3);

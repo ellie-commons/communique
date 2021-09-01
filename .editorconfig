@@ -1,19 +1,16 @@
+# EditorConfig <https://EditorConfig.org>
 root = true
 
+# elementary defaults
 [*]
-indent_style = tab
-indent_size = 4
-end_of_line = lf
 charset = utf-8
-trim_trailing_whitespace = true
+end_of_line = lf
+indent_size = tab
+indent_style = space
 insert_final_newline = true
+max_line_length = 80
+tab_width = 4
 
-[*.md]
-trim_trailing_whitespace = false
-
-[*.py]
-indent_style = space
-
-[*.yml]
-indent_style = space
-indent_size = 2
+# Markup files
+[{*.html,*.xml,*.xml.in,*.yml}]
+tab_width = 2

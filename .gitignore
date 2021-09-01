@@ -5,3 +5,5 @@ _build/
 .vscode/
 *.~
 .DS_Store
+build-aux/flatpak/build
+build-aux/flatpak/.flatpak-builder

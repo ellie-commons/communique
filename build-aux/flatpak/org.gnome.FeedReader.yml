@@ -63,8 +63,8 @@ modules:
   - name: gnome-online-accounts
     sources:
     - type: archive
-      url: https://download.gnome.org/sources/gnome-online-accounts/3.30/gnome-online-accounts-3.30.0.tar.xz
-      sha256: 27d9d88942aa02a1f8d003dfe515483d8483f216ba1e297a8ef67a42cf4bcfc3
+      url: https://download-fallback.gnome.org/sources/gnome-online-accounts/3.40/gnome-online-accounts-3.40.0.tar.xz
+      sha256: 585c4f979f6f543b77bfdb4fb01eb18ba25c2aec5b7866c676d929616fb2c3fa
 
   - name: gumbo
     sources:
