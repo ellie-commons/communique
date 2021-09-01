@@ -1,7 +1,7 @@
 [Desktop Entry]
-Name=FeedReader Autostart
+Name=Communique Autostart
 GenericName=RSS Client
-Comment=
+Comment=Read RSS/Atom Feeds
 Categories=Network;Feed;
 Exec=feedreader --headless
 Icon=org.gnome.FeedReader

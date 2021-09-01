@@ -7,7 +7,6 @@ plugins/backend/feedhq/feedhqInterface.vala
 plugins/backend/fresh/freshInterface.vala
 plugins/backend/local/localInterface.vala
 plugins/backend/local/localUtils.vala
-plugins/backend/oldreader/oldreaderInterface.vala
 plugins/backend/owncloud/OwncloudNewsInterface.vala
 plugins/backend/ttrss/ttrssAPI.vala
 plugins/backend/ttrss/ttrssInterface.vala
@@ -15,11 +14,6 @@ plugins/share/Browser/Browser.vala
 plugins/share/Email/EmailForm.vala
 plugins/share/Instapaper/InstapaperSetup.vala
 plugins/share/Pocket/PocketSetup.vala
-plugins/share/Telegram/Telegram.vala
-plugins/share/Telegram/TelegramForm.vala
-plugins/share/Telegram/TelegramSetup.vala
-plugins/share/Twitter/TwitterForm.vala
-plugins/share/Twitter/TwitterSetup.vala
 plugins/share/Wallabag/WallabagSetup.vala
 src/Backend/FeedServer.vala
 src/Constants.vala.in
@@ -33,7 +27,6 @@ src/Widgets/AddPopover.vala
 src/Widgets/ArticleList/ArticleList.vala
 src/Widgets/ArticleList/ArticleListEmptyLabel.vala
 src/Widgets/ArticleView.vala
-src/Widgets/ArticleViewHeader.vala
 src/Widgets/CategorieRow.vala
 src/Widgets/ColumnViewHeader.vala
 src/Widgets/FeedList.vala
@@ -47,7 +40,6 @@ src/Widgets/RemovePopover.vala
 src/Widgets/ResetPage.vala
 src/Widgets/SettingsDialog.vala
 src/Widgets/SharePopover.vala
-src/Widgets/ShortcutsWindow.vala
 src/Widgets/SpringCleanPage.vala
 src/Widgets/TagPopover.vala
 src/Widgets/TagRow.vala
