@@ -11,7 +11,7 @@
 		"url": "https://blog.elementary.io/feed.xml",
 		"icon": "http://68.media.tumblr.com/avatar_edb79deb3524_128.png",
 		"name": "elementary OS Blog",
-		"description": "The latest updates from the makers of the fast and open replacement for Windows and OS X.",
+		"description": "The official elementary OS blog.",
 		"category": "Open Source",
 		"language": "English"
 	},
@@ -64,7 +64,7 @@
 		"language": "English"
 	},
 	{
-		"url": "http://feeds.gawker.com/lifehacker/full",
+		"url": "https://lifehacker.com/rss",
 		"icon": "https://i.kinja-img.com/gawker-media/image/upload/s--N2eqEvT8--/c_fill,fl_progressive,g_center,h_80,q_80,w_80/u0939doeuioaqhspkjyc.png",
 		"name": "Lifehacker",
 		"description": "Lifehacker is a weblog about life hacks and software and covers a wide range of topics including: Microsoft Windows, Mac, Linux programs, iOS and Android, as well as general life tips and tricks.",

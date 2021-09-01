@@ -31,7 +31,6 @@ public class FeedReader.TagRow : Gtk.ListBoxRow {
 	public TagRow (Tag tag)
 	{
 		m_tag = tag;
-		// this.get_style_context().add_class("fr-sidebar-row");
 		m_exits = true;
 		m_name = m_tag.getTitle().replace("&","&amp;");
 		m_catID = CategoryID.TAGS.to_string();
