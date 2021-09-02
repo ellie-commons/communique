@@ -1,13 +1,14 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<!-- Copyright 2021 Your Name <singharajdeep97@gmail.com> -->
-<component type="desktop">
+<!-- Copyright 2021-2022 Rajdeep Singha <singharajdeep97@gmail.com> -->
+<component type="desktop-application">
   <id>org.gnome.FeedReader</id>
-  <metadata_license>CC0</metadata_license>
+  <metadata_license>CC0-1.0</metadata_license>
+  <project_license>GPL-3.0+</project_license>
   <name>Communique</name>
-  <summary>RSS Reader with cross-platform sync</summary>
+  <summary>RSS Reader with cross-platform sync.</summary>
   <description>
     <p>Subscribe to and read RSS/Atom feeds with cross-platform synchronization. Communique features support for a lot of RSS services. And ofcourse, you can use Communique to subscribe to and read RSS feeds locally, without logging in to anything. Communique also allows you to save your articles to Instapaper, Pocket or Wallabag, or send them via email straight from the app.</p>
-    <p>Supported RSS Services:</p>
+    <p>Supported services:</p>
     <ul>
       <li>Feedbin</li>
       <li>Nextcloud News</li>
@@ -35,15 +36,16 @@
     </ul>
   </description>
   <custom>
-    <value key="x-appcenter-color-primary">#fafafa</value>
-    <value key="x-appcenter-color-primary-text">#1a1a1a</value>
+    <value key="x-appcenter-color-primary">#FAFAFA</value>
+    <value key="x-appcenter-color-primary-text">#1A1A1A</value>
     <value key="x-appcenter-suggested-price">0</value>
   </custom>
   <developer_name>Rajdeep Singha</developer_name>
-  <url type="homepage">https://github.com/suzie97/communique</url>
-  <url type="bugtracker">https://github.com/suzie97/communique/issues</url>
-  <url type="help">https://github.com/suzie97/communique/issues</url>
+  <url type="homepage">https://github.com/Suzie97/Communique</url>
+  <url type="bugtracker">https://github.com/Suzie97/Communique/issues</url>
+  <url type="help">https://github.com/Suzie97/Communique/issues</url>
   <update_contact>singharajdeep97@gmail.com</update_contact>
+  <launchable type="desktop-id">org.gnome.FeedReader.desktop</launchable>
   <screenshots>
     <screenshot type="default">
       <image>https://raw.githubusercontent.com/suzie97/communique/master/data/communique-light-screenshot.png</image>
@@ -84,8 +86,8 @@
   <releases>
     <release version="1.0.0" date="2021-09-02">
       <description>
-        <p>Version 1 released. Let's start reading!!!</p>
+        <p>Version 1 Released. Let's start reading.</p>
       </description>
     </release>
-  <releases>
+  </releases>
 </component>
