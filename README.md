@@ -5,8 +5,8 @@
 </p>
 <h1 align="center">Communique</h1>
 
-![Screenshot](data/communique-light-screenshot.jpg)
-![Screenshot](data/communique-dark-screenshot.jpg)
+![Screenshot](data/communique-light-screenshot.png)
+![Screenshot](data/communique-dark-screenshot.png)
 
 ## Your personal journalist
 Subscribe to and read RSS/Atom feeds with cross-platform synchronization. Communique is a feed reader with support for a lot of RSS services, like Feedbin, Tiny Tiny RSS, Nextcloud News etc. And ofcourse, you can use Communique to subscribe to and read RSS feeds locally, without logging in to anything.
