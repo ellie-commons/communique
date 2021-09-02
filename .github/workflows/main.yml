@@ -26,7 +26,7 @@ jobs:
         # This is the name of the Bundle file we're building and can be anything you like
         bundle: Communique.flatpak
         # This uses your app's RDNN ID
-        manifest-path: org.gnome.FeedReader.yml
+        manifest-path: build-aux/flatpak/org.gnome.FeedReader.yml
 
         # You can automatically run any of the tests you've created as part of this workflow
         run-tests: true
