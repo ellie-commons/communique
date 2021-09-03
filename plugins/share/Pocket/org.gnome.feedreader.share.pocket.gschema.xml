@@ -1,5 +1,5 @@
 <schemalist>
-	<schema id="org.gnome.feedreader.share.pocket" path="/org/gnome/feedreader/share/pocket/" gettext-domain="feedreader">
+	<schema id="com.github.suzie97.communique.share.pocket" path="/com/github/suzie97/communique/share/pocket/" gettext-domain="communique">
 
 	<key name="account-ids" type="as">
 			<default>[]</default>

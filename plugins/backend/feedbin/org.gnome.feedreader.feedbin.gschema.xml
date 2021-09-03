@@ -1,5 +1,5 @@
 <schemalist>
-	<schema id="org.gnome.feedreader.feedbin" path="/org/gnome/feedreader/feedbin/" gettext-domain="feedreader">
+	<schema id="com.github.suzie97.communique.feedbin" path="/com/github/suzie97/communique/feedbin/" gettext-domain="communique">
 
 		<key name="username" type="s">
 			<default>""</default>

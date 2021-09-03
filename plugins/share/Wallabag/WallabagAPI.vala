@@ -86,7 +86,7 @@ public class FeedReader.WallabagAPI : ShareAccountInterface, Peas.ExtensionBase 
 		int64 expires = root_object.get_int_member("expires_in");
 		//string refreshToken = root_object.get_string_member("refresh_token");
 
-		var settings = new GLib.Settings.with_path("org.gnome.feedreader.share.account", "/org/gnome/feedreader/share/wallabag/%s/".printf(id));
+		var settings = new GLib.Settings.with_path("com.github.suzie97.communique.share.account", "/com/github/suzie97/communique/share/wallabag/%s/".printf(id));
 		settings.set_string("oauth-access-token", accessToken);
 		settings.set_string("username", username);
 		settings.set_int("access-token-expires", (int)(now + expires));
@@ -108,7 +108,7 @@ public class FeedReader.WallabagAPI : ShareAccountInterface, Peas.ExtensionBase 
 		Settings.share("wallabag").set_strv("account-ids", array);
 
 
-		var pwSchema = new Secret.Schema ("org.gnome.feedreader.wallabag.password", Secret.SchemaFlags.NONE,
+		var pwSchema = new Secret.Schema ("com.github.suzie97.communique.wallabag.password", Secret.SchemaFlags.NONE,
 			"username", Secret.SchemaAttributeType.STRING,
 		"id", Secret.SchemaAttributeType.STRING);
 
@@ -130,7 +130,7 @@ public class FeedReader.WallabagAPI : ShareAccountInterface, Peas.ExtensionBase 
 
 	public bool addBookmark(string id, string url, bool system)
 	{
-		var settings = new GLib.Settings.with_path("org.gnome.feedreader.share.account", "/org/gnome/feedreader/share/wallabag/%s/".printf(id));
+		var settings = new GLib.Settings.with_path("com.github.suzie97.communique.share.account", "/com/github/suzie97/communique/share/wallabag/%s/".printf(id));
 
 		Logger.debug("WallabagAPI - addBookmark: " + url);
 		if(!accessTokenValid(id))
@@ -173,7 +173,7 @@ public class FeedReader.WallabagAPI : ShareAccountInterface, Peas.ExtensionBase 
 		Logger.debug("WallabagAPI - logout");
 		deletePassword(id);
 
-		var settings = new GLib.Settings.with_path("org.gnome.feedreader.share.account", "/org/gnome/feedreader/share/wallabag/%s/".printf(id));
+		var settings = new GLib.Settings.with_path("com.github.suzie97.communique.share.account", "/com/github/suzie97/communique/share/wallabag/%s/".printf(id));
 		var keys = settings.list_keys();
 		foreach(string key in keys)
 		{
@@ -198,7 +198,7 @@ public class FeedReader.WallabagAPI : ShareAccountInterface, Peas.ExtensionBase 
 
 	private bool accessTokenValid(string id)
 	{
-		var settings = new GLib.Settings.with_path("org.gnome.feedreader.share.account", "/org/gnome/feedreader/share/wallabag/%s/".printf(id));
+		var settings = new GLib.Settings.with_path("com.github.suzie97.communique.share.account", "/com/github/suzie97/communique/share/wallabag/%s/".printf(id));
 		var now = new DateTime.now_local();
 		int expires = settings.get_int("access-token-expires");
 
@@ -218,13 +218,13 @@ public class FeedReader.WallabagAPI : ShareAccountInterface, Peas.ExtensionBase 
 
 	public string getUsername(string id)
 	{
-		var settings = new GLib.Settings.with_path("org.gnome.feedreader.share.account", "/org/gnome/feedreader/share/wallabag/%s/".printf(id));
+		var settings = new GLib.Settings.with_path("com.github.suzie97.communique.share.account", "/com/github/suzie97/communique/share/wallabag/%s/".printf(id));
 		return settings.get_string("username");
 	}
 
 	public string getPasswd(string id)
 	{
-		var pwSchema = new Secret.Schema ("org.gnome.feedreader.wallabag.password", Secret.SchemaFlags.NONE,
+		var pwSchema = new Secret.Schema ("com.github.suzie97.communique.wallabag.password", Secret.SchemaFlags.NONE,
 			"username", Secret.SchemaAttributeType.STRING,
 		"id", Secret.SchemaAttributeType.STRING);
 
@@ -254,7 +254,7 @@ public class FeedReader.WallabagAPI : ShareAccountInterface, Peas.ExtensionBase 
 	private void deletePassword(string id)
 	{
 		bool removed = false;
-		var pwSchema = new Secret.Schema ("org.gnome.feedreader.wallabag.password", Secret.SchemaFlags.NONE,
+		var pwSchema = new Secret.Schema ("com.github.suzie97.communique.wallabag.password", Secret.SchemaFlags.NONE,
 			"username", Secret.SchemaAttributeType.STRING,
 		"id", Secret.SchemaAttributeType.STRING);
 

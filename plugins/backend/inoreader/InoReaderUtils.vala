@@ -29,11 +29,11 @@ public class FeedReader.InoReaderUtils : GLib.Object {
 	{
 		if(settings_backend != null)
 		{
-			m_settings = new GLib.Settings.with_backend("org.gnome.feedreader.inoreader", settings_backend);
+			m_settings = new GLib.Settings.with_backend("com.github.suzie97.communique.inoreader", settings_backend);
 		}
 		else
 		{
-			m_settings = new GLib.Settings("org.gnome.feedreader.inoreader");
+			m_settings = new GLib.Settings("com.github.suzie97.communique.inoreader");
 		}
 	}
 

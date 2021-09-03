@@ -1,4 +1,4 @@
-project('feedreader', ['vala', 'c'],
+project('com.github.suzie97.communique', ['vala', 'c'],
   version: '2.11.0',
   meson_version: '>= 0.44.1',
   license: 'GPL-3.0',
@@ -242,7 +242,7 @@ vala_args = [
   '--enable-deprecated'
 ]
 
-feedreader_deps = [
+communique_deps = [
     glib,
     gtk,
     json_glib,
@@ -268,7 +268,7 @@ feedreader_deps = [
 
 if libunity.found()
 	message('libUnity support ON')
-	feedreader_deps  += [ libunity ]
+	communique_deps  += [ libunity ]
 	vala_args += ['-D', 'LIBUNITY']
 else
 	message('libUnity support OFF')
@@ -282,7 +282,7 @@ feedreader_lib = shared_library(
   vala_args: vala_args,
   vala_header: 'FeedReader.h',
   vala_vapi: 'FeedReader.vapi',
-  dependencies: feedreader_deps,
+  dependencies: communique_deps,
   install: true
 )
 
@@ -302,7 +302,7 @@ executable(
   link_with: [
     feedreader_lib
   ],
-  dependencies: feedreader_deps,
+  dependencies: communique_deps,
   install: true
 )
 
@@ -324,7 +324,7 @@ foreach test_name : tests
     c_args: c_args,
     # The tests intentionally don't catch exceptions
     vala_args: vala_args + ['--disable-warnings'],
-    dependencies: feedreader_deps,
+    dependencies: communique_deps,
     link_with: [
       feedreader_lib
     ]

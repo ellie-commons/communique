@@ -60,7 +60,7 @@ plugin_lib = shared_library(
 
 install_data(
   [
-    'org.gnome.feedreader.feedbin.gschema.xml'
+    'com.github.suzie97.communique.feedbin.gschema.xml'
   ],
   install_dir: join_paths(SHARE_DIR, 'glib-2.0/schemas')
 )

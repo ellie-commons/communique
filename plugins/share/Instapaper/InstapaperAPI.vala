@@ -122,7 +122,7 @@ public class FeedReader.InstaAPI : ShareAccountInterface, Peas.ExtensionBase {
 		//-------------------------------------------------------------------------------------------------------------
 
 
-		var settings = new GLib.Settings.with_path("org.gnome.feedreader.share.account", "/org/gnome/feedreader/share/instapaper/%s/".printf(id));
+		var settings = new GLib.Settings.with_path("com.github.suzie97.communique.share.account", "/com/github/suzie97/communique/share/instapaper/%s/".printf(id));
 		settings.set_string("oauth-access-token", accessToken);
 		settings.set_string("oauth-access-token-secret", accessToken_secret);
 		settings.set_string("username", username);
@@ -132,7 +132,7 @@ public class FeedReader.InstaAPI : ShareAccountInterface, Peas.ExtensionBase {
 		array += id;
 		Settings.share("instapaper").set_strv("account-ids", array);
 
-		var pwSchema = new Secret.Schema ("org.gnome.feedreader.instapaper.password", Secret.SchemaFlags.NONE,
+		var pwSchema = new Secret.Schema ("com.github.suzie97.communique.instapaper.password", Secret.SchemaFlags.NONE,
 		"userID", Secret.SchemaAttributeType.STRING);
 
 		var attributes = new GLib.HashTable<string,string>(str_hash, str_equal);
@@ -151,9 +151,9 @@ public class FeedReader.InstaAPI : ShareAccountInterface, Peas.ExtensionBase {
 
 	public bool addBookmark(string id, string url, bool system)
 	{
-		var settings = new GLib.Settings.with_path("org.gnome.feedreader.share.account", "/org/gnome/feedreader/share/instapaper/%s/".printf(id));
+		var settings = new GLib.Settings.with_path("com.github.suzie97.communique.share.account", "/com/github/suzie97/communique/share/instapaper/%s/".printf(id));
 
-		var pwSchema = new Secret.Schema ("org.gnome.feedreader.instapaper.password", Secret.SchemaFlags.NONE, "userID", Secret.SchemaAttributeType.STRING);
+		var pwSchema = new Secret.Schema ("com.github.suzie97.communique.instapaper.password", Secret.SchemaFlags.NONE, "userID", Secret.SchemaAttributeType.STRING);
 		var attributes = new GLib.HashTable<string,string>(str_hash, str_equal);
 		attributes["userID"] = settings.get_string("user-id");
 
@@ -200,8 +200,8 @@ public class FeedReader.InstaAPI : ShareAccountInterface, Peas.ExtensionBase {
 	public bool logout(string id)
 	{
 		Logger.debug(@"InstaAPI.logout($id)");
-		var settings = new GLib.Settings.with_path("org.gnome.feedreader.share.account", @"/org/gnome/feedreader/share/instapaper/$id/");
-		var pwSchema = new Secret.Schema("org.gnome.feedreader.instapaper.password",
+		var settings = new GLib.Settings.with_path("com.github.suzie97.communique.share.account", @"/com/github/suzie97/communique/share/instapaper/$id/");
+		var pwSchema = new Secret.Schema("com.github.suzie97.communique.instapaper.password",
 		Secret.SchemaFlags.NONE, "userID", Secret.SchemaAttributeType.STRING);
 
 		var attributes = new GLib.HashTable<string,string>(str_hash, str_equal);
@@ -252,7 +252,7 @@ public class FeedReader.InstaAPI : ShareAccountInterface, Peas.ExtensionBase {
 
 	public string getUsername(string id)
 	{
-		var settings = new GLib.Settings.with_path("org.gnome.feedreader.share.account", "/org/gnome/feedreader/share/instapaper/%s/".printf(id));
+		var settings = new GLib.Settings.with_path("com.github.suzie97.communique.share.account", "/com/github/suzie97/communique/share/instapaper/%s/".printf(id));
 		return settings.get_string("username");
 	}
 

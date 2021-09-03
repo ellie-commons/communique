@@ -32,14 +32,14 @@ public class FeedReader.ttrssUtils : GLib.Object {
 	{
 		if(settings_backend != null)
 		{
-			m_settings = new GLib.Settings.with_backend("org.gnome.feedreader.ttrss", settings_backend);
+			m_settings = new GLib.Settings.with_backend("com.github.suzie97.communique.ttrss", settings_backend);
 		}
 		else
 		{
-			m_settings = new GLib.Settings("org.gnome.feedreader.ttrss");
+			m_settings = new GLib.Settings("com.github.suzie97.communique.ttrss");
 		}
 
-		var pwSchema = new Secret.Schema ("org.gnome.feedreader.password", Secret.SchemaFlags.NONE,
+		var pwSchema = new Secret.Schema ("com.github.suzie97.communique.password", Secret.SchemaFlags.NONE,
 			"URL", Secret.SchemaAttributeType.STRING,
 		"Username", Secret.SchemaAttributeType.STRING);
 		m_password = new Password(secrets, pwSchema, "FeedReader: ttrss login", () => {
@@ -49,7 +49,7 @@ public class FeedReader.ttrssUtils : GLib.Object {
 			return attributes;
 		});
 
-		var htAccessSchema = new Secret.Schema ("org.gnome.feedreader.password", Secret.SchemaFlags.NONE,
+		var htAccessSchema = new Secret.Schema ("com.github.suzie97.communique.password", Secret.SchemaFlags.NONE,
 			"URL", Secret.SchemaAttributeType.STRING,
 			"Username", Secret.SchemaAttributeType.STRING,
 		"htaccess", Secret.SchemaAttributeType.BOOLEAN);

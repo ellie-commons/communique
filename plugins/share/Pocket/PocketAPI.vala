@@ -114,7 +114,7 @@ public class FeedReader.PocketAPI : ShareAccountInterface, Peas.ExtensionBase {
 
 		string accessToken = response.substring(tokenStart, tokenEnd-tokenStart);
 		string user = GLib.Uri.unescape_string(response.substring(userStart));
-		var settings = new GLib.Settings.with_path("org.gnome.feedreader.share.account", "/org/gnome/feedreader/share/pocket/%s/".printf(id));
+		var settings = new GLib.Settings.with_path("com.github.suzie97.communique.share.account", "/com/github/suzie97/communique/share/pocket/%s/".printf(id));
 		settings.set_string("oauth-access-token", accessToken);
 		settings.set_string("username", user);
 
@@ -162,7 +162,7 @@ public class FeedReader.PocketAPI : ShareAccountInterface, Peas.ExtensionBase {
 		}
 		else
 		{
-			var settings = new GLib.Settings.with_path("org.gnome.feedreader.share.account", "/org/gnome/feedreader/share/pocket/%s/".printf(id));
+			var settings = new GLib.Settings.with_path("com.github.suzie97.communique.share.account", "/com/github/suzie97/communique/share/pocket/%s/".printf(id));
 			oauthToken = settings.get_string("oauth-access-token");
 		}
 
@@ -197,7 +197,7 @@ public class FeedReader.PocketAPI : ShareAccountInterface, Peas.ExtensionBase {
 	public bool logout(string id)
 	{
 		Logger.debug(@"PocketAPI: logout($id)");
-		var settings = new GLib.Settings.with_path("org.gnome.feedreader.share.account", "/org/gnome/feedreader/share/pocket/%s/".printf(id));
+		var settings = new GLib.Settings.with_path("com.github.suzie97.communique.share.account", "/com/github/suzie97/communique/share/pocket/%s/".printf(id));
 		var keys = settings.list_keys();
 		foreach(string key in keys)
 		{
@@ -234,7 +234,7 @@ public class FeedReader.PocketAPI : ShareAccountInterface, Peas.ExtensionBase {
 
 	public string getUsername(string id)
 	{
-		var settings = new GLib.Settings.with_path("org.gnome.feedreader.share.account", "/org/gnome/feedreader/share/pocket/%s/".printf(id));
+		var settings = new GLib.Settings.with_path("com.github.suzie97.communique.share.account", "/com/github/suzie97/communique/share/pocket/%s/".printf(id));
 		return settings.get_string("username");
 	}
 

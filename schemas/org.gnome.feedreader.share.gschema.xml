@@ -1,5 +1,5 @@
 <schemalist>
-	<schema id="org.gnome.feedreader.share.account" gettext-domain="feedreader">
+	<schema id="com.github.suzie97.communique.share.account" gettext-domain="communique">
 
 		<key name="oauth-access-token-secret" type="s">
 			<default>""</default>

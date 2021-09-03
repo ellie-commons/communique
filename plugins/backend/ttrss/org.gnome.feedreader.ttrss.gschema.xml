@@ -1,5 +1,5 @@
 <schemalist>
-	<schema id="org.gnome.feedreader.ttrss" path="/org/gnome/feedreader/ttrss/" gettext-domain="feedreader">
+	<schema id="com.github.suzie97.communique.ttrss" path="/com/github/suzie97/communique/ttrss/" gettext-domain="communique">
 		<key name="url" type="s">
 			<default>""</default>
 			<summary>Link to your tt-rss instance</summary>

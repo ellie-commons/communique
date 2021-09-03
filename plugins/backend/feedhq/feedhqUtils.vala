@@ -26,14 +26,14 @@ public class FeedReader.FeedHQUtils : GLib.Object {
 	{
 		if(settings_backend != null)
 		{
-			m_settings = new GLib.Settings.with_backend("org.gnome.feedreader.feedhq", settings_backend);
+			m_settings = new GLib.Settings.with_backend("com.github.suzie97.communique.feedhq", settings_backend);
 		}
 		else
 		{
-			m_settings = new GLib.Settings("org.gnome.feedreader.feedhq");
+			m_settings = new GLib.Settings("com.github.suzie97.communique.feedhq");
 		}
 
-		var pwSchema = new Secret.Schema ("org.gnome.feedreader.feedhq", Secret.SchemaFlags.NONE,
+		var pwSchema = new Secret.Schema ("com.github.suzie97.communique.feedhq", Secret.SchemaFlags.NONE,
 			"type", Secret.SchemaAttributeType.STRING,
 		"Username", Secret.SchemaAttributeType.STRING);
 		m_password = new Password(secrets, pwSchema, "Feedserver login", () => {

@@ -455,7 +455,7 @@ public void edidTag(string articleIDs, string tagID, bool add = true)
 
 public void markAsRead(string? streamID = null)
 {
-	var settingsState = new GLib.Settings("org.gnome.feedreader.saved-state");
+	var settingsState = new GLib.Settings("com.github.suzie97.communique.saved-state");
 	string message_string = "s=%s&ts=%i".printf(streamID, settingsState.get_int("last-sync"));
 	Logger.debug(message_string);
 	m_connection.send_request("mark-all-as-read", message_string);

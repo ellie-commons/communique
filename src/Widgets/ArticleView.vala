@@ -13,7 +13,7 @@
 //	You should have received a copy of the GNU General Public License
 //	along with FeedReader.  If not, see <http://www.gnu.org/licenses/>.
 
-[DBus (name = "org.gnome.FeedReader.ArticleView")]
+[DBus (name = "com.github.suzie97.communique.ArticleView")]
 interface FeedReaderWebExtension : Object
 {
 	public abstract void recalculate() throws Error, IOError;
@@ -147,7 +147,7 @@ public class FeedReader.ArticleView : Gtk.Overlay {
 			setBackgroundColor();
 		});
 
-		Bus.watch_name(BusType.SESSION, "org.gnome.FeedReader.ArticleView", GLib.BusNameWatcherFlags.NONE,
+		Bus.watch_name(BusType.SESSION, "com.github.suzie97.communique.ArticleView", GLib.BusNameWatcherFlags.NONE,
 		(connection, name, owner) => { on_extension_appeared(connection, name, owner); }, null);
 	}
 
@@ -544,7 +544,7 @@ public class FeedReader.ArticleView : Gtk.Overlay {
 		try
 		{
 			m_connected = true;
-			m_messenger = connection.get_proxy_sync("org.gnome.FeedReader.ArticleView", "/org/gnome/FeedReader/ArticleView", GLib.DBusProxyFlags.DO_NOT_AUTO_START, null);
+			m_messenger = connection.get_proxy_sync("com.github.suzie97.communique.ArticleView", "/org/gnome/FeedReader/ArticleView", GLib.DBusProxyFlags.DO_NOT_AUTO_START, null);
 			m_messenger.onClick.connect((path, width, height, url) => {
 				var window = MainWindow.get_default();
 				new imagePopup(path, url, window, height, width);

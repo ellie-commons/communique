@@ -36,7 +36,7 @@ shared_library(
 
 install_data(
   [
-    'org.gnome.feedreader.feedhq.gschema.xml'
+    'com.github.suzie97.communique.feedhq.gschema.xml'
   ],
   install_dir: join_paths(SHARE_DIR, 'glib-2.0/schemas')
 )

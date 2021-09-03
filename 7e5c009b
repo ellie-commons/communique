@@ -1,0 +1,1117 @@
+[33m4e583004[m[33m ([m[1;36mHEAD -> [m[1;32mmaster[m[33m, [m[1;31morigin/master[m[33m, [m[1;31morigin/HEAD[m[33m)[m Update main.yml
+[33m7e5c009b[m[33m ([m[1;33mtag: v1.0.0[m[33m)[m Update appdata for version 1 release
+[33mbb060346[m Create main.yml
+[33m9448a994[m Update translations architecture
+[33mc99fdb4c[m Fix Lifehacker link
+[33mbea0c394[m Merge branch 'master' of https://github.com/Suzie97/Communique
+[33md7016545[m Update Screenshots
+[33mf9475f97[m Update pocket.gresource.xml
+[33m9e041785[m Rename feed-share-pocket.png to feed-share-pocket.svg
+[33mb21cb9d0[m Update Themes
+[33m25c83735[m Merge branch 'master' of https://github.com/Suzie97/Communique
+[33m43f772f5[m Small Fixes
+[33m340561c0[m Update README.md
+[33m5667bdb1[m Update README.md
+[33m80789096[m Merge branch 'master' of https://github.com/Suzie97/Communique
+[33mfe6a0faa[m Add App Icons
+[33m84607816[m Add ethical design badge
+[33m696f005b[m Add screenshots to readme
+[33mba8a3d7a[m Add screenshots
+[33mceab4901[m Better desktop integration
+[33ma93ecbfe[m Update DecSync plugin
+[33m2d12a8b4[m Finalize UI
+[33m666bd859[m Code Cleanup and UI refinements
+[33m67f45163[m Move modebutton to columnview
+[33md299fb8d[m Use dialog for reset page
+[33m122412fa[m Wallbag refinements, svg for pocket
+[33mb5138897[m More UI improvements
+[33m9528d86c[m Dark Style Support for ArticleView
+[33m4cf0b6e6[m Dark Style Support
+[33mc3e16e58[m UI refinements
+[33m86b64bad[m Merge branch 'master' of https://github.com/Suzie97/FeedReader
+[33m0be7be7c[m UI changes
+[33m9db1b5d4[m Update README.md
+[33mb635c40f[m Start mordernising the UI
+[33m5910f1e5[m[33m ([m[1;33mtag: v2.11.0[m[33m)[m v2.11 release
+[33m1335aaf1[m Merge pull request #991 from Antoine-Derouin/patch-1
+[33m563ad57c[m fix midnight theme
+[33mf26d61b5[m Merge pull request #990 from Antoine-Derouin/theme/gruvbox
+[33mf7e66d22[m Merge pull request #984 from xcffl/xcffl-patch-1
+[33m7ed86835[m add theme Gruvbox
+[33m4bde7137[m Revert e1dda2a
+[33ma70383c6[m Merge pull request #983 from martijnvanbeers/feature/user_data_grabber
+[33mb7f8a35a[m Check $XDG_USER_DATA for site grabber configs
+[33m4aed5c81[m Merge pull request #982 from pwithnall/turn-off-very-verbose-logging
+[33ma614b081[m Logger: Don’t set a custom log writer function
+[33m140267fc[m Merge pull request #978 from PopeRigby/master
+[33m9ce3d2e9[m Fix infinite loading icon after opening article in browser
+[33mecf02e8d[m Merge pull request #977 from nielsk/master
+[33m7b8b20be[m Merge pull request #1 from nielsk/nielsk-api_feedreader-patch-1
+[33me1dda2a2[m get_pdo -> get_dbh
+[33meb0d9dab[m Merge pull request #962 from jameysharp/async-addfeed
+[33mcf1be176[m Merge pull request #957 from tytan652/fix-freshrss
+[33mb6ae8f05[m Update README.md
+[33mdc6ea67c[m Merge pull request #964 from henkjan/patch-1
+[33m8c0c6255[m Add libgumbo-dev to ubuntu dependencies
+[33m4b386a01[m Don't add feeds on the UI thread
+[33m376ed73f[m hotfix: use getURL in getApiURL
+[33m6665ab32[m fix: freshrss with yunohost-like solutions
+[33mda6f6d3a[m Merge pull request #948 from 39aldo39/update-libdecsync
+[33mb0e8f161[m Update decsync plugin for updated libdecsync
+[33md2fe4a0b[m Merge commit '984a99f88f1bf94580e28f2aa5478496b90b2d73'
+[33m984a99f8[m Squashed 'plugins/backend/decsync/libdecsync/' changes from 30681106..8e566326
+[33m9c7c17a4[m Use original formatting in libdecsync
+[33maaa2fc0a[m Merge pull request #941 from trwnh/patch-2
+[33m7d614f86[m Update SettingsDialog.vala
+[33m4a12b527[m Merge pull request #938 from leela52452/master
+[33mde96a7f8[m typo family, added
+[33m146e3429[m Merge pull request #937 from jtojnar/fix-desktop
+[33m6453052d[m Drop Keywords from desktop files
+[33mb05a107c[m Merge pull request #925 from aviskase/no-goa-pocket
+[33m8895fd3d[m Merge pull request #934 from yann-soubeyrand/patch-1
+[33m7eca60b2[m tt-rss: fix feeds order
+[33mb817369f[m Do not try to use deprecated GOA Pocket support
+[33m140462ec[m Appdata: fix bug tracker URL
+[33mfb074d3e[m[33m ([m[1;33mtag: v2.10.0[m[33m)[m v2.10 release
+[33mb7230c4e[m Display feed and article titles as markup
+[33mc782cedf[m Re-escape HTML data after Htmlclean
+[33m72848b0b[m Add tests for htmlclean
+[33mf4609b7d[m Save TT-RSS HTTP auth info
+[33m1628ec2e[m[33m ([m[1;33mtag: v2.9.2[m[33m)[m v2.9.2 release
+[33me846463c[m Add null check around since conversion for NextCloud
+[33mb5e01659[m[33m ([m[1;33mtag: v2.9.1[m[33m)[m v2.9.1 release
+[33mefe36f89[m Fix delete old articles logic
+[33m9ea9b37d[m Use DB last modified time for last sync by default
+[33m297a7d3a[m Trigger a re-sync when changing the drop-articles-after setting
+[33ma7398707[m Don't close the current article when switching tabs, searching, or opening a new feed
+[33mea217eb8[m Add an explicit button to close the current article
+[33md607435f[m Centralize logic for whether ArticleViewHeader is fullscreen or not
+[33m80f165d2[m[33m ([m[1;33mtag: v2.9.0[m[33m)[m v2.9.0 release
+[33m500fa52f[m Don't assume Feedly values are non-null
+[33mef4a9c61[m Deduplicate feeds by feed URL, not link element.
+[33m72f58fd4[m Minor Feedbin cleanups
+[33m4475c8e7[m Use "oldest article first" sorting switch everywhere
+[33m1f8431bc[m Set FeedHQ license to FREE_SOFTWARE
+[33mc2849ca8[m Add an error message when trying to add a feed that already exists
+[33m6905f466[m Remove indented empty lines
+[33mc177d26d[m Don't indent empty lines in fix-indent.py
+[33m5ed18131[m Keep track of currently selected article
+[33m15464a40[m Assume XML docs are UTF-8 in libnxml
+[33m898bdfd2[m Cleanup Vala indentation
+[33md919c675[m Add script to cleanup Vala indentation
+[33m33e9ebee[m Add braces around all if/else/while/etc statements
+[33m7291e166[m Add backups if the configured font doesn't work
+[33m27157380[m Change the default font to use the system "document font"
+[33m3e696cb7[m Fix Fedora Command + Syntax Coloration
+[33mb3dbb5e0[m v2.8.2 release
+[33m9e1e7244[m Sort articles by date by default
+[33m4da89fea[m Make OPMLparser only concerned with parsing feeds
+[33m70b43b7e[m Add sensible defaults in FeedServerInterface
+[33m51f0fecb[m Add a default implementation for addFeeds()
+[33m42a73398[m Make FeedServerInterface an abstract class
+[33m193ea129[m Use UntypedJson.Object.get_string_member in a few more places
+[33m8ee01161[m Merge pull request #859 from jangernert/primary-menu
+[33ma78bba4f[m primary menu: follow gnome design team guidlines
+[33m0b5e02dc[m Improve TT-RSS plugin instructions
+[33mfceb871b[m Merge pull request #858 from jangernert/improvements
+[33m59258da5[m i18n: update pot/po files
+[33m4307834b[m i18n: fix translations issues
+[33m2ad92ae4[m meson: fix the build
+[33mf73ac9a1[m meson: improve desktop and appdata files validation
+[33m7aa4f985[m appdata: update to the latest specs
+[33m5916193a[m files structure: move build files to build-aux
+[33m0f082472[m Meson: clean constants.vala.in generation
+[33m7c395a73[m[33m ([m[1;33mtag: v2.8.1[m[33m)[m v2.8.1 release
+[33m5b19cc71[m Set RSS links correctly in Bazqux, FeedHQ, InoReader and TT-RSS
+[33ma4f53e64[m[33m ([m[1;33mtag: v2.8.0[m[33m)[m v2.8.0 release
+[33m56092a03[m Redact TT-RSS passwords in logs again
+[33m7fcb774f[m Fix TT-RSS comma-separated string list int arrays
+[33ma52474a7[m Add UntypedJson helper for TT-RSS
+[33m65a25097[m Handle integer JSON members in TT-RSS
+[33mbdeab5c0[m Use PDO prepared statements in TT-RSS plugin
+[33m17e54649[m Auto-fill missing schema in TT-RSS URL
+[33m0c64f268[m Simplify TT-RSS error logging
+[33m5d6566b2[m Stronger typing in ttrssAPI
+[33m4caba259[m Make ttrssAPI.updateArticleUnread take a string list
+[33m40985011[m Improve ttrsAPI status code handling
+[33m70707972[m Improve arguments in ttrssAPI.getArticles
+[33m5174f60c[m Remove unused ttrssAPI members
+[33maa33e3b6[m Fix #853: use dc:creator tag for author, author tag for author email
+[33m6e68849f[m Improve error messages when adding a feed fails
+[33m88cf9b92[m Add a Makefile
+[33mee2cea1f[m Assume feed URL's with no scheme should start with http://
+[33m053d3a90[m Don't print passwords in the TT-RSS plugin
+[33m638e86d2[m Merge branch 'origin/master' into Weblate.
+[33m7ed32f64[m Translated using Weblate (Turkish)
+[33mf2d9233d[m[33m ([m[1;33mtag: v2.7.1[m[33m)[m v2.7.1 release
+[33m39d25223[m Work around db.read_tag() returning null
+[33m731e1bd6[m Fix article tagging
+[33m354aa67f[m Remove one more unused m_db
+[33mc028ceef[m[33m ([m[1;33mtag: v2.7.0[m[33m)[m 2.7.0 release
+[33m9194a3b7[m Re-use databases in the most obvious (single function) cases
+[33m89ddf05a[m Make the local feed initial setup async again
+[33m7164131c[m Don't re-use database connections at all
+[33m3fa9452a[m Remove unsafe threading
+[33mf4ce7093[m meson: fix finding libcurl
+[33m49f05272[m[33m ([m[1;33mtag: v2.6.2[m[33m)[m Prepare v2.6.2 release
+[33m29b20876[m Translated using Weblate (Belarusian)
+[33m67310d0b[m Merge branch 'origin/master' into Weblate.
+[33md2977b86[m Translated using Weblate (French)
+[33m6ce0c375[m Fix crashes caused by ArticleList.m_loadThread
+[33meebdc6f8[m Run Vala code though Uncrustify
+[33me7776503[m Fix DataBaseWriteAccess.resetDB (#821)
+[33m59a4c304[m Merge pull request #820 from 39aldo39/fix-decsync-dir-access
+[33m20de3f6c[m Merge pull request #822 from City-busz/patch-3
+[33m298b54c5[m Don't use legacy path for AppStream metainfo file
+[33mff2aad82[m Add access to the default DecSync directory (flatpak)
+[33m939ea589[m Make 0 an allowed sync setting
+[33m315c92fd[m Merge branch 'origin/master' into Weblate.
+[33md835f7a0[m Translated using Weblate (Finnish)
+[33mebc5714f[m Squashed 'plugins/backend/decsync/libdecsync/' content from commit 30681106
+[33m3cc7df18[m[33m ([m[1;33mtag: v2.6.1[m[33m)[m Merge commit 'ebc5714fff05b4904d8a9e2aea179a242c83ccdc' as 'plugins/backend/decsync/libdecsync'
+[33m50e50e67[m Merge commit 'd573b791800f7d5eadcbbacccdff1a64f39da6a3' as 'data/GrabberConfig'
+[33md573b791[m Squashed 'data/GrabberConfig/' content from commit 9c110392
+[33m1fd2464d[m Add script to pull subtrees
+[33mf0c8586b[m Remove submodules
+[33m2822a88a[m[33m ([m[1;33mtag: v2.6.0[m[33m)[m 2.6.0 release
+[33m89ee6e00[m Set default URL in local and decsync plugin to null
+[33mfd8c55e5[m Small improvements in local/decsync backend
+[33m35e61e42[m Deduplicate shared libraries between local and decsync backends
+[33m8102acd8[m Small improvements
+[33md60546d2[m Use db.read_category instead of removed db.category_exists
+[33m420fdcda[m Add DecSync plugin
+[33m4eb29727[m Add alwaysSetReadByID option to plugins
+[33m5ce8d7e0[m Checkout submodules in CircleCI
+[33m1ee1b6b6[m[33m ([m[1;33mtag: v2.5.1[m[33m)[m Setup v2.5.1 release
+[33mea64269e[m Set Feedbin to BackendFlags.FREE_SOFTWARE
+[33m34cb6838[m Git ignore .DS_Store
+[33md3487e8b[m Merge pull request #801 from Benguin/copy-article-url
+[33md02a8059[m Merge pull request #786 from 39aldo39/fix-remove-category
+[33mec151340[m Cleanup commented code
+[33m789ca2e9[m Allow copying article url from ArticleRow context menu.
+[33m568e4929[m Remove unused FuncUtils
+[33m9686fb47[m Switch to a slightly more efficent version of ListUtils.single
+[33mb2c2e7aa[m Deduplicate test building in meson.build
+[33m896eccf8[m Unlock the keyring whenever we try to use it
+[33m9a0cdf9a[m Move SQLite config to a static constructor
+[33mde9c65dc[m Test in Fedora 29
+[33mc48f9fca[m Add me as one of the authors
+[33m42c1baaf[m Remove print from test
+[33ma9ec14ba[m[33m ([m[1;33mtag: v2.5.0[m[33m)[m Set version to 2.5.0
+[33mecef8bb5[m Minor DB write improvements
+[33mc83ee897[m Replace QueryBuilder.insert_value_pair with typesafe versions
+[33m1c1ddb11[m More general improvements
+[33mf7574c49[m Deduplicate search logic
+[33ma116fb33[m Remove unused searchrows argument
+[33m9ac09bba[m Various other DB query improvements
+[33mf5e2916a[m Replace where_equal with type-safe versions
+[33mc047eb75[m Replace QueryBuilder.update_value_pair with typesafe replacements
+[33m2fd1dd65[m Simplify QueryBuilder.where_in_*
+[33mb1f3de70[m Use <> instead of NOT =
+[33m3721af73[m Simplify QueryBuilder's constructor
+[33m560c5f2e[m Change QueryBuilder checks to assertions
+[33m2454384f[m Change QueryBuilder function and variable names
+[33m6a56bbc0[m Add QueryBuilder tests
+[33m51ea919b[m Fix QueryBuilder string quoting
+[33m1c66afeb[m Create StringUtils.stringbuilder_append_join
+[33m4fdfb924[m Turn buildConditions() into append_conditions()
+[33m10b56fef[m More QueryBuilder.to_string simplification
+[33m3ef34936[m Simplify QueryBuilder using append_printf and StringUtils.join
+[33m3ae015ef[m Make m_insert_fields and m_insert_values locals
+[33m1162cdbd[m Store QueryBuilder order by column and sort order instead of string
+[33mbc63837d[m Store QueryBuilder limit and offset as uints
+[33m90a97e99[m Remove unused m_noError
+[33ma61a79d6[m Rename QueryBuilder.get() to to_string()
+[33mda9ea85c[m Merge QueryBuilder.build() and QueryBuilder.get()
+[33m72a2ea42[m Move QueryType into QueryBuilder.vala
+[33mceaed0f0[m Add tests for StringUtils
+[33m43f64955[m Run appstream.xml validation in CircleCI
+[33m30406ec9[m Switch appdata validate to relaxed
+[33m9bd6be47[m Use a fork of Feedreader that doesn't require Stripe for testing
+[33mab49ff8b[m Move CircleCI config to .circleci/config.yml
+[33mfd8f1b9f[m Only have one main function
+[33me1b89734[m More contracts
+[33ma94581e4[m Add some contracts to the Feedbin plugin
+[33m03c4f2aa[m Unlock the keyring on startup
+[33m9a0a273f[m Don't crash if feed has empty category list
+[33md2c30b53[m Fix warning about DBus methods throwing Error
+[33mfe96ba94[m Disable deprecation warnings
+[33m8a15c743[m Add some contracts to FavIcon
+[33m04124dbb[m Merge branch 'origin/master' into Weblate
+[33md3aae0f6[m Translated using Weblate (French)
+[33m505da72b[m[33m ([m[1;33mtag: v2.4.1[m[33m)[m Prepare 2.4.1 release
+[33m29819e0b[m Remove spring cleaning from saved state
+[33mf67f06e4[m Merge branch 'origin/master' into Weblate
+[33mc2b5862b[m Translated using Weblate (Persian)
+[33m736b3b70[m When a category is removed, uncategorize feeds/categories explicitly to plugins
+[33m8c66e81e[m[33m ([m[1;33mtag: v2.4.0[m[33m)[m Merge pull request #782 from jangernert/v2.4.0-prep
+[33m946df252[m Update Flatpak JSON from Flathub
+[33m36fb28d4[m Prepare for v2.4.0 release
+[33m98dd749f[m Use GUUID's for local plugin category ID's
+[33ma88af6a8[m Use GUUID's for local feed ID's
+[33m8450f194[m Delete favicons when deleting a feed
+[33me48696a9[m Deduplicate Favicon file name creation
+[33m4dc3945e[m Keep the flatpak install instructions
+[33m21dfe193[m Promote Flatpak package using the Flathub badge
+[33md4662d91[m Merge pull request #775 from jangernert/remove-gnome-menu
+[33mae62fccd[m Update ColumnViewHeader.vala
+[33m35a54735[m Merge branch 'origin/master' into Weblate
+[33m411cef61[m Translated using Weblate (Spanish)
+[33m9d2e8ba6[m Translated using Weblate (Hungarian)
+[33m40350247[m Merge pull request #768 from brendanlong/scale-large-images
+[33m4874af3c[m Set max-width of page elements to 100%
+[33mb65cb45c[m Translated using Weblate (Norwegian Bokmål)
+[33m0356898a[m Translated using Weblate (French)
+[33m061479be[m Translated using Weblate (Chinese (Traditional))
+[33m94f2f0ae[m Translated using Weblate (English (United Kingdom))
+[33mf98f608d[m Translated using Weblate (Norwegian Bokmål)
+[33mb2152a68[m Translated using Weblate (French)
+[33m54dc9ea9[m Translated using Weblate (Dutch)
+[33mc3774529[m Merge branch 'origin/master' into Weblate
+[33mf9851a20[m Translated using Weblate (French)
+[33m9634aad1[m Merge pull request #751 from pixolin/patch-1
+[33m77915b12[m Exchanging get_dbh() with get_pdo() fixes #750
+[33mebcfdc75[m Update FUZZ_TESTING.md
+[33mb797e101[m htmlclean: Add back the fuzz test inputs
+[33m9153e55b[m htmlclean: Add a main function for easier testing / fuzzing
+[33m62c25fc4[m htmlclean: Better duplicate char skipping
+[33m44c7f523[m Fix README formatting
+[33m37c8d0d4[m Merge pull request #748 from brendanlong/flatpak-readme
+[33m6d62a9bf[m Add some more null checks in copySelectedFeedURL
+[33mb187ce0f[m[33m ([m[1;33mtag: v2.3.0[m[33m)[m Fix appdata file for 2.3.0
+[33m1ce79bf8[m Update README to only recommend the Flatpak build
+[33m6667bc10[m Release v2.3.0
+[33m17e18135[m Add "htmlclean" using Gumbo parser
+[33ma311debe[m Remove libvilistextum
+[33mdcf87cbd[m Use GLib's string.make_valid instead of libvilistextum
+[33m08b6a3da[m Use Utils.UTF8fix more consistently
+[33m91a61454[m libvilistextum: Turn on more tests
+[33m39f5ef94[m Merge branch 'origin/master' into Weblate
+[33m92799810[m Translated using Weblate (Finnish)
+[33m602a2ed8[m vilistextum: Add test that empty string stays empty string
+[33mf7366cc6[m libvilistextum: Add tests
+[33m085d9da0[m Remove appstreamcli
+[33m99692f4a[m libvilistextum: Remove broken AFL test
+[33m81d58cd9[m No need to sepcificy plugins to build
+[33m97990fd8[m add required dependencies to Dockerfile
+[33m0e74da41[m[33m ([m[1;33mtag: 2.2.1[m[33m)[m Add the 2.2.1 release info
+[33m48188862[m Fix the appdata file
+[33m7ffbb9f4[m Merge pull request #739 from jangernert/new-version
+[33mc114ef10[m Update org.gnome.FeedReader.appdata.xml.in
+[33m3eddd408[m Update meson.build
+[33mad6af2df[m Merge pull request #738 from jangernert/appdata
+[33mb0b196f5[m add donation url
+[33mb7e56e22[m Update the AppData information
+[33m02e8ec5a[m Add FUZZ_TESTING.md
+[33m35eab4b8[m libvilistexum: Fix more isalnums to iswalnum
+[33m958b8af0[m libvilistextum: Fix uninitialized variable use in fileio
+[33m0b92ffe2[m libvilistextum: Use iswalpha for wchar
+[33m980f36c3[m libvilistextum: Use iswspace instead of isspace for wchar
+[33m0a3eba61[m libvilistextum: Simplify a realloc
+[33m9f6b18f1[m libvilistextum: Fix infinite loop in DOCTYPE
+[33m73dcf915[m libvilistextum: Fix infinite loop in friss_kommentar
+[33mdf17b69f[m libvilistextum: Fix infinite loop in <hr>
+[33mac646b2c[m libvilistextum: Fix infinite loop in HTML tags
+[33mbeda7f64[m libvilistexum: Don't put back EOF
+[33mebeddf5a[m libVilistextum: Add infrastructure for american fuzzy lop
+[33m5488dd97[m Merge branch 'origin/master' into Weblate
+[33m4f03fa12[m Translated using Weblate (Catalan)
+[33m9ac78565[m Fix for #712
+[33mc8362c1c[m Merge branch 'origin/master' into Weblate
+[33m3990b22b[m Translated using Weblate (Polish)
+[33mcba9806d[m Remove upgrade from Ubuntu script
+[33m29913001[m Update README.md
+[33me91a6dc2[m Update README.md
+[33m58f21e91[m Debian Testing and Ubuntu Cosmic UPDATE
+[33m0d4342d2[m Updating copyright in about information to include 2018.
+[33m33c73c63[m Revert "Only have one main function"
+[33m053bf6a4[m Translated using Weblate (Swahili)
+[33m1198e5d7[m Translated using Weblate (German)
+[33m8d79eb6d[m Translated using Weblate (Italian)
+[33mb68dbde2[m Translated using Weblate (Spanish)
+[33mb9cf0f47[m Merge branch 'origin/master' into Weblate
+[33m2db4cf33[m Translated using Weblate (Ukrainian)
+[33m01b8cbec[m Merge pull request #707 from janikrabe/master
+[33m6745be89[m Change "localhorst" to "localhost"
+[33m04713bd7[m Translated using Weblate (Polish)
+[33me52247be[m Translated using Weblate (Italian)
+[33medc98261[m Translated using Weblate (Italian)
+[33mc08a48cd[m Translated using Weblate (German)
+[33m675006ed[m Merge branch 'origin/master' into Weblate
+[33m82804ec8[m Translated using Weblate (Deutsch)
+[33m076084a5[m Merge pull request #705 from klausenbusk/freshrss
+[33mb18402ba[m FreshAPI: Fix broken editTag function
+[33m74eb4f76[m Merge branch 'origin/master' into Weblate
+[33m6c7377d7[m Translated using Weblate (French)
+[33m61f952e8[m Merge pull request #703 from Jacalz/new-update-available-in-solus
+[33m5d6961b5[m Solus OS is now just Solus and feedreader is now updated in the repos
+[33md48a8c05[m Translated using Weblate (German)
+[33m9120b341[m Translated using Weblate (Portuguese (Brazil))
+[33mbdf13116[m Translated using Weblate (Português (Brasil))
+[33m22fd6327[m Translated using Weblate (French)
+[33md1b0b383[m Translated using Weblate (Norwegian Bokmål)
+[33md4034275[m Translated using Weblate (Lithuanian)
+[33m69682ae5[m Translated using Weblate (Norwegian Bokmål)
+[33m648aa17a[m Merge branch 'master' into weblate-merge-tmp
+[33m5632b5dd[m Translated using Weblate (Norwegian Bokmål)
+[33mac45aa63[m Translated using Weblate (Turkish)
+[33m098bee11[m Safely parse response.unread; fixes #691
+[33m5d68a3f1[m Various brand names and spelling fixed, https
+[33m7de9c323[m Merge branch 'master' into weblate-merge-tmp
+[33m7c6ab4bf[m Translated using Weblate (Persian)
+[33m5018a159[m Merge pull request #688 from wezm/patch-1
+[33mc63cd89c[m Update Arch Linux instructions in README
+[33m141c9008[m Added information on Solus, clarified Flatpak installation
+[33m18995f11[m Merge pull request #683 from asonix/master
+[33mb04a148e[m Fix version of webkit gtk in readme
+[33m2316f59c[m Show correct date in article view
+[33m6fe2cc59[m Catch errors with metadata folder already existing
+[33m2aa023eb[m Properly escape ID's in Feedly request URL's
+[33m2a1abda8[m Fix broken DELETE JOIN (unsupported by SQLite)
+[33ma3b0f258[m Create directory for favicon metadata
+[33mcbad9fe4[m Handle null strings for EnclosureType
+[33m1e2015e9[m Update dev version
+[33mc949b282[m Update Flatpak installation README
+[33m3b5c9c0f[m update po & pot
+[33m0741dd6e[m Merge pull request #673 from brendanlong/feedbin-flakiness
+[33m40d7ff49[m Merge pull request #672 from jangernert/flatpak
+[33ma032e9b5[m Give Postgres a few seconds to start before starting Feedbin
+[33m3098e112[m Merge remote-tracking branch 'origin/master'
+[33m95b78df4[m Translated using Weblate (Chinese (Simplified))
+[33m870fbb71[m fix indent
+[33m245910a7[m use goa 3.28 and remvoe the talk-name daemon
+[33mdc753acb[m update flatpak build
+[33m13e745bc[m Fix some threading issues with database access in plugins
+[33md9aebac6[m Update README for Meson
+[33m879f9c38[m Fix Ubuntu script
+[33m81ca47a2[m Update the install_ubuntu.sh script
+[33me0172e80[m Merge pull request #667 from jangernert/enclosure_and_taggings
+[33m778b056c[m address most review requests
+[33mac4c5ae2[m fix reading all articles of specific tag
+[33mc6817fab[m Own table for enclosures and taggings - getting rid of comma separated strings - fix enclosure button always showing
+[33m4eca83bf[m Merge remote-tracking branch 'origin/master'
+[33m590fab04[m Translated using Weblate (Norwegian Bokmål)
+[33m9432e0e2[m Add a lock around libvilistextum
+[33m2d0714ae[m Turn on Feedbin tests again
+[33mbe83008e[m Fix Feedbin tests
+[33mdb620f4b[m Turn off warnings for mrss
+[33m45b236b6[m Fix warning in libvilistextum
+[33m407df2f7[m Make ninja less parallel on CircleCI
+[33mccb7a52d[m Bind gettext domain
+[33mb5ab26de[m Only have one main function
+[33m9fdc6208[m Use gtester for tests again
+[33mffef443a[m Comment out feedbin tests
+[33m5090a682[m Make libfeedreader a shared library
+[33m55a183fe[m Use /usr/lib64/feedreader instead of /usr/lib64/FeedReader
+[33m97c992c3[m Clean up vala_args
+[33m1e5d802e[m CircleCI improvements for Meson
+[33ma7e15614[m Get tests running
+[33m778b7315[m Fix a broken install_dir
+[33m6f91c37f[m switch to meson build system
+[33m78d7ced8[m Add an RFC 822 date parser
+[33m42cb735a[m Merge pull request #660 from sirredbeard/master
+[33me78fe6c4[m Minor improvemnts to install_ubuntu.sh
+[33mae3e8c0c[m Fix Wallabag error message
+[33mf972ffb3[m Added script and corrected typo
+[33m0a2aa425[m Remove need for confirmation of Vala repos.
+[33m956cf261[m Create install_ubuntu.sh
+[33m03252229[m Use fewer locks in local backend
+[33ma510551b[m Handle empty lists in database backend
+[33mbc2c2006[m Fix null pointer exception with DateTime.to_string()
+[33m1275f681[m Translated using Weblate (French)
+[33m08dfb5db[m Translated using Weblate (Ukrainian)
+[33mb2824b93[m Merge remote-tracking branch 'origin/master'
+[33m0e5eb612[m Translated using Weblate (Ukrainian)
+[33md2560e4e[m Merge pull request #650 from mluettecke/master
+[33mda973c71[m Fixed syntax error in ttrss-plugin
+[33m53215d45[m Translated using Weblate (Japanese)
+[33m537eaf7c[m Translated using Weblate (Japanese)
+[33m5ec79c4f[m Translated using Weblate (Japanese)
+[33m62662b25[m Translated using Weblate (Japanese)
+[33m4ea87f29[m Translated using Weblate (Japanese)
+[33md1f54a9b[m Merge remote-tracking branch 'origin/master'
+[33md8b85551[m Translated using Weblate (Ukrainian)
+[33m8c4db9a1[m Merge pull request #649 from peterychuang/master
+[33mcf85e0c5[m Fix app menu in GNOME
+[33m2b56fc5c[m Revert "Update README with Meson instead of CMake"
+[33me0cc51f0[m Update README with Meson instead of CMake
+[33m01949875[m Fix tests with Meson changes
+[33mb495f394[m Handle non-existent feeds in the DB
+[33m27c5f7da[m Translated using Weblate (Estonian)
+[33me4f8cf0f[m Merge remote-tracking branch 'origin/master'
+[33m2405c99a[m Translated using Weblate (Lithuanian)
+[33mb5d79749[m Merge branch 'master' of github.com:jangernert/FeedReader
+[33md6adfb3b[m ArticleListBox: hashmap instead of hashset
+[33ma281ec0d[m Translated using Weblate (Russian)
+[33mb381d751[m Translated using Weblate (German)
+[33m6fc49123[m Translated using Weblate (German)
+[33ma4a115c2[m Translated using Weblate (Turkish)
+[33m90aac0d5[m Merge remote-tracking branch 'origin/master'
+[33m5ddd43b0[m Translated using Weblate (Norwegian Bokmål)
+[33m34716ce4[m Translated using Weblate (Turkish)
+[33m39134215[m Merge pull request #634 from comradekingu/patch-3
+[33m96d4c0c7[m Translated using Weblate (Norwegian Bokmål)
+[33m898b0592[m "I used FeedReader to read: $URL"
+[33m5c53091f[m Spelling: "article I used FeedReader to read"
+[33m39bb05c7[m Merge remote-tracking branch 'origin/master'
+[33me69aa508[m Translated using Weblate (Norwegian Bokmål)
+[33m47df3912[m Merge pull request #633 from jangernert/gamingonlinux-feed
+[33m8724311a[m Update recommendedFeeds.json
+[33mf354277c[m Merge pull request #632 from comradekingu/patch-2
+[33m7b62a972[m an invalid, is invalid
+[33ma447133d[m Merge remote-tracking branch 'origin/master'
+[33me8847dbe[m Translated using Weblate (Norwegian Bokmål)
+[33m3af5f68a[m Merge pull request #631 from jangernert/update-pot
+[33mfb8f28e7[m Update pot files
+[33m370384a6[m Merge pull request #629 from comradekingu/patch-1
+[33me5645c25[m Toggle reading/marking
+[33mbaea4dcb[m Merge remote-tracking branch 'origin/master'
+[33m9df5c808[m Translated using Weblate (Swedish)
+[33mdd3ded79[m only show notification if the newly added articles during last sync contain at least 1 unread article - fix #626
+[33m5e7b4771[m Update the CI Docker image to Fedora 27
+[33m3baadbff[m Merge pull request #622 from jtojnar/webkitgtk
+[33mb4fbaaea[m Remove webkit2gtk vapi
+[33m2ad01f1d[m Merge remote-tracking branch 'origin/master'
+[33mc70a3cc0[m Translated using Weblate (French)
+[33m6fff9d56[m Translated using Weblate (Swedish)
+[33m17202336[m ArticleGrabber command line: create path for files if it doesn't exist already
+[33m8f63ad69[m Merge branch 'master' of github.com:jangernert/FeedReader
+[33m2f2feb1a[m Merge pull request #614 from brendanlong/grabber-title-author
+[33mc5a271a7[m Translated using Weblate (French)
+[33mc330d3af[m Merge remote-tracking branch 'origin/master'
+[33m106992e6[m Translated using Weblate (French)
+[33mf4ab1225[m disable logs that print every article body
+[33m936596c9[m Handled &#nn; escaped XML strings properly in libnxml
+[33m0fe7db1a[m Format libnxml
+[33mbc4d2589[m Undo a change that caused local feeds to always reset to unread
+[33m1206b71c[m Make SQLite errors fatal
+[33m7989d24e[m Merge pull request #613 from brendanlong/grabber-double-free
+[33m7122a5c9[m Make content grabber set titles and author when they're empty
+[33m9b356a6e[m Fix double free in content grabber when a node we want to remove is a child of another node we want to remove
+[33m4c3635de[m Merge pull request #612 from brendanlong/sync-logging
+[33m1d453875[m Improve some sync logging
+[33md52e0476[m Merge remote-tracking branch 'origin/master'
+[33m42c12805[m Translated using Weblate (Portuguese (Brazil))
+[33mc617525b[m Merge pull request #608 from nedrichards/patch-1
+[33mb8e94554[m Update to match the flathub settings
+[33m1e41562d[m remove view from stack before adding a new one with the same name
+[33m9ae3f350[m shut up feedreader by default - debug information available with --verbose argument
+[33m9dc46c16[m ttrss: print message and response on fail & fix #607
+[33ma5d2e211[m Fix mixup in ttrss htaccess password
+[33m2a9283af[m Make Logger less repetitive and set log domain
+[33mfef3d35d[m Translated using Weblate (Norwegian Bokmål)
+[33mf9392c3d[m Translated using Weblate (Swedish)
+[33mda946046[m Translated using Weblate (Czech)
+[33m811507da[m Merge remote-tracking branch 'origin/master'
+[33m42d1ad58[m Translated using Weblate (Norwegian Bokmål)
+[33mebc47bfa[m Translated using Weblate (French)
+[33mfd856495[m Translated using Weblate (Chinese (Traditional))
+[33m1c210b40[m Merge pull request #599 from jangernert/weblate
+[33m893e2bcc[m Replace transifex with Weblate
+[33mcaca7083[m Use the default SettingsBackend with `null` instead of looking it up
+[33mce7ee480[m Create login keyring if it doesn't exist
+[33m40411f2d[m Pass database connection into plugins.
+[33medb48175[m Make all of the other plugins use Password
+[33m2b57f698[m Merge pull request #596 from brendanlong/enable-all-plugins-in-ci
+[33m74626d75[m Fix the Bazqux build
+[33me00a9ef3[m Fix the FeedHQ build
+[33med96cbf3[m Enable FeedHQ and Bazqux in the CI build
+[33mae3c0630[m Factor out password-handling code into Password.vala
+[33mb10dc360[m Pass a Secret.Collection into the plugins
+[33m8f98c8e8[m Simplify Feedbin password storage
+[33m51a82da7[m Pass a SettingsBackend to plugins
+[33m4357cd9b[m Merge pull request #595 from jangernert/webkit_gaction
+[33m7355187d[m patch webkit vapi
+[33m692ad1dc[m Remove password schema duplicate in Feedbin
+[33m0be99740[m fix typo
+[33m23093e26[m update deps in doc and cmake
+[33mda412e83[m Use GLib.Action instead of Gtk.Action in webkit menu to get rid of warning
+[33m24f527f0[m Fix some null issues when no article is selected
+[33m75c7d49d[m get rid of warning and add FeedReader namespace to SQLite wrapper
+[33m7be773ca[m Merge pull request #585 from brendanlong/better-sqlite
+[33m6bb4c16e[m Merge pull request #589 from schiessle/rename-to-nextcloud
+[33m4cf1abcd[m Replace ownCloud with Nextcloud
+[33m9dda272c[m Merge pull request #587 from brendanlong/better-sync-limit-handling
+[33m9ec423a4[m Do a full sync of newly added feeds
+[33m15d6d32f[m Move "since" to FeedServer instead of calculating it in the Feedbin plugin
+[33m8489813e[m Simplify article dropping logic
+[33m7cdfc325[m Translate more queries
+[33m235f5e5f[m Deduplicate some queries
+[33m8e1d263d[m Convert a few more queries to the new API
+[33m8d1f02ce[m Switch to a custom SQLite3 VAPI and use Sqlite.Value
+[33m909a0523[m Use Value and transform
+[33mbc331f55[m Make the new SQLite API threadsafe by using an array argument
+[33m36464827[m Start on a simpler SQLite interface
+[33mda3bef21[m Set tag ID effected by name change for Feedbin, since we're using the tag name as the ID
+[33md52d20da[m Be a lot more careful with how we use Feedbin's Favicon API, since it's undocumented and in flux
+[33m1133b83a[m Fix an assertion
+[33m1e01c3c7[m Skip all the metadata and filesystem stuff when dealing with data URI favicons
+[33mc3b7fc30[m Support data URI favicons and fill them in for Feedbin
+[33mfa827348[m Add support for the favicons Feedbin API
+[33m09400add[m Don't try to install Node.js twice
+[33m0a64ffbc[m One more null check
+[33m3d1486e9[m Fix messed up test ==
+[33mee75b4a6[m Another null check
+[33mb6ead1c0[m Add a missing favicon null check
+[33m14bc87a1[m Simplify Feedbin add_subscription
+[33m88e44d02[m quick fix
+[33m1c36aa10[m Merge pull request #583 from jangernert/hidpi_favicon
+[33mcca38b88[m camel case -> snake case
+[33m1befc58d[m support gdk scale factor for favicons
+[33m05eaf91e[m Merge pull request #581 from jangernert/dont_load_all_plugins
+[33m62411c67[m Only load all plugins before showin login page
+[33mdff26f76[m Merge pull request #580 from jangernert/handle-null-row-id
+[33m0fbe8a07[m Check if row ID is null before trying to parse as an int
+[33m59e79aa6[m Merge pull request #579 from brendanlong/feedbin-ci-image
+[33mf96d7624[m Merge pull request #577 from jangernert/hopefully_last_favicon_adjustments
+[33m566d4c6b[m Add Feedbin to the CI Docker image
+[33m2eb3813d[m Don't try to download favicons when we're offline
+[33m69ed2bc2[m Disconnect signal handlers properly
+[33mb11a5621[m Remove an unnecessary null check
+[33mbc541720[m Only read and write metadata once
+[33m3aec4fc7[m Fix to make us only try to download each icon once
+[33m7f8b3175[m Rename m_icon to m_pixbuf
+[33mb5e91273[m Turn FavIcon into a class instead of FavIconManager
+[33mfc37ff70[m Style fixes
+[33m25ef5edf[m Move FavIconData to FavIconManager
+[33m3729d80d[m Try to download favicons again after certain amount of time
+[33md40594ac[m Don't escape forward slash in freshRSS backend to fix #505 (sorry somehow forgot about it)
+[33m131cd2c7[m Turn off a broken feedbin test for now
+[33mc19e2249[m Merge pull request #573 from jangernert/icon_refactor
+[33m1d451fa3[m Don't try to remove event handlers from non-existence event boxes
+[33m26e47ba6[m Correct an error to catch IOError.NOT_FOUND
+[33mc4460aa1[m Fix first-time expires metadata
+[33m1da28f5d[m Use a map of promises for loading favicons
+[33m610a467c[m connect to signal from faviconmanager to reload icons
+[33m017d2f6e[m merge master
+[33m11a98617[m Fix new article notification grammar
+[33m39f06597[m Move duplicated validation into Feed
+[33m797e5f81[m Centralize Article null checks
+[33mdcb57f0c[m Handle Feedbin entries with no published time
+[33mef454e01[m fix possible crash in content grabber
+[33m196361f6[m more disconnecting of signals in destructors
+[33m251d0af7[m remove orphaned signal
+[33m48457d11[m that's it for today
+[33mc55d6fec[m dont download favicons during sync anymore
+[33m35eed6e6[m use feed model to get icon from FavIconManager to have iconURL available in case it has to be downloaded
+[33mee1bcc67[m use Feed model inside FeedRow
+[33m1208583a[m Move downloading of favicons into FavIconManager
+[33m5ef76819[m fix last commit
+[33mb2733fae[m rename FavIconCache to FavIconManager
+[33mad150d68[m write icon_url of feeds to db
+[33m1531ff08[m Fix capitalization of Articles in notications
+[33m6d6a8c10[m Check for Feedbin articles changing status
+[33mbf288f9e[m Remove incremental sync from Feedbin
+[33md3083139[m Clean up redundant db functions a bit
+[33m41539a60[m Fix favicons not showing during drag
+[33m55514e1a[m Merge branch 'master' of github.com:jangernert/FeedReader
+[33md0f868f1[m Small rename
+[33m804018e5[m Remove figure and image border in default theme
+[33me2582ee9[m Reduce the blockquote padding
+[33m4c1395b6[m Fix backwards padding
+[33m93685f0a[m Remove last-favicon-update setting
+[33m6ad113b0[m Fix theme margins and backgrounds
+[33ma7c7ee99[m Merge pull request #569 from brendanlong/favicon-expiration
+[33m1feaddfb[m Implement favicon expiration dates
+[33m6d7e9501[m Fix favicons on the local account setup page
+[33m2eec57c5[m Fix Feedbin test flakeyness
+[33m537e0137[m Set a slightly longer favicon timeout
+[33mcf70c85e[m Don't strip the first part of hostnames when looking up favicons
+[33m2fa1e149[m Fix null pointer error when favicon download returns status = 200 with no body
+[33m9cb78455[m Revert "Fix a race condition with the static soup session in Utils"
+[33mcb6c81d0[m Make FavIconCache quieter
+[33m6ebed77a[m Fix a race condition with the static soup session in Utils
+[33me988f129[m Add missing m_ in Article.vala
+[33m19f39fc9[m Simplify Favicon loading
+[33m523da160[m Fix font folder lookup
+[33m507a0f69[m Merge pull request #566 from brendanlong/theme-improvements
+[33m1ac7bddf[m Make various theme improvements
+[33m511c9353[m Make "Yesterday" translatable again
+[33m9f8db28e[m Merge pull request #565 from brendanlong/clock-format
+[33m57f162ff[m Don't require GNOME clock-format setting and default to 24h still
+[33me22e11f3[m Respect GNOME clock format setting when displaying article dates
+[33md54c6db6[m Add a mutex to libvilistextum to make it threadsafe
+[33ma542e3d6[m Print Soup status descriptions with unexpected Feedbin API responses
+[33m71da0743[m fix logins of non-OAuth plugins
+[33m06f06a47[m Fix Feedbin login
+[33m42963040[m Merge pull request #561 from brendanlong/feedbin-testable
+[33me0a18e0d[m WIP: Fix Feedbin login widget
+[33m62ab99b1[m Add a lot more FeedbinAPI tests
+[33m6d0b54d2[m Try to make test results upload to CircleCI
+[33mb06e48f9[m Add extremely basic test for Feedbin
+[33m2511b75a[m Make FeedbinAPI only concerned with Feedbin things
+[33m9e0b1f52[m Merge FeedbinConnection into FeedbinAPI and remove some dependencies
+[33md2f1c2e9[m Merge branch 'master' of github.com:jangernert/FeedReader into single_process
+[33mc9ba894f[m [Ongoign effort] pass around models instead of primitive types
+[33m37ed0a0c[m Merge pull request #560 from jangernert/single_process
+[33m9271d240[m get encoded ids directly from models
+[33m4c52c3c0[m revert id encoding and only encode when using as file/folder name
+[33m53651546[m Change the Docker image to be explicitly Fedora 26
+[33m68fde645[m Merge pull request #562 from brendanlong/docker
+[33m1d8088cb[m Add custom docker file to speed up CI tests
+[33m35ecfe57[m small fix
+[33m48bbf9ad[m Encode id internally (for now base64) to avoid problems with weird characters in them & fix downloading of favicons if file does not exist
+[33md132875a[m Shutdown: cancel current sync and write interface state
+[33mb0de090f[m rename and refactor database code to reflect new structure
+[33mbf8dbe7b[m unify utils
+[33me1b7fdc8[m ditch libnotify in favor of glib.notification
+[33m5c707f51[m its actually working
+[33m71490924[m only pass backend info to widgets
+[33m809573ab[m [WIP] unify backend plugins ... at least it compiles
+[33m34aca370[m ditch daemon<->ui concept and build only single feedreader binary
+[33m2f46d35c[m hide window on close and quit application on ctrl+q
+[33m088d34dd[m Merge pull request #558 from JKingweb/master
+[33mb60a7da2[m Change ownCloud ping to valid method
+[33mbe6318f1[m Finish implementing feed manipulation in Feedbin
+[33m75e0a2ff[m Implement category renaming in Feedbin
+[33m14aa823d[m Add new feed tagging in Feedbin
+[33m3377381b[m Fix adding and deleting feeds in Feedbin
+[33m51e1c429[m Fix a few more synchronous parts of favicon load
+[33m3094ded1[m Finish async-ifying the favicon metadata
+[33md8c677e8[m Make favicon loading errors slightly more useful
+[33m8c3280ec[m Fix a log message in Favicon loading
+[33m00a01331[m Reload favicons asyncronously in the UI
+[33m4506ad74[m Make favicon loading in the UI a lot faster
+[33m85c7900d[m Add a lot more error logging in the Feedbin plugin
+[33m5ee8d42e[m Make Feedbin category loading substantially more efficient
+[33m967a4808[m Purge ArrayList and LinkedList from type signatures and exclusively use List
+[33m5c8e2c83[m Rename category to Category
+[33mae5c1f1e[m Merge pull request #553 from JKingweb/master
+[33m18335b3a[m Fix setting entries to read in Feedbin
+[33m28510673[m Simplify Feedbin a little more
+[33mc0558ef3[m Turn Feedbin feed manipulation back off for now since deleting feeds is broken
+[33m305fae30[m Don't try to sync articles that we're about to delete in Feedbin
+[33m3bbe4946[m Make add subscription work in Feedbin
+[33m6e642a78[m Fix capitalization of Feedbin classes
+[33mf01b8801[m Simplify some JSON code in Feedbin
+[33mb2e95f72[m Add feed renaming and deleting back to Feedbin
+[33md9e03e3e[m Revert "Simplify logging code"
+[33m42e28e91[m Simplify logging code
+[33mcaf94324[m Make Feed categories into Lists
+[33mc402d8cf[m Rename feed to Feed
+[33mc0624c69[m Rename article and articleRow to Article and ArticleRow
+[33mccccac71[m Fix bazqux and feedHQ to use the new Gee.List<string> tag/media API
+[33m65b0f374[m Make Article take and return Gee.List<string> instead of comma-separated strings.
+[33m951b6d0a[m Add some string helpers so we stop re-writing string split/join functions.
+[33m33b23373[m Fix some warnings
+[33maa6e6fba[m Add webkit2gtk vapi
+[33m133b80c5[m Remove extraneous slashes in ownCloud URLs
+[33m2242b677[m Merge pull request #549 from JKingweb/master
+[33m79860770[m request cancel of sync when trying to change accounts
+[33mee2ca9cd[m Make Logger.* not try to interpret % sequences
+[33md8e2f58b[m Fix Tiny Tiny RSS plugin
+[33m51099e75[m reset favicon timestamp after adding feed to force download on next sync
+[33m2dd4f82e[m workaround: reload feedlist after sync again since write to db seems to be not complete the first time fix #541
+[33md8c34106[m fix #543
+[33mfd36f3a4[m dont even attempt to grab content if both image and content grabbing is disabled - dont start transactions for writeContent (interferes with other transactions since it is now multithreaded)
+[33me1f8b0a4[m fix reloading favicon if icon still isn't available
+[33mddefb60e[m don't ignore any articles if drop-articles-after is set to NEVER to fix #542
+[33m87c37708[m fix compilation
+[33mdeb78aba[m dont sync feeds, categories and tags on local backend
+[33m91a31c07[m screw it: dont use libvilistextum at all in multithreaded scenario...
+[33mfd0270a6[m just shifting stuff around
+[33m222e7ffe[m revert all libvilistextum changes and simply use mutex whenever accessing it (already too much time and energy spent for little gain)
+[33mc147082f[m libvilistextum: get rid of global variable zeilen_pos
+[33m3f11a73e[m local: use mutex to lock article list
+[33m40c027fc[m libvilistextum: get rid of global variable zeilen_len_old
+[33mbe87c015[m libvilistextum: get rid of global variable zeilen_len_old
+[33m01c142d8[m libvilistextum: get rid of global variable zeilen_len
+[33mc1ed3249[m libvilistextum: get rid of global variable error
+[33mb30515aa[m libvilistextum: eliminate global options
+[33mfd0bdb9c[m libvilistextum: get rid of global variable breite
+[33mcb068882[m libvilistextum: get rid of global variable paragraph
+[33me1dbe600[m libvilistextum: get rid of global variable spaces
+[33md79fc224[m libvilistextum: eliminate global nooutput
+[33m3e5197cc[m use threadpool free isntead of while loop
+[33mc8f03a1b[m first bits to make libvilistextum threadsafe and wait for all threads to finish before writing articles in local backend
+[33m64bb0d44[m use threadpool for downloading and parsing feeds in local backend (temporarily disabling libvilistextum there because it is not threadsafe)
+[33m07ee10bf[m use threadpool to speed up contentGrabber
+[33me77953ec[m add icon-url attribute to suggested feeds to fix and speed up icon downloads
+[33m737a8220[m clean up a little and fix memory leak in the process
+[33m60149472[m Merge branch 'master' of github.com:jangernert/FeedReader
+[33mfce817f2[m fix refreshing of favicons after sync
+[33m8061f92a[m Replace index_of with has_prefix
+[33mb42a84f5[m Merge pull request #535 from jangernert/bil-elmoussaoui-patch-1
+[33m6e83afd6[m Merge pull request #534 from jangernert/space2tabs
+[33m27483cbf[m Fix python habits stuff
+[33m125a3883[m Fixes #495
+[33m8e5358e8[m keep circle.yml using space indent
+[33mf2163acf[m fix circle.yml indentation
+[33ma1704682[m convert space to tabs, and remove empty spaces
+[33m8b375359[m Merge pull request #533 from jangernert/copy-feed-url
+[33ma03d8b06[m add the action to the app
+[33m5b9485aa[m copy xml url instead
+[33m5326daee[m use read_feed instead of adding a new func
+[33mb059fdea[m check if article is within accepted age before writing it to db (older articles would just be deleted next sync anyway)
+[33m3451c8b4[m add copy feed url to feed right click menu
+[33m31a3b89b[m Merge pull request #532 from jangernert/feed-url
+[33mc8b7f3d5[m uses queryBuilder.addEqualsCondition instead
+[33m760b24d0[m always check if feed url exists on local plugin
+[33m75367edd[m libvilistextum: properly close filehandle of fmemopen to fix memory leak
+[33mfb2584df[m fix memory leak in libmrss
+[33m4d846bf9[m fix custom sql query: articleID as string
+[33m98a3a3fb[m avoid downloading favicons every sync
+[33m5ae3f49f[m fix memory leak in grabber
+[33mfd0b59be[m don't offer imagepopup for remote images & disable url refresh for feeds every sync for local back-end
+[33m4dde8b6c[m dont allow articles from the future
+[33mf361adcb[m Merge branch 'master' of https://github.com/jangernert/FeedReader
+[33m59b39829[m fix opml import
+[33maa26e513[m Fix query parameter in dbDaemon.update_articles()
+[33m050fed98[m deactivate grabber and image downloader by default
+[33mdff9eaf2[m get rid of some annoying debug prints
+[33m35626a16[m fix some sql queries
+[33m8f766951[m Revert "Add uncrustify config and fix indentation"
+[33m7a590640[m Merge pull request #517 from brendanlong/uncrustify
+[33mef1719f3[m Add uncrustify config and fix indentation
+[33m96a3fb46[m local: only update feed url and icon on sync
+[33m7b651ed4[m Merge branch 'master' of https://github.com/jangernert/FeedReader
+[33m3b273a14[m fix #506
+[33mfd960fa8[m Fixes #508
+[33mcfcf24e4[m Merge branch 'master' of https://github.com/jangernert/FeedReader
+[33mf8ee06d9[m Grabber: fix endless loop if next page url leads to page itself again
+[33mf77a6ed5[m Merge pull request #498 from Mailaender/patch-1
+[33madcf3c88[m dont print single page url to avoid possible crash
+[33mfc3f7220[m +openSUSE
+[33mef74b694[m Merge pull request #493 from jangernert/grabberconfig
+[33m79811738[m html: prefix content class
+[33m0c044a99[m alignment and checks
+[33me97c5eb4[m update README & INSTALL with correct clone method
+[33m2c331907[m add GrabberConfig from five filters
+[33mabd230bb[m remove grabberconfig
+[33m2d1ade24[m Fix markdown
+[33m61186b2f[m Merge pull request #492 from jangernert/editorconfig
+[33mcf70e09e[m Add a .editorconfig file
+[33ma80a03ff[m use custom error messages for ttrss
+[33md6a37997[m forgot dbus doesn't like null
+[33m98f3a149[m FeedList: don't reactivate on restoreSelectedRow
+[33m00309cea[m fix 1 article not showing up in unread mode
+[33m8228636b[m various small cleanups and fixes (should commit more often =/)
+[33m8a5a8421[m Merge pull request #486 from jangernert/addFeedError
+[33m56831fc4[m forgot one thing
+[33mddb02045[m small improvements
+[33mb04c5f52[m display possible error after adding a feed
+[33m818f7cb3[m reload favicons after downloading finishes
+[33m7345af4b[m Merge branch 'master' of github.com:jangernert/FeedReader
+[33m2bbc3e6e[m messed up git =/
+[33made98f8b[m remove some unneeded code
+[33m62befbd3[m update translations
+[33m63508a1a[m Merge pull request #484 from brendanlong/background-favicons
+[33m26090167[m feedbin: Support getUnreadCount()
+[33m8f98a98b[m feedbin: Safer article construction
+[33ma161287d[m feedbin: Make getArticles() more efficient
+[33m65df2312[m feedbin: Make set read/unread/marked functions less repetitive
+[33m2712eac5[m feedbin: Don't convert ID arrays to comma-separated strings and back
+[33m4545b707[m Merge pull request #482 from brendanlong/cleanup
+[33m54d3a034[m Always download favicons in the background.
+[33m5e20d522[m make mediaButton smarter: only show popover if more than one file attached to the article
+[33m88af482f[m Fix typos in FeedServerInterface.
+[33m4edbd53b[m Make errors quieter when we can't produce article previews.
+[33m3d312f7d[m Remove unused orderBy string in dbBase
+[33mb9e1e883[m Merge branch 'master' of github.com:jangernert/FeedReader
+[33m6743b23b[m add option to turn background syncs off completely
+[33m3bb6081b[m add the no-image-downloads option into the settings dialog
+[33m4d0ac4c3[m Merge pull request #480 from brendanlong/rss-content-encoded
+[33mbb056960[m local plugin: Prefer <content:encoded> in RSS feeds
+[33m42268d6f[m add debug print to local backend
+[33m1cfb2fd6[m fix reading xmlURL
+[33md5db67fe[m vilistextum: check for default locale first
+[33m44bc91e3[m vilistextum: backport searching for valid locale
+[33m80a15083[m and another one
+[33m748d72d7[m oops
+[33m84d25dd7[m check if row is present before inserting
+[33md51209d5[m add tweak to disable javascript #472
+[33m3299a54a[m Don't show cancel icon on updateButton - too confusing. Just show a tooltip with 'cancel' instead
+[33m9526d82a[m blind guess to make #477 work
+[33mf9b26117[m fix cooldown not triggering if no new rows were loaded
+[33mbe63096a[m fix topRow when closing with empty list
+[33md4458b51[m success on first try
+[33mfa7eec77[m first try
+[33mf89db99e[m temporary shortcut debug prints
+[33md09f2148[m revert changes
+[33m1b87eb9a[m fix possible crash with malformed string and glib structured logging
+[33m6ab43a49[m fix inserting all missing rows even if app state is not all_articles
+[33m21128948[m dont remove <noscript> completely but extract content and just remove noscript-tag
+[33mfb643790[m name downloaded svg-images correctly
+[33mcf5e46a1[m add articles in between rows with updateArticleList()
+[33m05995952[m bump version to 2.2-dev and make getRelevantArticles in daemon absolute
+[33maf06dcf4[m add debugging symbols for the new ivy backtraces
+[33m0619469a[m wire up UI to make syncs cancellable
+[33m01c1188d[m fix dropOldArtilces timestamp to string conversion
+[33m71a6dca3[m convert spaces to tabs
+[33m749126f2[m fix dropOldArtilces deleting more than it should in some cases and convert spaces to tabs
+[33m5851a339[m fix and refactor some sql
+[33mfb503ccb[m add libIvy to get a nice backtrace before crashes
+[33mfdbbb7fe[m remove LogLevel enum in favor of GLib.LogLevelFlags
+[33mf7886438[m port to glib structured logging
+[33mc404684d[m bump glib version to 2.50
+[33m6aea8374[m only reset plugin not all general settings
+[33m79091871[m simply use version string instead of dbusapiversion
+[33m3ac83ad5[m store date as int (unix timestamp) - this should speed up sorting by date quite a bit
+[33m13f2a315[m start ArticleListScroll cooldown only after every row has been inserted
+[33m18586b09[m save top row of articleList so we can determine if added articles are newer than top row (sort by date with mixed up data)
+[33mece3f1ad[m Merge branch 'master' of github.com:jangernert/FeedReader
+[33m1f093464[m fix issue with sort-by-date #422
+[33ma9e6301b[m Disable bazqux and feedhq by default for 2.2
+[33mc6ea15c2[m rework updateArticleList()
+[33m6a50001b[m fix compile error and double uncategorized on ttrss
+[33m72448114[m warn when resetting dconf setting
+[33m79d8aed6[m ttrss: don't require username and don't add user parameter if not present to fix #436
+[33m4a7fc51b[m fix #462
+[33md55687df[m add cmd option --addFeed to fix #471
+[33mb369b8e0[m use GLib.NetworkMonitor to detect connection status of PC
+[33m3d25bd8d[m more logging for gsettings reading/writing #469
+[33m2de8ebac[m ownCloud: use url-encoded parameter instead of json for GET requests to fix #449
+[33mfe285ee2[m first steps towards making syncs cancellable
+[33m3a01465e[m image grabber: check if downloaded parent image is actually bigger than original - if not, ignore and delete it again
+[33m1103986a[m that's what I actually meant: update favicons only once every 7 days
+[33mab06f712[m Merge pull request #467 from jangernert/favicons
+[33mbc55fa6c[m fix bazqux icon_url
+[33m780cda23[m Merge pull request #468 from jangernert/progress-bar
+[33m583af0a2[m fix progress overlay
+[33m769c3233[m refactor the progress bar
+[33m45c077e3[m only attempt to redownload favicons after a few days
+[33m98cb58aa[m move downloading of favicons out of backends to single location
+[33m20c06e84[m Merge pull request #466 from brendanlong/atom-content
+[33ma8fefc5f[m Merge pull request #465 from brendanlong/feed-url-crash
+[33m9608b653[m Prefer "content" over "summary" in libmrss
+[33m03011d53[m Don't crash when a user tries to add an invalid feed URL
+[33m75fcb4dc[m prevent crash if ttrss is invalid
+[33m5612522a[m Merge branch 'master' of github.com:jangernert/FeedReader
+[33ma50b0884[m reduce log-noise and fix double login triggered by WebLoginPage
+[33mce5c9498[m Clean readme file
+[33m2319c733[m remove fallback since etag was only used a few days and removing doesn't break things for users
+[33ma0b4ab4a[m Reorder the badges
+[33m95ee84a0[m Merge pull request #458 from brendanlong/favicon-caching
+[33me271bf16[m Merge pull request #459 from brendanlong/circleci
+[33m7b6cf702[m Merge branch 'master' of github.com:jangernert/FeedReader
+[33m99b2dbaf[m some more logs for loading plugins
+[33m049878e6[m Add CircleCI YML file.
+[33mf3b38a03[m Refactor favicon metadata into a ResourceMetadata struct.
+[33mfe436363[m Send last modified time with favicon requests
+[33mba2139c2[m Use If-None-Match header to check favicon etags
+[33mfc8cf932[m Link FeedReaderCommon into all libraries that use it
+[33m7c0b1e0f[m fix #440
+[33m18506b4b[m Update README.md
+[33m4f37a302[m Update README.md
+[33m43a8d10c[m Merge pull request #454 from gitter-badger/gitter-badge
+[33m5f979218[m Add Gitter badge
+[33m13695437[m fix copy/pasta error
+[33mda88ce67[m more null-checks for soup.message
+[33me50c60fa[m fix #450 for sure now :P
+[33mf61d27dd[m Merge pull request #451 from jangernert/favicons
+[33m2990d204[m address review comments
+[33m4948a6c9[m Merge pull request #452 from manuq/title
+[33md18c3a0f[m Use article title as header title
+[33m141f25ec[m set session timeout to 1s to avoid long sync-times only to update icons
+[33md3acc4ca[m fix etag
+[33m4deb0a52[m various fixes
+[33m572f4ef5[m fix favIconCache picking up txt-files
+[33m389bf825[m use static session for all utils functions
+[33m78062afa[m refactor favicon code a bit
+[33m54e59a58[m use singular soup.session for contentGrabber
+[33m68f2358a[m ContentGrabber: check for retarded article-urls to fix #450
+[33mb655c63d[m remove downloadIcon in favor of downloadIconWithSession
+[33m95661e88[m fix old desktop-file-name
+[33m9cb97ea6[m copy&pasta improvements from @brendanlong to all other back-ends
+[33m3c4eddcd[m Merge pull request #447 from brendanlong/list-interface
+[33m5512bdc0[m Remove Gee.LinkedList from function signatures and use Gee.List instead.
+[33mc6f96aac[m Reverse the list in writeArticles() in a way that doesn't depend on the input being a LinkedList.
+[33m7c9493c1[m Merge pull request #445 from brendanlong/feedbin-improvements
+[33m87312d92[m Make Feedbin pings check the API server
+[33m5485b21e[m Finish Feedbin authentication
+[33m62b0bf1d[m Reuse Soup.Session in Utils.getIcon() and use https://favicon.allesedv.com
+[33mce115063[m Reduce duplicate code in feedbinConnection.vala and re-use libsoup session.
+[33mef6177b0[m fix merging mistake
+[33m7a1a40d6[m Merge branch 'master' of github.com:jangernert/FeedReader
+[33m8c6a6ca5[m bring back old url-code to prevent urls from loading inside the article-view before the grabber is done #430
+[33mde129a38[m Merge pull request #431 from sharifzadesina/master
+[33m8f54c871[m update the desktop file name for autostart
+[33m76989048[m update the desktop file name
+[33ma80e5f3f[m fix typo #428
+[33m7b34590c[m feedhq fixes
+[33mbdca9244[m fix removing category with all feeds
+[33m77ca42af[m bazqux: fix tag syncing
+[33m283296cd[m bazqux: fix marked read/unread
+[33m78621ed9[m bazqux: implement proper ping-function
+[33mc0f8779a[m cast to uint directly to simplify and adjust font sizes to mimic old behaviour
+[33m14e98fa1[m Merge pull request #416 from jangernert/font
+[33maa30c93d[m add bazqux icons
+[33m2d5d67ee[m remove old code
+[33m7978ed5d[m don't hardcode font size
+[33m4d50075b[m lower default size of settingsdialog a bit
+[33mbc4a9e91[m Merge pull request #414 from jangernert/font
+[33m14faa78f[m use pt rather than px
+[33mf94b53e1[m add px unit
+[33mf1a43368[m Use Pango.SCALE to get the  right font size
+[33m25f67436[m work around fontsize issue
+[33m1d328bd1[m Don't set any font by default
+[33ma3abc50a[m change default font to droid sans
+[33m99ba7a5a[m fix fonts not working
+[33mb1ab9af5[m merge fontsize and fontfamily to single font-setting
+[33m193b61cb[m some bazqux cleanup
+[33m0be141b9[m Follow code guidlines
+[33m01d53897[m Don't make the button flat
+[33m2d9f432d[m implement font settings
+[33m56bc653f[m Merge branch 'master' of github.com:jangernert/FeedReader
+[33m75d80a6b[m add output=json
+[33m712793f7[m Merge pull request #413 from jangernert/vala0.3.5
+[33meb2dc5a2[m Fixes #410
+[33ma41e92f7[m fix #411
+[33m35f365b3[m update translations
+[33m31629a2a[m missing msg on FeedHQ
+[33md4e754a2[m more feedhq stuff
+[33m8f6eac75[m feedhq fixes
+[33m3802cb54[m merge bazqux (only syncing works right now)
+[33mab0c8d4f[m Merge pull request #406 from jangernert/mergeFeedhq
+[33mec870b2b[m implement addFeeds
+[33m9dc97b3e[m make feedhq somewhat usable
+[33m32d2ddbc[m merge initial state
+[33meef152a3[m fix #405
+[33mc65573be[m[33m ([m[1;33mtag: v2.0.2[m[33m)[m Merge branch 'master' of github.com:jangernert/FeedReader
+[33m9c959705[m bump to 2.0.2
+[33m9915f715[m simplyfy Flatpak instructions
+[33md100243b[m Merge branch 'master' of github.com:jangernert/FeedReader
+[33mbdfc2f0e[m fix #402
+[33m290aba25[m avoid info or error confusion: infobar text
+[33mca3c429b[m fix crash when generating new accountIDs
+[33m80a74eb5[m implement singleInstance-property for share-plugins and adapt telegram to it
+[33m64c20cf5[m Merge branch 'master' of github.com:jangernert/FeedReader
+[33mce701631[m refactor share-plugin settings to be part of the plguin completely
+[33m6f4374a1[m use correct error-type in try-environment
+[33m4d346755[m telegram: simplify string and use correct error-type in try-environment
+[33m936e91bc[m Merge pull request #399 from jscurtu/master
+[33mf06b5f0c[m little cleanup..
+[33m9ea2d72a[m Add TelegramForm
+[33mbabed8c4[m forgot to add TelegramSetup.vala to CMakeList.xt
+[33m7d690929[m Reworked Telegram Plugin
+[33m07dd2e23[m Add Telegram plugin
+[33m85f83981[m Merge pull request #2 from jangernert/master
+[33mbedb372e[m Merge branch 'master' of github.com:jangernert/FeedReader
+[33m31b20be0[m use libsoup for ping #379
+[33m63dbeec4[m Update Makefile
+[33m2d66111e[m not needed
+[33m004b76d7[m not needed
+[33me4889934[m approve make and build
+[33m771b823d[m Merge pull request #1 from jangernert/master
+[33m86134797[m use show_uri for mail-plugin
+[33md6d0f7cb[m print webkit version on crash to ease debugging
+[33m1528ed4a[m Merge branch 'master' of github.com:jangernert/FeedReader
+[33m0e7bca51[m use show_uri to open txt-file
+[33m3ebad8af[m build bundle from unsigned test repo
+[33me94acb61[m build bundle from unsigned test repo
+[33m1dec7d19[m fix media-button not initializing state
+[33m3274d720[m fix attachment-button suddenly showing a spinner during sync
+[33m376dd726[m Grabber: check content-type before downloading url to avaoid downloading lots of data that isn't an article (podcasts)
+[33mfdf2283f[m use spawn_uri to open up media-links instead of xdg-open
+[33m3a10fbf6[m eleminate GLib.Process.spawn_async in DBusConnection
+[33mae40eb5a[m increase gtk dep to 3.22 since the gtk_show_uri_on_window changes
+[33mec2d487a[m use show-uri in browser-plugin instead of xdg-open
+[33m3b049d38[m separate utils further and NEVER EVER use dbBase to avoid sqlite misuse error
+[33ma1675271[m after resize check if articleList is still filled and load more if necessary
+[33m20f904be[m Merge pull request #388 from pwithnall/strings
+[33m16478bc6[m widgets: Add tooltips to feed add and remove buttons
+[33mcc38e8c8[m widgets: Fix capitalisation in a few translatable strings
+[33m0945e313[m[33m ([m[1;33mtag: v2.0.1[m[33m)[m forgot to bump version to 2.0.1
+[33m8acd5e2b[m fix shortcuts without modifiers beeing detected even when modifier were active
+[33m25ad9790[m less dbus-calls on startup
+[33m61322cc0[m add queue to Logger in case OutputStream has pending operations
+[33m1137a9b0[m use simple bool instead of dis/connecting signals to prevent cooldown from triggering
+[33m0c7d248a[m fix moving fast down from pos 0.0 in ArticleListScroll
+[33mb68dac0b[m ArticleList: double check if should apply new rows
+[33m02697917[m implement #315
+[33m04a9af40[m add shortcut to select next/prev item in FeedList #384
+[33m06b09b97[m MainWindow: set transition time to 0 for first switch
+[33md294699c[m more logging for #380 and separate handler-IDs for different signals
+[33m6ff09a46[m added generated files to gitignore
+[33m73dc79d0[m remove ubuntu from README.md
+[33m8c0cf904[m emmit loadDone signal when caneling the load process
+[33m72e1cb74[m add some debug print for #380
+[33m0d6103bc[m use URL as a fallback if no valid GUID is vailable to fix #381
+[33ma3bbea7b[m always disconnect loadDone handler if still running before switching up ArticleLists
+[33m9badc68e[m Merge branch 'master' of github.com:jangernert/FeedReader
+[33m0b31ef37[m I hate pinterest fixes #378
+[33m0f13d193[m Merge pull request #375 from jscurtu/master
+[33m9bcd8c0c[m only "this" in MainWindow
+[33m0e00f114[m fix parent
+[33m03f22446[m fix parent
+[33m0eae9966[m Use Gtk.show_uri_on_window() instead of Use Gtk.show_uri()
+[33mc2cf4ac4[m make sure to clear UI after resetting account to fix #372
+[33m5d8c7462[m local RSS: make adding suggested feeds async
+[33me007c279[m fix typo
+[33m5ece5e36[m add shortcuts to move ArticleView up and down to fix #367
+[33ma2baab91[m ArticleView: hide progress before clearing view
+[33m9136c54a[m same for categories
+[33m52e730aa[m fix #366
+[33mc300578d[m Merge branch 'master' of github.com:jangernert/FeedReader
+[33m713c5fe1[m fix #370
+[33m532b67cf[m remove changelog-file and fix issue with articleID in local back-end
+[33m643ad8e4[m switch to 2.0 stable
+[33m24446c2b[m Add repro
+[33m5782fb33[m wrong file
+[33md868ecc7[m add repo
+[33m5cd97ebf[m revert, will do different
+[33mb9907883[m Add files for stable and master repro
+[33ma61307c2[m update for 2.0
+[33ma13ea3e1[m[33m ([m[1;33mtag: v2.0[m[33m)[m get ready for 2.0
+[33m05068dbc[m remove
+[33md52331cc[m remove
+[33m990ede39[m remove
+[33m46bd6e7e[m short url with cname
+[33m5b069700[m fix flatpak
+[33m87a92590[m Merge pull request #363 from jscurtu/master
+[33m9d9976fa[m Alot of flatpak changes
+[33m2fa6bbee[m resolve
+[33m39569b70[m remove opensuse - no longer maintained by me
+[33m263eb0d4[m update flatpak
+[33mac69e376[m refactor flatpak build for OTA updates
+[33me993fa1c[m refactor flatpak build for OTA updates
+[33m5238307b[m refactor flatpak build for OTA updates
+[33m47f38a3e[m sync (#11)
+[33m43cd3ea2[m remove unused config-opts
+[33md6e0630a[m add install to Makefile
+[33m41ce752f[m Merge pull request #10 from jangernert/master
+[33mf063084e[m update screenshot links in appdata-file
+[33m54a1b99d[m eliminate last manually created settings objects
+[33md834cf01[m Merge branch 'master' of github.com:jangernert/FeedReader
+[33m4c802b01[m update cmake-dependency EXEC_NAME to current UI_NAME to fix #361
+[33m7a241a40[m Fix: missing Application Icon -  Flatpak
+[33m600ee4ec[m test
+[33mc1e005f3[m Merge pull request #9 from jangernert/master
+[33m37190585[m rearrange filename
+[33mcee5297c[m improve the Makefile alittle
+[33m0a23c679[m fix flatpak
+[33mbbf42df5[m fix flatpak build and update info
+[33mbdd2d343[m Merge pull request #359 from hadess/flatpak-fixes-1
+[33m946e4d2e[m fix #357 and a few other small things
+[33m29cc0255[m README: Add instructions on how to build Flatpak bundle
+[33mb16871a9[m flatpak: Allow cross-compiling
+[33m48e6dbd4[m flatpak: Make builds faster
+[33m89138e00[m flatpak: Make it possible to build from the non-master branch
+[33m5bddfe51[m flatpak: Allow access to OpenGL
+[33m05a87718[m flatpak: Add comments for Wayland and network permissions
+[33m8e418fe7[m flatpak: Better explanation for X11/XShm permissions
+[33m05530fbf[m create directory in FavIconCache if neccessary and use data_dir instead of home in plugins to fix behavior in flatpak environment - fix #358
+[33mf77e1bda[m only show empty-state again if there are still no articles to show
+[33m521412cd[m increase animation-duration of articleView a big (again)
+[33m2c485a08[m udpate browser fallback icon
+[33mc3809d5f[m fix browser plugin
+[33m5b4e86f4[m fix #351
+[33mebcaeab2[m fix #353
+[33mbd43a98c[m fix #352
+[33m608fd79a[m fix #348
+[33md1ef11c3[m hook up global-help shortcut and change default to ctrl+F1
+[33m9db60289[m fix #350
+[33m9d776d38[m fix #346
+[33m032063b0[m use starred instead of marked fix #347
+[33mfeb7d0aa[m rework fullscreen handling
+[33m3ed07b3b[m fix #344
+[33m831df99b[m update flatpak-file for new app-ID
+[33ma7be124f[m add back gresource-file
+[33m6532eed6[m camelCase app-ID and dbus-names
+[33mb1eaea1f[m remove horizontal line on top of menu
+[33m7a2344cd[m Merge pull request #8 from jangernert/master
+[33m462783d3[m rename dbus-names again to make everything consistent
+[33mf2bf8f5e[m move gmenu-code into headerbar next to non-gnome-menu-code
+[33m5c35abe7[m change dbus-name in flatpak-file to fix #343
+[33m13f58db2[m no need for separate onClose-function
+[33m383e3607[m add .service.in-file

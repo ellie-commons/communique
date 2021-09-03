@@ -1,5 +1,5 @@
 <schemalist>
-	<schema id="org.gnome.feedreader.share.instapaper" path="/org/gnome/feedreader/share/instapaper/" gettext-domain="feedreader">
+	<schema id="com.github.suzie97.communique.share.instapaper" path="/com/github/suzie97/communique/share/instapaper/" gettext-domain="communique">
 
 	<key name="account-ids" type="as">
 			<default>[]</default>

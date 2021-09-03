@@ -26,14 +26,14 @@ public class FeedReader.bazquxUtils : GLib.Object {
 	{
 		if(settings_backend != null)
 		{
-			m_settings = new GLib.Settings.with_backend("org.gnome.feedreader.bazqux", settings_backend);
+			m_settings = new GLib.Settings.with_backend("com.github.suzie97.communique.bazqux", settings_backend);
 		}
 		else
 		{
-			m_settings = new GLib.Settings("org.gnome.feedreader.bazqux");
+			m_settings = new GLib.Settings("com.github.suzie97.communique.bazqux");
 		}
 
-		var password_schema = new Secret.Schema ("org.gnome.feedreader.bazqux", Secret.SchemaFlags.NONE,
+		var password_schema = new Secret.Schema ("com.github.suzie97.communique.bazqux", Secret.SchemaFlags.NONE,
 			"type", Secret.SchemaAttributeType.STRING,
 		"Username", Secret.SchemaAttributeType.STRING);
 		m_password = new Password(secrets, password_schema, "Feedserver login", () => {

@@ -1,5 +1,5 @@
 <schemalist>
-	<schema id="org.gnome.feedreader.owncloud" path="/org/gnome/feedreader/owncloud/" gettext-domain="feedreader">
+	<schema id="com.github.suzie97.communique.owncloud" path="/com/github/suzie97/communique/owncloud/" gettext-domain="communique">
 		<key name="url" type="s">
 			<default>""</default>
 			<summary>Link to your Nextcloud instance</summary>

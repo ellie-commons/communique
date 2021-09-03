@@ -87,7 +87,7 @@ public class FeedReader.ttrssMessage : GLib.Object {
 			return ConnectionError.UNKNOWN;
 		}
 
-		var settingsTweaks = new GLib.Settings("org.gnome.feedreader.tweaks");
+		var settingsTweaks = new GLib.Settings("com.github.suzie97.communique.tweaks");
 
 		var data = object_to_string(m_request_object);
 		m_message_soup.set_request(m_contenttype, Soup.MemoryUse.COPY, data.data);

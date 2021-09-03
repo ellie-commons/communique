@@ -25,7 +25,7 @@ public class FeedReader.Settings : GLib.Object {
 	{
 		if(m_general == null)
 		{
-			m_general = new GLib.Settings("org.gnome.feedreader");
+			m_general = new GLib.Settings("com.github.suzie97.communique");
 		}
 
 		return m_general;
@@ -35,7 +35,7 @@ public class FeedReader.Settings : GLib.Object {
 	{
 		if(m_tweaks == null)
 		{
-			m_tweaks = new GLib.Settings("org.gnome.feedreader.tweaks");
+			m_tweaks = new GLib.Settings("com.github.suzie97.communique.tweaks");
 		}
 
 		return m_tweaks;
@@ -45,7 +45,7 @@ public class FeedReader.Settings : GLib.Object {
 	{
 		if(m_state == null)
 		{
-			m_state = new GLib.Settings("org.gnome.feedreader.saved-state");
+			m_state = new GLib.Settings("com.github.suzie97.communique.saved-state");
 		}
 
 		return m_state;
@@ -55,7 +55,7 @@ public class FeedReader.Settings : GLib.Object {
 	{
 		if(m_keys == null)
 		{
-			m_keys = new GLib.Settings("org.gnome.feedreader.keybindings");
+			m_keys = new GLib.Settings("com.github.suzie97.communique.keybindings");
 		}
 
 		return m_keys;
@@ -74,7 +74,7 @@ public class FeedReader.Settings : GLib.Object {
 		}
 		else
 		{
-			var settings = new GLib.Settings(@"org.gnome.feedreader.share.$pluginName");
+			var settings = new GLib.Settings(@"com.github.suzie97.communique.share.$pluginName");
 			m_share.set(pluginName, settings);
 			return settings;
 		}

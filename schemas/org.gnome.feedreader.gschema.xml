@@ -1,6 +1,6 @@
 <schemalist>
 
-	<enum id="org.gnome.feedreader.article-theme">
+	<enum id="com.github.suzie97.communique.article-theme">
 		<value nick="DEFAULT" value="0"/>
 		<value nick="SPRING" value="1"/>
 		<value nick="MIDNIGHT" value="2"/>
@@ -8,35 +8,35 @@
 		<value nick="GRUVBOX" value="4"/>
 	</enum>
 
-	<enum id="org.gnome.feedreader.drop-articles-duration">
+	<enum id="com.github.suzie97.communique.drop-articles-duration">
 		<value nick="NEVER" value="0"/>
 		<value nick="1 Week" value="1"/>
 		<value nick="1 Month" value="2"/>
 		<value nick="6 Months" value="3"/>
 	</enum>
 
-	<enum id="org.gnome.feedreader.feedlist-sort">
+	<enum id="com.github.suzie97.communique.feedlist-sort">
 		<value nick="RECEIVED" value="0"/>
 		<value nick="ALPHABETICAL" value="1"/>
 	</enum>
 
-  	<enum id="org.gnome.feedreader.article-list-sort">
+  	<enum id="com.github.suzie97.communique.article-list-sort">
 		<value nick="RECEIVED" value="0"/>
 		<value nick="DATE" value="1"/>
 	</enum>
 
-	<enum id="org.gnome.feedreader.feedlist-theme">
+	<enum id="com.github.suzie97.communique.feedlist-theme">
 		<value nick="GTK" value="0"/>
 		<value nick="DARK" value="1"/>
 		<value nick="ELEMENTARY" value="2"/>
 	</enum>
 
-	<enum id="org.gnome.feedreader.media-player">
+	<enum id="com.github.suzie97.communique.media-player">
 		<value nick="INTERNAL" value="0"/>
 		<value nick="SYSTEM" value="1"/>
 	</enum>
 
-	<schema id="org.gnome.feedreader" path="/org/gnome/feedreader/" gettext-domain="feedreader">
+	<schema id="com.github.suzie97.communique" path="/com/github/suzie97/communique/" gettext-domain="communique">
 		<key name="sync" type="i">
 			<default>30</default>
 			<summary>sync rate</summary>
@@ -57,11 +57,11 @@
 			<default>'none'</default>
 		</key>
 
-		<key name='article-theme' enum='org.gnome.feedreader.article-theme'>
+		<key name='article-theme' enum='com.github.suzie97.communique.article-theme'>
 			<default>'DEFAULT'</default>
 		</key>
 
-		<key name='feedlist-theme' enum='org.gnome.feedreader.feedlist-theme'>
+		<key name='feedlist-theme' enum='com.github.suzie97.communique.feedlist-theme'>
 			<default>'DARK'</default>
 		</key>
 
@@ -69,7 +69,7 @@
 			<default>'Inter Regular 12'</default>
 		</key>
 
-		<key name='drop-articles-after' enum='org.gnome.feedreader.drop-articles-duration'>
+		<key name='drop-articles-after' enum='com.github.suzie97.communique.drop-articles-duration'>
 			<default>'6 Months'</default>
 		</key>
 
@@ -105,7 +105,7 @@
 			</description>
 		</key>
 
-		<key name='feedlist-sort-by' enum='org.gnome.feedreader.feedlist-sort'>
+		<key name='feedlist-sort-by' enum='com.github.suzie97.communique.feedlist-sort'>
 			<default>'RECEIVED'</default>
 		</key>
 
@@ -113,7 +113,7 @@
 			<default>true</default>
 		</key>
 
-		<key name='articlelist-sort-by' enum='org.gnome.feedreader.article-list-sort'>
+		<key name='articlelist-sort-by' enum='com.github.suzie97.communique.article-list-sort'>
 			<default>'DATE'</default>
 			<summary>sort articles by date</summary>
 			<description>

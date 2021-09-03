@@ -1,5 +1,5 @@
 <schemalist>
-	<schema id="org.gnome.feedreader.inoreader" path="/org/gnome/feedreader/inoreader/" gettext-domain="feedreader">
+	<schema id="com.github.suzie97.communique.inoreader" path="/com/github/suzie97/communique/inoreader/" gettext-domain="communique">
 
 	<key name="username" type="s">
 		<default>""</default>

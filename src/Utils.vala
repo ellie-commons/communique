@@ -190,7 +190,7 @@ public class FeedReader.Utils : GLib.Object {
 
 		public static void copyAutostart()
 		{
-			string desktop = "org.gnome.FeedReader-autostart.desktop";
+			string desktop = "com.github.suzie97.communique-autostart.desktop";
 			string filename = GLib.Environment.get_user_data_dir() + "/" + desktop;
 
 
@@ -635,7 +635,7 @@ author_date += date;
 try
 {
 	uint8[] contents;
-	var file = File.new_for_uri("resource:///org/gnome/FeedReader/ArticleView/article.html");
+	var file = File.new_for_uri("resource:///com/github/suzie97/communique/ArticleView/article.html");
 	file.load_contents(null, out contents, null);
 	article.assign((string)contents);
 }
@@ -786,7 +786,7 @@ for(int i = article.str.index_of(sourcefontsize_id, 0); i != -1; i = article.str
 try
 {
 	uint8[] contents;
-	var file = File.new_for_uri("resource:///org/gnome/FeedReader/ArticleView/style.css");
+	var file = File.new_for_uri("resource:///com/github/suzie97/communique/ArticleView/style.css");
 	file.load_contents(null, out contents, null);
 	string css_id = "$CSS";
 	int css_pos = article.str.index_of(css_id);
@@ -949,7 +949,7 @@ var header = new Gtk.HeaderBar();
 header.show_close_button = true;
 
 Gtk.CssProvider provider = new Gtk.CssProvider();
-provider.load_from_resource("/org/gnome/FeedReader/gtk-css/basics.css");
+provider.load_from_resource("/com/github/suzie97/communique/gtk-css/basics.css");
 weak Gdk.Display display = Gdk.Display.get_default();
 weak Gdk.Screen screen = display.get_default_screen();
 Gtk.StyleContext.add_provider_for_screen(screen, provider, Gtk.STYLE_PROVIDER_PRIORITY_USER);

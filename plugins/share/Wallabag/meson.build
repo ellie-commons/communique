@@ -35,7 +35,7 @@ shared_library(
 
 install_data(
   [
-    'org.gnome.feedreader.share.wallabag.gschema.xml'
+    'com.github.suzie97.communique.share.wallabag.gschema.xml'
   ],
   install_dir: join_paths(SHARE_DIR, 'glib-2.0/schemas')
 )

@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!-- Copyright 2021-2022 Rajdeep Singha <singharajdeep97@gmail.com> -->
 <component type="desktop-application">
-  <id>org.gnome.FeedReader</id>
+  <id>com.github.suzie97.communique</id>
   <metadata_license>CC0-1.0</metadata_license>
   <project_license>GPL-3.0+</project_license>
   <name>Communique</name>
@@ -45,7 +45,7 @@
   <url type="bugtracker">https://github.com/Suzie97/Communique/issues</url>
   <url type="help">https://github.com/Suzie97/Communique/issues</url>
   <update_contact>singharajdeep97@gmail.com</update_contact>
-  <launchable type="desktop-id">org.gnome.FeedReader.desktop</launchable>
+  <launchable type="desktop-id">com.github.suzie97.communique.desktop</launchable>
   <screenshots>
     <screenshot type="default">
       <image>https://raw.githubusercontent.com/suzie97/communique/master/data/communique-light-screenshot.png</image>

@@ -22,7 +22,7 @@ public class FeedReader.freshConnection {
 	public freshConnection(freshUtils utils)
 	{
 		m_utils = utils;
-		m_settingsTweaks = new GLib.Settings("org.gnome.feedreader.tweaks");
+		m_settingsTweaks = new GLib.Settings("com.github.suzie97.communique.tweaks");
 		m_session = new Soup.Session();
 		m_session.user_agent = Constants.USER_AGENT;
 		m_session.authenticate.connect((msg, auth, retrying) => {

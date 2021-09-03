@@ -1,12 +1,12 @@
 <schemalist>
 
-	<enum id="org.gnome.feedreader.show-articles">
+	<enum id="com.github.suzie97.communique.show-articles">
 		<value nick="ALL" value="0"/>
 		<value nick="UNREAD" value="1"/>
 		<value nick="MARKED" value="2"/>
 	</enum>
 
-	<schema id="org.gnome.feedreader.saved-state" path="/org/gnome/feedreader/saved-state/" gettext-domain="feedreader">
+	<schema id="com.github.suzie97.communique.saved-state" path="/com/github/suzie97/communique/saved-state/" gettext-domain="communique">
 		<key name="window-width" type="i">
 			<default>1600</default>
 			<summary>saved with of the window</summary>
@@ -91,7 +91,7 @@
 			</description>
 		</key>
 
-		<key name='show-articles' enum='org.gnome.feedreader.show-articles'>
+		<key name='show-articles' enum='com.github.suzie97.communique.show-articles'>
 			<default>'ALL'</default>
 			<summary>what articles to show</summary>
 			<description>

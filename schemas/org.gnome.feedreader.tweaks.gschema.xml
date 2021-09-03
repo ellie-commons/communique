@@ -1,5 +1,5 @@
 <schemalist>
-	<schema id="org.gnome.feedreader.tweaks" path="/org/gnome/feedreader/tweaks/" gettext-domain="feedreader">
+	<schema id="com.github.suzie97.communique.tweaks" path="/com/github/suzie97/communique/tweaks/" gettext-domain="communique">
 
 		<key name="show-badge" type="b">
 			<default>true</default>

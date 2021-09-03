@@ -22,15 +22,15 @@ public class FeedReader.FeedbinUtils : GLib.Object {
 	{
 		if(settings_backend != null)
 		{
-			m_settings = new GLib.Settings.with_backend("org.gnome.feedreader.feedbin", settings_backend);
+			m_settings = new GLib.Settings.with_backend("com.github.suzie97.communique.feedbin", settings_backend);
 		}
 		else
 		{
-			m_settings = new GLib.Settings("org.gnome.feedreader.feedbin");
+			m_settings = new GLib.Settings("com.github.suzie97.communique.feedbin");
 		}
 
 		var password_schema =
-		new Secret.Schema("org.gnome.feedreader.password", Secret.SchemaFlags.NONE,
+		new Secret.Schema("com.github.suzie97.communique.password", Secret.SchemaFlags.NONE,
 			"URL", Secret.SchemaAttributeType.STRING,
 		"Username", Secret.SchemaAttributeType.STRING);
 		m_password = new Password(secrets, password_schema, "FeedReader: feedbin login", () => {

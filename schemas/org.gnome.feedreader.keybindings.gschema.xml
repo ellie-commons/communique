@@ -1,5 +1,5 @@
 <schemalist>
-	<schema id="org.gnome.feedreader.keybindings" path="/org/gnome/feedreader/keybindings/" gettext-domain="feedreader">
+	<schema id="com.github.suzie97.communique.keybindings" path="/com/github/suzie97/communique/keybindings/" gettext-domain="communique">
 
 		<key name="articlelist-prev" type="s">
 			<default>'j'</default>

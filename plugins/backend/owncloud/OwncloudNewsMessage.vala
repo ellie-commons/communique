@@ -113,7 +113,7 @@ public class FeedReader.OwnCloudNewsMessage : GLib.Object {
 
 	public ConnectionError send(bool ping = false)
 	{
-		var settingsTweaks = new GLib.Settings("org.gnome.feedreader.tweaks");
+		var settingsTweaks = new GLib.Settings("com.github.suzie97.communique.tweaks");
 
 		if(m_method == "GET")
 		{

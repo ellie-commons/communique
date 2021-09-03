@@ -70,7 +70,7 @@ namespace FeedReader {
 			}
 
 			#if LIBUNITY
-			m_launcher = Unity.LauncherEntry.get_for_desktop_id ("org.gnome.FeedReader.desktop");
+			m_launcher = Unity.LauncherEntry.get_for_desktop_id ("com.github.suzie97.communique.desktop");
 			updateBadge ();
 			#endif
 			m_cancellable = new GLib.Cancellable ();

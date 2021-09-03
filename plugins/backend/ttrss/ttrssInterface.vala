@@ -453,7 +453,7 @@ public class FeedReader.ttrssInterface : FeedServerInterface {
 
 	public override void getArticles(int count, ArticleStatus whatToGet, DateTime? since, string? feedID, bool isTagID, GLib.Cancellable? cancellable = null)
 	{
-		var settings_general = new GLib.Settings("org.gnome.feedreader");
+		var settings_general = new GLib.Settings("com.github.suzie97.communique");
 
 		// first use newsPlus plugin to update states of 10x as much articles as we would normaly do
 		var unreadIDs = m_api.NewsPlus(ArticleStatus.UNREAD, 10*settings_general.get_int("max-articles"));

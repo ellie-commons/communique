@@ -1,5 +1,5 @@
 <schemalist>
-	<schema id="org.gnome.feedreader.feedhq" path="/org/gnome/feedreader/feedhq/" gettext-domain="feedreader">
+	<schema id="com.github.suzie97.communique.feedhq" path="/com/github/suzie97/communique/feedhq/" gettext-domain="communique">
 
 	<key name="username" type="s">
 		<default>""</default>

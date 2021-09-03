@@ -1,5 +1,5 @@
 <schemalist>
-	<schema id="org.gnome.feedreader.share.wallabag" path="/org/gnome/feedreader/share/wallabag/" gettext-domain="feedreader">
+	<schema id="com.github.suzie97.communique.share.wallabag" path="/com/github/suzie97/communique/share/wallabag/" gettext-domain="communique">
 
 	<key name="account-ids" type="as">
 			<default>[]</default>

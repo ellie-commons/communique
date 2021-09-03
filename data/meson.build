@@ -1,11 +1,11 @@
 UI_RESOURCES = gnome.compile_resources(
   'feedreader_res',
-  'org.gnome.FeedReader.gresource.xml',
+  'com.github.suzie97.communique.gresource.xml',
 )
 
 desktop_file = i18n.merge_file(
-  input: 'org.gnome.FeedReader.desktop.in',
-  output: 'org.gnome.FeedReader.desktop',
+  input: 'com.github.suzie97.communique.desktop.in',
+  output: 'com.github.suzie97.communique.desktop',
   po_dir: PO_DIR,
   type: 'desktop',
   install: true,
@@ -13,8 +13,8 @@ desktop_file = i18n.merge_file(
 )
 
 desktop_autostart_file = i18n.merge_file(
-  input: 'org.gnome.FeedReader-autostart.desktop.in',
-  output: 'org.gnome.FeedReader-autostart.desktop',
+  input: 'com.github.suzie97.communique-autostart.desktop.in',
+  output: 'com.github.suzie97.communique-autostart.desktop',
   po_dir: PO_DIR,
   type: 'desktop',
   install: true,
@@ -22,8 +22,8 @@ desktop_autostart_file = i18n.merge_file(
 )
 
 appdata_file = i18n.merge_file(
-  input: 'org.gnome.FeedReader.appdata.xml.in',
-  output: 'org.gnome.FeedReader.appdata.xml',
+  input: 'com.github.suzie97.communique.appdata.xml.in',
+  output: 'com.github.suzie97.communique.appdata.xml',
   po_dir: PO_DIR,
   install: true,
   install_dir: join_paths(SHARE_DIR, 'metainfo')

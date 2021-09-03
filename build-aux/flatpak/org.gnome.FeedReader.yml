@@ -1,5 +1,5 @@
 # This is the same ID that you've used in meson.build and other files
-app-id: org.gnome.FeedReader
+app-id: com.github.suzie97.communique
 
 # Instead of manually specifying a long list of build and runtime dependencies,
 # we can use a convenient pre-made runtime and SDK. For this example, we'll be
@@ -10,7 +10,7 @@ sdk: io.elementary.Sdk
 
 # This should match the exec line in your .desktop file and usually is the same
 # as your app ID
-command: feedreader
+command: com.github.suzie97.communique
 
 # Here we can specify the kinds of permissions our app needs to run. Since we're
 # not using hardware like webcams, making sound, or reading external files, we
@@ -27,7 +27,7 @@ finish-args:
   - '--talk-name=ca.desrt.conf'
   - '--env=DCONF_USER_CONFIG_DIR=.config/dconf'
   - '--talk-name=org.gnome.OnlineAccounts'
-  - '--own-name=org.gnome.FeedReader.ArticleView'
+  - '--own-name=com.github.suzie97.communique.ArticleView'
   - '--talk-name=org.freedesktop.secrets'
   - '--system-talk-name=org.freedesktop.Accounts'
   - '--system-talk-name=io.elementary.AccountsService'

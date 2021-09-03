@@ -36,7 +36,7 @@ shared_library(
 
 install_data(
   [
-    'org.gnome.feedreader.bazqux.gschema.xml'
+    'com.github.suzie97.communique.bazqux.gschema.xml'
   ],
   install_dir: join_paths(SHARE_DIR, 'glib-2.0/schemas')
 )
