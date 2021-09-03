@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <gresources>
-	<gresource prefix="/org/gnome/FeedReader">
+	<gresource prefix="/com/github/suzie97/communique">
 		<file preprocess="xml-stripblanks">icons/64x64/places/feed-service-nextcloud.svg</file>
 		<file preprocess="xml-stripblanks">icons/64x64/places/feed-service-nextcloud-symbolic.svg</file>
 	</gresource>

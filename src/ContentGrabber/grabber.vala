@@ -57,12 +57,12 @@ public class FeedReader.Grabber : GLib.Object {
 	private bool checkConfigFile()
 	{
 		var filepaths = new Gee.ArrayList<string> ();
-		string userconf = GLib.Environment.get_user_data_dir() + "/feedreader/GrabberConfig/";
+		string userconf = GLib.Environment.get_user_data_dir() + "/communique/GrabberConfig/";
 		if(FileUtils.test(userconf, GLib.FileTest.EXISTS))
 		{
 			filepaths.add(userconf);
 		}
-		string globalconf = Constants.INSTALL_PREFIX + "/share/feedreader/GrabberConfig/";
+		string globalconf = Constants.INSTALL_PREFIX + "/share/communique/GrabberConfig/";
 		if(FileUtils.test(globalconf, GLib.FileTest.EXISTS))
 		{
 			filepaths.add(globalconf);

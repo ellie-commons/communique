@@ -103,7 +103,7 @@ public class FeedReader.FeedServer : GLib.Object {
 		}
 
 		// have to readd this path, otherwise new icons won't show up
-		Gtk.IconTheme.get_default().add_resource_path("/org/gnome/FeedReader/icons");
+		Gtk.IconTheme.get_default().add_resource_path("/com/github/suzie97/communique/icons");
 	}
 
 	private void LoadPlugin(string pluginID)
@@ -611,7 +611,7 @@ public class FeedReader.FeedServer : GLib.Object {
 				html = html.slice(end+1, html.length).chug();
 			}
 
-			string path = GLib.Environment.get_user_data_dir() + "/feedreader/debug-article/%s.html".printf(title);
+			string path = GLib.Environment.get_user_data_dir() + "/communique/debug-article/%s.html".printf(title);
 
 			if(FileUtils.test(path, GLib.FileTest.EXISTS))
 			{
@@ -643,7 +643,7 @@ public class FeedReader.FeedServer : GLib.Object {
 				output = output.replace("\n"," ");
 				output = output.replace("_"," ");
 
-				path = GLib.Environment.get_user_data_dir() + "/feedreader/debug-article/%s.txt".printf(title);
+				path = GLib.Environment.get_user_data_dir() + "/communique/debug-article/%s.txt".printf(title);
 
 				if(FileUtils.test(path, GLib.FileTest.EXISTS))
 				{

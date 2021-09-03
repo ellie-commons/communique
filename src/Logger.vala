@@ -14,7 +14,7 @@
 //	along with FeedReader.  If not, see <http://www.gnu.org/licenses/>.
 
 public class FeedReader.Logger : GLib.Object {
-	const string LOG_DOMAIN = "feedreader";
+	const string LOG_DOMAIN = "communique";
 
 	private static bool m_log_debug_information = false;
 

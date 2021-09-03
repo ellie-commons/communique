@@ -1,8 +1,8 @@
-# TT-RSS FeedReader plugin
+# TT-RSS Communique plugin
 
 This is a plugin for [Tiny-Tiny-RSS](http://tt-rss.org) web based news feed reader and aggregator.
 
-It adds a new API calls to allow better interaction of Tiny-Tiny-RSS and clients (in this case FeedReader).
+It adds a new API calls to allow better interaction of Tiny-Tiny-RSS and clients (in this case Communique).
 
 The plugin requires (at least) version 1.12 of Tiny-Tiny-RSS.
 
@@ -43,7 +43,7 @@ Parameters:
 
 Parameters:
  * cateogry_id (int) - the id of the category
- 
+
 
 **moveCategory**
 
@@ -64,7 +64,7 @@ Parameters:
 Parameters:
  * feed_id (int) - the id of the feed
  * caption (string)  - new name of the feed
- 
+
 
 **moveFeed**
 

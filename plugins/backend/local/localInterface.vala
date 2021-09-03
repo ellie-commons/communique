@@ -99,7 +99,7 @@ public class FeedReader.localInterface : FeedServerInterface {
 		try
 		{
 			uint8[] contents;
-			var file = File.new_for_uri("resource:///org/gnome/FeedReader/recommendedFeeds.json");
+			var file = File.new_for_uri("resource:///com/github/suzie97/communique/recommendedFeeds.json");
 			file.load_contents(null, out contents, null);
 
 			var parser = new Json.Parser();

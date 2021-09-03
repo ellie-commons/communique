@@ -24,7 +24,7 @@ public class FeedReader.WebLoginPage : Gtk.Bin {
 	public WebLoginPage()
 	{
 		var settings = new WebKit.Settings();
-		settings.set_user_agent_with_application_details("FeedReader", AboutInfo.version);
+		settings.set_user_agent_with_application_details("Communique", AboutInfo.version);
 		m_view = new WebKit.WebView();
 		m_view.set_settings(settings);
 		m_view.context_menu.connect(() => { return true; });

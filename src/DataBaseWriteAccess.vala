@@ -31,7 +31,7 @@ public class FeedReader.DataBase : DataBaseReadOnly {
 		return writeAccess() as DataBaseReadOnly;
 	}
 
-	public DataBase(string dbFile = "feedreader-%01i.db".printf(Constants.DB_SCHEMA_VERSION))
+	public DataBase(string dbFile = "communique-%01i.db".printf(Constants.DB_SCHEMA_VERSION))
 	{
 		base(dbFile);
 	}
@@ -107,7 +107,7 @@ public class FeedReader.DataBase : DataBaseReadOnly {
 		Logger.info(@"Deleting article \"$articleID\"");
 		m_db.execute("DELETE FROM main.articles WHERE articleID = ?", { articleID });
 		m_db.execute("DELETE FROM main.Enclosures WHERE articleID = ?", { articleID });
-		string folder_path = GLib.Environment.get_user_data_dir() + @"/feedreader/data/images/$feedID/$articleID/";
+		string folder_path = GLib.Environment.get_user_data_dir() + @"/communique/data/images/$feedID/$articleID/";
 		Utils.remove_directory(folder_path);
 	}
 
@@ -617,7 +617,7 @@ public class FeedReader.DataBase : DataBaseReadOnly {
 		Logger.warning(@"DataBase: Deleting all articles of feed \"$feedID\"");
 		m_db.execute("DELETE FROM main.articles WHERE feedID = ?", { feedID });
 		m_db.execute("DELETE FROM main.Enclosures WHERE articleID IN(SELECT articleID FROM main.articles WHERE feedID = ?)", { feedID });
-		string folder_path = GLib.Environment.get_user_data_dir() + @"/feedreader/data/images/$feedID/";
+		string folder_path = GLib.Environment.get_user_data_dir() + @"/communique/data/images/$feedID/";
 		Utils.remove_directory(folder_path);
 	}
 

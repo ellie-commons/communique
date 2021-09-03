@@ -61,7 +61,7 @@ namespace FeedReader {
 				SetupActions ();
 				m_window = MainWindow.get_default ();
 				m_window.set_icon_name ("com.github.suzie97.communique");
-				Gtk.IconTheme.get_default ().add_resource_path ("/org/gnome/FeedReader/icons");
+				Gtk.IconTheme.get_default ().add_resource_path ("/com/github//suzie97/communique/icons");
 
 				FeedReaderBackend.get_default ().newFeedList.connect ( () => {
 					GLib.Idle.add ( () => {

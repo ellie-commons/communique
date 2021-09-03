@@ -41,7 +41,7 @@ public class FeedReader.MainWindow : Gtk.ApplicationWindow {
 	}
 
 	private MainWindow  () {
-		Object (application: FeedReaderApp.get_default (), title: _ ("FeedReader"), show_menubar: false);
+		Object (application: FeedReaderApp.get_default (), title: _ ("Communique"), show_menubar: false);
 		this.window_position = Gtk.WindowPosition.CENTER;
 
 		this.get_style_context  ().add_class  ("rounded");
@@ -303,7 +303,7 @@ public class FeedReader.MainWindow : Gtk.ApplicationWindow {
 	private void setupCSS()
 	{
 		Logger.debug("MainWindow: setupCSS");
-		string path = "/org/gnome/FeedReader/gtk-css/";
+		string path = "/com/github/suzie97/communique/gtk-css/";
 
 		addProvider(path + "basics.css");
 

@@ -275,7 +275,7 @@ else
 endif
 
 # The shared lib for plugins
-feedreader_lib = shared_library(
+communique_lib = shared_library(
   'FeedReader',
   vala_sources,
   c_args: c_args,
@@ -295,12 +295,12 @@ subdir('po')
 
 # Create an executable file
 executable(
-  'feedreader',
+  'communique',
   UI_RESOURCES + ['src/FeedReaderMain.vala'],
   c_args: c_args,
   vala_args: vala_args,
   link_with: [
-    feedreader_lib
+    communique_lib
   ],
   dependencies: communique_deps,
   install: true
@@ -326,7 +326,7 @@ foreach test_name : tests
     vala_args: vala_args + ['--disable-warnings'],
     dependencies: communique_deps,
     link_with: [
-      feedreader_lib
+      communique_lib
     ]
   )
 

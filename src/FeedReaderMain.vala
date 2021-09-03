@@ -2,7 +2,7 @@
 
 namespace FeedReader.Main {
 	private const GLib.OptionEntry[] options = {
-		{ "version", 0, 0, OptionArg.NONE, ref version, "FeedReader version number", null },
+		{ "version", 0, 0, OptionArg.NONE, ref version, "Communique version number", null },
 		{ "about", 0, 0, OptionArg.NONE, ref about, "spawn about dialog", null },
 		{ "verbose", 0, 0, OptionArg.NONE, ref verbose, "Spit out all the debug information", null },
 		{ "playMedia", 0, 0, OptionArg.STRING, ref media, "start media player with URL", "URL" },

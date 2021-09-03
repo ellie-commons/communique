@@ -26,7 +26,7 @@ shared_library(
     json_glib
   ],
   link_with: [
-    feedreader_lib
+    communique_lib
   ],
   install: true,
   install_dir: SHARE_PLUGINS_DIR,

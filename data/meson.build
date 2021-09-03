@@ -1,5 +1,5 @@
 UI_RESOURCES = gnome.compile_resources(
-  'feedreader_res',
+  'communique_res',
   'com.github.suzie97.communique.gresource.xml',
 )
 

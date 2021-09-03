@@ -94,7 +94,7 @@ public class FeedReader.Share : GLib.Object {
 		});
 
 		// load gresource-icons from the plugins
-		Gtk.IconTheme.get_default ().add_resource_path ("/org/gnome/FeedReader/icons");
+		Gtk.IconTheme.get_default ().add_resource_path ("/com/github/szie97/communique/icons");
 	}
 
 	private ShareAccountInterface? getInterface (string type) {

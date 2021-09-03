@@ -167,7 +167,7 @@ public class FeedReader.ArticleView : Gtk.Overlay {
 		settings.set_javascript_can_access_clipboard(false);
 		settings.set_javascript_can_open_windows_automatically(false);
 		settings.set_media_playback_requires_user_gesture(true);
-		settings.set_user_agent_with_application_details("FeedReader", AboutInfo.version);
+		settings.set_user_agent_with_application_details("Communique", AboutInfo.version);
 
 		var view = new WebKit.WebView();
 		view.set_settings(settings);
@@ -250,7 +250,7 @@ public class FeedReader.ArticleView : Gtk.Overlay {
 					article.getDateNice(true),
 					article.getFeedID()
 				)
-			, "file://" + GLib.Environment.get_user_data_dir() + "/feedreader/data/images/");
+			, "file://" + GLib.Environment.get_user_data_dir() + "/communique/data/images/");
 			this.show_all();
 			return false;
 		}, GLib.Priority.HIGH_IDLE);
@@ -383,7 +383,7 @@ public class FeedReader.ArticleView : Gtk.Overlay {
 			case WebKit.LoadEvent.STARTED:
 			Logger.debug("ArticleView: load STARTED");
 			string url = m_currentView.get_uri();
-			if(url != "file://" + GLib.Environment.get_user_data_dir() + "/feedreader/data/images/")
+			if(url != "file://" + GLib.Environment.get_user_data_dir() + "/communique/data/images/")
 			{
 				Logger.debug(@"ArticleView: open external url: $url");
 				try
@@ -544,7 +544,7 @@ public class FeedReader.ArticleView : Gtk.Overlay {
 		try
 		{
 			m_connected = true;
-			m_messenger = connection.get_proxy_sync("com.github.suzie97.communique.ArticleView", "/org/gnome/FeedReader/ArticleView", GLib.DBusProxyFlags.DO_NOT_AUTO_START, null);
+			m_messenger = connection.get_proxy_sync("com.github.suzie97.communique.ArticleView", "/com/github/szie97/communique/ArticleView", GLib.DBusProxyFlags.DO_NOT_AUTO_START, null);
 			m_messenger.onClick.connect((path, width, height, url) => {
 				var window = MainWindow.get_default();
 				new imagePopup(path, url, window, height, width);

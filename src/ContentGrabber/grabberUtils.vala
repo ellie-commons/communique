@@ -595,7 +595,7 @@ public class FeedReader.grabberUtils : GLib.Object {
 		}
 		else
 		{
-			imgPath += "/feedreader/data/images/%s/%s/".printf(article.getFeedFileName(), article.getArticleFileName());
+			imgPath += "/communique/data/images/%s/%s/".printf(article.getFeedFileName(), article.getArticleFileName());
 		}
 
 		var path = GLib.File.new_for_path(imgPath);

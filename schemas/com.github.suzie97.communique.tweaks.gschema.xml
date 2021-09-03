@@ -22,7 +22,7 @@
 			<default>true</default>
 			<summary>Send do-not-track header</summary>
 			<description>
-				Ask server to not track FeedReader on making requests.
+				Ask server to not track Communique on making requests.
 			</description>
 		</key>
 
@@ -34,9 +34,9 @@
 			</description>
 		</key>
 
-		<key name="feedreader-autostart" type="b">
+		<key name="communique-autostart" type="b">
 			<default>true</default>
-			<summary>Keep feedreader in autostart</summary>
+			<summary>Keep Communique in autostart</summary>
 			<description>
 				On startup of the daemon copy the desktop file in the autostart folder
 			</description>

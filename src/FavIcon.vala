@@ -14,7 +14,7 @@
 //	along with FeedReader.  If not, see <http://www.gnu.org/licenses/>.
 public class FeedReader.FavIcon : GLib.Object
 {
-	private static string m_icon_path = GLib.Environment.get_user_data_dir() + "/feedreader/data/feed_icons/";
+	private static string m_icon_path = GLib.Environment.get_user_data_dir() + "/communique/data/feed_icons/";
 	private static Gee.Map<string?, FavIcon?> m_map = null;
 
 	public static FavIcon for_feed(Feed? feed)

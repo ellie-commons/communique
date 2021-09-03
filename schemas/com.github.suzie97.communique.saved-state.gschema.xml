@@ -111,7 +111,7 @@
 			<default>false</default>
 			<summary>currently updating</summary>
 			<description>
-				If the FeedReader is currently updating.
+				If Communique is currently updating.
 			</description>
 		</key>
 

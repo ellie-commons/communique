@@ -36,7 +36,7 @@ public class FeedReader.Notification : GLib.Object {
 			notification.set_priority(GLib.NotificationPriority.NORMAL);
 			notification.set_icon(new GLib.ThemedIcon("com.github.suzie97.communique"));
 
-			GLib.Application.get_default().send_notification("feedreader_default", notification);
+			GLib.Application.get_default().send_notification("communique_default", notification);
 		}
 	}
 

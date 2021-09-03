@@ -28,7 +28,7 @@ shared_library(
     webkit2gtk
   ],
   link_with: [
-    feedreader_lib
+    communique_lib
   ],
   install: true,
   install_dir: BACKEND_PLUGINS_DIR,

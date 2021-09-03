@@ -28,7 +28,7 @@ plugin_lib = shared_library(
     webkit2gtk
   ],
   link_with: [
-    feedreader_lib,
+    communique_lib,
     mrss_lib,
     nxml_lib
   ],
@@ -67,7 +67,7 @@ plugin_test = executable(
   ],
   link_with: [
     plugin_lib,
-    feedreader_lib,
+    communique_lib,
     mrss_lib,
     nxml_lib
   ],

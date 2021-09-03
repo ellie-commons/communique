@@ -194,11 +194,11 @@ public class FeedReader.Utils : GLib.Object {
 			string filename = GLib.Environment.get_user_data_dir() + "/" + desktop;
 
 
-			if(Settings.tweaks().get_boolean("feedreader-autostart") && !FileUtils.test(filename, GLib.FileTest.EXISTS))
+			if(Settings.tweaks().get_boolean("communique-autostart") && !FileUtils.test(filename, GLib.FileTest.EXISTS))
 			{
 				try
 				{
-					var origin = File.new_for_path(Constants.INSTALL_PREFIX + "/share/FeedReader/" + desktop);
+					var origin = File.new_for_path(Constants.INSTALL_PREFIX + "/share/communique/" + desktop);
 					var destination = File.new_for_path(filename);
 					origin.copy(destination, FileCopyFlags.NONE);
 				}
@@ -982,7 +982,7 @@ public static void openInGedit(string text)
 {
 try
 {
-	string filename = "file:///tmp/FeedReader_crashed_html.txt";
+	string filename = "file:///tmp/Communique_crashed_html.txt";
 	FileUtils.set_contents(filename, text);
 	Gtk.show_uri_on_window(MainWindow.get_default(), filename, Gdk.CURRENT_TIME);
 }

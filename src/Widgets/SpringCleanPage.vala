@@ -25,8 +25,8 @@ public class FeedReader.SpringCleanPage : Gtk.Bin {
 		m_spinner.set_size_request(40, 40);
 		m_spinner.start();
 
-		var label = new Gtk.Label(_("FeedReader is cleaning the database.\nThis shouldn't take too long."));
-		label.get_style_context().add_class("h2");
+		var label = new Gtk.Label(_("Communique is cleaning the database.\nThis shouldn't take too long."));
+		label.get_style_context().add_class(Granite.STYLE_CLASS_H2_LABEL);
 		label.set_alignment(0, 0.5f);
 		label.set_ellipsize (Pango.EllipsizeMode.END);
 		label.set_line_wrap_mode(Pango.WrapMode.WORD_CHAR);

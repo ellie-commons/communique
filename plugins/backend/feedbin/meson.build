@@ -24,7 +24,7 @@ static_lib = static_library(
     webkit2gtk
   ],
   link_with: [
-    feedreader_lib
+    communique_lib
   ],
   include_directories: include_directories('../../..')
 )
@@ -50,7 +50,7 @@ plugin_lib = shared_library(
     webkit2gtk
   ],
   link_with: [
-    feedreader_lib,
+    communique_lib,
     static_lib
   ],
   install: true,
@@ -93,7 +93,7 @@ plugin_test = executable(
     webkit2gtk
   ],
   link_with: [
-    feedreader_lib,
+    communique_lib,
     static_lib
   ],
   include_directories: include_directories('../../..')
