@@ -15,8 +15,8 @@
 
 namespace FeedReader.PocketSecrets {
 	const string base_uri                   = "https://getpocket.com/v3/";
-	const string oauth_consumer_key         = "43273-30a11c29b5eeabfa905df168";
-	const string oauth_callback                     = "feedreader://pocket";
+	const string oauth_consumer_key         = "98852-cbdb2f6ec5b78622528b6cd0";
+	const string oauth_callback                     = "communique://pocket";
 }
 
 public class FeedReader.PocketAPI : ShareAccountInterface, Peas.ExtensionBase {
