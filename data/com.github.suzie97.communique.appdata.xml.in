@@ -86,14 +86,14 @@
   <releases>
     <release version="1.0.1" date="2021-09-09">
       <description>
-        <p>Bug Fixes:</p>
-          <ul>
-            <li>Fixed Pocket not authorizing.</li>
-          </ul>
         <p>Improvements:</p>
-          </ul>
-            <li>Icon Improvements.</li>
-          </ul>
+        <ul>
+          <li>Icon contrast improvements.</li>
+        </ul>
+        <p>Bug Fixes:</p>
+        <ul>
+          <li>Fix Pocket Bug</li>
+        </ul>
       </description>
     </release>
     <release version="1.0.0" date="2021-09-03">
