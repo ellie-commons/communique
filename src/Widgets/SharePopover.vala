@@ -15,22 +15,21 @@
 
 public class FeedReader.SharePopover : Gtk.Popover {
 
-	private Gtk.ListBox m_list;
+	private Gtk.Grid main_grid;
 	private Gtk.Stack m_stack;
 	public signal void startShare ();
 	public signal void shareDone ();
 
 	public SharePopover (Gtk.Widget widget) {
-		m_list = new Gtk.ListBox ();
-		m_list.set_selection_mode (Gtk.SelectionMode.NONE);
-		m_list.row_activated.connect (clicked);
-		refreshList ();
-		m_stack = new Gtk.Stack () {
+		main_grid = new Gtk.Grid () {
+			orientation = Gtk.Orientation.VERTICAL,
 			margin_top = 3,
 			margin_bottom = 3
 		};
+		refreshList ();
+		m_stack = new Gtk.Stack ();
 		m_stack.set_transition_type (Gtk.StackTransitionType.SLIDE_LEFT_RIGHT);
-		m_stack.add (m_list);
+		m_stack.add (main_grid);
 
 		this.add (m_stack);
 		this.set_modal (true);
@@ -40,56 +39,48 @@ public class FeedReader.SharePopover : Gtk.Popover {
 	}
 
 	public void refreshList () {
-		var children = m_list.get_children ();
+		var children = main_grid.get_children ();
 
 		foreach (Gtk.Widget row in children) {
-			m_list.remove (row);
+			main_grid.remove (row);
 			row.destroy ();
 		}
 
 		var list = Share.get_default ().getAccounts ();
 
 		foreach (var account in list) {
-			m_list.add (new ShareRow (account.getType (), account.getID (), account.getUsername (), account.getIconName ()));
+			var share_button = new ShareRow (account.getType (), account.getID (), account.getUsername (), account.getIconName ());
+			main_grid.add (share_button);
+			share_button.clicked.connect (clicked);
 		}
 
-		var addRow = new Gtk.ListBoxRow ();
-
-		var addLabel = new Gtk.Label (_("Add accounts")) {
-			margin = 6
+		var add_button = new Gtk.ModelButton () {
+			text = _("Add Accounts...")
 		};
-		addLabel.set_line_wrap_mode (Pango.WrapMode.WORD);
-		addLabel.set_ellipsize (Pango.EllipsizeMode.END);
-		addLabel.xalign = 0;
 
-		var addBox = new Gtk.Box (Gtk.Orientation.HORIZONTAL, 5);
-		addBox.pack_start (addLabel, true, true, 0);
-
-		if (list.size > 0) {
-			var seperatorBox = new Gtk.Box (Gtk.Orientation.VERTICAL, 5);
-			var separator = new Gtk.Separator (Gtk.Orientation.HORIZONTAL) {
-				margin_top = 3
-			};
-			seperatorBox.pack_start (separator, false, false, 0);
-			seperatorBox.pack_start (addBox, true, true, 0);
-			addRow.add (seperatorBox);
-		} else {
-			addRow.add (addBox);
-		}
-
-		addRow.show_all ();
-		m_list.add (addRow);
-	}
-
-	private void clicked (Gtk.ListBoxRow row) {
-		ShareRow? shareRow = row as ShareRow;
-
-		if (shareRow == null) {
-			this.hide ();
+		add_button.button_release_event.connect (() => {
 			SettingsDialog.get_default ().showDialog ("service");
 			Logger.debug ("SharePopover: open Settings");
-			return;
-		}
+			this.hide ();
+
+			return Gdk.EVENT_STOP;
+		});
+
+		var separator = new Gtk.Separator (Gtk.Orientation.HORIZONTAL) {
+			margin_top = 3,
+			margin_bottom = 3
+		};
+
+		main_grid.add (separator);
+
+		main_grid.add (add_button);
+
+		add_button.show_all ();
+		// main_grid.add (add_button);
+	}
+
+	private void clicked (Gtk.Button row) {
+		ShareRow? shareRow = row as ShareRow;
 
 		string id = shareRow.getID ();
 		Article? selectedArticle = ColumnView.get_default ().getSelectedArticle ();
@@ -105,7 +96,7 @@ public class FeedReader.SharePopover : Gtk.Popover {
 					shareURL (id, selectedArticle.getURL ());
 				});
 				widget.goBack.connect ( () => {
-					m_stack.set_visible_child (m_list);
+					m_stack.set_visible_child (main_grid);
 					m_stack.remove (widget);
 				});
 			}

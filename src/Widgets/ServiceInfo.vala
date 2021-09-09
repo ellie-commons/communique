@@ -51,7 +51,6 @@ public class FeedReader.ServiceInfo : Gtk.Overlay {
 		m_box.margin_bottom = 5;
 
 		m_spinner = new Gtk.Spinner ();
-		m_spinner.set_size_request (32,32);
 
 		m_stack = new Gtk.Stack ();
 		m_stack.add_named (m_box, "info");
