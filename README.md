@@ -4,6 +4,9 @@
   <img src="data/application-icons/hicolor/128x128/apps/com.github.suzie97.communique.svg" alt="Icon" />
 </p>
 <h1 align="center">Communique</h1>
+<p align="center">
+  <a href="https://appcenter.elementary.io/com.github.suzie97.communique"><img src="https://appcenter.elementary.io/badge.svg" alt="Get it on AppCenter" /></a>
+</p>
 
 ![Screenshot](data/communique-light-screenshot.png)
 ![Screenshot](data/communique-dark-screenshot.png)
