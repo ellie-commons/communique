@@ -23,7 +23,8 @@ shared_library(
     webkit2gtk,
     libxml,
     rest,
-    json_glib
+    json_glib,
+    libhandy
   ],
   link_with: [
     communique_lib

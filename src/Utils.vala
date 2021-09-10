@@ -942,7 +942,7 @@ Gtk.init(ref args);
 Gst.init(ref args);
 Logger.init(true);
 
-var window = new Gtk.Window();
+var window = new Hdy.Window();
 window.set_size_request(800, 600);
 window.destroy.connect(Gtk.main_quit);
 var header = new Gtk.HeaderBar();
@@ -956,8 +956,13 @@ Gtk.StyleContext.add_provider_for_screen(screen, provider, Gtk.STYLE_PROVIDER_PR
 
 var player = new FeedReader.MediaPlayer(url);
 
-window.add(player);
-window.set_titlebar(header);
+var main_grid = new Gtk.Grid ();
+main_grid.attach (header, 0, 0);
+main_grid.attach (player, 0, 1);
+// main_grid.show_all ();
+
+// window.add(player);
+// window.set_titlebar(header);
 window.show_all();
 
 Gtk.main();

@@ -21,7 +21,8 @@ shared_library(
     sqlite3,
     libsoup,
     webkit2gtk,
-    libxml
+    libxml,
+    libhandy
   ],
   link_with: [
     communique_lib

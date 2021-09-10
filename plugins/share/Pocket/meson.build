@@ -24,7 +24,8 @@ shared_library(
     libxml,
     rest,
     json_glib,
-    goa
+    goa,
+    libhandy
   ],
   link_with: [
     communique_lib

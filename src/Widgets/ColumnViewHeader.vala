@@ -13,7 +13,7 @@
 //	You should have received a copy of the GNU General Public License
 //	along with FeedReader.  If not, see <http://www.gnu.org/licenses/>.
 
-public class FeedReader.ColumnViewHeader : Gtk.HeaderBar {
+public class FeedReader.ColumnViewHeader : Hdy.HeaderBar {
 
 	private UpdateButton m_refresh_button;
 	private Gtk.SearchEntry m_search;

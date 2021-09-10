@@ -15,8 +15,8 @@
 
 namespace FeedReader.InoReaderSecret {
 	const string base_uri        = "https://www.inoreader.com/reader/api/0/";
-	const string apiClientId     = "1000001384";
-	const string apiClientSecret = "3AA9IyNTFL_Mgu77WPpWbawx9loERRdf";
+	const string apiClientId     = "999997658";
+	const string apiClientSecret = "ZMphoAnjB2i4lwrywUT72tHOp2HpINFU";
 	const string apiRedirectUri  = "http://localhost";
 	const string csrf_protection = "123456";
 }

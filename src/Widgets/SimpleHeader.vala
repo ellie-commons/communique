@@ -13,7 +13,7 @@
 //	You should have received a copy of the GNU General Public License
 //	along with FeedReader.  If not, see <http://www.gnu.org/licenses/>.
 
-public class FeedReader.SimpleHeader : Gtk.HeaderBar {
+public class FeedReader.SimpleHeader : Hdy.HeaderBar {
 	private Gtk.Button m_backButton;
 
 	public signal void back ();

@@ -25,7 +25,8 @@ shared_library(
     libsoup,
     libxml,
     json_glib,
-    webkit2gtk
+    webkit2gtk,
+    libhandy
   ],
   link_with: [
     communique_lib

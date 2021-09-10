@@ -25,7 +25,8 @@ plugin_lib = shared_library(
     json_glib,
     libcurl,
     lib_rss_glib,
-    webkit2gtk
+    webkit2gtk,
+    libhandy
   ],
   link_with: [
     communique_lib,
@@ -63,7 +64,8 @@ plugin_test = executable(
     json_glib,
     libcurl,
     lib_rss_glib,
-    webkit2gtk
+    webkit2gtk,
+    libhandy
   ],
   link_with: [
     plugin_lib,

@@ -20,7 +20,8 @@ shared_library(
     libsoup,
     libxml,
     json_glib,
-    feedreader
+    feedreader,
+    libhandy
   ],
   install: true,
   install_dir: BACKEND_PLUGINS_DIR
