@@ -43,4 +43,5 @@ public class FeedReader.SimpleHeader : Hdy.HeaderBar {
 	public void showBackButton (bool show) {
 		m_backButton.visible = show;
 	}
+
 }

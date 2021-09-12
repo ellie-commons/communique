@@ -40,8 +40,11 @@ public class FeedReader.MainWindow : Hdy.ApplicationWindow {
 		return m_window;
 	}
 
-	private MainWindow () {
+	static construct {
 		Hdy.init ();
+	}
+
+	private MainWindow () {
 		Object (application: FeedReaderApp.get_default (), title: _("Communique"), show_menubar: false);
 		this.window_position = Gtk.WindowPosition.CENTER;
 
@@ -98,12 +101,17 @@ public class FeedReader.MainWindow : Hdy.ApplicationWindow {
 		else {
 			showLogin ();
 		}
+
+		delete_event.connect ((event) => {
+			hide ();
+			return true;
+		});
 	}
 
-	public override bool delete_event (Gdk.EventAny event) {
-		this.hide ();
-		return true;
-	}
+	// public override bool delete_event (Gdk.EventAny event) {
+	// 	this.hide ();
+	// 	return false;
+	// }
 
 	private bool onStateEvent (Gdk.EventWindowState event) {
 		if (event.type == Gdk.EventType.WINDOW_STATE) {
@@ -121,7 +129,6 @@ public class FeedReader.MainWindow : Hdy.ApplicationWindow {
 					base.window_state_event (event);
 					return true;
 				}
-
 
 				if ((event.new_window_state & Gdk.WindowState.FULLSCREEN) == Gdk.WindowState.FULLSCREEN) {
 					Logger.debug ("MainWindow: fullscreen event");

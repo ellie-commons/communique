@@ -74,7 +74,7 @@
 		</key>
 
 		<key name='content-grabber' type="b">
-			<default>false</default>
+			<default>true</default>
 			<summary>grab full content of articles</summary>
 			<description>
 				Whether to use the content-grabber to download the full content of articles.

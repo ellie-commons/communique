@@ -38,6 +38,9 @@ public class FeedReader.ColumnViewHeader : Hdy.HeaderBar {
 	public signal void popClosed ();
 	public signal void popOpened ();
 
+	static construct {
+	  Hdy.init ();
+	}
 
 	public ColumnViewHeader (bool fullscreen) {
 		custom_title = new Gtk.Grid ();
