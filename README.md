@@ -26,9 +26,8 @@ Communique is designed and developed on and for [elementary OS](https://elementa
 
 Flatpak is the recommended way for building Communique. Developing and testing with flatpak helps ensure that everything works correctly inside the flatpak sandbox.
 ```bash
-cd build-aux/flatpak/
-flatpak-builder build org.gnome.FeedReader.yml --user --install --force-clean
-flatpak run org.gnome.FeedReader
+flatpak-builder build com.github.suzie97.communique.yml --user --install --force-clean
+flatpak run com.github.suzie97.communique.yml
 ```
 ## Special Thanks to [@jangernert](https://github.com/jangernert)
 * More than 90% of the backend of this project is adopted from his project [FeedReader](https://github.com/jangernert/FeedReader). Communique would not have been possible without FeedReader.
