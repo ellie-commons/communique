@@ -211,7 +211,7 @@ public class FeedReader.ColumnView : Gtk.Paned {
 		// 	m_headerbar.set_position (this.get_position ());
 		// });
 
-		m_headerbar = new ColumnViewHeader (false);
+		m_headerbar = new ColumnViewHeader ();
 		m_headerbar.refresh.connect ( () => {
 			syncStarted ();
 			var app = FeedReaderApp.get_default ();

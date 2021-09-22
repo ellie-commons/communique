@@ -1,5 +1,5 @@
 project('com.github.suzie97.communique', ['vala', 'c'],
-  version: '2.11.0',
+  version: '1.1.0',
   meson_version: '>= 0.44.1',
   license: 'GPL-3.0',
   default_options: ['prefix=/usr']
@@ -175,6 +175,7 @@ vala_sources = [
   'src/Widgets/ResetPage.vala',
   'src/Widgets/ServiceSettingsPopover.vala',
   'src/Widgets/ShareRow.vala',
+  'src/Widgets/Shortcuts.vala',
   'src/Widgets/ServiceInfo.vala',
   'src/Widgets/Setting.vala',
   'src/Widgets/SettingsDialog.vala',

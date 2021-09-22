@@ -1,17 +1,7 @@
-//	This file is part of FeedReader.
-//
-//	FeedReader is free software: you can redistribute it and/or modify
-//	it under the terms of the GNU General Public License as published by
-//	the Free Software Foundation, either version 3 of the License, or
-//	 (at your option) any later version.
-//
-//	FeedReader is distributed in the hope that it will be useful,
-//	but WITHOUT ANY WARRANTY; without even the implied warranty of
-//	MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
-//	GNU General Public License for more details.
-//
-//	You should have received a copy of the GNU General Public License
-//	along with FeedReader.  If not, see <http://www.gnu.org/licenses/>.
+/*
+* SPDX-License-Identifier: GPL-3.0-or-later
+* SPDX-FileCopyrightText: 2021 Your Name <singharajdeep97@gmail.com>
+*/
 
 public class FeedReader.ColumnViewHeader : Hdy.HeaderBar {
 
@@ -42,7 +32,7 @@ public class FeedReader.ColumnViewHeader : Hdy.HeaderBar {
 	  Hdy.init ();
 	}
 
-	public ColumnViewHeader (bool fullscreen) {
+	public ColumnViewHeader () {
 		custom_title = new Gtk.Grid ();
 	    // orientation = Gtk.Orientation.HORIZONTAL;
 	    show_close_button = true;
@@ -89,7 +79,7 @@ public class FeedReader.ColumnViewHeader : Hdy.HeaderBar {
 		var unmarked_icon = new Gtk.Image.from_icon_name ("bookmark-missing", Gtk.IconSize.LARGE_TOOLBAR);
 		var read_icon = new Gtk.Image.from_icon_name ("mail-read", Gtk.IconSize.LARGE_TOOLBAR);
 		var unread_icon = new Gtk.Image.from_icon_name ("mail-unread", Gtk.IconSize.LARGE_TOOLBAR);
-		var fs_icon = new Gtk.Image.from_icon_name (fullscreen? "view-restore" : "view-fullscreen", Gtk.IconSize.LARGE_TOOLBAR);
+		var fs_icon = new Gtk.Image.from_icon_name ("view-fullscreen", Gtk.IconSize.LARGE_TOOLBAR);
 		var close_icon = new Gtk.Image.from_icon_name ("window-close-symbolic", Gtk.IconSize.LARGE_TOOLBAR);
 
 		var menubutton = new Gtk.Button();
@@ -101,6 +91,10 @@ public class FeedReader.ColumnViewHeader : Hdy.HeaderBar {
 		var preferences_button = new Gtk.ModelButton () {
 			text = _("Preferences"),
 			margin_bottom = 6
+		};
+
+		var shortcuts_button = new Gtk.ModelButton () {
+		    text = _("Shortcuts")
 		};
 
 		var account_button = new Gtk.ModelButton () {
@@ -118,6 +112,7 @@ public class FeedReader.ColumnViewHeader : Hdy.HeaderBar {
 		};
 		grid.add (account_button);
 		grid.add (separator);
+		grid.add (shortcuts_button);
 		grid.add (preferences_button);
 
 		var popover = new Gtk.Popover (menubutton);
@@ -129,6 +124,13 @@ public class FeedReader.ColumnViewHeader : Hdy.HeaderBar {
 
 		preferences_button.button_release_event.connect (() => {
 			SettingsDialog.get_default().showDialog("ui");
+			popover.hide ();
+
+			return Gdk.EVENT_STOP;
+		});
+
+		shortcuts_button.button_release_event.connect (() => {
+			new Shortcuts ();
 			popover.hide ();
 
 			return Gdk.EVENT_STOP;
@@ -161,7 +163,7 @@ public class FeedReader.ColumnViewHeader : Hdy.HeaderBar {
 		m_fullscreen_button = new Gtk.Button ();
 		m_fullscreen_button.add (fs_icon);
 		m_fullscreen_button.set_focus_on_click (false);
-		m_fullscreen_button.tooltip_markup = Granite.markup_accel_tooltip ({"F11"}, fullscreen? _("Enter fullscreen mode") : _("Leave fullscreen mode"));
+		m_fullscreen_button.tooltip_markup = Granite.markup_accel_tooltip ({"F11"}, _("Enter fullscreen mode"));
 		m_fullscreen_button.sensitive = false;
 		m_fullscreen_button.get_style_context ().add_class (Gtk.STYLE_CLASS_FLAT);
 		m_fullscreen_button.clicked.connect ( () => {

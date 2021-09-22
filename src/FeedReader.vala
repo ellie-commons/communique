@@ -21,8 +21,7 @@ namespace FeedReader {
 		private bool m_online = true;
 		private static FeedReaderApp? m_app = null;
 		public static bool m_verbose = false;
-		public signal void callback  (string content);
-
+		public signal void callback (string content);
 
 		public new static FeedReaderApp get_default () {
 			if (m_app == null) {
@@ -56,8 +55,6 @@ namespace FeedReader {
 			Intl.bindtextdomain  (Constants.GETTEXT_PACKAGE, Constants.LOCALE_DIR);
 			Intl.bind_textdomain_codeset  (Constants.GETTEXT_PACKAGE, "UTF-8");
 			Intl.textdomain  (Constants.GETTEXT_PACKAGE);
-
-			sync ();
 
 			if (m_window == null) {
 				SetupActions ();
@@ -187,6 +184,8 @@ namespace FeedReader {
 
 				FeedReaderBackend.get_default ().updateBadge ();
 				FeedReaderBackend.get_default ().checkOnlineAsync.begin ();
+
+				sync ();
 			}
 
 			var granite_settings = Granite.Settings.get_default ();
