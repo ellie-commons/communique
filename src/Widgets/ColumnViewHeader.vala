@@ -33,6 +33,7 @@ public class FeedReader.ColumnViewHeader : Hdy.HeaderBar {
 	}
 
 	public ColumnViewHeader () {
+	    hexpand = true;
 		custom_title = new Gtk.Grid ();
 	    // orientation = Gtk.Orientation.HORIZONTAL;
 	    show_close_button = true;

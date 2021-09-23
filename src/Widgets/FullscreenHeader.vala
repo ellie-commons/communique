@@ -25,7 +25,6 @@ public class FeedReader.FullscreenHeader : Gtk.EventBox {
 		var unread_icon = new Gtk.Image.from_icon_name ("mail-unread", Gtk.IconSize.LARGE_TOOLBAR);
 
 		var read_button = new HoverButton (read_icon, unread_icon, false, "r", _("Mark as unread"), _("Mark as read"));
-		read_button.sensitive = false;
 		read_button.clicked.connect (() => {
 			ColumnView.get_default ().toggleReadSelectedArticle ();
 		});
@@ -34,7 +33,6 @@ public class FeedReader.FullscreenHeader : Gtk.EventBox {
 		tag_button.add (tag_icon);
 		tag_button.set_focus_on_click (false);
 		tag_button.set_tooltip_text (_("Tag article"));
-		tag_button.sensitive = false;
 		tag_button.get_style_context ().add_class (Gtk.STYLE_CLASS_FLAT);
 		tag_button.clicked.connect (() => {
 			m_popover = true;
@@ -58,7 +56,6 @@ public class FeedReader.FullscreenHeader : Gtk.EventBox {
 		print_button.image = new Gtk.Image.from_icon_name ("printer", Gtk.IconSize.LARGE_TOOLBAR);
 		print_button.set_focus_on_click (false);
 		print_button.set_tooltip_text (_("Print article"));
-		print_button.sensitive = false;
 		print_button.get_style_context ().add_class (Gtk.STYLE_CLASS_FLAT);
 		print_button.clicked.connect (() => {
 			ColumnView.get_default ().print ();
@@ -69,7 +66,6 @@ public class FeedReader.FullscreenHeader : Gtk.EventBox {
 		share_button.set_relief (Gtk.ReliefStyle.NONE);
 		share_button.set_focus_on_click (false);
 		share_button.set_tooltip_text (_("Export or Share this article"));
-		share_button.sensitive = false;
 
 		share_button.clicked.connect ( () => {
 			m_popover = true;
@@ -86,6 +82,9 @@ public class FeedReader.FullscreenHeader : Gtk.EventBox {
 		var shortcut_button = new Gtk.Button();
 		shortcut_button.image = new Gtk.Image.from_icon_name("preferences-desktop-keyboard", Gtk.IconSize.LARGE_TOOLBAR);
 		shortcut_button.set_tooltip_text (_("Menu"));
+		shortcut_button.clicked.connect (() => {
+			new Shortcuts ();
+		});
 
 		fullscreen_header.pack_start (read_button);
 		fullscreen_header.pack_start (tag_button);

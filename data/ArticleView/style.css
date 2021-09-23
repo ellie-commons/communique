@@ -538,8 +538,8 @@ body.theme.spring div.frcontent h4 {
 /* DARK THEME */
 
 body.theme.gruvbox {
-    color: #fafafa;
-    background: #1a1a1a;
+    color: #d4d4d4;
+    background: #333333;
 }
 
 body.theme.gruvbox body,
@@ -550,8 +550,8 @@ body.theme.gruvbox p {
 body.theme.gruvbox pre,
 body.theme.gruvbox pre code,
 body.theme.gruvbox code {
-    background-color: #1a1a1a;
-    color: #ffffff;
+    background-color: #333333;
+    color: #fafafa;
     font-family: 'FuraCode Nerd Font', 'Fira Code', 'Fira Mono', monospace, Consolas, Menlo, Monaco, Lucida Console, Liberation Mono, DejaVu Sans Mono, Bitstream Vera Sans Mono, Courier New, serif;
 }
 
@@ -562,7 +562,7 @@ body.theme.gruvbox td {
 }
 
 body.theme.gruvbox header.post h1 {
-    color: #ffffff;
+    color: #fafafa;
     line-height: 1.2;
 }
 
@@ -576,7 +576,7 @@ body.theme.gruvbox header.post span.source {
 
 body.theme.gruvbox div.frcontent p,
 body.theme.gruvbox header.post span.author {
-    color: #fafafa;
+    color: #d4d4d4;
 }
 
 body.theme.gruvbox div.frcontent a {

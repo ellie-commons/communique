@@ -1,17 +1,7 @@
-//	This file is part of FeedReader.
-//
-//	FeedReader is free software: you can redistribute it and/or modify
-//	it under the terms of the GNU General Public License as published by
-//	the Free Software Foundation, either version 3 of the License, or
-//	 (at your option) any later version.
-//
-//	FeedReader is distributed in the hope that it will be useful,
-//	but WITHOUT ANY WARRANTY; without even the implied warranty of
-//	MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
-//	GNU General Public License for more details.
-//
-//	You should have received a copy of the GNU General Public License
-//	along with FeedReader.  If not, see <http://www.gnu.org/licenses/>.
+/*
+* SPDX-License-Identifier: GPL-3.0-or-later
+* SPDX-FileCopyrightText: 2021 Your Name <singharajdeep97@gmail.com>
+*/
 
 public class FeedReader.ColumnView : Gtk.Paned {
 
@@ -24,7 +14,7 @@ public class FeedReader.ColumnView : Gtk.Paned {
 	private FeedListFooter m_footer;
 	private ColumnViewHeader m_headerbar;
 
-	public signal void change_state(ArticleListState state, Gtk.StackTransitionType transition);
+	public signal void change_state (ArticleListState state, Gtk.StackTransitionType transition);
 
 	private static ColumnView? m_columnView = null;
 
@@ -82,8 +72,8 @@ public class FeedReader.ColumnView : Gtk.Paned {
 
 		m_mode_button = new ModeButton();
 		m_mode_button.append(all_grid, _("Show all articles"));
-		m_mode_button.append(unread_grid, _("Show only unread articles"));
-		m_mode_button.append(starred_grid, _("Show only starred articles"));
+		m_mode_button.append(unread_grid, _("Show unread articles"));
+		m_mode_button.append(starred_grid, _("Show starred articles"));
 		m_mode_button.set_active(m_state, true);
 
 		m_mode_button.mode_changed.connect(() => {
@@ -102,11 +92,11 @@ public class FeedReader.ColumnView : Gtk.Paned {
 			change_state(m_state, transition);
 		});
 
-		m_feedList.clearSelected.connect ( () => {
+		m_feedList.clearSelected.connect (() => {
 			m_footer.setRemoveButtonSensitive (false);
 		});
 
-		m_feedList.newFeedSelected.connect ( (feedID) => {
+		m_feedList.newFeedSelected.connect ((feedID) => {
 			Logger.debug ("ContentPage: new Feed selected");
 			m_articleList.setSelectedType (FeedListType.FEED);
 			m_articleList.setSelectedFeed (feedID);
@@ -121,7 +111,7 @@ public class FeedReader.ColumnView : Gtk.Paned {
 			}
 		});
 
-		m_feedList.newTagSelected.connect ( (tagID) => {
+		m_feedList.newTagSelected.connect ((tagID) => {
 			Logger.debug ("ContentPage: new Tag selected");
 			m_articleList.setSelectedType (FeedListType.TAG);
 			m_articleList.setSelectedFeed (tagID);
@@ -130,7 +120,7 @@ public class FeedReader.ColumnView : Gtk.Paned {
 			m_footer.setSelectedRow (FeedListType.TAG, tagID);
 		});
 
-		m_feedList.newCategorieSelected.connect ( (categorieID) => {
+		m_feedList.newCategorieSelected.connect ((categorieID) => {
 			Logger.debug ("ContentPage: new Category selected");
 			m_articleList.setSelectedType (FeedListType.CATEGORY);
 			m_articleList.setSelectedFeed (categorieID);
@@ -152,7 +142,7 @@ public class FeedReader.ColumnView : Gtk.Paned {
 		m_articleList = new ArticleList () {
 			vexpand = true
 		};
-		m_articleList.drag_begin.connect ( (context) => {
+		m_articleList.drag_begin.connect ((context) => {
 			if (DataBase.readOnly ().read_tags ().is_empty) {
 				m_feedList.newFeedlist (m_articleList.getState (), false, true);
 			}
@@ -174,7 +164,7 @@ public class FeedReader.ColumnView : Gtk.Paned {
 			}
 			return false;
 		});
-		setArticleListState ( (ArticleListState)Settings.state ().get_enum ("show-articles"));
+		setArticleListState ((ArticleListState)Settings.state ().get_enum ("show-articles"));
 
 		var grid = new Gtk.Grid () {
 			orientation = Gtk.Orientation.VERTICAL,
@@ -207,45 +197,45 @@ public class FeedReader.ColumnView : Gtk.Paned {
 		this.set_position (Settings.state ().get_int ("feeds-and-articles-width"));
 		this.pack1 (m_pane, false, false);
 		this.pack2 (m_article_view, true, false);
-		// this.notify["position"].connect ( () => {
+		// this.notify["position"].connect (() => {
 		// 	m_headerbar.set_position (this.get_position ());
 		// });
 
 		m_headerbar = new ColumnViewHeader ();
-		m_headerbar.refresh.connect ( () => {
+		m_headerbar.refresh.connect (() => {
 			syncStarted ();
 			var app = FeedReaderApp.get_default ();
 			app.sync ();
 		});
 
-		m_headerbar.cancel.connect ( () => {
+		m_headerbar.cancel.connect (() => {
 			FeedReaderApp.get_default ().cancelSync ();
 		});
 
-		change_state.connect ( (state, transition) => {
+		change_state.connect ((state, transition) => {
 			setArticleListState (state);
 			newArticleList (transition);
 		});
 
-		m_headerbar.search_term.connect ( (searchTerm) => {
+		m_headerbar.search_term.connect ((searchTerm) => {
 			Logger.debug ("MainWindow: new search term");
 			setSearchTerm (searchTerm);
 			newArticleList ();
 		});
 
-		// m_headerbar.notify["position"].connect ( () => {
+		// m_headerbar.notify["position"].connect (() => {
 		// 	this.set_position (m_headerbar.get_position ());
 		// });
 
-		m_headerbar.toggledMarked.connect ( () => {
+		m_headerbar.toggledMarked.connect (() => {
 			toggleMarkedSelectedArticle ();
 		});
 
-		m_headerbar.toggledRead.connect ( () => {
+		m_headerbar.toggledRead.connect (() => {
 			toggleReadSelectedArticle ();
 		});
 
-		m_headerbar.closeArticle.connect ( () => {
+		m_headerbar.closeArticle.connect (() => {
 			clearArticleView ();
 		});
 
@@ -299,7 +289,7 @@ public class FeedReader.ColumnView : Gtk.Paned {
 		int height = m_articleList.get_allocated_height ();
 		if (height == 1) {
 			ulong id = 0;
-			id = m_articleList.draw.connect_after ( () => {
+			id = m_articleList.draw.connect_after (() => {
 				m_articleList.newList (transition);
 				m_articleList.disconnect (id);
 				return false;
@@ -419,7 +409,7 @@ public class FeedReader.ColumnView : Gtk.Paned {
 			var selected_row = m_feedList.getSelectedRow ();
 			string[] selected = selected_row.split (" ");
 
-			if ( (selected[0] == "feed" && selected[1] == FeedID.ALL.to_string ())
+			if ((selected[0] == "feed" && selected[1] == FeedID.ALL.to_string ())
 			||  (selected[0] == "cat" &&  (selected[1] == CategoryID.MASTER.to_string () || selected[1] == CategoryID.TAGS.to_string ()))) {
 				m_footer.setRemoveButtonSensitive (false);
 			}

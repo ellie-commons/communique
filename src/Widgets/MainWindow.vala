@@ -39,7 +39,10 @@ public class FeedReader.MainWindow : Hdy.ApplicationWindow {
 		m_stack.set_transition_type (Gtk.StackTransitionType.CROSSFADE);
 		m_stack.set_transition_duration (m_stackTransitionTime);
 
-		m_overlay = new Gtk.Overlay ();
+		m_overlay = new Gtk.Overlay () {
+			hexpand = true,
+			vexpand = true
+		};
 		m_overlay.add (m_stack);
 
 		setupLoginPage ();
@@ -121,10 +124,12 @@ public class FeedReader.MainWindow : Hdy.ApplicationWindow {
 					Logger.debug ("MainWindow: fullscreen event");
 					ColumnView.get_default ().hidePane ();
 					ColumnView.get_default ().enterFullscreenArticle ();
+					hide_header ();
 				}
 				else {
 					ColumnView.get_default ().showPane ();
 					ColumnView.get_default ().leaveFullscreenArticle ();
+					show_header ();
 				}
 			}
 		}
@@ -199,6 +204,14 @@ public class FeedReader.MainWindow : Hdy.ApplicationWindow {
 		weak Gdk.Display display = Gdk.Display.get_default ();
 		weak Gdk.Screen screen = display.get_default_screen ();
 		Gtk.StyleContext.remove_provider_for_screen (screen, provider);
+	}
+
+	public void hide_header () {
+		header_stack.hide ();
+	}
+
+	public void show_header () {
+		header_stack.show ();
 	}
 
 	private void setupLoginPage () {
