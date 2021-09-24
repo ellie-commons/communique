@@ -13,8 +13,7 @@ public class FeedReader.FullscreenHeader : Gtk.EventBox {
 
 	public FullscreenHeader () {
 		var fullscreen_header = new Hdy.HeaderBar () {
-			decoration_layout = ":maximize",
-			show_close_button = true
+			show_close_button = false
 		};
 		fullscreen_header.get_style_context ().add_class ("titlebar");
 		fullscreen_header.get_style_context ().add_class ("imageOverlay");
@@ -37,7 +36,7 @@ public class FeedReader.FullscreenHeader : Gtk.EventBox {
 		tag_button.clicked.connect (() => {
 			m_popover = true;
 			var pop = new TagPopover (tag_button);
-			pop.closed.connect ( () => {
+			pop.closed.connect (() => {
 				m_popover = false;
 				if (!m_hover) {
 					m_revealer.set_reveal_child (false);
@@ -46,11 +45,6 @@ public class FeedReader.FullscreenHeader : Gtk.EventBox {
 		});
 
 		m_header = new ColumnViewHeader ();
-		m_header.fsClick.connect (() => {
-			ColumnView.get_default ().showPane ();
-			ColumnView.get_default ().leaveFullscreenArticle ();
-			MainWindow.get_default ().unfullscreen ();
-		});
 
 		var print_button = new Gtk.Button ();
 		print_button.image = new Gtk.Image.from_icon_name ("printer", Gtk.IconSize.LARGE_TOOLBAR);
@@ -67,10 +61,10 @@ public class FeedReader.FullscreenHeader : Gtk.EventBox {
 		share_button.set_focus_on_click (false);
 		share_button.set_tooltip_text (_("Export or Share this article"));
 
-		share_button.clicked.connect ( () => {
+		share_button.clicked.connect (() => {
 			m_popover = true;
 			var share_popover = new SharePopover (share_button);
-			share_popover.closed.connect ( () => {
+			share_popover.closed.connect (() => {
 				share_popover = null;
 				m_popover = false;
 				if (!m_hover) {
@@ -79,15 +73,25 @@ public class FeedReader.FullscreenHeader : Gtk.EventBox {
 			});
 		});
 
-		var shortcut_button = new Gtk.Button();
+		var shortcut_button = new Gtk.Button ();
 		shortcut_button.image = new Gtk.Image.from_icon_name("preferences-desktop-keyboard", Gtk.IconSize.LARGE_TOOLBAR);
 		shortcut_button.set_tooltip_text (_("Menu"));
 		shortcut_button.clicked.connect (() => {
 			new Shortcuts ();
 		});
 
+		var restore_button = new Gtk.Button.from_icon_name ("view-restore", Gtk.IconSize.SMALL_TOOLBAR);
+		restore_button.clicked.connect (() => {
+			ColumnView.get_default ().showPane ();
+			ColumnView.get_default ().leaveFullscreenArticle ();
+			MainWindow.get_default ().show_header ();
+			MainWindow.get_default ().unfullscreen ();
+			MainWindow.get_default ().unmaximize ();
+		});
+
 		fullscreen_header.pack_start (read_button);
 		fullscreen_header.pack_start (tag_button);
+		fullscreen_header.pack_end (restore_button);
 		fullscreen_header.pack_end (shortcut_button);
 		fullscreen_header.pack_end (share_button);
 		fullscreen_header.pack_end (print_button);
@@ -100,7 +104,7 @@ public class FeedReader.FullscreenHeader : Gtk.EventBox {
 
 		this.set_size_request (0, 80);
 		this.no_show_all = true;
-		this.enter_notify_event.connect ( (event) => {
+		this.enter_notify_event.connect ((event) => {
 			m_revealer.set_transition_duration (300);
 			m_revealer.show_all ();
 			m_revealer.set_reveal_child (true);
@@ -108,21 +112,18 @@ public class FeedReader.FullscreenHeader : Gtk.EventBox {
 			removeTimeout ();
 			return true;
 		});
-		this.leave_notify_event.connect ( (event) => {
-			if (event.detail == Gdk.NotifyType.INFERIOR)
-			{
+		this.leave_notify_event.connect ((event) => {
+			if (event.detail == Gdk.NotifyType.INFERIOR) {
 				return false;
 			}
 
-			if (event.detail == Gdk.NotifyType.NONLINEAR_VIRTUAL)
-			{
+			if (event.detail == Gdk.NotifyType.NONLINEAR_VIRTUAL) {
 				return false;
 			}
 
 			m_hover = false;
 
-			if (m_popover)
-			{
+			if (m_popover) {
 				return false;
 			}
 
@@ -141,32 +142,26 @@ public class FeedReader.FullscreenHeader : Gtk.EventBox {
 		this.valign = Gtk.Align.START;
 	}
 
-	public void setTitle (string title)
-	{
+	public void setTitle (string title) {
 		m_header.set_title (title);
 	}
 
-	public void setMarked (ArticleStatus marked)
-	{
+	public void setMarked (ArticleStatus marked) {
 		m_header.setMarked (marked);
 	}
 
-	public void setRead (ArticleStatus read)
-	{
+	public void setRead (ArticleStatus read) {
 		m_header.setRead (read);
 	}
 
-	private void removeTimeout ()
-	{
-		if (m_timeout_source_id > 0)
-		{
+	private void removeTimeout () {
+		if (m_timeout_source_id > 0) {
 			GLib.Source.remove (m_timeout_source_id);
 			m_timeout_source_id = 0;
 		}
 	}
 
-	public void showMediaButton (bool show)
-	{
+	public void showMediaButton (bool show) {
 		m_header.showMediaButton (show);
 	}
 }

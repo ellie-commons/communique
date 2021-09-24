@@ -538,6 +538,7 @@ public class FeedReader.SettingsDialog : Gtk.Dialog {
 			font_set.connect (() => {
 				var new_font = new Variant.string (this.get_font_name ());
 				settings.set_value (key, new Variant.maybe (VariantType.STRING, new_font));
+				font_changed ();
 			});
 		}
 	}

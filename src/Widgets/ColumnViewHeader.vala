@@ -13,7 +13,6 @@ public class FeedReader.ColumnViewHeader : Hdy.HeaderBar {
 	private AttachedMediaButton m_media_button;
 	private HoverButton m_mark_button;
 	private HoverButton m_read_button;
-	private Gtk.Button m_fullscreen_button;
 	private Gtk.Button m_close_button;
 	private SharePopover? m_sharePopover = null;
 	public Gtk.Grid spacing_widget;
@@ -24,7 +23,6 @@ public class FeedReader.ColumnViewHeader : Hdy.HeaderBar {
 	public signal void toggledMarked ();
 	public signal void toggledRead ();
 	public signal void closeArticle ();
-	public signal void fsClick ();
 	public signal void popClosed ();
 	public signal void popOpened ();
 
@@ -80,7 +78,6 @@ public class FeedReader.ColumnViewHeader : Hdy.HeaderBar {
 		var unmarked_icon = new Gtk.Image.from_icon_name ("bookmark-missing", Gtk.IconSize.LARGE_TOOLBAR);
 		var read_icon = new Gtk.Image.from_icon_name ("mail-read", Gtk.IconSize.LARGE_TOOLBAR);
 		var unread_icon = new Gtk.Image.from_icon_name ("mail-unread", Gtk.IconSize.LARGE_TOOLBAR);
-		var fs_icon = new Gtk.Image.from_icon_name ("view-fullscreen", Gtk.IconSize.LARGE_TOOLBAR);
 		var close_icon = new Gtk.Image.from_icon_name ("window-close-symbolic", Gtk.IconSize.LARGE_TOOLBAR);
 
 		var menubutton = new Gtk.Button();
@@ -161,18 +158,6 @@ public class FeedReader.ColumnViewHeader : Hdy.HeaderBar {
 			toggledRead ();
 		});
 
-		m_fullscreen_button = new Gtk.Button ();
-		m_fullscreen_button.add (fs_icon);
-		m_fullscreen_button.set_focus_on_click (false);
-		m_fullscreen_button.tooltip_markup = Granite.markup_accel_tooltip ({"F11"}, _("Enter fullscreen mode"));
-		m_fullscreen_button.sensitive = false;
-		m_fullscreen_button.get_style_context ().add_class (Gtk.STYLE_CLASS_FLAT);
-		m_fullscreen_button.clicked.connect ( () => {
-			ColumnView.get_default ().hidePane ();
-			ColumnView.get_default ().enterFullscreenArticle ();
-			MainWindow.get_default ().fullscreen ();
-		});
-
 		m_close_button = new Gtk.Button ();
 		m_close_button.add (close_icon);
 		m_close_button.set_focus_on_click (false);
@@ -249,26 +234,6 @@ public class FeedReader.ColumnViewHeader : Hdy.HeaderBar {
 			popClosed ();
 		});
 
-		// m_header_right = new ArticleViewHeader (false) {
-		// 	hexpand = true
-		// };
-		// this.clearTitle ();
-		// toggledMarked.connect ( () => {
-		// 	m_mark_button.toggle ();
-		// });
-		// toggledRead.connect ( () => {
-		// 	m_read_button.toggle ();
-		// });
-		// fsClick.connect (() => {
-		// });
-		// closeArticle.connect ( () => {
-		// 	closeArticle ();
-		// });
-
-		// Gtk.Settings.get_default ().notify["gtk-decoration-layout"].connect (set_window_buttons);
-		// realize.connect (set_window_buttons);
-		// set_window_buttons ();
-
 		var search_grid = new Gtk.Grid () {
 			valign = Gtk.Align.CENTER
 		};
@@ -277,10 +242,6 @@ public class FeedReader.ColumnViewHeader : Hdy.HeaderBar {
 		this.pack_start (m_refresh_button);
 		this.pack_start (spacing_widget);
 		this.pack_start (search_grid);
-		// if  (!fullscreen) {
-		// 	this.pack_start (m_close_button);
-		// }
-		// this.pack_start (m_fullscreen_button);
 		this.pack_start (m_read_button);
 		// this.pack_start (m_mark_button);
 		this.pack_start (m_tag_button);
@@ -316,24 +277,10 @@ public class FeedReader.ColumnViewHeader : Hdy.HeaderBar {
     	}
     }
 
-	// private void set_window_buttons ()
-	// {
-	// 	string[] buttons = Gtk.Settings.get_default ().gtk_decoration_layout.split (":");
-	// 	if  (buttons.length < 2)
-	// 	{
-	// 		buttons = {buttons[0], ""};
-	// 		Logger.warning ("gtk_decoration_layout in unexpected format");
-	// 	}
-
-	// 	// m_header_left.set_decoration_layout (buttons[0] + ":");
-	// 	// m_header_right.set_decoration_layout (":" + buttons[1]);
-	// }
-
 	public void showArticleButtons (bool show) {
 		Logger.debug ("HeaderBar: showArticleButtons %s".printf (sensitive ? "true" : "false"));
 		m_mark_button.sensitive = show;
 		m_read_button.sensitive = show;
-		m_fullscreen_button.sensitive = show;
 		m_close_button.sensitive = show;
 		m_share_button.sensitive =  (show && FeedReaderApp.get_default ().isOnline ());
 		m_print_button.sensitive = show;

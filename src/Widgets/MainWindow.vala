@@ -125,11 +125,30 @@ public class FeedReader.MainWindow : Hdy.ApplicationWindow {
 					ColumnView.get_default ().hidePane ();
 					ColumnView.get_default ().enterFullscreenArticle ();
 					hide_header ();
-				}
-				else {
+				} else {
 					ColumnView.get_default ().showPane ();
 					ColumnView.get_default ().leaveFullscreenArticle ();
 					show_header ();
+				}
+			} else if (event.changed_mask == Gdk.WindowState.MAXIMIZED) {
+				Logger.debug ("MainWindow: maximize event");
+				if (ColumnView.get_default ().getSelectedArticle () == null) {
+					if ((event.new_window_state & Gdk.WindowState.MAXIMIZED) == Gdk.WindowState.MAXIMIZED) {
+						maximize ();
+					} else {
+						unmaximize ();
+					}
+				} else if ((event.new_window_state & Gdk.WindowState.MAXIMIZED) == Gdk.WindowState.MAXIMIZED) {
+					Logger.debug ("MainWindow: maximize event");
+					ColumnView.get_default ().hidePane ();
+					ColumnView.get_default ().enterFullscreenArticle ();
+					hide_header ();
+					fullscreen ();
+				} else {
+					ColumnView.get_default ().showPane ();
+					ColumnView.get_default ().leaveFullscreenArticle ();
+					show_header ();
+					unfullscreen ();
 				}
 			}
 		}
