@@ -253,28 +253,30 @@ namespace FeedReader {
 		private void SetupActions ()
 		{
 			var quit_action = new SimpleAction ("quit", null);
-			quit_action.activate.connect ( () => {
+			quit_action.activate.connect (() => {
 
-				MainWindow.get_default ().writeInterfaceState (true);
-				m_window.close ();
+				// MainWindow.get_default ().writeInterfaceState (true);
+				// m_window.close ();
 
-				if (Settings.state ().get_boolean ("currently-updating"))
-				{
-					Logger.debug ("Quit: FeedReader seems to be syncing -> trying to cancel");
-					FeedReaderBackend.get_default ().cancelSync ();
-					while (Settings.state ().get_boolean ("currently-updating"))
-					{
-						Gtk.main_iteration ();
-					}
+				// if (Settings.state ().get_boolean ("currently-updating"))
+				// {
+				// 	Logger.debug ("Quit: FeedReader seems to be syncing -> trying to cancel");
+				// 	FeedReaderBackend.get_default ().cancelSync ();
+				// 	while (Settings.state ().get_boolean ("currently-updating"))
+				// 	{
+				// 		Gtk.main_iteration ();
+				// 	}
 
-					Logger.debug ("Quit: Sync cancelled -> shutting down");
-				}
-				else
-				{
-					Logger.debug ("No Sync ongoing -> Quit right away");
-				}
+				// 	Logger.debug ("Quit: Sync cancelled -> shutting down");
+				// }
+				// else
+				// {
+				// 	Logger.debug ("No Sync ongoing -> Quit right away");
+				// }
 
-				FeedReaderApp.get_default ().quit ();
+				// FeedReaderApp.get_default ().quit ();
+
+				MainWindow.get_default ().hide ();
 			});
 			this.add_action (quit_action);
 		}

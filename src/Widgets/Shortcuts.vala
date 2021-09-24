@@ -22,19 +22,19 @@ public class FeedReader.Shortcuts : Hdy.Window {
 
         column_start.attach (new Granite.HeaderLabel (_("Articles")), 0, 0, 2);
         column_start.attach (new NameLabel (_("Move to previous article:")), 0, 1);
-        column_start.attach (new ShortcutLabel (_("J")), 1, 1);
+        column_start.attach (new ShortcutLabel ("J"), 1, 1);
         column_start.attach (new NameLabel (_("Move to next article:")), 0, 2);
-        column_start.attach (new ShortcutLabel (_("K")), 1, 2);
+        column_start.attach (new ShortcutLabel ("K"), 1, 2);
         column_start.attach (new NameLabel (_("Scroll article up:")), 0, 3);
-        column_start.attach (new ShortcutLabel (_("I")), 1, 3);
+        column_start.attach (new ShortcutLabel ("I"), 1, 3);
         column_start.attach (new NameLabel (_("Scroll article down:")), 0, 4);
-        column_start.attach (new ShortcutLabel (_("U")), 1, 4);
+        column_start.attach (new ShortcutLabel ("U"), 1, 4);
         column_start.attach (new NameLabel (_("Toggle article read:")), 0, 5);
-        column_start.attach (new ShortcutLabel (_("R")), 1, 5);
+        column_start.attach (new ShortcutLabel ("R"), 1, 5);
         column_start.attach (new NameLabel (_("Open article in browser:")), 0, 6);
-        column_start.attach (new ShortcutLabel (_("O")), 1, 6);
+        column_start.attach (new ShortcutLabel ("O"), 1, 6);
         column_start.attach (new NameLabel (_("Center selected article:")), 0, 7);
-        column_start.attach (new ShortcutLabel (_("S")), 1, 7);
+        column_start.attach (new ShortcutLabel ("S"), 1, 7);
 
         var column_end = new Gtk.Grid () {
             column_spacing = 6,
@@ -44,22 +44,25 @@ public class FeedReader.Shortcuts : Hdy.Window {
 
         column_end.attach (new Granite.HeaderLabel (_("Feeds")), 0, 8, 2);
         column_end.attach (new NameLabel (_("Move to previous feed:")), 0, 9);
-        column_end.attach (new ShortcutLabel (_("Ctrl")), 1, 9);
-        column_end.attach (new ShortcutLabel (_("J")), 2, 9);
+        column_end.attach (new ShortcutLabel ("Ctrl"), 1, 9);
+        column_end.attach (new ShortcutLabel ("J"), 2, 9);
         column_end.attach (new NameLabel (_("Move to next article:")), 0, 10);
-        column_end.attach (new ShortcutLabel (_("Ctrl")), 1, 10);
-        column_end.attach (new ShortcutLabel (_("K")), 2, 10);
+        column_end.attach (new ShortcutLabel ("Ctrl"), 1, 10);
+        column_end.attach (new ShortcutLabel ("K"), 2, 10);
         column_end.attach (new NameLabel (_("Toggle feed read:")), 0, 11);
-        column_end.attach (new ShortcutLabel (_("Shift")), 1, 11);
-        column_end.attach (new ShortcutLabel (_("A")), 2, 11);
+        column_end.attach (new ShortcutLabel ("Shift"), 1, 11);
+        column_end.attach (new ShortcutLabel ("A"), 2, 11);
 
         column_end.attach (new Granite.HeaderLabel (_("Global")), 0, 12, 2);
         column_end.attach (new NameLabel (_("Global sync:")), 0, 13);
-        column_end.attach (new ShortcutLabel (_("Ctrl")), 1, 13);
-        column_end.attach (new ShortcutLabel (_("R")), 2, 13);
+        column_end.attach (new ShortcutLabel ("Ctrl"), 1, 13);
+        column_end.attach (new ShortcutLabel ("R"), 2, 13);
         column_end.attach (new NameLabel (_("Search.. :")), 0, 14);
-        column_end.attach (new ShortcutLabel (_("Ctrl")), 1, 14);
-        column_end.attach (new ShortcutLabel (_("F")), 2, 14);
+        column_end.attach (new ShortcutLabel ("Ctrl"), 1, 14);
+        column_end.attach (new ShortcutLabel ("F"), 2, 14);
+        column_end.attach (new NameLabel (_("Close:")), 0, 15);
+        column_end.attach (new ShortcutLabel ("Ctrl"), 1, 15);
+        column_end.attach (new ShortcutLabel ("Q"), 2, 15);
 
         var column_grid = new Gtk.Grid () {
             column_spacing = 48,

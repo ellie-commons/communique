@@ -265,7 +265,7 @@ public class FeedReader.ColumnView : Gtk.Paned {
 			m_article_view.setTransition (Gtk.StackTransitionType.SLIDE_LEFT, 500);
 		}
 
-		return m_articleList.move (false);
+		return m_articleList.move (true);
 	}
 
 	public int ArticleListPREV () {
@@ -273,7 +273,7 @@ public class FeedReader.ColumnView : Gtk.Paned {
 			m_article_view.setTransition (Gtk.StackTransitionType.SLIDE_RIGHT, 500);
 		}
 
-		return m_articleList.move (true);
+		return m_articleList.move (false);
 	}
 
 	public void FeedListNEXT () {

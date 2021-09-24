@@ -461,7 +461,7 @@ public class FeedReader.MainWindow : Hdy.ApplicationWindow {
 		if (checkShortcut (event, "articlelist-next")) {
 			Logger.debug ("shortcut: articlelist next");
 			ColumnView.get_default ().ArticleListNEXT ();
-			return true;
+			return false;
 		}
 
 		if (checkShortcut (event, "feedlist-prev")) {
