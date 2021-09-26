@@ -1,9 +1,4 @@
-project('com.github.suzie97.communique', ['vala', 'c'],
-  version: '1.1.0',
-  meson_version: '>= 0.44.1',
-  license: 'GPL-3.0',
-  default_options: ['prefix=/usr']
-)
+project('com.github.suzie97.communique', 'vala', 'c')
 
 # Constants (paths)
 VAPI_DIR               = join_paths(meson.current_source_dir(), 'vapi')
@@ -298,7 +293,7 @@ subdir('po')
 
 # Create an executable file
 executable(
-  'communique',
+  'com.github.suzie97.communique',
   UI_RESOURCES + ['src/FeedReaderMain.vala'],
   c_args: c_args,
   vala_args: vala_args,

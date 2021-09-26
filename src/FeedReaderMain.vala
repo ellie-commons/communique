@@ -3,7 +3,6 @@
 namespace FeedReader.Main {
 	private const GLib.OptionEntry[] options = {
 		{ "version", 0, 0, OptionArg.NONE, ref version, "Communique version number", null },
-		{ "about", 0, 0, OptionArg.NONE, ref about, "spawn about dialog", null },
 		{ "verbose", 0, 0, OptionArg.NONE, ref verbose, "Spit out all the debug information", null },
 		{ "playMedia", 0, 0, OptionArg.STRING, ref media, "start media player with URL", "URL" },
 		{ "ping", 0, 0, OptionArg.STRING, ref pingURL, "test the ping function with given URL", "URL" },
@@ -51,12 +50,6 @@ namespace FeedReader.Main {
 			stdout.printf("Git Commit: %s\n", Constants.GIT_SHA1);
 			return 0;
 		}
-
-		// if(about)
-		// {
-		// 	FeedReader.show_about(args);
-		// 	return 0;
-		// }
 
 		if(media != null)
 		{

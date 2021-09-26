@@ -114,6 +114,7 @@ public class FeedReader.MainWindow : Hdy.ApplicationWindow {
 				if (ColumnView.get_default ().isFullscreenVideo ()) {
 					if ((event.new_window_state & Gdk.WindowState.FULLSCREEN) != Gdk.WindowState.FULLSCREEN) {
 						ColumnView.get_default ().exitFullscreenVideo ();
+						show_header ();
 					}
 
 					base.window_state_event (event);
