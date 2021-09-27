@@ -1,3 +1,0 @@
-title: //h1[@class='post-title']
-body: //article[@class='post-content']
-test_url: https://turnoff.us/geek/the-depressed-developer-13/

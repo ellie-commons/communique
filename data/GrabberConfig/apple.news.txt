@@ -1,2 +1,0 @@
-single_page_link: //p//a[contains(., 'Click here')]
-test_url: https://apple.news/AHQREjzH0Ts6iikKhNe6o8w

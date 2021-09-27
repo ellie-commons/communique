@@ -1,3 +1,0 @@
-title: //h1
-body: //div[contains(concat(' ',normalize-space(@class),' '),' entry-content ')]
-test_url: https://retractionwatch.com/2018/07/30/how-institutions-gaslight-whistleblowers-and-what-can-be-done/

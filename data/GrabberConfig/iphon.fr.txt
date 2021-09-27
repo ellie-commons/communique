@@ -1,5 +1,0 @@
-date: //meta[@name="date"]/@content
-author: //meta[@name="author"]/@content
-strip_id_or_class: follow
-
-test_url: http://www.iphon.fr/post/iphone-8-x-recharge-sans-fil-cable-simultanee-891682

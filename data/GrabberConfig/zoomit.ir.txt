@@ -1,3 +1,0 @@
-body: //div[@itemprop="image" or @itemprop="description" or @itemprop="articleBody"]
-
-test_url: http://www.zoomit.ir/2017/2/25/152960/tiny-engine-turns-natural-gas-into-hydrogen/

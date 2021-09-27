@@ -1,3 +1,0 @@
-author: //meta[@name="author"]/@content
-
-test_url: https://meowni.ca/posts/2017-puppeteer-tests/

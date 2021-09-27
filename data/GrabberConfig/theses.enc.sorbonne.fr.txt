@@ -1,5 +1,0 @@
-title: //h1[@class="head"]
-author: //div[@class="name"]
-body: //article[@id="text"]
-
-test_url: http://theses.enc.sorbonne.fr/2014/sidre

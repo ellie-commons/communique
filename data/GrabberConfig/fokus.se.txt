@@ -1,3 +1,0 @@
-title: //h2[contains(@class, 'entry-title')]
-body: //div[contains(@class, 'entry-content')]
-test_url: http://www.fokus.se/2017/03/olosta-karnfragor/

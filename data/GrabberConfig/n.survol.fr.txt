@@ -1,4 +1,0 @@
-title: //h1
-date: //header//time/@datetime
-
-test_url: https://n.survol.fr/n/gerer-son-potager
