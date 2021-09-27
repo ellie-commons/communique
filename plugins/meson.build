@@ -1,2 +1,0 @@
-subdir('backend')
-subdir('share')
