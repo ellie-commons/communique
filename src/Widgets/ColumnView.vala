@@ -185,8 +185,6 @@ public class FeedReader.ColumnView : Gtk.Paned {
 				Logger.debug ("ContentPage: set headerbar");
 				m_headerbar.setRead (row.getArticle ().getUnread ());
 				m_headerbar.setMarked (row.getArticle ().getMarked ());
-				m_headerbar.showMediaButton (row.haveMedia ());
-				m_article_view.showMediaButton (row.haveMedia ());
 			}
 		});
 

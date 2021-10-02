@@ -1,42 +1,27 @@
-//	This file is part of FeedReader.
-//
-//	FeedReader is free software: you can redistribute it and/or modify
-//	it under the terms of the GNU General Public License as published by
-//	the Free Software Foundation, either version 3 of the License, or
-//	 (at your option) any later version.
-//
-//	FeedReader is distributed in the hope that it will be useful,
-//	but WITHOUT ANY WARRANTY; without even the implied warranty of
-//	MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
-//	GNU General Public License for more details.
-//
-//	You should have received a copy of the GNU General Public License
-//	along with FeedReader.  If not, see <http://www.gnu.org/licenses/>.
+/*
+* SPDX-License-Identifier: GPL-3.0-or-later
+* SPDX-FileCopyrightText: 2021 Your Name <singharajdeep97@gmail.com>
+*/
 
 public class FeedReader.ServiceInfo : Gtk.Overlay {
 	private Gtk.Stack m_stack;
 	private Gtk.Spinner m_spinner;
 	private Gtk.Image m_logo;
-	private Gtk.Label m_name;
 	private Gtk.Label m_label;
 	private Gtk.Label m_offline;
 	private Gtk.Grid m_box;
 
-	public ServiceInfo ()
-	{
-		// m_logo = new Gtk.Image ();
+	public ServiceInfo () {
 		m_logo = new Gtk.Image.from_file ("");
 		m_label = new Gtk.Label ("") {
 			halign = Gtk.Align.CENTER,
 			margin_start = 10,
-			margin_end = 10
+			margin_end = 10,
+			margin_top = 6
 		};
 		m_label.set_ellipsize (Pango.EllipsizeMode.END);
-		m_name = new Gtk.Label ("") {
-			halign = Gtk.Align.CENTER,
-			ellipsize = Pango.EllipsizeMode.END
-		};
-		m_name.get_style_context ().add_class (Granite.STYLE_CLASS_H1_LABEL);
+		m_label.get_style_context ().add_class (Granite.STYLE_CLASS_H3_LABEL);
+		m_label.get_style_context ().add_class (Gtk.STYLE_CLASS_DIM_LABEL);
 
 		m_box = new Gtk.Grid () {
 			orientation = Gtk.Orientation.VERTICAL,
@@ -45,7 +30,6 @@ public class FeedReader.ServiceInfo : Gtk.Overlay {
 			valign = Gtk.Align.CENTER
 		};
 		m_box.add (m_logo);
-		m_box.add (m_name);
 		m_box.add (m_label);
 		m_box.margin_top = 20;
 		m_box.margin_bottom = 5;
@@ -72,25 +56,6 @@ public class FeedReader.ServiceInfo : Gtk.Overlay {
 		string? service_icon = FeedReaderBackend.get_default ().symbolicIcon ();
 		string? user_name = FeedReaderBackend.get_default ().accountName ();
 		string? server = FeedReaderBackend.get_default ().getServerURL ();
-		string? service_name = "";
-
-		if (server == "https://feedbin.com/") {
-			service_name = "Feedbin";
-		} else if (server == "https://tt-rss.org/") {
-			service_name = "Tiny Tiny RSS";
-		} else if (server == "https://github.com/nextcloud/news") {
-			service_name = "Nextcloud News";
-		} else if (server == "http://www.inoreader.com/") {
-			service_name = "InoReader";
-		} else if (server == "https://freshrss.org/") {
-			service_name = "freshRSS";
-		} else if (server == "https://feedhq.org/") {
-			service_name = "FeedHQ";
-		} else if (server == "https://bazqux.com/") {
-			service_name = "BazQux";
-		} else if (server == "http://localhost/") {
-			service_name = "Communique";
-		}
 
 		if (this.is_visible ()) {
 			if (user_name == "none" || service_icon == "none") {
@@ -99,12 +64,9 @@ public class FeedReader.ServiceInfo : Gtk.Overlay {
 			}
 			else {
 				m_logo.set_from_icon_name (service_icon, Gtk.IconSize.BUTTON);
-				// m_logo.get_style_context ().add_class ("fr-sidebar-symbolic");
 				m_label.set_label (user_name);
-				m_name.label = service_name;
 				m_stack.set_visible_child_name ("info");
-				if (server != "none")
-				{
+				if (server != "none") {
 					this.set_tooltip_text (Utils.shortenURL (server));
 				}
 			}

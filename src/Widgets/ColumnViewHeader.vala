@@ -10,7 +10,6 @@ public class FeedReader.ColumnViewHeader : Hdy.HeaderBar {
 	private Gtk.Button m_share_button;
 	private Gtk.Button m_tag_button;
 	private Gtk.Button m_print_button;
-	private AttachedMediaButton m_media_button;
 	private HoverButton m_mark_button;
 	private HoverButton m_read_button;
 	private Gtk.Button m_close_button;
@@ -226,14 +225,6 @@ public class FeedReader.ColumnViewHeader : Hdy.HeaderBar {
 			});
 		});
 
-		m_media_button = new AttachedMediaButton ();
-		m_media_button.popOpened.connect ( () => {
-			popOpened ();
-		});
-		m_media_button.popClosed.connect ( () => {
-			popClosed ();
-		});
-
 		var search_grid = new Gtk.Grid () {
 			valign = Gtk.Align.CENTER
 		};
@@ -249,7 +240,7 @@ public class FeedReader.ColumnViewHeader : Hdy.HeaderBar {
 		this.pack_end (shareStack);
 		this.pack_end (m_print_button);
 		this.pack_end (new Gtk.Separator (Gtk.Orientation.HORIZONTAL));
-		this.pack_end (m_media_button);
+		this.pack_end (new Gtk.Separator (Gtk.Orientation.HORIZONTAL));
 	}
 
 	public void set_paned_positions (int start_position, int end_position, bool start_changed = true) {
@@ -339,11 +330,6 @@ public class FeedReader.ColumnViewHeader : Hdy.HeaderBar {
 				m_tag_button.sensitive = true;
 			}
 		}
-	}
-
-	public void showMediaButton (bool show) {
-		m_media_button.update ();
-		m_media_button.visible = show;
 	}
 
 	public void refreshSahrePopover () {

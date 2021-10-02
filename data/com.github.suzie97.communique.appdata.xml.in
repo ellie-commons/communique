@@ -5,7 +5,7 @@
   <metadata_license>CC0-1.0</metadata_license>
   <project_license>GPL-3.0+</project_license>
   <name>Communique</name>
-  <summary>RSS Reader with cross-platform sync.</summary>
+  <summary>RSS Reader with cross-platform sync</summary>
   <description>
     <p>Subscribe to and read RSS/Atom feeds with cross-platform synchronization. Communique features support for a lot of RSS services. And ofcourse, you can use Communique to subscribe to and read RSS feeds locally, without logging in to anything. Communique also allows you to save your articles to Instapaper, Pocket or Wallabag, or send them via email straight from the app.</p>
     <p>Supported services:</p>
@@ -53,6 +53,15 @@
     <screenshot type="default">
       <image>https://raw.githubusercontent.com/suzie97/communique/master/data/communique-dark-screenshot.png</image>
     </screenshot>
+    <screenshot type="default">
+      <image>https://raw.githubusercontent.com/suzie97/communique/master/data/communique-fullscreen-screenshot.png</image>
+    </screenshot>
+    <screenshot type="default">
+      <image>https://raw.githubusercontent.com/suzie97/communique/master/data/communique-shortcuts.png</image>
+    </screenshot>
+    <screenshot type="default">
+      <image>https://raw.githubusercontent.com/suzie97/communique/master/data/communique-preferences.png</image>
+    </screenshot>
   </screenshots>
   <content_rating type="oars-1.1">
     <content_attribute id="violence-cartoon">none</content_attribute>
@@ -84,6 +93,23 @@
     <content_attribute id="money-gambling">none</content_attribute>
   </content_rating>
   <releases>
+    <release version="1.1.0" date="2021-10-02">
+      <description>
+        <p>Feature Updates:</p>
+        <ul>
+          <li>Rounded window corners</li>
+          <li>Improved theme</li>
+          <li>A more content focused experience with fullscreen mode</li>
+          <li>Changing the font does not requires a restart anymore</li>
+          <li>Add new shortcuts dialog</li>
+          <li>Context menus now follow the standard system style</li>
+        </ul>
+        <p>Bug Fixes:</p>
+        <ul>
+          <li>Correctly navigate between articles using shortcuts</li>
+        </ul>
+      </description>
+    </release>
     <release version="1.0.1" date="2021-09-09">
       <description>
         <p>Improvements:</p>

@@ -160,8 +160,4 @@ public class FeedReader.FullscreenHeader : Gtk.EventBox {
 			m_timeout_source_id = 0;
 		}
 	}
-
-	public void showMediaButton (bool show) {
-		m_header.showMediaButton (show);
-	}
 }

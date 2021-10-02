@@ -2,7 +2,7 @@
 Name=Communique Autostart
 GenericName=RSS Client
 Comment=Read RSS/Atom Feeds
-Categories=Network;Feed;
+Categories=Network;Feed;News;
 Exec=com.github.suzie97.communique --background
 Icon=com.github.suzie97.communique
 Terminal=false

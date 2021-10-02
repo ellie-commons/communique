@@ -12,6 +12,9 @@
 
 ![Screenshot](data/communique-light-screenshot.png)
 ![Screenshot](data/communique-dark-screenshot.png)
+![Screenshot](data/communique-fullscreen-screenshot.png)
+![Screenshot](data/communique-shortcuts.png)
+![Screenshot](data/communique-preferences.png)
 
 ## Your personal journalist
 Subscribe to and read RSS/Atom feeds with cross-platform synchronization. Communique is a feed reader with support for a lot of RSS services, like Feedbin, Tiny Tiny RSS, Nextcloud News etc. And ofcourse, you can use Communique to subscribe to and read RSS feeds locally, without logging in to anything.
