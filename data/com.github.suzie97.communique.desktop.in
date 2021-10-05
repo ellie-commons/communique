@@ -2,7 +2,7 @@
 Name=Communique
 GenericName=RSS Client
 Comment=Read RSS/Atom Feeds
-Categories=Network;News;Feed;
+Categories=Network;News;Feed;Communication;
 Exec=com.github.suzie97.communique %U
 Icon=com.github.suzie97.communique
 Terminal=false
