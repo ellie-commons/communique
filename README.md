@@ -8,6 +8,7 @@
 <h1 align="center">Communique</h1>
 <p align="center">
   <a href="https://appcenter.elementary.io/com.github.suzie97.communique"><img src="https://appcenter.elementary.io/badge.svg" alt="Get it on AppCenter" /></a>
+  <a href='https://flathub.org/apps/details/com.github.suzie97.communique'><img height='51' alt='Download on Flathub' src='https://flathub.org/assets/badges/flathub-badge-en.png'/></a>
 </p>
 
 ![Screenshot](data/communique-light-screenshot.png)
