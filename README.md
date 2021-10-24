@@ -23,6 +23,11 @@ Communique is designed and developed on and for [elementary OS](https://elementa
 
 [![Get it on AppCenter](https://appcenter.elementary.io/badge.svg)](https://appcenter.elementary.io/com.github.suzie97.communique)
 
+## Financial Contribution
+You can contribute to the project over at Buy Me a Coffee. Thank you so much 😊️ !! 
+
+<a href="https://www.buymeacoffee.com/suzie97" target="_blank"><img src="https://www.buymeacoffee.com/assets/img/custom_images/orange_img.png" alt="Buy Me A Coffee" style="height: 41px !important;width: 174px !important;box-shadow: 0px 3px 2px 0px rgba(190, 190, 190, 0.5) !important;-webkit-box-shadow: 0px 3px 2px 0px rgba(190, 190, 190, 0.5) !important;" ></a>
+
 ## Developing and Building
 
 Flatpak is the recommended way for building Communique. Developing and testing with flatpak helps ensure that everything works correctly inside the flatpak sandbox.
