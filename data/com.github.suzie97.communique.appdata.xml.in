@@ -39,6 +39,7 @@
     <value key="x-appcenter-color-primary">#FAFAFA</value>
     <value key="x-appcenter-color-primary-text">#1A1A1A</value>
     <value key="x-appcenter-suggested-price">0</value>
+    <value key="x-appcenter-stripe">pk_live_51JjNEtSDebhbIwZTYH2ixC46HEuOL3APUTZcwn7os9WZWudKy8TmGMhdnICmZ99YYDnKppydBSduZnUPDpbA0O6T0002hdzvr9</value>
   </custom>
   <developer_name>Rajdeep Singha</developer_name>
   <url type="homepage">https://github.com/Suzie97/Communique</url>
@@ -93,6 +94,14 @@
     <content_attribute id="money-gambling">none</content_attribute>
   </content_rating>
   <releases>
+    <release version="1.1.1" date="2021-10-02">
+      <description>
+        <p>Bug Fixes:</p>
+        <ul>
+          <li>Fix Nextcloud News Icon in sidebar</li>
+        </ul>
+      </description>
+    </release>
     <release version="1.1.0" date="2021-10-02">
       <description>
         <p>Feature Updates:</p>
