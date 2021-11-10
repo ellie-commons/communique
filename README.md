@@ -8,13 +8,11 @@
 <h1 align="center">Communique</h1>
 <p align="center">
   <a href="https://appcenter.elementary.io/com.github.suzie97.communique"><img src="https://appcenter.elementary.io/badge.svg" alt="Get it on AppCenter" /></a>
+  <a href='https://flathub.org/apps/details/com.github.suzie97.communique'><img height='51' alt='Download on Flathub' src='https://flathub.org/assets/badges/flathub-badge-en.png'/></a>
 </p>
 
 ![Screenshot](data/communique-light-screenshot.png)
 ![Screenshot](data/communique-dark-screenshot.png)
-![Screenshot](data/communique-fullscreen-screenshot.png)
-![Screenshot](data/communique-shortcuts.png)
-![Screenshot](data/communique-preferences.png)
 
 ## Your personal journalist
 Subscribe to and read RSS/Atom feeds with cross-platform synchronization. Communique is a feed reader with support for a lot of RSS services, like Feedbin, Tiny Tiny RSS, Nextcloud News etc. And ofcourse, you can use Communique to subscribe to and read RSS feeds locally, without logging in to anything.
@@ -24,6 +22,11 @@ Subscribe to and read RSS/Atom feeds with cross-platform synchronization. Commun
 Communique is designed and developed on and for [elementary OS](https://elementary.io). Purchasing through AppCenter directly supports me and elementary. [Get it on AppCenter](https://appcenter.elementary.io/com.github.suzie97.communique) for the best experience.
 
 [![Get it on AppCenter](https://appcenter.elementary.io/badge.svg)](https://appcenter.elementary.io/com.github.suzie97.communique)
+
+## Financial Contribution
+You can contribute funds to the project over at Buy Me a Coffee. Thank you so much 😊️ !! 
+
+<a href="https://www.buymeacoffee.com/suzie97" target="_blank"><img src="https://www.buymeacoffee.com/assets/img/custom_images/orange_img.png" alt="Buy Me A Coffee" style="height: 41px !important;width: 174px !important;box-shadow: 0px 3px 2px 0px rgba(190, 190, 190, 0.5) !important;-webkit-box-shadow: 0px 3px 2px 0px rgba(190, 190, 190, 0.5) !important;" ></a>
 
 ## Developing and Building
 
