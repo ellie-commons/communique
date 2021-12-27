@@ -39,6 +39,7 @@
     <value key="x-appcenter-color-primary">#FAFAFA</value>
     <value key="x-appcenter-color-primary-text">#1A1A1A</value>
     <value key="x-appcenter-suggested-price">10</value>
+    <value key="x-appcenter-stripe">pk_live_51JjNEtSDebhbIwZTyaIU7bFhhaSQPsdjMsRpTI2VI03WFcolEqeg6KJy4hPU2PgolBbx2tBCydwRQ7X7Vig9rIk300Ps0hZYGB</value>
   </custom>
   <developer_name>Rajdeep Singha</developer_name>
   <url type="homepage">https://github.com/Suzie97/Communique</url>
