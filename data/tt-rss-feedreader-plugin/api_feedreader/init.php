@@ -35,7 +35,7 @@ class Api_feedreader extends Plugin {
 	function removeLabel()
 	{
 		$label_id = (int)$_REQUEST["label_id"];
-		if($label_id != "")
+		if($label_id != 0)
 		{
 			Labels::remove(Labels::feed_to_label_id($label_id), $_SESSION["uid"]);
 			return array(API::STATUS_OK);
