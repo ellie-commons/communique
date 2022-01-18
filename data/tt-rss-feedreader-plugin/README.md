@@ -74,8 +74,8 @@ Parameters:
 ## Installation
 1. Install tt-rss in a docker container. Official tt-rss instructions can be found [here](https://tt-rss.org/wiki/InstallationNotes). 
 2. Download the ZIP file for the latest release of Communique from [here](https://github.com/suzie97/communique/releases).
-3. Copy the `data/tt-rss-feedreader-plugin/api_feedreader` folder to your clipboard.
-4. Check where the code of the tt-rss container is mounted: `docker volume inspect ttrss-docker_app | grep Mountpoint`. You directory might be somewhat similar to this: `/var/lib/docker/volumes/ttrss-docker_app/_data`.
+3. Copy the `data/tt-rss-feedreader-plugin/api_feedreader` folder inside the Communique archive to your clipboard.
+4. Once you've set up your tt-rss container and got it runnung, check where the code of the tt-rss container is mounted: `docker volume inspect ttrss-docker_app | grep Mountpoint`. Your directory might be somewhat similar to this: `/var/lib/docker/volumes/ttrss-docker_app/_data`.
 5. Navigate to the `tt-rss/plugins.local` folder within that folder. Eg: `/var/lib/docker/volumes/ttrss-docker_app/_data/tt-rss/plugins.local/`.
 6. Paste the `api_feedreader` folder that was copied on step 2 here. You'll need `sudo` priviledges for this.
 7. As this is a system-enabled plugin for the server, not an "user" plugin (that one would activate from withing the web interface), you will need to add it to a global configuration directive instead. How can you do it? The [recommended way on tt-rss wiki](https://tt-rss.org/wiki/GlobalConfig) is to _"adjust tt-rss global configuration through the environment (...) when using docker-compose setup"_:
