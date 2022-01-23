@@ -1,3 +1,12 @@
+---
+name: Feature request
+about: Suggest a feature for this app
+title: ''
+labels: ''
+assignees: ''
+
+---
+
 ## Problem
 <!--Is your feature request related to a problem? Please describe.-->
 
