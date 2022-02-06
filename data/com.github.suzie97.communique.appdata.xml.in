@@ -94,6 +94,17 @@
     <content_attribute id="money-gambling">none</content_attribute>
   </content_rating>
   <releases>
+    <release version="1.1.4" date="2022-02-06">
+      <description>
+        <p>Feature Updates:</p>
+        <ul>
+          <li>Users can now sort articles to display the oldest ones first</li>
+        </ul>
+        <p>Bug Fixes:</p>
+        <ul>
+          <li>Fix TinyTinyRSS login error</li>
+        </ul>
+      </description>
     <release version="1.1.2" date="2021-12-28">
       <description>
         <p>Improvements:</p>
