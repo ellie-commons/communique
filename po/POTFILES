@@ -1,6 +1,6 @@
-data/org.gnome.FeedReader-autostart.desktop.in
-data/org.gnome.FeedReader.appdata.xml.in
-data/org.gnome.FeedReader.desktop.in
+data/com.github.suzie97.communique-autostart.desktop.in
+data/com.github.suzie97.communique.appdata.xml.in
+data/com.github.suzie97.communique.desktop.in
 plugins/backend/bazqux/bazquxInterface.vala
 plugins/backend/feedbin/feedbinInterface.vala
 plugins/backend/feedhq/feedhqInterface.vala
@@ -35,7 +35,6 @@ src/Widgets/FeedRow.vala
 src/Widgets/FullscreenHeader.vala
 src/Widgets/LoginPage.vala
 src/Widgets/MainWindow.vala
-src/Widgets/MediaButton.vala
 src/Widgets/RemovePopover.vala
 src/Widgets/ResetPage.vala
 src/Widgets/SettingsDialog.vala

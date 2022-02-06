@@ -1,0 +1,963 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
+# This file is distributed under the same license as the com.github.suzie97.communique package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+#
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: com.github.suzie97.communique\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2022-02-06 05:42+0000\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+"Language: \n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+
+#: data/com.github.suzie97.communique-autostart.desktop.in:3
+msgid "Communique Autostart"
+msgstr ""
+
+#: data/com.github.suzie97.communique-autostart.desktop.in:4
+#: data/com.github.suzie97.communique.desktop.in:4
+msgid "RSS Client"
+msgstr ""
+
+#: data/com.github.suzie97.communique-autostart.desktop.in:5
+#: data/com.github.suzie97.communique.desktop.in:5
+msgid "Read RSS/Atom Feeds"
+msgstr ""
+
+#: data/com.github.suzie97.communique-autostart.desktop.in:8
+#: data/com.github.suzie97.communique.desktop.in:8
+msgid "com.github.suzie97.communique"
+msgstr ""
+
+#: data/com.github.suzie97.communique.appdata.xml.in:7
+#: data/com.github.suzie97.communique.desktop.in:3
+#: src/Widgets/MainWindow.vala:35
+msgid "Communique"
+msgstr ""
+
+#: data/com.github.suzie97.communique.appdata.xml.in:8
+msgid "RSS Reader with cross-platform sync"
+msgstr ""
+
+#: data/com.github.suzie97.communique.appdata.xml.in:10
+msgid ""
+"Subscribe to and read RSS/Atom feeds with cross-platform synchronization. "
+"Communique features support for a lot of RSS services. And ofcourse, you can "
+"use Communique to subscribe to and read RSS feeds locally, without logging "
+"in to anything. Communique also allows you to save your articles to "
+"Instapaper, Pocket or Wallabag, or send them via email straight from the app."
+msgstr ""
+
+#: data/com.github.suzie97.communique.appdata.xml.in:11
+msgid "Supported services:"
+msgstr ""
+
+#: data/com.github.suzie97.communique.appdata.xml.in:13
+msgid "Feedbin"
+msgstr ""
+
+#: data/com.github.suzie97.communique.appdata.xml.in:14
+msgid "Nextcloud News"
+msgstr ""
+
+#: data/com.github.suzie97.communique.appdata.xml.in:15
+msgid "Tiny Tiny RSS"
+msgstr ""
+
+#: data/com.github.suzie97.communique.appdata.xml.in:16
+msgid "Fresh RSS"
+msgstr ""
+
+#: data/com.github.suzie97.communique.appdata.xml.in:17
+msgid "FeedHQ"
+msgstr ""
+
+#: data/com.github.suzie97.communique.appdata.xml.in:18
+msgid "Inoreader"
+msgstr ""
+
+#: data/com.github.suzie97.communique.appdata.xml.in:19
+msgid "Bazqux"
+msgstr ""
+
+#: data/com.github.suzie97.communique.appdata.xml.in:21
+msgid "Supported Read-It Later Services:"
+msgstr ""
+
+#: data/com.github.suzie97.communique.appdata.xml.in:23
+msgid "Instapaper"
+msgstr ""
+
+#: data/com.github.suzie97.communique.appdata.xml.in:24
+msgid "Pocket"
+msgstr ""
+
+#: data/com.github.suzie97.communique.appdata.xml.in:25
+msgid "Wallabag"
+msgstr ""
+
+#: data/com.github.suzie97.communique.appdata.xml.in:27
+msgid "Useful keyboard shortcuts:"
+msgstr ""
+
+#: data/com.github.suzie97.communique.appdata.xml.in:29
+msgid "Navigate the article list using the Vim keybindings, J and K."
+msgstr ""
+
+#: data/com.github.suzie97.communique.appdata.xml.in:30
+msgid "Navigate the feed list using Ctrl+J and Ctrl+K."
+msgstr ""
+
+#: data/com.github.suzie97.communique.appdata.xml.in:31
+msgid "Open the selected article in a browser using O."
+msgstr ""
+
+#: data/com.github.suzie97.communique.appdata.xml.in:32
+msgid "Scroll the article up and down using I and U."
+msgstr ""
+
+#: data/com.github.suzie97.communique.appdata.xml.in:33
+msgid "Mark the selected article as read/unread using R."
+msgstr ""
+
+#: data/com.github.suzie97.communique.appdata.xml.in:34
+msgid "Mark the selected feed as read/unread using Shift+A."
+msgstr ""
+
+#: data/com.github.suzie97.communique.appdata.xml.in:35
+msgid "Center the currently selected article in the article list using S."
+msgstr ""
+
+#: data/com.github.suzie97.communique.appdata.xml.in:44
+msgid "Rajdeep Singha"
+msgstr ""
+
+#: data/com.github.suzie97.communique.appdata.xml.in:99
+#: data/com.github.suzie97.communique.appdata.xml.in:132
+msgid "Improvements:"
+msgstr ""
+
+#: data/com.github.suzie97.communique.appdata.xml.in:101
+msgid "Users can now pay for the app on AppCenter"
+msgstr ""
+
+#: data/com.github.suzie97.communique.appdata.xml.in:107
+#: data/com.github.suzie97.communique.appdata.xml.in:124
+#: data/com.github.suzie97.communique.appdata.xml.in:136
+msgid "Bug Fixes:"
+msgstr ""
+
+#: data/com.github.suzie97.communique.appdata.xml.in:109
+msgid "Fix Nextcloud News Icon in sidebar"
+msgstr ""
+
+#: data/com.github.suzie97.communique.appdata.xml.in:115
+msgid "Feature Updates:"
+msgstr ""
+
+#: data/com.github.suzie97.communique.appdata.xml.in:117
+msgid "Rounded window corners"
+msgstr ""
+
+#: data/com.github.suzie97.communique.appdata.xml.in:118
+msgid "Improved theme"
+msgstr ""
+
+#: data/com.github.suzie97.communique.appdata.xml.in:119
+msgid "A more content focused experience with fullscreen mode"
+msgstr ""
+
+#: data/com.github.suzie97.communique.appdata.xml.in:120
+msgid "Changing the font does not requires a restart anymore"
+msgstr ""
+
+#: data/com.github.suzie97.communique.appdata.xml.in:121
+msgid "Add new shortcuts dialog"
+msgstr ""
+
+#: data/com.github.suzie97.communique.appdata.xml.in:122
+msgid "Context menus now follow the standard system style"
+msgstr ""
+
+#: data/com.github.suzie97.communique.appdata.xml.in:126
+msgid "Correctly navigate between articles using shortcuts"
+msgstr ""
+
+#: data/com.github.suzie97.communique.appdata.xml.in:134
+msgid "Icon contrast improvements."
+msgstr ""
+
+#: data/com.github.suzie97.communique.appdata.xml.in:138
+msgid "Fix Pocket Bug"
+msgstr ""
+
+#: data/com.github.suzie97.communique.appdata.xml.in:144
+msgid "Version 1 Released. Let's start reading."
+msgstr ""
+
+#: data/com.github.suzie97.communique.desktop.in:11
+msgid "RSS;Atom;News;Articles;Feed;Read;"
+msgstr ""
+
+#. http auth stuff ----------------------------------------------------
+#: plugins/backend/bazqux/bazquxInterface.vala:61
+#: plugins/backend/feedbin/feedbinInterface.vala:62
+#: plugins/backend/feedhq/feedhqInterface.vala:61
+#: plugins/backend/fresh/freshInterface.vala:67
+#: plugins/backend/fresh/freshInterface.vala:104
+#: plugins/backend/owncloud/OwncloudNewsInterface.vala:84
+#: plugins/backend/owncloud/OwncloudNewsInterface.vala:122
+#: plugins/backend/ttrss/ttrssInterface.vala:66
+#: plugins/backend/ttrss/ttrssInterface.vala:103
+#: plugins/share/Instapaper/InstapaperSetup.vala:57
+#: plugins/share/Wallabag/WallabagSetup.vala:78
+msgid "Username:"
+msgstr ""
+
+#: plugins/backend/bazqux/bazquxInterface.vala:62
+#: plugins/backend/feedbin/feedbinInterface.vala:63
+#: plugins/backend/feedhq/feedhqInterface.vala:62
+#: plugins/backend/fresh/freshInterface.vala:68
+#: plugins/backend/fresh/freshInterface.vala:105
+#: plugins/backend/owncloud/OwncloudNewsInterface.vala:85
+#: plugins/backend/owncloud/OwncloudNewsInterface.vala:123
+#: plugins/backend/ttrss/ttrssInterface.vala:67
+#: plugins/backend/ttrss/ttrssInterface.vala:104
+#: plugins/share/Instapaper/InstapaperSetup.vala:58
+#: plugins/share/Wallabag/WallabagSetup.vala:79
+msgid "Password:"
+msgstr ""
+
+#: plugins/backend/bazqux/bazquxInterface.vala:92
+msgid "Log in to BazQux."
+msgstr ""
+
+#: plugins/backend/bazqux/bazquxInterface.vala:97
+#: plugins/backend/feedbin/feedbinInterface.vala:73
+#: plugins/backend/feedhq/feedhqInterface.vala:97
+#: plugins/backend/fresh/freshInterface.vala:147
+#: plugins/backend/owncloud/OwncloudNewsInterface.vala:163
+#: plugins/backend/ttrss/ttrssInterface.vala:146 src/Share/ServiceSetup.vala:56
+msgid "Login"
+msgstr ""
+
+#: plugins/backend/feedbin/feedbinInterface.vala:98
+msgid "Log in to Feedbin."
+msgstr ""
+
+#: plugins/backend/feedhq/feedhqInterface.vala:92
+msgid "Log in to FeedHQ."
+msgstr ""
+
+#: plugins/backend/fresh/freshInterface.vala:66
+msgid "freshRSS URL:"
+msgstr ""
+
+#: plugins/backend/fresh/freshInterface.vala:133
+#: plugins/backend/owncloud/OwncloudNewsInterface.vala:151
+#: plugins/backend/ttrss/ttrssInterface.vala:132
+msgid "HTTP Authorization"
+msgstr ""
+
+#: plugins/backend/fresh/freshInterface.vala:142
+msgid "Log in to your freshRSS server."
+msgstr ""
+
+#: plugins/backend/local/localInterface.vala:62
+msgid "Done"
+msgstr ""
+
+#: plugins/backend/local/localInterface.vala:63
+msgid "Adding Feeds"
+msgstr ""
+
+#: plugins/backend/local/localInterface.vala:399
+msgid "Can't add feed because it already exists: "
+msgstr ""
+
+#: plugins/backend/local/localInterface.vala:591
+msgid "Nothing to read here."
+msgstr ""
+
+#: plugins/backend/local/localUtils.vala:25
+msgid "Failed to add feed"
+msgstr ""
+
+#: plugins/backend/local/localUtils.vala:31
+msgid "Failed to parse URL."
+msgstr ""
+
+#: plugins/backend/local/localUtils.vala:42
+msgid "Network error connecting to the server."
+msgstr ""
+
+#: plugins/backend/local/localUtils.vala:46
+msgid "Got HTTP error code"
+msgstr ""
+
+#: plugins/backend/local/localUtils.vala:65
+msgid "Could not parse feed as RSS or ATOM."
+msgstr ""
+
+#: plugins/backend/owncloud/OwncloudNewsInterface.vala:83
+msgid "Nextcloud URL:"
+msgstr ""
+
+#. ---------------------------------------------------------------------
+#: plugins/backend/owncloud/OwncloudNewsInterface.vala:158
+msgid "Log in to your Nextcloud News Instance."
+msgstr ""
+
+#: plugins/backend/ttrss/ttrssAPI.vala:840
+msgid "Invalid URL"
+msgstr ""
+
+#: plugins/backend/ttrss/ttrssAPI.vala:843
+msgid "URL content is HTML, no feeds available"
+msgstr ""
+
+#: plugins/backend/ttrss/ttrssAPI.vala:846
+msgid "URL content is HTML which contains multiple feeds."
+msgstr ""
+
+#: plugins/backend/ttrss/ttrssAPI.vala:849
+msgid "Couldn't download the URL content."
+msgstr ""
+
+#: plugins/backend/ttrss/ttrssAPI.vala:852
+msgid "The content is invalid XML."
+msgstr ""
+
+#: plugins/backend/ttrss/ttrssAPI.vala:869
+msgid "Error reaching tt-rss"
+msgstr ""
+
+#: plugins/backend/ttrss/ttrssInterface.vala:65
+msgid "Tiny Tiny RSS URL:"
+msgstr ""
+
+#: plugins/backend/ttrss/ttrssInterface.vala:141
+msgid "Log in to your Tiny Tiny RSS server."
+msgstr ""
+
+#: plugins/share/Browser/Browser.vala:81
+msgid "Open in Browser"
+msgstr ""
+
+#: plugins/share/Email/EmailForm.vala:24
+msgid ""
+"Hey,\n"
+"\n"
+"Check out this interesting article I used Communiqué to read: $URL"
+msgstr ""
+
+#: plugins/share/Email/EmailForm.vala:27
+msgid "To:"
+msgstr ""
+
+#: plugins/share/Email/EmailForm.vala:52
+msgid "Send"
+msgstr ""
+
+#: plugins/share/Email/EmailForm.vala:65
+msgid "Write Email"
+msgstr ""
+
+#: plugins/share/Instapaper/InstapaperSetup.vala:104
+msgid "Username or Password incorrect"
+msgstr ""
+
+#: plugins/share/Pocket/PocketSetup.vala:56
+msgid "waiting"
+msgstr ""
+
+#: plugins/share/Wallabag/WallabagSetup.vala:75 src/Widgets/AddPopover.vala:47
+msgid "URL:"
+msgstr ""
+
+#: plugins/share/Wallabag/WallabagSetup.vala:76
+msgid "Client ID:"
+msgstr ""
+
+#: plugins/share/Wallabag/WallabagSetup.vala:77
+msgid "Client Secret:"
+msgstr ""
+
+#: plugins/share/Wallabag/WallabagSetup.vala:128
+msgid "Please fill in the URL."
+msgstr ""
+
+#: plugins/share/Wallabag/WallabagSetup.vala:134
+msgid "URL seems to not be valid."
+msgstr ""
+
+#: plugins/share/Wallabag/WallabagSetup.vala:146
+msgid "Please fill in the clientID."
+msgstr ""
+
+#: plugins/share/Wallabag/WallabagSetup.vala:153
+msgid "Please fill in the clientSecret."
+msgstr ""
+
+#: plugins/share/Wallabag/WallabagSetup.vala:160
+msgid "Please fill in the password."
+msgstr ""
+
+#: plugins/share/Wallabag/WallabagSetup.vala:167
+msgid "Please fill in the username."
+msgstr ""
+
+#: plugins/share/Wallabag/WallabagSetup.vala:192
+msgid "Something went wrong."
+msgstr ""
+
+#: src/Backend/FeedServer.vala:193 src/Backend/FeedServer.vala:311
+msgid "Getting feeds and categories"
+msgstr ""
+
+#: src/Backend/FeedServer.vala:251
+msgid "Getting articles"
+msgstr ""
+
+#. get marked articles
+#: src/Backend/FeedServer.vala:346
+msgid "Getting starred articles"
+msgstr ""
+
+#. get articles for each tag
+#: src/Backend/FeedServer.vala:355
+msgid "Getting tagged articles"
+msgstr ""
+
+#. get unread articles
+#: src/Backend/FeedServer.vala:377
+msgid "Getting unread articles"
+msgstr ""
+
+#: src/Constants.vala.in:26
+msgid "Desktop Client for various RSS Services"
+msgstr ""
+
+#: src/Constants.vala.in:31
+msgid "translator-credits"
+msgstr ""
+
+#: src/Constants.vala.in:36
+msgid "About Communique"
+msgstr ""
+
+#: src/Constants.vala.in:37
+msgid "Settings"
+msgstr ""
+
+#. add_button (reset_button, Gtk.ResponseType.ACCEPT);
+#: src/Constants.vala.in:38 src/Widgets/ResetPage.vala:89
+msgid "Change Account"
+msgstr ""
+
+#: src/Constants.vala.in:39
+msgid "Report a Bug"
+msgstr ""
+
+#: src/Constants.vala.in:40
+msgid "Bounties"
+msgstr ""
+
+#: src/Constants.vala.in:41
+msgid "Keyboard Shortcuts"
+msgstr ""
+
+#: src/DataBaseReadOnly.vala:259
+msgid "Unknown tag"
+msgstr ""
+
+#: src/DataBaseReadOnly.vala:295 src/Widgets/AddPopover.vala:38
+#: src/Widgets/FeedList.vala:511
+msgid "Uncategorized"
+msgstr ""
+
+#: src/Model/Article.vala:188
+msgid "Yesterday"
+msgstr ""
+
+#: src/Notification.vala:27
+#, c-format
+msgid "There is 1 new article  (%u unread)"
+msgstr ""
+
+#: src/Notification.vala:31
+#, c-format
+msgid "There are %u new articles  (%u unread)"
+msgstr ""
+
+#: src/Notification.vala:34
+msgid "New Articles"
+msgstr ""
+
+#: src/Utils.vala:35
+msgid "No Preview Available"
+msgstr ""
+
+#: src/Utils.vala:96
+msgid "No Text available for this article :("
+msgstr ""
+
+#: src/Utils.vala:630
+#, c-format
+msgid "posted by: %s, "
+msgstr ""
+
+#: src/Utils.vala:898 src/Widgets/UpdateButton.vala:82
+msgid "Cancel"
+msgstr ""
+
+#: src/Utils.vala:900
+msgid "Save"
+msgstr ""
+
+#: src/Widgets/AddPopover.vala:48
+msgid "Folder:"
+msgstr ""
+
+#: src/Widgets/AddPopover.vala:51
+msgid "Add"
+msgstr ""
+
+#: src/Widgets/AddPopover.vala:65
+msgid "OPML File:"
+msgstr ""
+
+#: src/Widgets/AddPopover.vala:67
+msgid "Select OPML File"
+msgstr ""
+
+#: src/Widgets/AddPopover.vala:75
+msgid "Import"
+msgstr ""
+
+#: src/Widgets/AddPopover.vala:94
+msgid "Add feed"
+msgstr ""
+
+#: src/Widgets/AddPopover.vala:95
+msgid "Import OPML"
+msgstr ""
+
+#: src/Widgets/ArticleList/ArticleList.vala:47
+msgid "Sync is in progress. Articles should appear any second."
+msgstr ""
+
+#: src/Widgets/ArticleList/ArticleList.vala:521
+msgid "New articles"
+msgstr ""
+
+#: src/Widgets/ArticleList/ArticleList.vala:523
+msgid "scroll up"
+msgstr ""
+
+#: src/Widgets/ArticleList/ArticleListEmptyLabel.vala:162
+msgid "No unread articles"
+msgstr ""
+
+#: src/Widgets/ArticleList/ArticleListEmptyLabel.vala:173
+msgid "No Starred Articles"
+msgstr ""
+
+#: src/Widgets/ArticleList/ArticleListEmptyLabel.vala:184
+msgid "No articles"
+msgstr ""
+
+#. this.set_text(message);
+#: src/Widgets/ArticleList/ArticleListEmptyLabel.vala:192
+msgid "No Results"
+msgstr ""
+
+#: src/Widgets/ArticleView.vala:51
+msgid "No Article selected."
+msgstr ""
+
+#: src/Widgets/ArticleView.vala:55
+msgid "WebKit has crashed"
+msgstr ""
+
+#: src/Widgets/ArticleView.vala:774
+msgid "Save image as"
+msgstr ""
+
+#: src/Widgets/CategorieRow.vala:373 src/Widgets/FeedRow.vala:193
+msgid "Remove"
+msgstr ""
+
+#: src/Widgets/CategorieRow.vala:391 src/Widgets/RemovePopover.vala:116
+#, c-format
+msgid "Category \"%s\" removed"
+msgstr ""
+
+#. var remove_action = new GLib.SimpleAction ("deleteCat", null);
+#. remove_action.activate.connect ( () => {
+#. bool wasExpanded = false;
+#. if (!m_collapsed)
+#. {
+#. wasExpanded = true;
+#. expand_collapse ();
+#. }
+#. if (this.is_selected ())
+#. {
+#. moveUP ();
+#. }
+#. uint time = 300;
+#. this.reveal (false, time);
+#. string text = _ ("Category \"%s\" removed").printf (m_name);
+#. var notification = MainWindow.get_default ().showNotification (text);
+#. ulong eventID = notification.dismissed.connect ( () => {
+#. FeedReaderBackend.get_default ().removeCategory (m_categorieID);
+#. });
+#. notification.action.connect ( () => {
+#. notification.disconnect (eventID);
+#. this.reveal (true, time);
+#. if (wasExpanded)
+#. {
+#. expand_collapse ();
+#. }
+#. notification.dismiss ();
+#. });
+#. });
+#: src/Widgets/CategorieRow.vala:441
+msgid "Remove with feeds"
+msgstr ""
+
+#. var removeWithChildren_action = new GLib.SimpleAction ("deleteAllCat", null);
+#. removeWithChildren_action.activate.connect ( () => {
+#. if (!m_collapsed)
+#. {
+#. expand_collapse ();
+#. }
+#. if (this.is_selected ())
+#. {
+#. moveUP ();
+#. }
+#. uint time = 300;
+#. this.reveal (false, time);
+#. GLib.Timeout.add (time, () => {
+#. FeedReaderBackend.get_default ().removeCategoryWithChildren (m_categorieID);
+#. return false;
+#. });
+#. });
+#. var markAsRead_action = new GLib.SimpleAction ("markCatAsRead", null);
+#. markAsRead_action.activate.connect ( () => {
+#. setAsRead (FeedListType.CATEGORY, m_categorieID);
+#. });
+#: src/Widgets/CategorieRow.vala:485 src/Widgets/ColumnViewHeader.vala:154
+#: src/Widgets/FeedRow.vala:181 src/Widgets/FullscreenHeader.vala:26
+msgid "Mark as read"
+msgstr ""
+
+#. if (m_unread_count != 0)
+#. {
+#. markAsRead_action.set_enabled (true);
+#. }
+#. else
+#. {
+#. markAsRead_action.set_enabled (false);
+#. }
+#. var rename_menuitem = new GLib.SimpleAction ("renameCat", null);
+#. rename_menuitem.activate.connect ( () => {
+#. showRenamePopover ();
+#. });
+#: src/Widgets/CategorieRow.vala:502 src/Widgets/CategorieRow.vala:580
+#: src/Widgets/FeedRow.vala:191 src/Widgets/FeedRow.vala:232
+msgid "Rename"
+msgstr ""
+
+#: src/Widgets/CategorieRow.vala:583 src/Widgets/TagRow.vala:235
+msgid "add"
+msgstr ""
+
+#: src/Widgets/ColumnViewHeader.vala:39
+msgid "Update feeds"
+msgstr ""
+
+#: src/Widgets/ColumnViewHeader.vala:54
+msgid "Search Articles"
+msgstr ""
+
+#. menubutton.set_use_popover(true);
+#. menubutton.set_menu_model(Utils.getMenu());
+#: src/Widgets/ColumnViewHeader.vala:86 src/Widgets/FullscreenHeader.vala:78
+msgid "Menu"
+msgstr ""
+
+#: src/Widgets/ColumnViewHeader.vala:89
+msgid "Preferences"
+msgstr ""
+
+#: src/Widgets/ColumnViewHeader.vala:94
+msgid "Shortcuts"
+msgstr ""
+
+#: src/Widgets/ColumnViewHeader.vala:98
+msgid "Change Account..."
+msgstr ""
+
+#: src/Widgets/ColumnViewHeader.vala:149
+msgid "Star article"
+msgstr ""
+
+#: src/Widgets/ColumnViewHeader.vala:149
+msgid "Unstar article"
+msgstr ""
+
+#: src/Widgets/ColumnViewHeader.vala:154 src/Widgets/FullscreenHeader.vala:26
+msgid "Mark as unread"
+msgstr ""
+
+#: src/Widgets/ColumnViewHeader.vala:163
+msgid "Close article"
+msgstr ""
+
+#: src/Widgets/ColumnViewHeader.vala:173 src/Widgets/FullscreenHeader.vala:34
+msgid "Tag article"
+msgstr ""
+
+#: src/Widgets/ColumnViewHeader.vala:188 src/Widgets/FullscreenHeader.vala:52
+msgid "Print article"
+msgstr ""
+
+#: src/Widgets/ColumnViewHeader.vala:200 src/Widgets/FullscreenHeader.vala:62
+msgid "Export or Share this article"
+msgstr ""
+
+#: src/Widgets/FeedList.vala:226
+msgid "All Articles"
+msgstr ""
+
+#: src/Widgets/FeedList.vala:441
+msgid "Tags"
+msgstr ""
+
+#: src/Widgets/FeedList.vala:487
+msgid "Categories"
+msgstr ""
+
+#: src/Widgets/FeedList.vala:492
+msgid "Feeds"
+msgstr ""
+
+#: src/Widgets/FeedList.vala:1055
+msgid "New Tag"
+msgstr ""
+
+#: src/Widgets/FeedList.vala:1182
+msgid "New Category"
+msgstr ""
+
+#: src/Widgets/FeedListFooter.vala:92
+msgid "Add Feed..."
+msgstr ""
+
+#: src/Widgets/FeedListFooter.vala:111
+msgid "Remove feed or category"
+msgstr ""
+
+#: src/Widgets/FeedRow.vala:186
+msgid "Copy URL"
+msgstr ""
+
+#: src/Widgets/FeedRow.vala:378
+#, c-format
+msgid "Feed removed: %s"
+msgstr ""
+
+#: src/Widgets/LoginPage.vala:38
+msgid "Add Some Feeds"
+msgstr ""
+
+#: src/Widgets/LoginPage.vala:42
+msgid "Select a service to start reading."
+msgstr ""
+
+#: src/Widgets/MainWindow.vala:248
+msgid "Ignore all TLS errors from now on"
+msgstr ""
+
+#: src/Widgets/MainWindow.vala:336
+msgid "Please select a service first"
+msgstr ""
+
+#: src/Widgets/MainWindow.vala:339
+msgid "Please enter a valid username"
+msgstr ""
+
+#: src/Widgets/MainWindow.vala:342
+msgid "Please enter a valid password"
+msgstr ""
+
+#: src/Widgets/MainWindow.vala:346
+msgid "Please enter a valid URL"
+msgstr ""
+
+#: src/Widgets/MainWindow.vala:349
+msgid "Please enter your Login details"
+msgstr ""
+
+#: src/Widgets/MainWindow.vala:352
+msgid "Sorry, something went wrong."
+msgstr ""
+
+#: src/Widgets/MainWindow.vala:355
+msgid "The server reported an API-error."
+msgstr ""
+
+#: src/Widgets/MainWindow.vala:358
+msgid "Either your username or the password are not correct."
+msgstr ""
+
+#: src/Widgets/MainWindow.vala:361
+msgid ""
+"No connection to the server. Check your internet connection and the server "
+"URL!"
+msgstr ""
+
+#: src/Widgets/MainWindow.vala:364
+msgid "API access is disabled on the server. Please enable it first!"
+msgstr ""
+
+#: src/Widgets/MainWindow.vala:367
+msgid "Not authorized to access URL"
+msgstr ""
+
+#: src/Widgets/MainWindow.vala:371
+msgid "No valid CA certificate available!"
+msgstr ""
+
+#: src/Widgets/MainWindow.vala:375
+msgid "Please install the \"api_feedreader\"-plugin on your tt-rss instance!"
+msgstr ""
+
+#: src/Widgets/MainWindow.vala:572
+msgid "Undo"
+msgstr ""
+
+#: src/Widgets/RemovePopover.vala:47
+#, c-format
+msgid "Remove \"%s\""
+msgstr ""
+
+#: src/Widgets/RemovePopover.vala:81 src/Widgets/TagRow.vala:154
+#, c-format
+msgid "Tag \"%s\" removed"
+msgstr ""
+
+#: src/Widgets/RemovePopover.vala:100
+#, c-format
+msgid "Feed \"%s\" removed"
+msgstr ""
+
+#: src/Widgets/ResetPage.vala:60
+msgid "Are you sure you want to change your account?"
+msgstr ""
+
+#: src/Widgets/ResetPage.vala:67
+msgid "This will delete all local data."
+msgstr ""
+
+#: src/Widgets/SettingsDialog.vala:49
+msgid "General"
+msgstr ""
+
+#: src/Widgets/SettingsDialog.vala:50
+msgid "Share"
+msgstr ""
+
+#: src/Widgets/SettingsDialog.vala:60
+msgid "Close"
+msgstr ""
+
+#: src/Widgets/SettingsDialog.vala:92
+msgid "Newest First"
+msgstr ""
+
+#: src/Widgets/SettingsDialog.vala:92
+msgid "Oldest First"
+msgstr ""
+
+#: src/Widgets/SettingsDialog.vala:111
+msgid "Feed List"
+msgstr ""
+
+#: src/Widgets/SettingsDialog.vala:112
+msgid "Only show feeds:"
+msgstr ""
+
+#: src/Widgets/SettingsDialog.vala:114
+msgid "Only show unread:"
+msgstr ""
+
+#: src/Widgets/SettingsDialog.vala:116
+msgid "Article List"
+msgstr ""
+
+#: src/Widgets/SettingsDialog.vala:117
+msgid "Sort articles by:"
+msgstr ""
+
+#: src/Widgets/SettingsDialog.vala:119
+msgid "Font"
+msgstr ""
+
+#: src/Widgets/SettingsDialog.vala:120
+msgid "Custom Font:"
+msgstr ""
+
+#: src/Widgets/SettingsDialog.vala:207
+msgid "Add Account..."
+msgstr ""
+
+#: src/Widgets/SettingsDialog.vala:301
+msgid "System Accounts"
+msgstr ""
+
+#: src/Widgets/SettingsDialog.vala:330 src/Widgets/SettingsDialog.vala:344
+msgid "Connected Accounts"
+msgstr ""
+
+#: src/Widgets/SharePopover.vala:58
+msgid "Add Accounts..."
+msgstr ""
+
+#: src/Widgets/SpringCleanPage.vala:28
+msgid ""
+"Communique is cleaning the database.\n"
+"This shouldn't take too long."
+msgstr ""
+
+#: src/Widgets/TagPopover.vala:53
+msgid "Add Tag:"
+msgstr ""
+
+#: src/Widgets/TagPopover.vala:65
+msgid "Tags:"
+msgstr ""
+
+#: src/Widgets/TagPopover.vala:148
+msgid "add Tag"
+msgstr ""
+
+#: src/Widgets/TagRow.vala:143
+msgid "Rename Tag"
+msgstr ""
+
+#: src/Widgets/TagRow.vala:145
+msgid "Remove Tag"
+msgstr ""
+
+#: src/Widgets/TagRow.vala:233
+msgid "rename"
+msgstr ""
