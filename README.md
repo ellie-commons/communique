@@ -24,9 +24,9 @@ Communique is designed and developed on and for [elementary OS](https://elementa
 [![Get it on AppCenter](https://appcenter.elementary.io/badge.svg)](https://appcenter.elementary.io/com.github.suzie97.communique)
 
 ## Financial Contribution
-You can contribute funds to the project over at Buy Me a Coffee. Thank you so much 😊️ !! 
+You can contribute funds to the project over at Liberapay. Thank you so much 😊️ !! 
 
-<a href="https://www.buymeacoffee.com/suzie97" target="_blank"><img src="https://www.buymeacoffee.com/assets/img/custom_images/orange_img.png" alt="Buy Me A Coffee" style="height: 41px !important;width: 174px !important;box-shadow: 0px 3px 2px 0px rgba(190, 190, 190, 0.5) !important;-webkit-box-shadow: 0px 3px 2px 0px rgba(190, 190, 190, 0.5) !important;" ></a>
+<noscript><a href="https://liberapay.com/suzie97/donate"><img alt="Donate using Liberapay" src="https://liberapay.com/assets/widgets/donate.svg"></a></noscript>
 
 ## Developing and Building
 
