@@ -26,7 +26,7 @@ public class FeedReader.HoverButton : Gtk.EventBox {
 	private string m_tooltip_text;
 	private string m_alt_tooltip_text;
 
-	public HoverButton (Gtk.Image inactive, Gtk.Image active, bool isActive,string shortcut,string tooltip_text, string alt_tooltip_text) {
+	public HoverButton (Gtk.Image inactive, Gtk.Image active, bool isActive, string shortcut, string tooltip_text, string alt_tooltip_text) {
 		m_inactive = inactive;
 		m_active = active;
 		m_isActive = isActive;
@@ -84,7 +84,7 @@ public class FeedReader.HoverButton : Gtk.EventBox {
 		if (m_isActive) {
 			setActiveIcon ();
 		}
-		else {
+		else if (!m_isActive) {
 			setInactiveIcon ();
 		}
 	}
@@ -114,6 +114,4 @@ public class FeedReader.HoverButton : Gtk.EventBox {
 
 		return true;
 	}
-
-
 }

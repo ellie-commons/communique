@@ -86,8 +86,7 @@ public class FeedReader.ColumnViewHeader : Hdy.HeaderBar {
 		menubutton.set_tooltip_text (_("Menu"));
 
 		var preferences_button = new Gtk.ModelButton () {
-			text = _("Preferences"),
-			margin_bottom = 6
+			text = _("Preferences")
 		};
 
 		var shortcuts_button = new Gtk.ModelButton () {
@@ -95,20 +94,53 @@ public class FeedReader.ColumnViewHeader : Hdy.HeaderBar {
 		};
 
 		var account_button = new Gtk.ModelButton () {
-			text = _("Change Account..."),
-			margin_top = 6
+			text = _("Change Account...")
 		};
 
-		var separator = new Gtk.Separator (Gtk.Orientation.HORIZONTAL) {
-			margin_top = 3,
-			margin_bottom = 3
+		var import_opml_button = new Gtk.ModelButton () {
+		    text = _("Import OPML File")
 		};
+
+		import_opml_button.clicked.connect (() => {
+		    var import_dialog = new Gtk.FileChooserNative (
+	            _("Import From Folder"),
+	            MainWindow.get_default (),
+	            Gtk.FileChooserAction.OPEN,
+	            _("Import"),
+	            _("Cancel")
+	        );
+
+	        var filter = new Gtk.FileFilter ();
+	        filter.add_mime_type ("text/x-opml");
+
+	        import_dialog.set_filter (filter);
+
+	        if (import_dialog.run () == Gtk.ResponseType.ACCEPT) {
+	            try {
+    	            Logger.info ("selection-changed");
+    	            var file = import_dialog.get_file ();
+    	            uint8[] contents;
+    	            file.load_contents (null, out contents, null);
+    	            Logger.debug ((string) contents);
+    	            FeedReaderBackend.get_default ().importOPML ((string) contents);
+    	        } catch (GLib.Error e){
+    	            Logger.error ("AddNewDialog.importOPML: %s".printf (e.message));
+    	        }
+
+    	        ColumnView.get_default ().footerSetBusy ();
+	        }
+		});
 
 		var grid = new Gtk.Grid () {
-			orientation = Gtk.Orientation.VERTICAL
+			orientation = Gtk.Orientation.VERTICAL,
+			margin_top = 3,
+			margin_bottom = 3,
+			row_spacing = 3
 		};
+		grid.add (import_opml_button);
+		grid.add (new Gtk.Separator (Gtk.Orientation.HORIZONTAL));
 		grid.add (account_button);
-		grid.add (separator);
+		grid.add (new Gtk.Separator (Gtk.Orientation.HORIZONTAL));
 		grid.add (shortcuts_button);
 		grid.add (preferences_button);
 
@@ -234,7 +266,7 @@ public class FeedReader.ColumnViewHeader : Hdy.HeaderBar {
 		this.pack_start (spacing_widget);
 		this.pack_start (search_grid);
 		this.pack_start (m_read_button);
-		// this.pack_start (m_mark_button);
+		this.pack_start (m_mark_button);
 		this.pack_start (m_tag_button);
 		this.pack_end (menubutton);
 		this.pack_end (shareStack);
@@ -285,18 +317,18 @@ public class FeedReader.ColumnViewHeader : Hdy.HeaderBar {
 	public void setMarked (ArticleStatus marked) {
 		switch (marked) {
 			case ArticleStatus.MARKED:
-			// m_mark_button.setActive (true);
+			m_mark_button.setActive (true);
 			break;
 			case ArticleStatus.UNMARKED:
 			default:
-			m_read_button.setActive (false);
+			m_mark_button.setActive (false);
 			break;
 		}
 	}
 
-	// public void toggleMarked () {
-	// 	m_mark_button.toggle ();
-	// }
+	public void toggleMarked () {
+		m_mark_button.toggle ();
+	}
 
 	public void setRead (ArticleStatus read) {
 		switch (read) {
@@ -351,53 +383,17 @@ public class FeedReader.ColumnViewHeader : Hdy.HeaderBar {
 		m_search.sensitive = sensitive;
 	}
 
-	// public void showArticleButtons (bool show) {
-	// 	showArticleButtons (show);
-	// }
-
 	public bool searchFocused () {
 		return m_search.has_focus;
 	}
-
-	// public void setMarked (ArticleStatus marked) {
-	// 	m_header_right.setMarked (marked);
-	// }
-
-	public void toggleMarked () {
-		toggleMarked ();
-	}
-
-	// public void setRead (ArticleStatus read) {
-	// 	m_header_right.setRead (read);
-	// }
-
-	// public void toggleRead () {
-	// 	m_header_right.toggleRead ();
-	// }
 
 	public void focusSearch () {
 		m_search.grab_focus ();
 	}
 
-	// public void setOffline () {
-	// 	m_header_right.setOffline ();
-	// }
-
-	// public void setOnline () {
-	// 	m_header_right.setOnline ();
-	// }
-
-	// public void showMediaButton (bool show) {
-	// 	m_header_right.showMediaButton (show);
-	// }
-
 	public void updateSyncProgress (string progress) {
 		m_refresh_button.setProgress (progress);
 	}
-
-	// public void refreshSahrePopover () {
-	// 	m_header_right.refreshSahrePopover ();
-	// }
 
 	public void saveState (ref InterfaceState state) {
 		state.setSearchTerm (m_search.text);

@@ -43,7 +43,7 @@ public class FeedReader.FeedRow : Gtk.ListBoxRow {
 			// m_label.set_alignment (0, 0.5f);
 
 			m_unread = new Gtk.Label (null);
-			m_unread.set_size_request (0, 24);
+			// m_unread.set_size_request (0, 24);
 			// m_unread.set_alignment (0.8f, 0.5f);
 			m_unread.get_style_context ().add_class (Granite.STYLE_CLASS_BADGE);
 

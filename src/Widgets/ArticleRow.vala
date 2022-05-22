@@ -31,7 +31,7 @@ public class FeedReader.ArticleRow : Gtk.ListBoxRow {
 		this.add (m_revealer);
 		this.show_all ();
 
-		GLib.Idle.add (populate, GLib.Priority.HIGH_IDLE);
+		populate ();
 	}
 
 	~ArticleRow () {
@@ -58,7 +58,7 @@ public class FeedReader.ArticleRow : Gtk.ListBoxRow {
 		this.drag_failed.disconnect (onDragFailed);
 	}
 
-	private bool populate () {
+	private void populate () {
 		m_unread_stack = new Gtk.Stack ();
 		m_marked_stack = new Gtk.Stack ();
 		m_unread_stack.set_transition_type (Gtk.StackTransitionType.CROSSFADE);
@@ -74,9 +74,12 @@ public class FeedReader.ArticleRow : Gtk.ListBoxRow {
 		m_label.set_lines (2);
 		if (m_article.getUnread () == ArticleStatus.UNREAD) {
 			m_label.get_style_context ().add_class ("headline-unread");
+			m_label.get_style_context ().add_class (Granite.STYLE_CLASS_ACCENT);
 		} else {
 			m_label.get_style_context ().add_class ("headline-read");
+			m_label.get_style_context ().remove_class (Granite.STYLE_CLASS_ACCENT);
 		}
+
 		m_label.set_ellipsize (Pango.EllipsizeMode.END);
 		m_label.set_alignment (0.0f, 0.2f);
 		m_label.set_tooltip_text (m_article.getTitle ());
@@ -234,7 +237,7 @@ public class FeedReader.ArticleRow : Gtk.ListBoxRow {
 
 		m_revealer.add (m_eventBox);
 		m_populated = true;
-		return false;
+		// return false;
 	}
 
 	private void onDragBegin (Gtk.Widget widget, Gdk.DragContext context) {
@@ -429,10 +432,12 @@ public class FeedReader.ArticleRow : Gtk.ListBoxRow {
 				if (m_article.getUnread () == ArticleStatus.UNREAD) {
 					m_label.get_style_context ().remove_class ("headline-read");
 					m_label.get_style_context ().add_class ("headline-unread");
+					m_label.get_style_context ().add_class (Granite.STYLE_CLASS_ACCENT);
 					m_unread_stack.set_visible_child_name ("unread");
 				} else {
 					m_label.get_style_context ().remove_class ("headline-unread");
 					m_label.get_style_context ().add_class ("headline-read");
+					m_label.get_style_context ().remove_class (Granite.STYLE_CLASS_ACCENT);
 					if (m_hovering_row) {
 						m_unread_stack.set_visible_child_name ("read");
 					} else {

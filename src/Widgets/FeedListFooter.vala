@@ -26,7 +26,6 @@ public class FeedReader.FeedListFooter : Gtk.ActionBar {
 		m_addButton = new AddButton ();
 		m_removeButton = new RemoveButton ();
 		m_addSpinner = new Gtk.Spinner ();
-		// m_addSpinner.get_style_context ().add_class ("feedlist-spinner");
 		m_addSpinner.margin = 4;
 		m_addSpinner.start ();
 		m_addStack = new Gtk.Stack ();
@@ -86,16 +85,41 @@ public class FeedReader.FeedListFooter : Gtk.ActionBar {
 
 public class FeedReader.AddButton : Gtk.Grid {
 	public AddButton () {
-		var add_button = new Gtk.Button () {
+		var add_feed_button = new Gtk.ModelButton () {
+		    text = _("Add Feed...")
+		};
+
+		var add_folder_button = new Gtk.ModelButton () {
+		    text = _("Add Folder...")
+		};
+
+		var add_grid = new Gtk.Grid () {
+		    margin_top = 3,
+		    margin_bottom = 3,
+		    row_spacing = 3
+		};
+		add_grid.attach (add_feed_button, 0, 0);
+		add_grid.attach (add_folder_button, 0, 1);
+		add_grid.show_all ();
+
+		var add_popover = new Gtk.Popover (null);
+		add_popover.add (add_grid);
+
+		var add_button = new Gtk.MenuButton () {
 			image = new Gtk.Image.from_icon_name ("list-add-symbolic", Gtk.IconSize.SMALL_TOOLBAR),
 			always_show_image = true,
-			label = _("Add Feed...")
+			label = _("Add Feed or Folder..."),
+			popover = add_popover
 		};
 		add_button.get_style_context ().add_class (Gtk.STYLE_CLASS_FLAT);
 
-		add_button.clicked.connect (() => {
-			var popover = new AddPopover (add_button);
+		add_feed_button.clicked.connect (() => {
+            new AddFeedDialog ();
 		});
+
+        add_folder_button.clicked.connect (() => {
+            new AddFolderDialog ();
+        });
 
 		add (add_button);
 	}

@@ -348,22 +348,17 @@ public class FeedReader.CategoryRow : Gtk.ListBoxRow {
 		return window;
 	}
 
-	private bool onClick (Gdk.EventButton event)
-	{
+	private bool onClick (Gdk.EventButton event) {
 		// only right click allowed
-		if (event.button != 3)
-		{
+		if (event.button != 3) {
 			return false;
 		}
 
-		if (!Utils.canManipulateContent ())
-		{
+		if (!Utils.canManipulateContent ()) {
 			return false;
 		}
 
-
-		switch (event.type)
-		{
+		switch (event.type) {
 			case Gdk.EventType.BUTTON_RELEASE:
 			case Gdk.EventType.@2BUTTON_PRESS:
 			case Gdk.EventType.@3BUTTON_PRESS:
@@ -374,14 +369,12 @@ public class FeedReader.CategoryRow : Gtk.ListBoxRow {
 		remove_menuitem.activate.connect (() => {
 			bool wasExpanded = false;
 
-			if (!m_collapsed)
-			{
+			if (!m_collapsed) {
 				wasExpanded = true;
 				expand_collapse ();
 			}
 
-			if (this.is_selected ())
-			{
+			if (this.is_selected ()) {
 				moveUP ();
 			}
 
@@ -396,8 +389,7 @@ public class FeedReader.CategoryRow : Gtk.ListBoxRow {
 			notification.action.connect ( () => {
 				notification.disconnect (eventID);
 				this.reveal (true, time);
-				if (wasExpanded)
-				{
+				if (wasExpanded) {
 					expand_collapse ();
 				}
 				notification.dismiss ();
@@ -440,13 +432,11 @@ public class FeedReader.CategoryRow : Gtk.ListBoxRow {
 
 		var remove_with_feeds_menuitem = new Gtk.MenuItem.with_label (_("Remove with feeds"));
 		remove_with_feeds_menuitem.activate.connect (() => {
-			if (!m_collapsed)
-			{
+			if (!m_collapsed) {
 				expand_collapse ();
 			}
 
-			if (this.is_selected ())
-			{
+			if (this.is_selected ()) {
 				moveUP ();
 			}
 
@@ -784,16 +774,12 @@ public class FeedReader.CategoryRow : Gtk.ListBoxRow {
 		m_revealer.set_reveal_child (reveal);
 	}
 
-	public void activateUnreadEventbox (bool activate)
-	{
-		if (activate)
-		{
+	public void activateUnreadEventbox (bool activate) {
+		if (activate) {
 			m_unreadBox.button_press_event.connect (onUnreadClick);
 			m_unreadBox.enter_notify_event.connect (onUnreadEnter);
 			m_unreadBox.leave_notify_event.connect (onUnreadLeave);
-		}
-		else
-		{
+		} else {
 			m_unreadBox.button_press_event.disconnect (onUnreadClick);
 			m_unreadBox.enter_notify_event.disconnect (onUnreadEnter);
 			m_unreadBox.leave_notify_event.disconnect (onUnreadLeave);

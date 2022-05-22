@@ -13,6 +13,7 @@ public class FeedReader.Shortcuts : Hdy.Window {
             window_position: Gtk.WindowPosition.CENTER_ON_PARENT
         );
     }
+    
     construct {
         var column_start = new Gtk.Grid () {
             column_spacing = 6,
