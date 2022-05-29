@@ -94,6 +94,15 @@
     <content_attribute id="money-gambling">none</content_attribute>
   </content_rating>
   <releases>
+    <release version="1.2.0" date="2022-05-29">
+      <description>
+        <p>Feature Updates:</p>
+        <ul>
+          <li>Unread article titles in the article list now follow the accent colour</li>
+          <li>Users can now add folders independently without adding a feed</li>
+          <li>New and streamlined import OPML file workflow</li>
+          <li>New and streamlined add feed workflow</li>
+        </ul>
     <release version="1.1.4" date="2022-02-06">
       <description>
         <p>Feature Updates:</p>
