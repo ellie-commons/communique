@@ -1,6 +1,10 @@
 [![Ethical Design](https://img.shields.io/badge/Ethical_Design-_▲_❤_-blue.svg)](https://ind.ie/ethical-design)
 [![GPLv3 License](https://img.shields.io/badge/License-GPLv3-blue.svg)](https://www.gnu.org/licenses/gpl-3.0.en.html)
 
+# Archived
+This project has been archived and will see no further development. As an alternative, I recommend [NewsFlash]([url](https://gitlab.com/news-flash/news_flash_gtk)), which is a very well designed GNOME app.
+
+---
 
 <p align="center">
   <img src="data/application-icons/hicolor/128x128/apps/com.github.suzie97.communique.svg" alt="Icon" />
