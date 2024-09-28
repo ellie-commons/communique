@@ -204,7 +204,7 @@ public class FeedReader.Grabber : GLib.Object {
 			return false;
 		}
 
-		m_session.send_message(message);
+		m_session.send_and_read(message);
 		var params = new GLib.HashTable<string, string>(null, null);
 		string? contentType = message.response_headers.get_content_type(out params);
 		if(contentType != null)
@@ -245,7 +245,7 @@ public class FeedReader.Grabber : GLib.Object {
 			msg.request_headers.append("DNT", "1");
 		}
 
-		m_session.send_message(msg);
+		m_session.send_and_read(msg);
 		msg.disconnect(handlerID);
 
 		if(msg.response_body == null)

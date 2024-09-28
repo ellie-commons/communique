@@ -97,7 +97,8 @@ public class FeedReader.ttrssMessage : GLib.Object {
 			m_message_soup.request_headers.append("DNT", "1");
 		}
 
-		var status_code = m_session.send_message(m_message_soup);
+		m_session.send_and_read(m_message_soup);
+		var status_code = m_message_soup.status_code;
 
 		if(status_code == 401)         // unauthorized
 

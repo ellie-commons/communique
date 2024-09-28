@@ -40,7 +40,7 @@ public class FeedReader.InoReaderConnection {
 		+ "&scope="
 		+ "&grant_type=authorization_code";
 		message.set_request("application/x-www-form-urlencoded", Soup.MemoryUse.COPY, message_string.data);
-		m_session.send_message(message);
+		m_session.send_and_read(message);
 
 		if(message.status_code != 200)
 		{
@@ -90,7 +90,7 @@ public class FeedReader.InoReaderConnection {
 		+ "&refresh_token=" + m_utils.getRefreshToken();
 
 		message.set_request("application/x-www-form-urlencoded", Soup.MemoryUse.COPY, message_string.data);
-		m_session.send_message(message);
+		m_session.send_and_read(message);
 
 		if(message.status_code != 200)
 		{
@@ -156,7 +156,7 @@ public class FeedReader.InoReaderConnection {
 			message.set_request("application/x-www-form-urlencoded", Soup.MemoryUse.COPY, message_string.data);
 		}
 
-		m_session.send_message(message);
+		m_session.send_and_read(message);
 
 		if(message.status_code != 200)
 		{

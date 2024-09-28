@@ -278,7 +278,8 @@ public class FeedReader.Utils : GLib.Object {
 				return false;
 			}
 
-			var status = getSession().send_message(message);
+			getSession().send_and_read(message);
+			var status = message.status_code;
 
 			Logger.debug(@"Ping: status $status");
 

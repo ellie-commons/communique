@@ -529,7 +529,7 @@ public class FeedReader.localInterface : FeedServerInterface {
 				var session = new Soup.Session();
 				session.user_agent = Constants.USER_AGENT;
 				session.timeout = 5;
-				session.send_message(msg);
+				session.send_and_read(msg);
 				string xml = (string)msg.response_body.flatten().data;
 
 				// parse

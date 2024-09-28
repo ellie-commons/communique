@@ -50,7 +50,7 @@ public class FeedReader.bazquxConnection {
 		var message = new Soup.Message("POST", "https://bazqux.com/accounts/ClientLogin/");
 		string message_string = "Email=" + m_username + "&Passwd=" + m_passwd;
 		message.set_request("application/x-www-form-urlencoded", Soup.MemoryUse.COPY, message_string.data);
-		m_session.send_message(message);
+		m_session.send_and_read(message);
 		string response = (string)message.response_body.flatten().data;
 		try{
 
@@ -100,7 +100,7 @@ public class FeedReader.bazquxConnection {
 			message.set_request("application/x-www-form-urlencoded", Soup.MemoryUse.COPY, message_string.data);
 		}
 
-		m_session.send_message(message);
+		m_session.send_and_read(message);
 
 		return Response() {
 			status = message.status_code,
@@ -114,7 +114,7 @@ public class FeedReader.bazquxConnection {
 
 		string oldauth = "GoogleLogin auth=" + m_utils.getAccessToken();
 		message.request_headers.append("Authorization", oldauth);
-		m_session.send_message(message);
+		m_session.send_and_read(message);
 
 		if((string)message.response_body.data == "OK")
 		{

@@ -136,7 +136,8 @@ public class FeedReader.OwnCloudNewsMessage : GLib.Object {
 			m_message_soup.request_headers.append("DNT", "1");
 		}
 
-		var status = m_session.send_message(m_message_soup);
+		m_session.send_and_read(m_message_soup);
+		var status = m_message_soup.status_code;
 
 		if(status == 401)         // unauthorized
 

@@ -34,7 +34,9 @@ public class FeedReader.localUtils : GLib.Object {
 			return null;
 		}
 
-		uint status = session.send_message(msg);
+		session.send_and_read(msg);
+		uint status = msg.status_code;
+
 		if(status < 100 || status >= 400)
 		{
 			if(status < 100)

@@ -78,7 +78,7 @@ public class FeedReader.PocketAPI : ShareAccountInterface, Peas.ExtensionBase {
 			message_soup.request_headers.append("DNT", "1");
 		}
 
-		session.send_message(message_soup);
+		session.send_and_read(message_soup);
 
 		string response = (string)message_soup.response_body.flatten().data;
 		return response.substring(response.index_of_char('=')+1);
@@ -98,7 +98,7 @@ public class FeedReader.PocketAPI : ShareAccountInterface, Peas.ExtensionBase {
 			message_soup.request_headers.append("DNT", "1");
 		}
 
-		session.send_message(message_soup);
+		session.send_and_read(message_soup);
 
 		if((string)message_soup.response_body.flatten().data == null
 		|| (string)message_soup.response_body.flatten().data == "")
@@ -183,7 +183,7 @@ public class FeedReader.PocketAPI : ShareAccountInterface, Peas.ExtensionBase {
 			message_soup.request_headers.append("DNT", "1");
 		}
 
-		session.send_message(message_soup);
+		session.send_and_read(message_soup);
 
 		if((string)message_soup.response_body.flatten().data == null
 		|| (string)message_soup.response_body.flatten().data == "")
