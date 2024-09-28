@@ -245,22 +245,22 @@ public class FeedReader.Grabber : GLib.Object {
 			msg.request_headers.append("DNT", "1");
 		}
 
-		m_session.send_and_read(msg);
+		var response_body = m_session.send_and_read(msg);
 		msg.disconnect(handlerID);
 
-		if(msg.response_body == null)
+		if(response_body == null)
 		{
 			Logger.debug("Grabber: download failed - no response");
 			return false;
 		}
 
-		if((string)msg.response_body.flatten().data == "")
+		if((string)response_body.get_data() == "")
 		{
 			Logger.debug("Grabber: download failed - empty response");
 			return false;
 		}
 
-		m_rawHtml = (string)msg.response_body.flatten().data;
+		m_rawHtml = (string)response_body.get_data();
 		if(!m_rawHtml.validate())
 		{
 			string needle = "content=\"text/html; charset=";

@@ -630,7 +630,7 @@ public class FeedReader.grabberUtils : GLib.Object {
 				message_dlImg.request_headers.append("DNT", "1");
 			}
 
-			session.send_and_read(message_dlImg);
+			var response_body = session.send_and_read(message_dlImg);
 			var status = message_dlImg.status_code;
 
 			if(status == 200)
@@ -648,8 +648,8 @@ public class FeedReader.grabberUtils : GLib.Object {
 
 				try{
 					FileUtils.set_contents( localFilename,
-						(string)message_dlImg.response_body.flatten().data,
-					(long)message_dlImg.response_body.length);
+						(string)response_body.get_data(),
+					(long)response_body.length);
 				}
 				catch(GLib.FileError e)
 				{

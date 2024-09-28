@@ -46,7 +46,7 @@ public class FeedReader.freshConnection {
 		msg.add("Passwd", m_utils.getPasswd());
 
 		message.set_request("application/x-www-form-urlencoded", Soup.MemoryUse.COPY, msg.get().data);
-		m_session.send_and_read(message);
+		var response_body = m_session.send_and_read(message);
 
 		if(message.status_code != 200)
 		{
@@ -54,7 +54,7 @@ public class FeedReader.freshConnection {
 			return LoginResponse.NO_CONNECTION;
 		}
 
-		string response = (string)message.response_body.flatten().data;
+		string response = (string)response_body.get_data();
 
 		if(!response.has_prefix("SID="))
 		{
@@ -92,7 +92,7 @@ public class FeedReader.freshConnection {
 		message.request_headers.append("Content-Type", type);
 
 		message.request_body.append_take(input.data);
-		m_session.send_and_read(message);
+		var response_body = m_session.send_and_read(message);
 
 		if(message.status_code != 200)
 		{
@@ -101,7 +101,7 @@ public class FeedReader.freshConnection {
 
 		return Response() {
 			status = message.status_code,
-			data = (string)message.response_body.flatten().data
+			data = (string)response_body.get_data()
 		};
 	}
 
@@ -115,7 +115,7 @@ public class FeedReader.freshConnection {
 			message.request_headers.append("DNT", "1");
 		}
 
-		m_session.send_and_read(message);
+		var response_body = m_session.send_and_read(message);
 
 		if(message.status_code != 200)
 		{
@@ -124,7 +124,7 @@ public class FeedReader.freshConnection {
 
 		return Response() {
 			status = message.status_code,
-			data = (string)message.response_body.flatten().data
+			data = (string)response_body.get_data()
 		};
 	}
 }
