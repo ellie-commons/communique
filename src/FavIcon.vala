@@ -288,7 +288,13 @@ public class FeedReader.FavIcon : GLib.Object
 			}
 
 			// try domainname/favicon.ico
-			var uri = new Soup.URI(m_feed.getURL());
+			GLib.Uri uri;
+			try {
+				uri = GLib.Uri.parse(m_feed.getURL(), GLib.UriFlags.NONE);
+			} catch (GLib.UriError e) {
+				Logger.error(@"Fetching favicon failed: can't parse url $(m_feed.getURL())! Seems to be not valid.");
+			}
+
 			string? siteURL = null;
 			if(uri != null)
 			{

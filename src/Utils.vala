@@ -263,10 +263,10 @@ public class FeedReader.Utils : GLib.Object {
 		public static bool ping(string link)
 		{
 			Logger.debug("Ping: " + link);
-			var uri = new Soup.URI(link);
-
-			if(uri == null)
-			{
+			GLib.Uri uri;
+			try {
+				uri = GLib.Uri.parse(link, GLib.UriFlags.NONE);
+			} catch (GLib.UriError e) {
 				Logger.error(@"Ping failed: can't parse url $link! Seems to be not valid.");
 				return false;
 			}

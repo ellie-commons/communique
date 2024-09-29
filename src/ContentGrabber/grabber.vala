@@ -105,9 +105,9 @@ public class FeedReader.Grabber : GLib.Object {
 	{
 		Logger.debug("Grabber: process article: " + m_articleURL);
 
-		var uri = new Soup.URI(m_articleURL);
-		if(uri == null)
-		{
+		try {
+			var uri = GLib.Uri.parse(m_articleURL, GLib.UriFlags.NONE);
+		} catch (GLib.UriError e) {
 			Logger.error("No valid article-url?!?");
 			return false;
 		}
@@ -229,7 +229,7 @@ public class FeedReader.Grabber : GLib.Object {
 			if(msg.status_code == Soup.Status.MOVED_TEMPORARILY
 			|| msg.status_code == Soup.Status.MOVED_PERMANENTLY)
 			{
-				m_articleURL = msg.uri.to_string(false);
+				m_articleURL = msg.uri.to_string();
 				m_article.setURL(m_articleURL);
 				Logger.debug("Grabber: new url is: " + m_articleURL);
 			}
