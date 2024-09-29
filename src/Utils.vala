@@ -23,7 +23,8 @@ public class FeedReader.Utils : GLib.Object {
 		{
 			m_session = new Soup.Session();
 			m_session.user_agent = Constants.USER_AGENT;
-			m_session.ssl_strict = false;
+			m_session.tls_database = null;
+			m_session.tls_interaction = null;
 			m_session.timeout = 5;
 		}
 
