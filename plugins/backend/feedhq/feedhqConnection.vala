@@ -49,7 +49,7 @@ public class FeedReader.FeedHQConnection {
 
 		var message = new Soup.Message("POST", "https://feedhq.org/accounts/ClientLogin");
 		string message_string = "Email=" + m_username + "&Passwd=" + m_passwd;
-		message.set_request("application/x-www-form-urlencoded", Soup.MemoryUse.COPY, message_string.data);
+		message.set_request_body_from_bytes("application/x-www-form-urlencoded", new Bytes(message_string.data));
 		var response_body = m_session.send_and_read(message);
 		string response = (string)response_body.get_data();
 		try{
@@ -121,7 +121,7 @@ public class FeedReader.FeedHQConnection {
 		var message_string_post = message_string + "&T=" + m_utils.getPostToken();
 		if(message_string != null)
 		{
-			message.set_request("application/x-www-form-urlencoded", Soup.MemoryUse.COPY, message_string_post.data);
+			message.set_request_body_from_bytes("application/x-www-form-urlencoded", new Bytes(message_string_post.data));
 		}
 
 		var response_body = m_session.send_and_read(message);
