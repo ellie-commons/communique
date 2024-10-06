@@ -39,7 +39,7 @@ public class FeedReader.InoReaderConnection {
 		+ "&client_secret=" + InoReaderSecret.apiClientSecret
 		+ "&scope="
 		+ "&grant_type=authorization_code";
-		message.set_request("application/x-www-form-urlencoded", Soup.MemoryUse.COPY, message_string.data);
+		message.set_request_body_from_bytes("application/x-www-form-urlencoded", new Bytes(message_string.data));
 		var response_body = m_session.send_and_read(message);
 
 		if(message.status_code != 200)
@@ -89,7 +89,7 @@ public class FeedReader.InoReaderConnection {
 		+ "&grant_type=refresh_token"
 		+ "&refresh_token=" + m_utils.getRefreshToken();
 
-		message.set_request("application/x-www-form-urlencoded", Soup.MemoryUse.COPY, message_string.data);
+		message.set_request_body_from_bytes("application/x-www-form-urlencoded", new Bytes(message_string.data));
 		var response_body = m_session.send_and_read(message);
 
 		if(message.status_code != 200)
@@ -153,7 +153,7 @@ public class FeedReader.InoReaderConnection {
 
 		if(message_string != null)
 		{
-			message.set_request("application/x-www-form-urlencoded", Soup.MemoryUse.COPY, message_string.data);
+			message.set_request_body_from_bytes("application/x-www-form-urlencoded", new Bytes(message_string.data));
 		}
 
 		var response_body = m_session.send_and_read(message);
@@ -166,7 +166,7 @@ public class FeedReader.InoReaderConnection {
 
 		return Response() {
 			status = message.status_code,
-			data = (string)response_body.get_data().data
+			data = (string)response_body.get_data()
 		};
 	}
 
