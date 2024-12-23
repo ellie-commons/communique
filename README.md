@@ -2,7 +2,8 @@
 [![GPLv3 License](https://img.shields.io/badge/License-GPLv3-blue.svg)](https://www.gnu.org/licenses/gpl-3.0.en.html)
 
 # Updating behind the scenes
-Commnunique is now in development again, and is undergoing changes behind the scenes to update the dependencies and use the latest platform capabilities. Watch this space for more.
+
+> Communique is now in development again, and is undergoing changes behind the scenes to update the dependencies and use the latest platform capabilities. Watch this space for more.
 ---
 
 <p align="center">
