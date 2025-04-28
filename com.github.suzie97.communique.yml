@@ -41,10 +41,9 @@ modules:
   - name: libpeas
     buildsystem: meson
     sources:
-    - type: git
-      url: https://gitlab.gnome.org/GNOME/libpeas.git
-      tag: libpeas-1.36.0
-      commit: 7f245fa5158204621c3469756a951b68a651c4fe
+    - type: archive
+      url: https://download.gnome.org/sources/libpeas/1.36/libpeas-1.36.0.tar.xz
+      sha256: 297cb9c2cccd8e8617623d1a3e8415b4530b8e5a893e3527bbfd1edd13237b4c
 
   - name: rest
     cleanup:
