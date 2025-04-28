@@ -41,9 +41,9 @@ modules:
   - name: libpeas
     buildsystem: meson
     sources:
-    - type: git
-      url: https://gitlab.gnome.org/GNOME/libpeas.git
-      branch: master
+    - type: archive
+      url: https://download.gnome.org/sources/libpeas/1.36/libpeas-1.36.0.tar.xz
+      sha256: 297cb9c2cccd8e8617623d1a3e8415b4530b8e5a893e3527bbfd1edd13237b4c
 
   - name: rest
     cleanup:
@@ -59,7 +59,7 @@ modules:
   - name: gnome-online-accounts
     sources:
     - type: archive
-      url: https://download-fallback.gnome.org/sources/gnome-online-accounts/3.40/gnome-online-accounts-3.40.0.tar.xz
+      url: https://download.gnome.org/sources/gnome-online-accounts/3.40/gnome-online-accounts-3.40.0.tar.xz
       sha256: 585c4f979f6f543b77bfdb4fb01eb18ba25c2aec5b7866c676d929616fb2c3fa
 
   - name: gumbo
