@@ -45,26 +45,6 @@ public class FeedReader.ShareRow : Gtk.Button {
 			grid.attach (username_label, 1, 1);
 
 			add (grid);
-		} else if (type == "pocket") {
-			service_name = "Pocket";
-			var service_label = new Gtk.Label (service_name) {
-				halign = Gtk.Align.START
-			};
-			service_label.get_style_context ().add_class (Granite.STYLE_CLASS_H3_LABEL);
-
-			var username_label = new Gtk.Label (username) {
-				halign = Gtk.Align.START
-			};
-			username_label.get_style_context ().add_class (Granite.STYLE_CLASS_SMALL_LABEL);
-
-			var grid = new Gtk.Grid () {
-				column_spacing = 6
-			};
-			grid.attach (icon, 0, 0, 1, 2);
-			grid.attach (service_label, 1, 0);
-			grid.attach (username_label, 1, 1);
-
-			add (grid);
 		} else if (type == "wallabag") {
 			service_name = "Wallabag";
 			var service_label = new Gtk.Label (service_name) {

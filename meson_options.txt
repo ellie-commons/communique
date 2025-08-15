@@ -1,7 +1,7 @@
 option('share-plugins',
         type: 'array',
-        choices : ['browser', 'email', 'instapaper', 'pocket', 'wallabag'],
-        value : ['browser', 'email', 'instapaper', 'pocket', 'wallabag'],
+        choices : ['browser', 'email', 'instapaper', 'wallabag'],
+        value : ['browser', 'email', 'instapaper', 'wallabag'],
         description: 'List of share plugins to install'
 )
 option('backend-plugins',

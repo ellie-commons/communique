@@ -13,7 +13,6 @@ plugins/backend/ttrss/ttrssInterface.vala
 plugins/share/Browser/Browser.vala
 plugins/share/Email/EmailForm.vala
 plugins/share/Instapaper/InstapaperSetup.vala
-plugins/share/Pocket/PocketSetup.vala
 plugins/share/Wallabag/WallabagSetup.vala
 src/Backend/FeedServer.vala
 src/Constants.vala.in
