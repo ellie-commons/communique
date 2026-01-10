@@ -28,16 +28,6 @@ public class FeedReader.ttrssAPI : GLib.Object {
 		m_session.user_agent = Constants.USER_AGENT;
 		m_session.tls_database = null;
 		m_session.tls_interaction = null;
-		m_session.authenticate.connect((msg, auth, retrying) => {
-			if(m_utils.getHtaccessUser() == "")
-			{
-				Logger.error("TTRSS Session: need Authentication");
-			}
-			else if(!retrying)
-			{
-				auth.authenticate(m_utils.getHtaccessUser(), m_utils.getHtaccessPasswd());
-			}
-		});
 	}
 
 
