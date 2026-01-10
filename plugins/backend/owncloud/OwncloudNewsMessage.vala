@@ -24,13 +24,17 @@ public class FeedReader.OwnCloudNewsMessage : GLib.Object {
 	private Json.Object m_root_object;
 	private string m_method;
 	private string m_destination;
+	private string m_htaccess_user;
+	private string m_htaccess_password;
 
-	public OwnCloudNewsMessage(Soup.Session session, string destination, string username, string password, string method)
+	public OwnCloudNewsMessage(Soup.Session session, string destination, string username, string password, string method, string htaccess_user = "", string htaccess_password = "")
 	{
 		m_message_string = new GLib.StringBuilder();
 		m_method = method;
 		m_session = session;
 		m_destination = destination;
+		m_htaccess_user = htaccess_user;
+		m_htaccess_password = htaccess_password;
 
 		if(method == "GET")
 		{
@@ -123,13 +127,17 @@ public class FeedReader.OwnCloudNewsMessage : GLib.Object {
 			{
 				destination += "?" + m_message_string.str;
 			}
-			m_message_soup.set_uri(new Soup.URI(destination));
+			var old_headers = m_message_soup.request_headers;
+			m_message_soup = new Soup.Message(m_method, destination);
+			old_headers.foreach((name, val) => {
+				m_message_soup.request_headers.append(name, val);
+			});
 			Logger.debug(destination);
 		}
 		else
 		{
 			m_message_string.overwrite(0, "{").append("}");
-			m_message_soup.set_request(m_contenttype, Soup.MemoryUse.COPY, m_message_string.str.data);
+			m_message_soup.set_request_body_from_bytes(m_contenttype, new Bytes(m_message_string.str.data));
 		}
 
 		if(settingsTweaks.get_boolean("do-not-track"))
@@ -137,18 +145,30 @@ public class FeedReader.OwnCloudNewsMessage : GLib.Object {
 			m_message_soup.request_headers.append("DNT", "1");
 		}
 
+		if(m_htaccess_user != "")
+		{
+			m_message_soup.authenticate.connect((auth, retrying) => {
+				if(!retrying)
+				{
+					auth.authenticate(m_htaccess_user, m_htaccess_password);
+					return true;
+				}
+				return false;
+			});
+		}
+
 		response_body = m_session.send_and_read(m_message_soup);
 		var status = m_message_soup.status_code;
 
-		if(status == 401)         // unauthorized
-
+		if(status == 401)
 		{
 			return ConnectionError.UNAUTHORIZED;
 		}
 
-		if(m_message_soup.tls_errors != 0 && !settingsTweaks.get_boolean("ignore-tls-errors"))
+		var tls_errors = m_message_soup.get_tls_peer_certificate_errors();
+		if(tls_errors != 0 && !settingsTweaks.get_boolean("ignore-tls-errors"))
 		{
-			Logger.info("TLS errors: " + Utils.printTlsCertificateFlags(m_message_soup.tls_errors));
+			Logger.info("TLS errors: " + Utils.printTlsCertificateFlags(tls_errors));
 			return ConnectionError.CA_ERROR;
 		}
 
