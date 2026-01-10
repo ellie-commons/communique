@@ -585,15 +585,19 @@ public class FeedReader.FeedbinInterface : FeedServerInterface {
 				string? favicon_uri = null;
 				if(subscription.site_url != null)
 				{
-					var uri = new Soup.URI(subscription.site_url);
-					if(uri != null)
+					try
 					{
-						var favicon = favicons.get(uri.host);
+						var uri = GLib.Uri.parse(subscription.site_url, GLib.UriFlags.NONE);
+						var favicon = favicons.get(uri.get_host());
 						if(favicon != null)
 						{
 							string base64 = Base64.encode(favicon.get_data());
 							favicon_uri = @"data:application/octet-stream;base64,$base64";
 						}
+					}
+					catch(GLib.UriError e)
+					{
+						// Invalid URI, skip favicon
 					}
 				}
 

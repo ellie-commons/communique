@@ -42,31 +42,23 @@ public class FeedbinAPI : Object {
 		{
 			m_session.user_agent = user_agent;
 		}
-
-		m_session.authenticate.connect(authenticate);
 	}
 
-	~FeedbinAPI()
-	{
-		m_session.authenticate.disconnect(authenticate);
-	}
-
-	private void authenticate(Soup.Message msg, Soup.Auth auth, bool retrying)
-	{
-		if(!retrying)
-		{
-			auth.authenticate(this.username, this.password);
-		}
-	}
-
-	private Soup.Message request(string method, string last_part, string? input = null) throws FeedbinError
+	private Bytes request(string method, string last_part, string? input = null) throws FeedbinError
 	requires (method == "DELETE" || method == "GET" || method == "POST")
 	requires (input == null || method != "GET")
-	ensures (result.status_code >= 200)
-	ensures (result.status_code < 400)
 	{
 		var path = m_base_uri + last_part;
 		var message = new Soup.Message(method, path);
+
+		message.authenticate.connect((auth, retrying) => {
+			if(!retrying)
+			{
+				auth.authenticate(this.username, this.password);
+				return true;
+			}
+			return false;
+		});
 
 		if(method == "POST")
 		{
@@ -75,29 +67,35 @@ public class FeedbinAPI : Object {
 
 		if(input != null)
 		{
-			message.request_body.append_take(input.data);
+			message.set_request_body_from_bytes("application/json; charset=utf-8", new Bytes(input.data));
 		}
 
-		m_session.send_and_read(message);
+		Bytes response_body;
+		try
+		{
+			response_body = m_session.send_and_read(message);
+		}
+		catch(GLib.Error e)
+		{
+			throw new FeedbinError.NO_CONNECTION(@"Connection to $m_base_uri failed: $(e.message)");
+		}
+
 		var status = message.status_code;
-		if(status < 200 || status >= 400)
+		if(status < 200 || status >= 400 || status == 300)
 		{
 			switch(status)
 			{
-				case Soup.Status.CANT_RESOLVE:
-				case Soup.Status.CANT_RESOLVE_PROXY:
-				case Soup.Status.CANT_CONNECT:
-				case Soup.Status.CANT_CONNECT_PROXY:
-				throw new FeedbinError.NO_CONNECTION(@"Connection to $m_base_uri failed");
 				case Soup.Status.UNAUTHORIZED:
 				throw new FeedbinError.NOT_AUTHORIZED(@"Not authorized to $method $path");
 				case Soup.Status.NOT_FOUND:
 				throw new FeedbinError.NOT_FOUND(@"$method $path not found");
+				case Soup.Status.MULTIPLE_CHOICES:
+				throw new FeedbinError.MULTIPLE_CHOICES(@"Multiple choices for $method $path");
 			}
 			string phrase = Soup.Status.get_phrase(status);
 			throw new FeedbinError.UNKNOWN_ERROR(@"Unexpected status $status ($phrase) for $method $path");
 		}
-		return message;
+		return response_body;
 	}
 
 	// TODO: Move to DateUtils
@@ -119,30 +117,28 @@ public class FeedbinAPI : Object {
 		return string_to_datetime(s);
 	}
 
-	private Soup.Message post_request(string path, string input) throws FeedbinError
+	private Bytes post_request(string path, string input) throws FeedbinError
 	requires (input != "")
 	{
 		return request("POST", path, input);
 	}
 
-	private Soup.Message delete_request(string path) throws FeedbinError
+	private void delete_request(string path) throws FeedbinError
 	{
-		return request("DELETE", path);
+		request("DELETE", path);
 	}
 
-	private Soup.Message get_request(string path) throws FeedbinError
+	private Bytes get_request(string path) throws FeedbinError
 	{
 		return request("GET", path);
 	}
 
-	private static Json.Node parse_json(Soup.Message response) throws FeedbinError
+	private static Json.Node parse_json(Bytes response_body, string path) throws FeedbinError
 	{
-		var method = response.method;
-		var uri = response.uri.to_string(false);
-		string content = (string)response.response_body.flatten().data;
+		string content = (string)response_body.get_data();
 		if(content == null)
 		{
-			throw new FeedbinError.INVALID_FORMAT(@"$method $uri returned no content but expected JSON");
+			throw new FeedbinError.INVALID_FORMAT(@"$path returned no content but expected JSON");
 		}
 
 		var parser = new Json.Parser();
@@ -152,7 +148,7 @@ public class FeedbinAPI : Object {
 		}
 		catch (Error e)
 		{
-			throw new FeedbinError.INVALID_FORMAT(@"$method $uri returned invalid JSON: " + e.message + "\nContent is: $content");
+			throw new FeedbinError.INVALID_FORMAT(@"$path returned invalid JSON: " + e.message + "\nContent is: $content");
 		}
 		return parser.get_root();
 	}
@@ -160,11 +156,11 @@ public class FeedbinAPI : Object {
 	private Json.Node get_json(string path) throws FeedbinError
 	requires (path != "")
 	{
-		var response = get_request(path);
-		return parse_json(response);
+		var response_body = get_request(path);
+		return parse_json(response_body, path);
 	}
 
-	private Soup.Message post_json_object(string path, Json.Object obj) throws FeedbinError
+	private Bytes post_json_object(string path, Json.Object obj) throws FeedbinError
 	{
 		var root = new Json.Node(Json.NodeType.OBJECT);
 		root.set_object(obj);
@@ -180,8 +176,8 @@ public class FeedbinAPI : Object {
 	{
 		try
 		{
-			var res = get_request("authentication.json");
-			return res.status_code == Soup.Status.OK;
+			get_request("authentication.json");
+			return true;
 		}
 		catch(FeedbinError.NOT_AUTHORIZED e)
 		{
@@ -240,13 +236,8 @@ public class FeedbinAPI : Object {
 
 		try
 		{
-			var response = post_json_object("subscriptions.json", object);
-			if(response.status_code == 300)
-			{
-				throw new FeedbinError.MULTIPLE_CHOICES("Site $url has multiple feeds to subscribe to");
-			}
-
-			var root = parse_json(response);
+			var response_body = post_json_object("subscriptions.json", object);
+			var root = parse_json(response_body, "subscriptions.json");
 			return Subscription.from_json(root.get_object());
 		}
 		catch (FeedbinError.NOT_FOUND e)
