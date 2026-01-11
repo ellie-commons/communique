@@ -13,13 +13,6 @@
 //	You should have received a copy of the GNU General Public License
 //	along with FeedReader.  If not, see <http://www.gnu.org/licenses/>.
 
-namespace FeedReader.InstapaperSecrets {
-	const string base_uri                   = "https://www.instapaper.com/api/";
-	const string oauth_consumer_key         = "b7681e07bf554b15813511217054e1b2";
-	const string oauth_consumer_secret      = "c5307cb359d54685904f6d38aaeede6f";
-	const string oauth_callback                     = "feedreader://instapaper";
-}
-
 public class FeedReader.InstaAPI : ShareAccountInterface, Peas.ExtensionBase {
 
 	public InstaAPI()
@@ -39,107 +32,48 @@ public class FeedReader.InstaAPI : ShareAccountInterface, Peas.ExtensionBase {
 
 	public bool getAccessToken(string id, string username, string password)
 	{
-		string userID = "";
+		// Use Instapaper Simple API to verify credentials
+		var session = new Soup.Session();
+		session.user_agent = Constants.USER_AGENT;
 
-		var oauthObject = new Rest.OAuthProxy (
-			InstapaperSecrets.oauth_consumer_key,
-			InstapaperSecrets.oauth_consumer_secret,
-			"https://www.instapaper.com/api/1/",
-		false);
+		string auth_data = "username=" + GLib.Uri.escape_string(username)
+			+ "&password=" + GLib.Uri.escape_string(password);
 
-		var call = oauthObject.new_call();
-		oauthObject.url_format = "https://www.instapaper.com/api/1/";
-		call.set_function ("oauth/access_token");
-		call.set_method("POST");
-		call.add_param("x_auth_mode", "client_auth");
-		call.add_param("x_auth_username", username);
-		call.add_param("x_auth_password", password);
+		var message = new Soup.Message("POST", "https://www.instapaper.com/api/authenticate");
+		message.set_request_body_from_bytes("application/x-www-form-urlencoded", new Bytes(auth_data.data));
+
 		try
 		{
-			call.run();
+			session.send_and_read(message);
 		}
 		catch(Error e)
 		{
 			Logger.error("instapaper getAccessToken: " + e.message);
-		}
-
-		string response = call.get_payload();
-		int64 status = call.get_status_code();
-
-		if(status != 200)
-		{
 			return false;
 		}
 
-
-		int secretStart = response.index_of_char('=')+1;
-		int secretEnd = response.index_of_char('&', secretStart);
-		int tokenStart = response.index_of_char('=', secretEnd)+1;
-
-		string accessToken_secret = response.substring(secretStart, secretEnd-secretStart);
-		string accessToken = response.substring(tokenStart);
-
-		oauthObject.set_token(accessToken);
-		oauthObject.set_token_secret(accessToken_secret);
-
-		// get userID -------------------------------------------------------------------------------------------------
-		var call2 = oauthObject.new_call();
-		oauthObject.url_format = "https://www.instapaper.com/api/1/";
-		call2.set_function("account/verify_credentials");
-		call2.set_method("POST");
-		try
+		if(message.status_code != 200)
 		{
-			call2.run();
-		}
-		catch(Error e)
-		{
-			Logger.debug("getUserID: " + e.message);
+			Logger.error("instapaper getAccessToken: authentication failed with status %u".printf(message.status_code));
+			return false;
 		}
 
-		var parser = new Json.Parser();
-		try
-		{
-			parser.load_from_data(call2.get_payload());
-		}
-		catch (Error e)
-		{
-			Logger.error("Could not load response to Message from instapaper");
-			Logger.error(e.message);
-		}
-
-		var root_node = parser.get_root();
-		var userArray = root_node.get_array();
-		var root_object = userArray.get_object_element(0);
-		if(root_object.has_member("user_id"))
-		{
-			userID = root_object.get_int_member("user_id").to_string();
-		}
-		else if(root_object.has_member("error"))
-		{
-			Logger.error(root_object.get_int_member("error_code").to_string());
-			Logger.error(root_object.get_string_member("message"));
-		}
-		//-------------------------------------------------------------------------------------------------------------
-
-
+		// Store credentials
 		var settings = new GLib.Settings.with_path("com.github.suzie97.communique.share.account", "/com/github/suzie97/communique/share/instapaper/%s/".printf(id));
-		settings.set_string("oauth-access-token", accessToken);
-		settings.set_string("oauth-access-token-secret", accessToken_secret);
 		settings.set_string("username", username);
-		settings.set_string("user-id", userID);
 
 		var array = Settings.share("instapaper").get_strv("account-ids");
 		array += id;
 		Settings.share("instapaper").set_strv("account-ids", array);
 
 		var pwSchema = new Secret.Schema ("com.github.suzie97.communique.instapaper.password", Secret.SchemaFlags.NONE,
-		"userID", Secret.SchemaAttributeType.STRING);
+			"username", Secret.SchemaAttributeType.STRING);
 
 		var attributes = new GLib.HashTable<string,string>(str_hash, str_equal);
-		attributes["userID"] = userID;
+		attributes["username"] = username;
 		try
 		{
-			Secret.password_storev_sync(pwSchema, attributes, Secret.COLLECTION_DEFAULT, "Feedreader: Instapaper login", password, null);
+			Secret.password_storev_sync(pwSchema, attributes, Secret.COLLECTION_DEFAULT, "Communique: Instapaper login", password, null);
 		}
 		catch(GLib.Error e)
 		{
@@ -153,9 +87,9 @@ public class FeedReader.InstaAPI : ShareAccountInterface, Peas.ExtensionBase {
 	{
 		var settings = new GLib.Settings.with_path("com.github.suzie97.communique.share.account", "/com/github/suzie97/communique/share/instapaper/%s/".printf(id));
 
-		var pwSchema = new Secret.Schema ("com.github.suzie97.communique.instapaper.password", Secret.SchemaFlags.NONE, "userID", Secret.SchemaAttributeType.STRING);
+		var pwSchema = new Secret.Schema ("com.github.suzie97.communique.instapaper.password", Secret.SchemaFlags.NONE, "username", Secret.SchemaAttributeType.STRING);
 		var attributes = new GLib.HashTable<string,string>(str_hash, str_equal);
-		attributes["userID"] = settings.get_string("user-id");
+		attributes["username"] = settings.get_string("username");
 
 		string password = "";
 		try
@@ -169,22 +103,32 @@ public class FeedReader.InstaAPI : ShareAccountInterface, Peas.ExtensionBase {
 
 		var session = new Soup.Session();
 		session.user_agent = Constants.USER_AGENT;
-		string message  = "user_id=" + settings.get_string("user-id")
-		+ "&username=" + settings.get_string("username")
-		+ "&password=" + password
-		+ "&url=" + GLib.Uri.escape_string(url);
+		string username = settings.get_string("username");
+		string message = "username=" + GLib.Uri.escape_string(username)
+			+ "&password=" + GLib.Uri.escape_string(password)
+			+ "&url=" + GLib.Uri.escape_string(url);
 
-		Logger.debug("InstaAPI: " + message);
+		Logger.debug("InstaAPI: adding bookmark for %s".printf(url));
 
 		var message_soup = new Soup.Message("POST", "https://www.instapaper.com/api/add");
-		message_soup.set_request("application/x-www-form-urlencoded", Soup.MemoryUse.COPY, message.data);
+		message_soup.set_request_body_from_bytes("application/x-www-form-urlencoded", new Bytes(message.data));
 
 		if(Settings.tweaks().get_boolean("do-not-track"))
 		{
 			message_soup.request_headers.append("DNT", "1");
 		}
 
-		var response_body = session.send_and_read(message_soup);
+		Bytes response_body;
+		try
+		{
+			response_body = session.send_and_read(message_soup);
+		}
+		catch(Error e)
+		{
+			Logger.error("InstaAPI addBookmark: " + e.message);
+			return false;
+		}
+
 		string response = (string)response_body.get_data();
 
 		if(response == null || response == "")
@@ -202,10 +146,10 @@ public class FeedReader.InstaAPI : ShareAccountInterface, Peas.ExtensionBase {
 		Logger.debug(@"InstaAPI.logout($id)");
 		var settings = new GLib.Settings.with_path("com.github.suzie97.communique.share.account", @"/com/github/suzie97/communique/share/instapaper/$id/");
 		var pwSchema = new Secret.Schema("com.github.suzie97.communique.instapaper.password",
-		Secret.SchemaFlags.NONE, "userID", Secret.SchemaAttributeType.STRING);
+			Secret.SchemaFlags.NONE, "username", Secret.SchemaAttributeType.STRING);
 
 		var attributes = new GLib.HashTable<string,string>(str_hash, str_equal);
-		attributes["userID"] = settings.get_string("user-id");
+		attributes["username"] = settings.get_string("username");
 		bool removed = false;
 
 		Secret.password_clearv.begin(pwSchema, attributes, null, (obj, async_res) => {

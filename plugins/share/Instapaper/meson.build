@@ -22,8 +22,6 @@ shared_library(
     libsoup,
     webkit2gtk,
     libxml,
-    rest,
-    json_glib,
     libhandy
   ],
   link_with: [
