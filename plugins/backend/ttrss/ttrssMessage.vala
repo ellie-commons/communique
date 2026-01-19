@@ -17,13 +17,18 @@ public class FeedReader.ttrssMessage : GLib.Object {
 
 	private Soup.Session m_session;
 	private Soup.Message m_message_soup;
+	private Bytes response_body;
 	private Json.Object m_request_object = new Json.Object();
 	private const string m_contenttype = "application/x-www-form-urlencoded";
 	private Json.Object m_response_object;
+	private string m_htaccess_user;
+	private string m_htaccess_password;
 
-	public ttrssMessage(Soup.Session session, string destination)
+	public ttrssMessage(Soup.Session session, string destination, string htaccess_user = "", string htaccess_password = "")
 	{
 		m_session = session;
+		m_htaccess_user = htaccess_user;
+		m_htaccess_password = htaccess_password;
 
 		m_message_soup = new Soup.Message("POST", destination);
 
@@ -90,24 +95,37 @@ public class FeedReader.ttrssMessage : GLib.Object {
 		var settingsTweaks = new GLib.Settings("com.github.suzie97.communique.tweaks");
 
 		var data = object_to_string(m_request_object);
-		m_message_soup.set_request(m_contenttype, Soup.MemoryUse.COPY, data.data);
+		m_message_soup.set_request_body_from_bytes(m_contenttype, new Bytes(data.data));
 
 		if(settingsTweaks.get_boolean("do-not-track"))
 		{
 			m_message_soup.request_headers.append("DNT", "1");
 		}
 
-		var status_code = m_session.send_message(m_message_soup);
+		if(m_htaccess_user != "")
+		{
+			m_message_soup.authenticate.connect((auth, retrying) => {
+				if(!retrying)
+				{
+					auth.authenticate(m_htaccess_user, m_htaccess_password);
+					return true;
+				}
+				return false;
+			});
+		}
 
-		if(status_code == 401)         // unauthorized
+		response_body = m_session.send_and_read(m_message_soup);
+		var status_code = m_message_soup.status_code;
 
+		if(status_code == 401)
 		{
 			return ConnectionError.UNAUTHORIZED;
 		}
 
-		if(m_message_soup.tls_errors != 0 && !settingsTweaks.get_boolean("ignore-tls-errors"))
+		var tls_errors = m_message_soup.get_tls_peer_certificate_errors();
+		if(tls_errors != 0 && !settingsTweaks.get_boolean("ignore-tls-errors"))
 		{
-			Logger.info("TLS errors: " + Utils.printTlsCertificateFlags(m_message_soup.tls_errors));
+			Logger.info("TLS errors: " + Utils.printTlsCertificateFlags(tls_errors));
 			return ConnectionError.CA_ERROR;
 		}
 
@@ -126,7 +144,7 @@ public class FeedReader.ttrssMessage : GLib.Object {
 		var parser = new Json.Parser();
 		try
 		{
-			parser.load_from_data((string)m_message_soup.response_body.flatten().data);
+			parser.load_from_data((string)response_body.get_data());
 		}
 		catch(Error e)
 		{
@@ -201,7 +219,7 @@ public class FeedReader.ttrssMessage : GLib.Object {
 
 	private void logError(string prefix)
 	{
-		var url = m_message_soup.get_uri().to_string(false);
+		var url = m_message_soup.get_uri().to_string();
 		var obj = m_request_object;
 		if(obj.has_member("password"))
 		{
@@ -219,7 +237,7 @@ public class FeedReader.ttrssMessage : GLib.Object {
 				});
 			}
 			var request = object_to_string(obj);
-			var response = (string)m_message_soup.response_body.flatten().data;
+			var response = (string)response_body.get_data();
 			Logger.error(@"$prefix\nURL: $url\nRequest object: $request\nResponse: $response");
 		}
 

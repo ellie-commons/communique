@@ -2,7 +2,6 @@ supported_share_plugins = [
   'Browser',
   'Email',
   'Instapaper',
-  'Pocket',
   'Wallabag'
 ]
 

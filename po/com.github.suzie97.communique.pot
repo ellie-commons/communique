@@ -52,7 +52,7 @@ msgid ""
 "Communique features support for a lot of RSS services. And ofcourse, you can "
 "use Communique to subscribe to and read RSS feeds locally, without logging "
 "in to anything. Communique also allows you to save your articles to "
-"Instapaper, Pocket or Wallabag, or send them via email straight from the app."
+"Instapaper or Wallabag, or send them via email straight from the app."
 msgstr ""
 
 #: data/com.github.suzie97.communique.appdata.xml.in:11
@@ -93,10 +93,6 @@ msgstr ""
 
 #: data/com.github.suzie97.communique.appdata.xml.in:23
 msgid "Instapaper"
-msgstr ""
-
-#: data/com.github.suzie97.communique.appdata.xml.in:24
-msgid "Pocket"
 msgstr ""
 
 #: data/com.github.suzie97.communique.appdata.xml.in:25
@@ -372,10 +368,6 @@ msgstr ""
 
 #: plugins/share/Instapaper/InstapaperSetup.vala:104
 msgid "Username or Password incorrect"
-msgstr ""
-
-#: plugins/share/Pocket/PocketSetup.vala:56
-msgid "waiting"
 msgstr ""
 
 #: plugins/share/Wallabag/WallabagSetup.vala:75 src/Widgets/AddPopover.vala:47
