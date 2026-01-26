@@ -54,7 +54,7 @@
 		</key>
 
 		<key name='plugin' type="s">
-			<default>'none'</default>
+			<default>'local'</default>
 		</key>
 
 		<key name='article-theme' enum='com.github.suzie97.communique.article-theme'>

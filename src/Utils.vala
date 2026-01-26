@@ -279,20 +279,25 @@ public class FeedReader.Utils : GLib.Object {
 				return false;
 			}
 
-			getSession().send_and_read(message);
-			var status = message.status_code;
+			try {
+				getSession().send_and_read(message);
+				var status = message.status_code;
 
-			Logger.debug(@"Ping: status $status");
+				Logger.debug(@"Ping: status $status");
 
-			if(status >= 200 && status <= 208)
-			{
-				Logger.debug("Ping successful");
-				return true;
+				if(status >= 200 && status <= 208)
+				{
+					Logger.debug("Ping successful");
+					return true;
+				}
+
+				Logger.error(@"Ping: failed %u - %s".printf(status, Soup.Status.get_phrase(status)));
+
+				return false;
+			} catch (Error e) {
+				Logger.error(@"Ping: network error - $(e.message)");
+				return false;
 			}
-
-			Logger.error(@"Ping: failed %u - %s".printf(status, Soup.Status.get_phrase(status)));
-
-			return false;
 		}
 
 

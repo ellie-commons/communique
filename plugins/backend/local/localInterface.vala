@@ -297,6 +297,21 @@ public class FeedReader.localInterface : FeedServerInterface {
 
 	public override bool serverAvailable()
 	{
+		Logger.info("Local RSS: serverAvailable() called");
+
+		var network_monitor = GLib.NetworkMonitor.get_default();
+		var network_available = network_monitor.get_network_available();
+		var connectivity = network_monitor.get_connectivity();
+
+		Logger.info(@"Local RSS: network_available = $network_available, connectivity = $connectivity");
+
+		if (network_available || connectivity != GLib.NetworkConnectivity.LOCAL) {
+			Logger.info("Local RSS: Using NetworkMonitor for connectivity check - assuming online");
+			return true;
+		}
+
+		Logger.info("Local RSS: Falling back to ping check");
+
 		return Utils.ping("https://duckduckgo.com/");
 	}
 
