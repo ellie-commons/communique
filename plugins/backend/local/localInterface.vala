@@ -305,12 +305,17 @@ public class FeedReader.localInterface : FeedServerInterface {
 
 		Logger.info(@"Local RSS: network_available = $network_available, connectivity = $connectivity");
 
-		if (network_available || connectivity != GLib.NetworkConnectivity.LOCAL) {
-			Logger.info("Local RSS: Using NetworkMonitor for connectivity check - assuming online");
+		if (network_available && connectivity == GLib.NetworkConnectivity.FULL) {
+			Logger.info("Local RSS: Full internet connectivity detected - online");
 			return true;
 		}
 
-		Logger.info("Local RSS: Falling back to ping check");
+		if (!network_available || connectivity == GLib.NetworkConnectivity.LOCAL) {
+			Logger.info("Local RSS: No network or local-only connectivity - offline");
+			return false;
+		}
+
+		Logger.info(@"Local RSS: Limited/Portal connectivity ($connectivity) - performing ping check");
 
 		return Utils.ping("https://duckduckgo.com/");
 	}
