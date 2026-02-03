@@ -23,6 +23,15 @@ public class FeedReader.ServiceInfo : Gtk.Overlay {
 		m_label.get_style_context ().add_class (Granite.STYLE_CLASS_H3_LABEL);
 		m_label.get_style_context ().add_class (Gtk.STYLE_CLASS_DIM_LABEL);
 
+		m_offline = new Gtk.Label ("OFFLINE") {
+			halign = Gtk.Align.CENTER,
+			margin_start = 10,
+			margin_end = 10,
+			margin_top = 6,
+			opacity = 0.0
+		};
+		m_offline.get_style_context ().add_class ("osd");
+
 		m_box = new Gtk.Grid () {
 			orientation = Gtk.Orientation.VERTICAL,
 			hexpand = true,
@@ -31,6 +40,7 @@ public class FeedReader.ServiceInfo : Gtk.Overlay {
 		};
 		m_box.add (m_logo);
 		m_box.add (m_label);
+		m_box.add (m_offline);
 		m_box.margin_top = 20;
 		m_box.margin_bottom = 5;
 
@@ -41,15 +51,6 @@ public class FeedReader.ServiceInfo : Gtk.Overlay {
 		m_stack.add_named (m_spinner, "spinner");
 		m_stack.get_style_context ().add_class (Gtk.STYLE_CLASS_SIDEBAR);
 		this.add (m_stack);
-
-		m_offline = new Gtk.Label ("OFFLINE");
-		m_offline.margin_start = 40;
-		m_offline.margin_end = 40;
-		m_offline.margin_top = 30;
-		m_offline.margin_bottom = 10;
-		// m_offline.get_style_context ().add_class ("osd");
-		m_offline.no_show_all = true;
-		this.add_overlay (m_offline);
 	}
 
 	public void refresh () {
@@ -76,10 +77,10 @@ public class FeedReader.ServiceInfo : Gtk.Overlay {
 	}
 
 	public void setOffline () {
-		m_offline.show ();
+		m_offline.opacity = 1.0;
 	}
 
 	public void setOnline () {
-		m_offline.hide ();
+		m_offline.opacity = 0.0;
 	}
 }
