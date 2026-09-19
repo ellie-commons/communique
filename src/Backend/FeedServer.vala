@@ -233,15 +233,12 @@ public class FeedReader.FeedServer : GLib.Object {
 			return;
 		}
 
-		var drop_articles = (DropArticles)Settings.general().get_enum("drop-articles-after");
-		DateTime? since = drop_articles.to_start_date();
+		// Not the retention setting: that says how long to keep articles, not how
+		// far back to fetch them, and would hide feeds with nothing recent.
+		DateTime? since = null;
 		if(!db.isTableEmpty("articles"))
 		{
-			var last_sync = new DateTime.from_unix_utc(Settings.state().get_int("last-sync"));
-			if(since == null || last_sync.to_unix() > since.to_unix())
-			{
-				since = last_sync;
-			}
+			since = new DateTime.from_unix_utc(Settings.state().get_int("last-sync"));
 		}
 
 		int unread = getUnreadCount();
@@ -279,6 +276,7 @@ public class FeedReader.FeedServer : GLib.Object {
 			Notification.send(newArticles, new_and_unread);
 		}
 
+		var drop_articles = (DropArticles)Settings.general().get_enum("drop-articles-after");
 		var article_max_age_days = drop_articles.to_days();
 		if(article_max_age_days != null)
 		{
@@ -339,8 +337,7 @@ public class FeedReader.FeedServer : GLib.Object {
 			return;
 		}
 
-		var drop_articles = (DropArticles)Settings.general().get_enum("drop-articles-after");
-		DateTime? since = drop_articles.to_start_date();
+		DateTime? since = null;         // no limit
 
 		// get marked articles
 		syncProgress(_("Getting starred articles"));
@@ -1044,10 +1041,8 @@ public class FeedReader.FeedServer : GLib.Object {
 		}
 
 		int maxArticles = ArticleSyncCount();
-		DateTime? since = ((DropArticles)Settings.general().get_enum("drop-articles-after")).to_start_date();
-		var sinceStr = since == null ? "(null)" : since.to_string();
-		Logger.info(@"Downloading up to $(maxArticles) articles for feed $(feedID) ($(feedURL)), since $(sinceStr)");
-		getArticles(maxArticles, ArticleStatus.ALL, since, feedID);
+		Logger.info(@"Downloading up to $(maxArticles) articles for feed $(feedID) ($(feedURL))");
+		getArticles(maxArticles, ArticleStatus.ALL, null, feedID);
 		return true;
 	}
 

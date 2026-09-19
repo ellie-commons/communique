@@ -124,14 +124,26 @@ public class FeedReader.DataBaseReadOnly : GLib.Object {
 			)
 		""");
 
+		ensure_indexes();
+
+		m_db.simple_query("""
+			CREATE VIRTUAL TABLE IF NOT EXISTS fts_table
+			USING fts4 (content='articles', articleID, preview, title, author)
+		""");
+	}
+
+	// Separate from init(), which only runs for a database with no tables yet:
+	// an index added here still has to reach existing databases.
+	public void ensure_indexes()
+	{
 		m_db.simple_query("""
 			CREATE INDEX IF NOT EXISTS "index_articles"
 			ON "articles" ("feedID" DESC, "unread" ASC, "marked" ASC)
 		""");
 
 		m_db.simple_query("""
-			CREATE VIRTUAL TABLE IF NOT EXISTS fts_table
-			USING fts4 (content='articles', articleID, preview, title, author)
+			CREATE INDEX IF NOT EXISTS "index_articles_date"
+			ON "articles" ("date" DESC)
 		""");
 	}
 

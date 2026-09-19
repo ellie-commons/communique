@@ -58,6 +58,32 @@ public class FeedReader.SQLite : GLib.Object {
 		return stmt;
 	}
 
+	// Rows modified by the most recently completed statement, so it has to be
+	// read before anything else is stepped.
+	public int changes()
+	{
+		return m_db.changes();
+	}
+
+	// Use this rather than looping until DONE: a statement that errors keeps
+	// returning its error and never reaches DONE, so such a loop hangs.
+	public bool step_done(Sqlite.Statement stmt)
+	{
+		int rc = stmt.step();
+		while(rc == Sqlite.ROW)
+		{
+			rc = stmt.step();
+		}
+
+		if(rc != Sqlite.DONE)
+		{
+			Logger.error("SQLite: statement failed (%d): %s".printf(rc, m_db.errmsg()));
+			return false;
+		}
+
+		return true;
+	}
+
 	public string errmsg()
 	{
 		return m_db.errmsg();

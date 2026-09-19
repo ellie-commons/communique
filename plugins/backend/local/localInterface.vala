@@ -592,7 +592,7 @@ public class FeedReader.localInterface : FeedServerInterface {
 					var date = Rfc822.parseDate(item.pub_date);
 					if (date != null)
 					{
-						Logger.info(@"Parsed $(item.pub_date) as $(date.to_string())");
+						Logger.debug(@"Parsed $(item.pub_date) as $(date.to_string())");
 					}
 					else
 					{
@@ -677,8 +677,8 @@ public class FeedReader.localInterface : FeedServerInterface {
 
 		if(articles.size > 0)
 		{
-			db.write_articles(articles);
-			Logger.debug("localInterface: %i articles written".printf(articles.size));
+			int written = db.write_articles(articles);
+			Logger.debug("localInterface: %i new articles written (%i fetched)".printf(written, articles.size));
 			refreshFeedListCounter();
 			updateArticleList();
 		}

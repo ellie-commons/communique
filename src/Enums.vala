@@ -194,17 +194,6 @@ namespace FeedReader {
 				assert_not_reached();
 			}
 		}
-
-		public DateTime? to_start_date()
-		{
-			int? days = to_days();
-			if(days == null)
-			{
-				return null;
-			}
-
-			return new DateTime.now_utc().add_days(-(int)days);
-		}
 	}
 
 	public enum FeedListType {

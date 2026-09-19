@@ -15,12 +15,21 @@
 
 public class FeedReader.DataBase : DataBaseReadOnly {
 
+	private static bool m_indexes_checked = false;
+
 	public static new DataBase writeAccess()
 	{
 		var database = new DataBase();
 		if(database.uninitialized())
 		{
 			database.init();
+			m_indexes_checked = true;
+		}
+		else if(!m_indexes_checked)
+		{
+			// Cheap once the indexes exist, but not worth doing per handle.
+			database.ensure_indexes();
+			m_indexes_checked = true;
 		}
 
 		return database;
@@ -88,12 +97,18 @@ public class FeedReader.DataBase : DataBaseReadOnly {
 		var query = new QueryBuilder(QueryType.SELECT, "main.articles");
 		query.select_field("articleID");
 		query.select_field("feedID");
-		query.where(@"datetime(date, 'unixepoch', 'localtime') <= datetime('now', '-$(max_age_days) days')");
+		// Compared as raw epoch seconds; wrapping the column in datetime() would
+		// stop the index being usable.
+		int64 cutoff = new DateTime.now_utc().add_days(-max_age_days).to_unix();
+		query.where(@"date <= $cutoff");
 		query.where_equal_int("marked", ArticleStatus.UNMARKED.to_int());
 		if(FeedServer.get_default().useMaxArticles())
 		{
 			int syncCount = Settings.general().get_int("max-articles");
-			query.where(@"rowid BETWEEN 1 AND (SELECT rowid FROM articles ORDER BY rowid DESC LIMIT 1 OFFSET $syncCount)");
+			// Always keep the newest `syncCount` articles regardless of age.
+			// Ordered by date because articles arrive in whatever order the
+			// backend hands them over, so insertion order is not chronological.
+			query.where(@"articleID NOT IN (SELECT articleID FROM articles ORDER BY date DESC LIMIT $syncCount)");
 		}
 
 		Sqlite.Statement stmt = m_db.prepare(query.to_string());
@@ -319,7 +334,7 @@ public class FeedReader.DataBase : DataBaseReadOnly {
 		foreach(string id in ids)
 		{
 			stmt.bind_text(articleID_position, id);
-			while(stmt.step() != Sqlite.DONE) {}
+			m_db.step_done(stmt);
 			stmt.reset();
 		}
 
@@ -345,7 +360,7 @@ public class FeedReader.DataBase : DataBaseReadOnly {
 		stmt.bind_text(html_position, article.getHTML());
 		stmt.bind_text(preview_position, article.getPreview());
 
-		while(stmt.step() != Sqlite.DONE) {}
+		m_db.step_done(stmt);
 		stmt.reset();
 	}
 
@@ -396,7 +411,7 @@ public class FeedReader.DataBase : DataBaseReadOnly {
 			stmt.bind_int (modified_position, a.getLastModified());
 			stmt.bind_text(articleID_position, a.getArticleID());
 
-			while(stmt.step() != Sqlite.DONE) {}
+			m_db.step_done(stmt);
 			stmt.reset();
 
 			write_taggings(a);
@@ -406,7 +421,9 @@ public class FeedReader.DataBase : DataBaseReadOnly {
 	}
 
 
-	public void write_articles(Gee.List<Article> articles)
+	// Returns the number of articles actually inserted; rows already present are
+	// ignored, so this is normally 0 on a re-sync.
+	public int write_articles(Gee.List<Article> articles)
 	{
 		Utils.generatePreviews(articles);
 		Utils.checkHTML(articles);
@@ -456,20 +473,14 @@ public class FeedReader.DataBase : DataBaseReadOnly {
 		assert (guidHash_position > 0);
 		assert (modified_position > 0);
 
-		DateTime? drop_date = ((DropArticles)Settings.general().get_enum("drop-articles-after")).to_start_date();
+		int written = 0;
+		var now = new GLib.DateTime.now_local();
 		foreach(var article in articles)
 		{
 			// if article time is in the future
-			var now = new GLib.DateTime.now_local();
 			if(article.getDate().compare(now) == 1)
 			{
 				article.SetDate(now);
-			}
-
-			if(drop_date != null && article.getDate().compare(drop_date) == -1)
-			{
-				Logger.info("Ignoring old article: %s".printf(article.getTitle()));
-				continue;
 			}
 
 			stmt.bind_text(articleID_position, article.getArticleID());
@@ -485,7 +496,11 @@ public class FeedReader.DataBase : DataBaseReadOnly {
 			stmt.bind_text(guidHash_position, article.getHash());
 			stmt.bind_int (modified_position, article.getLastModified());
 
-			while(stmt.step() != Sqlite.DONE) {}
+			if(m_db.step_done(stmt))
+			{
+				// Read before the enclosure/tagging writes below clobber it.
+				written += m_db.changes();
+			}
 			stmt.reset();
 
 			write_enclosures(article);
@@ -493,6 +508,7 @@ public class FeedReader.DataBase : DataBaseReadOnly {
 		}
 
 		m_db.simple_query("COMMIT TRANSACTION");
+		return written;
 	}
 
 	private void write_taggings(Article article)
@@ -514,7 +530,7 @@ public class FeedReader.DataBase : DataBaseReadOnly {
 			stmt.bind_text(articleID_position, article.getArticleID());
 			stmt.bind_text(tagID_position, tagID);
 
-			while(stmt.step() != Sqlite.DONE) {}
+			m_db.step_done(stmt);
 			stmt.reset();
 		}
 	}
@@ -542,7 +558,7 @@ public class FeedReader.DataBase : DataBaseReadOnly {
 			stmt.bind_text(url_position, enc.get_url());
 			stmt.bind_int (type_position, enc.get_enclosure_type());
 
-			while(stmt.step() != Sqlite.DONE) {}
+			m_db.step_done(stmt);
 			stmt.reset();
 		}
 	}
