@@ -27,11 +27,6 @@ Communique is designed and developed on and for [elementary OS](https://elementa
 
 [![Get it on AppCenter](https://appcenter.elementary.io/badge.svg)](https://appcenter.elementary.io/com.github.suzie97.communique)
 
-## Financial Contribution
-You can contribute funds to the project over at Liberapay. Thank you so much 😊️ !! 
-
-<noscript><a href="https://liberapay.com/suzie97/donate"><img alt="Donate using Liberapay" src="https://liberapay.com/assets/widgets/donate.svg"></a></noscript>
-
 ## Developing and Building
 
 Flatpak is the recommended way for building Communique. Developing and testing with flatpak helps ensure that everything works correctly inside the flatpak sandbox.
