@@ -12,7 +12,7 @@
 <h1 align="center">Communique</h1>
 <p align="center">
   <a href="https://appcenter.elementary.io/com.github.suzie97.communique"><img src="https://appcenter.elementary.io/badge.svg" alt="Get it on AppCenter" /></a>
-  <a href='https://flathub.org/apps/details/com.github.suzie97.communique'><img height='51' alt='Download on Flathub' src='https://flathub.org/assets/badges/flathub-badge-en.png'/></a>
+  <!-- <a href='https://flathub.org/apps/details/com.github.suzie97.communique'><img height='51' alt='Download on Flathub' src='https://flathub.org/assets/badges/flathub-badge-en.png'/></a> -->
 </p>
 
 ![Screenshot](data/communique-light-screenshot.png)
@@ -35,9 +35,17 @@ You can contribute funds to the project over at Liberapay. Thank you so much ðŸ˜
 ## Developing and Building
 
 Flatpak is the recommended way for building Communique. Developing and testing with flatpak helps ensure that everything works correctly inside the flatpak sandbox.
+
+Communique builds against the elementary Platform and SDK `8.2`. If you don't already have them, add the AppCenter remote and install them:
+```bash
+flatpak remote-add --if-not-exists appcenter https://flatpak.elementary.io/repo.flatpakrepo
+flatpak install --user appcenter io.elementary.Platform//8.2 io.elementary.Sdk//8.2
+```
+
+Then build and install the app, and run it:
 ```bash
 flatpak-builder build com.github.suzie97.communique.yml --user --install --force-clean
-flatpak run com.github.suzie97.communique.yml
+flatpak run com.github.suzie97.communique
 ```
 ## Special Thanks to [@jangernert](https://github.com/jangernert)
 * More than 90% of the backend of this project is adopted from his project [FeedReader](https://github.com/jangernert/FeedReader). Communique would not have been possible without FeedReader.

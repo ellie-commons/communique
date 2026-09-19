@@ -5,7 +5,7 @@ app-id: com.github.suzie97.communique
 # we can use a convenient pre-made runtime and SDK. For this example, we'll be
 # using the runtime and SDK provided by elementary.
 runtime: io.elementary.Platform
-runtime-version: '8'
+runtime-version: '8.2'
 sdk: io.elementary.Sdk
 
 # This should match the exec line in your .desktop file and usually is the same
@@ -32,14 +32,10 @@ finish-args:
 # If we had external dependencies that weren't included in our SDK, we would list
 # them here.
 modules:
-  - name: libgee
-    sources:
-      - type: archive
-        url: https://download.gnome.org/sources/libgee/0.20/libgee-0.20.4.tar.xz
-        sha256: 524c1bf390f9cdda4fbd9a47b269980dc64ab5280f0801b53bc69d782c72de0e
-
   - name: libpeas
     buildsystem: meson
+    config-opts:
+      - '--libdir=lib'
     sources:
     - type: archive
       url: https://download.gnome.org/sources/libpeas/1.36/libpeas-1.36.0.tar.xz
@@ -53,6 +49,7 @@ modules:
       - '/share'
     buildsystem: meson
     config-opts:
+      - '--libdir=lib'
       - '-Dgtk_doc=false'
     sources:
     - type: archive
@@ -61,6 +58,8 @@ modules:
 
   - name: gnome-online-accounts
     buildsystem: meson
+    config-opts:
+      - '--libdir=lib'
     sources:
     - type: archive
       url: https://download.gnome.org/sources/gnome-online-accounts/3.48/gnome-online-accounts-3.48.3.tar.xz
@@ -75,6 +74,7 @@ modules:
   - name: communique
     buildsystem: meson
     config-opts:
+    - '--libdir=lib'
     - '--buildtype=release'
     sources:
       - type: dir
