@@ -228,6 +228,11 @@ void add_login_tests(string host)
 
 void main(string[] args)
 {
+	// libproxy's D-Bus backend warns when there's no session bus, which there
+	// isn't inside the Flatpak build sandbox, and Test.init() makes warnings
+	// fatal. We never talk to a proxy in the tests, so just don't look one up.
+	Environment.set_variable("GIO_USE_PROXY_RESOLVER", "dummy", false);
+
 	Test.init(ref args);
 
 	string? host = Environment.get_variable(host_env);
@@ -245,7 +250,15 @@ void main(string[] args)
 	Test.add_data_func ("/feedbinapi/bad login", () => {
 		var api = new FeedbinAPI("user", "password", null, host);
 
-		assert(!api.login());
+		try
+		{
+			assert(!api.login());
+		}
+		catch(FeedbinError.NO_CONNECTION e)
+		{
+			// The Flatpak build sandbox has no network access
+			Test.skip(@"Could not reach $host: $(e.message)");
+		}
 	});
 
 	add_login_tests(host);
