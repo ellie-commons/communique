@@ -42,13 +42,13 @@ if desktop_file_validate.found()
 	endforeach
 endif
 
-appstreamcli = find_program('appstream-util', required:false)
+appstreamcli = find_program('appstreamcli', required:false)
 
 if appstreamcli.found()
   test (
     'Validate appdata file',
     appstreamcli,
-    args: ['validate-relax', '--nonet', appdata_file.full_path()]
+    args: ['validate', '--no-net', appdata_file.full_path()]
   )
 endif
 
